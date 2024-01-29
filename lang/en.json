@@ -1,0 +1,77 @@
+{
+	"PF1RS": {
+		"Sheet": {
+			"Rebellion": "Rebellion Sheet"
+		},
+		"Rebellion": {
+			"Rank": "Rank",
+			"MaxRank": "Max Rank",
+			"Focus": "Focus",
+			"Membership": "Membership",
+			"Supporters": "Supporters",
+			"Population": "Population",
+			"Treasury": "Treasury",
+			"MinTreasury": "Min Treasury",
+			"Notoriety": "Notoriety",
+			"OrgChecks": "Organization Checks",
+			"Loyalty": "Loyalty",
+			"Secrecy": "Secrecy",
+			"Security": "Security",
+			"AvailableActions": "Available Actions",
+			"Officers": "Officers",
+			"Demagogue": "Demagogue",
+			"Partisan": "Partisan",
+			"Recruiter": "Recruiter",
+			"Sentinel": "Sentinel",
+			"Spymaster": "Spymaster",
+			"Strategist": "Strategist",
+			"Actions": "Actions",
+			"Teams": "Teams",
+			"Events": "Events",
+			"Allies": "Allies",
+			"Secondary": "to secondary",
+			"EventChance": "Event Chance",
+			"Danger": "Danger",
+			"ActiveEvents": "Active Events"
+		},
+		"Actions": {
+			"Abm": "Activate Black Market",
+			"Ash": "Activate Safe House",
+			"Cor": "Change Officer Role",
+			"Ca": "Covert Action",
+			"Dt": "Dismiss Team",
+			"Eg": "Earn Gold",
+			"Gi": "Gather Information",
+			"Ge": "Guarantee Event",
+			"Kc": "Knowledge Check",
+			"Ll": "Lie Low",
+			"Me": "Manipulate Events",
+			"Rs": "Recruit Supporters",
+			"Rt": "Recruit Team",
+			"Rd": "Reduce Danger",
+			"Rm": "Refresh Marketplace",
+			"Rcc": "Rescue Character",
+			"Rtc": "Restore Character",
+			"Sab": "Sabotage",
+			"Sc": "Secure Cache",
+			"Sa": "Special Action",
+			"So": "Special Order",
+			"Sd": "Spread Disinformation",
+			"Ut": "Upgrade Team",
+			"Ui": "Urban Influence"
+		},
+		"Common": {
+			"Total": "Total",
+			"Base": "Base",
+			"Other": "Other",
+			"Action": "action"
+		}
+	},
+	"TYPES": {
+		"Actor": {
+			"pf1-rebellion-sheet": {
+				"rebellion": "Rebellion Sheet"
+			}
+		}
+	}
+}

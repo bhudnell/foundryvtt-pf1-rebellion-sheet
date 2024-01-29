@@ -1,0 +1,186 @@
+<form autocomplete='off'>
+  <header class="header">
+    <img src='{{img}}' data-edit='img'>
+    <h1>
+      <input type='text' name='name' value='{{name}}' data-dtype="String" />
+    </h1>
+  </header>
+
+  <section class="details">
+    <div class="horizLabeledValue">
+      <span>{{localize "PF1RS.Rebellion.Rank"}}:</span>
+      {{numberInput system.details.rank name="system.details.rank" step=1 min=1 max=system.details.maxRank}}
+      {{#if rankUpIndicator}}
+      <i class="fa-regular fa-circle-exclamation error" data-tooltip={{localize "PF1RS.Rebellion.AvailableRankUp"}}></i>
+      {{/if}}
+    </div>
+    <span>{{localize "PF1RS.Rebellion.MaxRank"}}: {{system.details.maxRank}}</span>
+    <div>
+      <span>{{localize "PF1RS.Rebellion.Focus"}}:</span>
+      <select name="system.details.focus" data-dtype="String"> {{!-- TODO once chosen swap to span --}}
+        {{#select system.details.focus}}
+        <option hidden disabled selected value/>
+        <option value="loyalty">{{localize "PF1RS.Rebellion.Loyalty"}}</option>
+        <option value="secrecy">{{localize "PF1RS.Rebellion.Secrecy"}}</option>
+        <option value="security">{{localize "PF1RS.Rebellion.Security"}}</option>
+        {{/select}}
+      </select>
+    </div>
+
+    <div class="horizLabeledValue">
+      <span>{{localize "PF1RS.Rebellion.Membership"}}:</span>
+      {{numberInput system.details.membership name="system.details.membership" step=1 min=0}}
+    </div>
+    <div class="horizLabeledValue">
+      <span>{{localize "PF1RS.Rebellion.Supporters"}}:</span>
+      {{numberInput system.details.supporters name="system.details.supporters" step=1 min=0 max=system.details.population}}
+    </div>
+    <span>{{localize "PF1RS.Rebellion.Population"}}: {{system.details.population}}</span>
+
+    
+    <div class="horizLabeledValue">
+      <span>{{localize "PF1RS.Rebellion.Treasury"}}:</span>
+      {{numberInput system.details.treasury name="system.details.treasury"}}
+    </div>
+    <span>{{localize "PF1RS.Rebellion.MinTreasury"}}: {{system.minTreasury}}</span>
+    <div class="horizLabeledValue">
+      <span>{{localize "PF1RS.Rebellion.Notoriety"}}:</span>
+      {{numberInput system.details.notoriety name="system.details.notoriety" step=1 min=0 max=100}}
+    </div>
+  </section>
+
+  <section>
+    <h3>{{localize "PF1RS.Rebellion.OrgChecks"}}</h3>
+    <div class='checks'>
+      {{#each checks}}
+      <span>{{label}}</span>
+      <div class="labeledValue">
+        <span>{{data.total}}</span>
+        <span>{{localize "PF1RS.Common.Total"}}</span>
+      </div>
+      <span>=</span>
+      <div class="labeledValue">
+        <span>{{data.base}}</span>
+        <span>{{localize "PF1RS.Common.Base"}}</span>
+      </div>
+      <span>+</span>
+      <div class="labeledValue">
+        <span>{{data.officer}}</span>
+        <span>{{officerLabel}}</span>
+      </div>
+      <span>+</span>
+      <div class="labeledValue">
+        <span>{{data.sentinel}}</span>
+        <span>{{localize "PF1RS.Rebellion.Sentinel"}}</span>
+      </div>
+      <span>+</span>
+      <div class="labeledValue">
+        <span>{{data.other}}</span>
+        <span>{{localize "PF1RS.Common.Other"}}</span>
+      </div>
+      {{/each}}
+    </div>
+  </section>
+
+  <section>
+    <h3>{{localize "PF1RS.Rebellion.Actions"}}</h3>
+    <div class="actions">
+      <div class="horizLabeledValue">
+        <div class="labeledValue">
+          <span>{{system.maxActions}}</span>
+          <span>{{localize "PF1RS.Common.Total"}}</span>
+        </div>
+        <span>=</span>
+        <div class="labeledValue">
+          <span>{{actions.rank}}</span>
+          <span>{{localize "PF1RS.Rebellion.Rank"}}</span>
+        </div>
+        <span>+</span>
+        <div class="labeledValue">
+          <span>{{actions.strategist}}</span>
+          <span>{{localize "PF1RS.Rebellion.Strategist"}}</span>
+        </div>
+      </div>
+      <span>{{localize "PF1RS.Rebellion.AvailableActions"}}</span>
+      {{#each actions.available}}
+      <div class="horizLabeledValue">
+        <input type="checkbox" disabled {{checked available}} name="{{id}}"/>
+        <label for="{{id}}">{{label}}</label>
+      </div>
+      {{/each}}
+    </div>
+  </section>
+
+  <section>
+    <h3>{{localize "PF1RS.Rebellion.Officers"}}</h3>
+    <div class='officers'>
+      {{#each officers}}
+      <span>{{label}}</span>
+      <input type='text' name='system.officers.{{id}}.name' value='{{name}}' data-dtype="String" />
+      <span>+</span>
+      {{#if isInput}}
+      <input type="number" name="system.officers.{{id}}.bonus" value="{{bonus}}" data-dtype="Number" step="1" placeholder="0" />
+      {{else}}
+      <span>{{bonus}}</span>
+      {{/if}}
+      <span>{{bonusType}}</span>
+      {{/each}}
+    </div>
+  </section>
+
+  <section class='teams'>
+    <h3>{{localize "PF1RS.Rebellion.Teams"}}</h3>
+    <div>
+      
+    </div>
+  </section>
+
+  <section>
+    <h3>{{localize "PF1RS.Rebellion.Events"}}</h3>
+    <div class='eventChance'>
+      <a>
+        <i class="fa-solid fa-dice-d20" data-tooltip={{localize "PF1RS.Rebellion.RollEvent"}}></i>
+      </a>
+      <div class="labeledValue">
+        <span>{{system.eventChance}} %</span>
+        <span>{{localize "PF1RS.Rebellion.EventChance"}}</span>
+      </div>
+      <span>=</span>
+      <div class="labeledValue">
+        <span>{{system.details.notoriety}}</span>
+        <span>{{localize "PF1RS.Rebellion.Notoriety"}}</span>
+      </div>
+      <span>+</span>
+      <div class="labeledValue">
+        <span>{{system.details.danger}}</span>
+        <span>{{localize "PF1RS.Rebellion.Danger"}}</span>
+      </div>    
+      <div class="labeledValue">
+        <input type="checkbox" {{checked system.doubleEventChance}} name="system.doubleEventChance"/>
+        <label for="{{id}}">x2</label>
+      </div>
+    </div>
+
+    <h4>{{localize "PF1RS.Rebellion.ActiveEvents"}}</h4>
+
+    <div class="eventList">
+      <span>{{localize "PF1RS.Common.Persistent"}}?</span>
+      <span>{{localize "PF1RS.Rebellion.EventName"}}</span>
+      <div></div>
+      {{#each events}}
+      <input type="checkbox" disabled {{checked system.persistent}} name="system.persistent"/>
+      <span>{{name}}</span>
+      <a>
+        <i class="fa-solid fa-pen-to-square" data-tooltip={{localize "PF1RS.Common.EditItem"}}></i>
+      </a>
+      {{/each}}
+    </div>
+  </section>
+
+  <section class='allies'>
+    <h3>{{localize "PF1RS.Rebellion.Allies"}}</h3>
+    <div>
+      
+    </div>
+  </section>
+</form>

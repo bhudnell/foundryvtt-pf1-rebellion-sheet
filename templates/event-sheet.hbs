@@ -1,0 +1,22 @@
+<form autocomplete='off'>
+  <header class="header">
+    <img src='{{img}}' data-edit='img'>
+    <h1>
+      <input type='text' name='name' value='{{name}}' data-dtype="String" />
+    </h1>
+  </header>
+
+  <section>
+    <h3>Details</h3>
+    <div class="horizLabeledValue">
+      <input type="checkbox" {{checked system.persistent}} name="system.persistent" />
+      <span>{{localize "PF1RS.Common.Persistent"}}?</span>
+    </div>
+  </section>
+
+  <section class='description'>
+    <h3>Description</h3>
+    {{editor enrichedDesc target="system.description" button=true}}
+  </section>
+
+</form>

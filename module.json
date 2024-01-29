@@ -1,0 +1,66 @@
+{
+  "id": "pf1-rebellion-sheet",
+  "title": "PF1e Rebellion Sheet",
+  "description": "Everything needed to run a rebellion from Hell's Rebels",
+  "version": "1.0.0",
+  "authors": [
+    {
+			"name": "Tubbz",
+			"url": "https://github.com/bhudnell",
+			"discord": "_tubbz"
+		}
+
+  ],
+
+  "esmodules": [
+    "rebellion-sheet.mjs"
+  ],
+  "styles": [
+    "style.css"
+  ],
+
+  "documentTypes": {
+		"Actor": {
+			"rebellion": {
+				"htmlFields": ["notes"]
+			}
+		},
+    "Item": {
+      "team": {
+        "htmlFields": ["description"]
+      },
+      
+      "event": {
+        "htmlFields": ["description"]
+      }
+    }
+	},
+
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11.315"
+  },
+
+  "flags": {
+		"hotReload": {
+			"extensions": [
+				"css",
+				"hbs",
+				"json"
+			]
+		}
+	},
+  
+  "manifest": "TODO",
+  "download": "TODO",
+  "url": "TODO"
+  
+}
