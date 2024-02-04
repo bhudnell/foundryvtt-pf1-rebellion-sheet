@@ -1,23 +1,23 @@
-import { CFG } from '../config.mjs'
+import { CFG } from "../config.mjs";
 
 export class TeamSheet extends ItemSheet {
-	static get defaultOptions() {
-		const options = super.defaultOptions;
-		return {
-			...options,
-			template: `modules/${CFG.id}/templates/team-sheet.hbs`,
-			classes: [...options.classes, 'rebellion', 'team'],
-		}
-	}
+  static get defaultOptions() {
+    const options = super.defaultOptions;
+    return {
+      ...options,
+      template: `modules/${CFG.id}/templates/team-sheet.hbs`,
+      classes: [...options.classes, "rebellion", "team"],
+    };
+  }
 
-	async getData() {
-		const item = this.item;
-		
-		const context = {
-			...item,
-			enrichedDesc: await TextEditor.enrichHTML(item.system.description),
-		}
+  async getData() {
+    const item = this.item;
 
-		return context;
-	}
+    const context = {
+      ...item,
+      enrichedDesc: await TextEditor.enrichHTML(item.system.description),
+    };
+
+    return context;
+  }
 }

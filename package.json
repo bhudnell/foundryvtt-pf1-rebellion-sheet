@@ -1,0 +1,29 @@
+{
+  "name": "pf1-rebellion-sheet",
+  "version": "1.0.0",
+  "description": "Everything needed to run a rebellion from Hell's Rebels",
+  "author": "bhudnell",
+  "license": "MIT",
+  "main": "rebellion-sheet.mjs",
+  "scripts": {
+    "lint": "eslint --fix .",
+    "prettier": "prettier --write .",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-html": "^7.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "husky": "^9.0.10",
+    "lint-staged": "^15.2.1",
+    "prettier": "^3.2.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix --max-warnings=0",
+      "prettier --write"
+    ],
+    "*.{hbs,css,json}": "prettier --write"
+  }
+}

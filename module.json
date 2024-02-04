@@ -5,36 +5,30 @@
   "version": "1.0.0",
   "authors": [
     {
-			"name": "Tubbz",
-			"url": "https://github.com/bhudnell",
-			"discord": "_tubbz"
-		}
-
+      "name": "Tubbz",
+      "url": "https://github.com/bhudnell",
+      "discord": "_tubbz"
+    }
   ],
 
-  "esmodules": [
-    "rebellion-sheet.mjs"
-  ],
-  "styles": [
-    "style.css"
-  ],
+  "esmodules": ["rebellion-sheet.mjs"],
+  "styles": ["style.css"],
 
   "documentTypes": {
-		"Actor": {
-			"rebellion": {
-				"htmlFields": ["notes"]
-			}
-		},
+    "Actor": {
+      "rebellion": {
+        "htmlFields": ["notes"]
+      }
+    },
     "Item": {
       "team": {
         "htmlFields": ["description"]
       },
-      
       "event": {
         "htmlFields": ["description"]
       }
     }
-	},
+  },
 
   "languages": [
     {
@@ -50,17 +44,12 @@
   },
 
   "flags": {
-		"hotReload": {
-			"extensions": [
-				"css",
-				"hbs",
-				"json"
-			]
-		}
-	},
-  
+    "hotReload": {
+      "extensions": ["css", "hbs", "json"]
+    }
+  },
+
   "manifest": "TODO",
   "download": "TODO",
   "url": "TODO"
-  
 }
