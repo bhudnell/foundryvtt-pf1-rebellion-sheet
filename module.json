@@ -12,7 +12,7 @@
   ],
 
   "esmodules": ["rebellion-sheet.mjs"],
-  "styles": ["style.css"],
+  "styles": ["styles/common.css", "styles/event.css", "styles/rebellion.css", "styles/team.css"],
 
   "documentTypes": {
     "Actor": {
