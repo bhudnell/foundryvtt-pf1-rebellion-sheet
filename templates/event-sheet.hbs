@@ -1,8 +1,8 @@
-<form autocomplete='off'>
+<form autocomplete="off">
   <header class="header">
-    <img src='{{img}}' data-edit='img'>
+    <img src="{{img}}" data-edit="img" />
     <h1>
-      <input type='text' name='name' value='{{name}}' data-dtype="String" />
+      <input type="text" name="name" value="{{name}}" data-dtype="String" />
     </h1>
   </header>
 
@@ -12,9 +12,37 @@
       <input type="checkbox" {{checked system.persistent}} name="system.persistent" />
       <span>{{localize "PF1RS.Common.Persistent"}}?</span>
     </div>
+    <div class="horizLabeledValue">
+      <input type="checkbox" {{checked system.mitigated}} name="system.mitigated" />
+      <span>{{localize "PF1RS.Common.Mitigated"}}?</span>
+    </div>
   </section>
 
-  <section class='description'>
+  <section>
+    <h3>Changes</h3>
+    <div class="changes">
+      <span>{{localize "PF1RS.Events.Change"}}</span>
+      <span>{{localize "PF1RS.Events.Target"}}</span>
+      <a class="add-change"><i class="fa-solid fa-plus"></i></a>
+      {{#each system.changes as |change idx|}}
+        <input type="hidden" value="{{id}}" name="system.changes.{{idx}}.id" />
+        <input type="number" value="{{bonus}}" name="system.changes.{{idx}}.bonus" step="1" />
+        <select name="system.changes.{{idx}}.ability">
+          {{#select ability}}
+            <option hidden disabled selected value />
+            <option value="danger">{{localize "PF1RS.Rebellion.Danger"}}</option>
+            <option value="allOrgChecks">{{localize "PF1RS.Rebellion.AllOrgChecks"}}</option>
+            <option value="loyalty">{{localize "PF1RS.Rebellion.Loyalty"}}</option>
+            <option value="secrecy">{{localize "PF1RS.Rebellion.Secrecy"}}</option>
+            <option value="security">{{localize "PF1RS.Rebellion.Security"}}</option>
+          {{/select}}
+        </select>
+        <a class="delete-change" data-change="{{id}}"><i class="fa-solid fa-trash"></i></a>
+      {{/each}}
+    </div>
+  </section>
+
+  <section class="description">
     <h3>Description</h3>
     {{editor enrichedDesc target="system.description" button=true}}
   </section>
