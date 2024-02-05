@@ -71,6 +71,10 @@
       "Action": "action",
       "Persistent": "Persistent",
       "Mitigated": "Mitigated"
+    },
+    "Events": {
+      "Change": "Change",
+      "Target": "Target"
     }
   },
   "TYPES": {
