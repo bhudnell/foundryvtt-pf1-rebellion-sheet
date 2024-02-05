@@ -1,13 +1,15 @@
+import { rebellionSheetId, CFG, rebellionEventId, rebellionTeamId } from "./config.mjs";
 import { EventSheet } from "./documents/eventSheet.mjs";
 import { RebellionSheet } from "./documents/rebellionSheet.mjs";
 import { TeamSheet } from "./documents/teamSheet.mjs";
 import { EventModel } from "./models/eventModel.mjs";
 import { RebellionModel } from "./models/rebellionModel.mjs";
 import { TeamModel } from "./models/teamModel.mjs";
-import { rebellionSheetId, CFG, rebellionEventId, rebellionTeamId } from "./config.mjs";
 
 Hooks.on("preCreateItem", (item, data, context, user) => {
-  if (!item.actor) return;
+  if (!item.actor) {
+    return;
+  }
 
   if ([rebellionEventId, rebellionTeamId].includes(item.type)) {
     if (item.actor.type !== rebellionSheetId) {

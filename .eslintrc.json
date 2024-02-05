@@ -22,6 +22,7 @@
     "dot-notation": "warn",
     "eqeqeq": "warn",
     "no-else-return": "warn",
+    "no-unused-vars": "off",
     "import/order": [
       "warn",
       {
@@ -30,5 +31,19 @@
         "newlines-between": "always"
       }
     ]
+  },
+  "globals": {
+    "foundry": "readonly",
+    "ItemSheet": "readonly",
+    "TextEditor": "readonly",
+    "Hooks": "readonly",
+    "ui": "readonly",
+    "ActorSheet": "readonly",
+    "CONFIG": "readonly",
+    "game": "readonly",
+    "Collection": "readonly",
+    "Dialog": "readonly",
+    "Actors": "readonly",
+    "Items": "readonly"
   }
 }

@@ -191,7 +191,9 @@ export class RebellionSheet extends ActorSheet {
     event.preventDefault();
 
     const button = event.currentTarget;
-    if (button.disabled) return;
+    if (button.disabled) {
+      return;
+    }
 
     const itemId = event.currentTarget.closest(".item").dataset.id;
     const item = this.actor.items.get(itemId);

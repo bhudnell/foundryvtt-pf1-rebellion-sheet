@@ -8,13 +8,15 @@
 
   <section>
     <h3>Details</h3>
-    <div class="horizLabeledValue">
-      <input type="checkbox" {{checked system.persistent}} name="system.persistent" />
-      <span>{{localize "PF1RS.Common.Persistent"}}?</span>
-    </div>
-    <div class="horizLabeledValue">
-      <input type="checkbox" {{checked system.mitigated}} name="system.mitigated" />
-      <span>{{localize "PF1RS.Common.Mitigated"}}?</span>
+    <div class="flexrow">
+      <div class="horizLabeledValue">
+        <input type="checkbox" {{checked system.persistent}} name="system.persistent" />
+        <span>{{localize "PF1RS.Common.Persistent"}}?</span>
+      </div>
+      <div class="horizLabeledValue">
+        <input type="checkbox" {{checked system.mitigated}} name="system.mitigated" />
+        <span>{{localize "PF1RS.Common.Mitigated"}}?</span>
+      </div>
     </div>
   </section>
 
@@ -26,7 +28,7 @@
       <a class="add-change"><i class="fa-solid fa-plus"></i></a>
       {{#each system.changes as |change idx|}}
         <input type="hidden" value="{{id}}" name="system.changes.{{idx}}.id" />
-        <input type="number" value="{{bonus}}" name="system.changes.{{idx}}.bonus" step="1" />
+        <input type="number" value="{{bonus}}" name="system.changes.{{idx}}.bonus" step="1" placeholder="Formula" />
         <select name="system.changes.{{idx}}.ability">
           {{#select ability}}
             <option hidden disabled selected value />
