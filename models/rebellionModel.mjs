@@ -1,4 +1,4 @@
-import { maxActions, maxTeams } from "../config.mjs";
+import { maxActions, maxTeams, orgChecks } from "../config.mjs";
 
 function defineOfficer(initial = 0) {
   const fields = foundry.data.fields;
@@ -30,7 +30,7 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
         }),
         focus: new fields.StringField({
           blank: true,
-          choices: ["loyalty", "secrecy", "security"],
+          choices: Object.keys(orgChecks),
         }),
         membership: new fields.NumberField({
           integer: true,
@@ -69,13 +69,24 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
         }),
       }),
       officers: new fields.SchemaField({
-        // TODO make link to actors instead
-        demagogue: defineOfficer(),
-        partisan: defineOfficer(),
-        recruiter: defineOfficer(),
-        sentinel: defineOfficer(1),
-        spymaster: defineOfficer(),
-        strategist: defineOfficer(1),
+        demagogue: new fields.SchemaField({
+          id: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
+        }),
+        partisan: new fields.SchemaField({
+          id: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
+        }),
+        recruiter: new fields.SchemaField({
+          id: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
+        }),
+        sentinel: new fields.SchemaField({
+          id: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
+        }),
+        spymaster: new fields.SchemaField({
+          id: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
+        }),
+        strategist: new fields.SchemaField({
+          id: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
+        }),
       }),
       doubleEventChance: new fields.BooleanField({ initial: false }),
     };
@@ -83,27 +94,12 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
 
   prepareDerivedData() {
     // organization checks
-    const focusBase = Math.floor(this.details.rank / 2) + 2;
-    const secondaryBase = Math.floor(this.details.rank / 3);
-    this.loyalty = {
-      base: this.details.focus === "loyalty" ? focusBase : secondaryBase,
-      officer: this.officers.demagogue.bonus,
-      sentinel: this.details.focus !== "loyalty" && this.officers.sentinel.name ? 1 : 0,
-    };
-    this.secrecy = {
-      base: this.details.focus === "secrecy" ? focusBase : secondaryBase,
-      officer: this.officers.spymaster.bonus,
-      sentinel: this.details.focus !== "secrecy" && this.officers.sentinel.name ? 1 : 0,
-    };
-    this.security = {
-      base: this.details.focus === "security" ? focusBase : secondaryBase,
-      officer: this.officers.partisan.bonus,
-      sentinel: this.details.focus !== "security" && this.officers.sentinel.name ? 1 : 0,
-    };
+    this.focusBase = Math.floor(this.details.rank / 2) + 2;
+    this.secondaryBase = Math.floor(this.details.rank / 3);
 
     // other details
     this.minTreasury = this.details.rank * 10;
-    this.maxActions = maxActions[this.details.rank] + (this.officers.strategist.name ? 1 : 0);
+    this.maxActions = maxActions[this.details.rank] + (this.officers.strategist.id ? 1 : 0);
     this.maxTeams = maxTeams[this.details.rank];
   }
 }

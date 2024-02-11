@@ -44,6 +44,8 @@
     "Collection": "readonly",
     "Dialog": "readonly",
     "Actors": "readonly",
-    "Items": "readonly"
+    "Items": "readonly",
+    "pf1": "readonly",
+    "fromUuidSync": "readonly"
   }
 }

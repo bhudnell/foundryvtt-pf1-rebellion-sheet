@@ -24,8 +24,8 @@ export class EventSheet extends ItemSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    html.find(".add-change").click(this._onAddChange.bind(this));
-    html.find(".delete-change").click(this._onDeleteChange.bind(this));
+    html.find(".add-change").click((e) => this._onAddChange(e));
+    html.find(".delete-change").click((e) => this._onDeleteChange(e));
   }
 
   async _onAddChange(event) {
