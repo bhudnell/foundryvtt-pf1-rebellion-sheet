@@ -206,7 +206,7 @@
         <div class="officers">
           {{#each officers}}
             <span>{{label}}</span>
-            <select name="system.officers.{{id}}.id">
+            <select name="system.officers.{{id}}.actorId">
               {{selectOptions @root.validOfficerChoices selected=actorId}}
             </select>
             <span>+</span>

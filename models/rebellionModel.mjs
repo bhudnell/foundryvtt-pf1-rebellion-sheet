@@ -1,14 +1,5 @@
 import { maxActions, maxTeams, orgChecks } from "../config.mjs";
 
-function defineOfficer(initial = 0) {
-  const fields = foundry.data.fields;
-
-  return new fields.SchemaField({
-    name: new fields.StringField(),
-    bonus: new fields.NumberField({ integer: true, initial, nullable: false }),
-  });
-}
-
 export class RebellionModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -69,24 +60,12 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
         }),
       }),
       officers: new fields.SchemaField({
-        demagogue: new fields.SchemaField({
-          id: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
-        }),
-        partisan: new fields.SchemaField({
-          id: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
-        }),
-        recruiter: new fields.SchemaField({
-          id: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
-        }),
-        sentinel: new fields.SchemaField({
-          id: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
-        }),
-        spymaster: new fields.SchemaField({
-          id: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
-        }),
-        strategist: new fields.SchemaField({
-          id: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
-        }),
+        demagogue: new fields.EmbeddedDataField(defineOfficer("demagogue")),
+        partisan: new fields.EmbeddedDataField(defineOfficer("partisan")),
+        recruiter: new fields.EmbeddedDataField(defineOfficer("recruiter")),
+        sentinel: new fields.EmbeddedDataField(defineOfficer("sentinel")),
+        spymaster: new fields.EmbeddedDataField(defineOfficer("spymaster")),
+        strategist: new fields.EmbeddedDataField(defineOfficer("strategist")),
       }),
       doubleEventChance: new fields.BooleanField({ initial: false }),
     };
@@ -99,7 +78,84 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
 
     // other details
     this.minTreasury = this.details.rank * 10;
-    this.maxActions = maxActions[this.details.rank] + (this.officers.strategist.id ? 1 : 0);
+    this.maxActions = maxActions[this.details.rank] + (this.officers.strategist.actorId ? 1 : 0);
     this.maxTeams = maxTeams[this.details.rank];
   }
+
+  get loyalty() {
+    return {
+      base: this.details.focus === "loyalty" ? this.focusBase : this.secondaryBase,
+      officer: this.officers.demagogue.bonus,
+      sentinel: this.details.focus !== "loyalty" && this.officers.sentinel.actorId ? 1 : 0,
+    };
+  }
+
+  get secrecy() {
+    return {
+      base: this.details.focus === "secrecy" ? this.focusBase : this.secondaryBase,
+      officer: this.officers.spymaster.bonus,
+      sentinel: this.details.focus !== "secrecy" && this.officers.sentinel.actorId ? 1 : 0,
+    };
+  }
+
+  get security() {
+    return {
+      base: this.details.focus === "security" ? this.focusBase : this.secondaryBase,
+      officer: this.officers.partisan.bonus,
+      sentinel: this.details.focus !== "security" && this.officers.sentinel.actorId ? 1 : 0,
+    };
+  }
+}
+
+function defineOfficer(name) {
+  return class OfficerModel extends foundry.abstract.TypeDataModel {
+    static defineSchema() {
+      const fields = foundry.data.fields;
+
+      return {
+        actorId: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
+      };
+    }
+
+    _initialize(...args) {
+      super._initialize(...args);
+
+      this.id = name;
+    }
+
+    get name() {
+      const officer = game.actors.get(this.actorId);
+
+      if (!officer) {
+        return undefined;
+      }
+
+      return officer.name;
+    }
+
+    get bonus() {
+      const officer = game.actors.get(this.actorId);
+
+      if (!officer) {
+        return 0;
+      }
+
+      switch (this.id) {
+        case "demagogue":
+          return Math.max(officer.system.abilities.con.mod, officer.system.abilities.cha.mod);
+        case "partisan":
+          return Math.max(officer.system.abilities.str.mod, officer.system.abilities.wis.mod);
+        case "recruiter":
+          return officer.system.attributes.hd.total;
+        case "sentinel":
+          return 1;
+        case "spymaster":
+          return Math.max(officer.system.abilities.dex.mod, officer.system.abilities.int.mod);
+        case "strategist":
+          return 1;
+        default:
+          return 0;
+      }
+    }
+  };
 }
