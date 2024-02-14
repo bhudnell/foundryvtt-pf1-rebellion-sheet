@@ -1,43 +1,25 @@
 {
   "PF1RS": {
-    "Sheet": {
-      "Rebellion": "Rebellion Sheet",
-      "Event": "Rebellion Event",
-      "Team": "Rebellion Team"
-    },
-    "Rebellion": {
-      "Rank": "Rank",
-      "MaxRank": "Max Rank",
-      "Focus": "Focus",
-      "Membership": "Membership",
-      "Supporters": "Supporters",
-      "Population": "Population",
-      "Treasury": "Treasury",
-      "MinTreasury": "Min Treasury",
-      "Notoriety": "Notoriety",
-      "OrgChecks": "Organization Checks",
-      "Loyalty": "Loyalty",
-      "Secrecy": "Secrecy",
-      "Security": "Security",
-      "AvailableActions": "Available Actions",
-      "Officers": "Officers",
-      "Demagogue": "Demagogue",
-      "Partisan": "Partisan",
-      "Recruiter": "Recruiter",
-      "Sentinel": "Sentinel",
-      "Spymaster": "Spymaster",
-      "Strategist": "Strategist",
-      "Actions": "Actions",
-      "Teams": "Teams",
-      "Events": "Events",
-      "Allies": "Allies",
-      "Secondary": "to secondary",
-      "EventChance": "Event Chance",
-      "Danger": "Danger",
-      "ActiveEvents": "Active Events",
-      "EventName": "Event Name",
-      "AllOrgChecks": "All Organization Checks"
-    },
+    "Rank": "Rank",
+    "MaxRank": "Max Rank",
+    "Focus": "Focus",
+    "Membership": "Membership",
+    "Supporters": "Supporters",
+    "Population": "Population",
+    "Treasury": "Treasury",
+    "MinTreasury": "Min Treasury",
+    "Notoriety": "Notoriety",
+
+    "AllOrgChecks": "All Organization Checks",
+    "OrgChecks": "Organization Checks",
+    "Loyalty": "Loyalty",
+    "Secrecy": "Secrecy",
+    "Security": "Security",
+
+    "AvailableActions": "Available Actions",
+    "ActionsLabel": "Actions",
+    "Persistent": "Persistent",
+    "Mitigated": "Mitigated",
     "Actions": {
       "Abm": "Activate Black Market",
       "Ash": "Activate Safe House",
@@ -64,17 +46,66 @@
       "Ut": "Upgrade Team",
       "Ui": "Urban Influence"
     },
-    "Common": {
-      "Total": "Total",
-      "Base": "Base",
-      "Other": "Other",
-      "Action": "action",
-      "Persistent": "Persistent",
-      "Mitigated": "Mitigated"
+
+    "Officers": "Officers",
+    "Demagogue": "Demagogue",
+    "Partisan": "Partisan",
+    "Recruiter": "Recruiter",
+    "Sentinel": "Sentinel",
+    "Spymaster": "Spymaster",
+    "Strategist": "Strategist",
+    "OfficerBonusAction": "action",
+    "OfficerBonusSecondary": "to secondary",
+
+    "TeamsLabel": "Teams",
+    "TeamType": "Type",
+    "TeamSize": "Size",
+    "Manager": "Manager",
+    "Condition": "Condition",
+    "Disabled": "Disabled",
+    "Missing": "Missing",
+    "Teams": {
+      "StreetPerformers": "Street Performers",
+      "Rumormongers": "Rumormongers",
+      "Agitators": "Agitators",
+      "Cognoscenti": "Cognoscenti",
+      "Sneaks": "Sneaks",
+      "Thieves": "Thieves",
+      "Smugglers": "Smugglers",
+      "Saboteurs": "Saboteurs",
+      "FreedomFighters": "Freedom Fighters",
+      "Infiltrators": "Infiltrators",
+      "Spellcasters": "Spellcasters",
+      "Cabalists": "Cabalists",
+      "Peddlers": "Peddlers",
+      "Merchants": "Merchants",
+      "BlackMarketers": "Black Marketers",
+      "MerchantLords": "Merchant Lords"
     },
-    "Events": {
-      "Change": "Change",
-      "Target": "Target"
+
+    "Events": "Events",
+    "EventChance": "Event Chance",
+    "Danger": "Danger",
+    "ActiveEvents": "Active Events",
+    "EventName": "Event Name",
+    "Change": "Change",
+    "Target": "Target",
+
+    "Allies": "Allies",
+
+    "Total": "Total",
+    "Base": "Base",
+    "Other": "Other",
+    "Bonus": "Bonus",
+    "Name": "Name",
+
+    "EditItem": "Edit Item",
+    "DeleteItem": "Delete Item",
+
+    "Sheet": {
+      "Rebellion": "Rebellion Sheet",
+      "Event": "Rebellion Event",
+      "Team": "Rebellion Team"
     }
   },
   "TYPES": {

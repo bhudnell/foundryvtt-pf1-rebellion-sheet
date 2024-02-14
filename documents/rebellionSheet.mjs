@@ -7,6 +7,7 @@ import {
   orgChecks,
   rebellionEventId,
   rebellionTeamId,
+  teamTypes,
 } from "../config.mjs";
 import { getRankFromSupporters } from "../utils.mjs";
 
@@ -36,44 +37,44 @@ export class RebellionSheet extends ActorSheet {
       checks: [
         {
           id: "loyalty",
-          label: game.i18n.localize("PF1RS.Rebellion.Loyalty"),
-          officerLabel: game.i18n.localize("PF1RS.Rebellion.Demagogue"),
+          label: game.i18n.localize("PF1RS.Loyalty"),
+          officerLabel: game.i18n.localize("PF1RS.Demagogue"),
         },
         {
           id: "secrecy",
-          label: game.i18n.localize("PF1RS.Rebellion.Secrecy"),
-          officerLabel: game.i18n.localize("PF1RS.Rebellion.Spymaster"),
+          label: game.i18n.localize("PF1RS.Secrecy"),
+          officerLabel: game.i18n.localize("PF1RS.Spymaster"),
         },
         {
           id: "security",
-          label: game.i18n.localize("PF1RS.Rebellion.Security"),
-          officerLabel: game.i18n.localize("PF1RS.Rebellion.Partisan"),
+          label: game.i18n.localize("PF1RS.Security"),
+          officerLabel: game.i18n.localize("PF1RS.Partisan"),
         },
       ],
       officers: [
         {
           id: "demagogue",
-          label: game.i18n.localize("PF1RS.Rebellion.Demagogue"),
+          label: game.i18n.localize("PF1RS.Demagogue"),
         },
         {
           id: "partisan",
-          label: game.i18n.localize("PF1RS.Rebellion.Partisan"),
+          label: game.i18n.localize("PF1RS.Partisan"),
         },
         {
           id: "recruiter",
-          label: game.i18n.localize("PF1RS.Rebellion.Recruiter"),
+          label: game.i18n.localize("PF1RS.Recruiter"),
         },
         {
           id: "sentinel",
-          label: game.i18n.localize("PF1RS.Rebellion.Sentinel"),
+          label: game.i18n.localize("PF1RS.Sentinel"),
         },
         {
           id: "spymaster",
-          label: game.i18n.localize("PF1RS.Rebellion.Spymaster"),
+          label: game.i18n.localize("PF1RS.Spymaster"),
         },
         {
           id: "strategist",
-          label: game.i18n.localize("PF1RS.Rebellion.Strategist"),
+          label: game.i18n.localize("PF1RS.Strategist"),
         },
       ],
     };
@@ -114,6 +115,18 @@ export class RebellionSheet extends ActorSheet {
       strategist: actorData.officers.strategist.actorId ? 1 : 0,
     };
 
+    // events
+    data.danger =
+      actorData.details.danger +
+      eventChanges
+        .filter((c) => c.ability === "danger")
+        .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
+    data.eventChance = Math.clamped(
+      (actorData.details.notoriety + data.danger) * (actorData.doubleEventChance ? 2 : 1),
+      10,
+      95
+    );
+
     // officers
     for (const officer of data.officers) {
       officer.actorId = actorData.officers[officer.id].actorId;
@@ -127,17 +140,11 @@ export class RebellionSheet extends ActorSheet {
       .forEach((actor) => (officerChoices[actor.id] = actor.name));
     data.validOfficerChoices = officerChoices;
 
-    // events
-    data.danger =
-      actorData.details.danger +
-      eventChanges
-        .filter((c) => c.ability === "danger")
-        .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
-    data.eventChance = Math.clamped(
-      (actorData.details.notoriety + data.danger) * (actorData.doubleEventChance ? 2 : 1),
-      10,
-      95
-    );
+    // teams
+    const managerChoices = { "": "" };
+    data.officers.forEach((officer) => (managerChoices[officer.actorId] = officer.name));
+    data.validManagerChoices = managerChoices;
+    data.teams.forEach((team) => (team.typeLabel = game.i18n.localize(teamTypes[team.system.type])));
 
     return data;
   }

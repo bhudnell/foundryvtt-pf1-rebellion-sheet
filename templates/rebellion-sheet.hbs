@@ -8,42 +8,39 @@
 
   <section class="details">
     <div class="horizLabeledValue">
-      <span>{{localize "PF1RS.Rebellion.Rank"}}:</span>
+      <span>{{localize "PF1RS.Rank"}}:</span>
       {{numberInput system.details.rank name="system.details.rank" step=1 min=1 max=system.details.maxRank}}
       {{#if rankUpIndicator}}
-        <i
-          class="fa-regular fa-circle-exclamation error"
-          data-tooltip={{localize "PF1RS.Rebellion.AvailableRankUp"}}
-        ></i>
+        <i class="fa-regular fa-circle-exclamation error" data-tooltip={{localize "PF1RS.AvailableRankUp"}}></i>
       {{/if}}
     </div>
     {{#if isGM}}
       <div class="horizLabeledValue">
-        <span>{{localize "PF1RS.Rebellion.MaxRank"}}:</span>
+        <span>{{localize "PF1RS.MaxRank"}}:</span>
         {{numberInput system.details.maxRank name="system.details.maxRank" step=1 min=5 max=20}}
       </div>
     {{else}}
-      <span>{{localize "PF1RS.Rebellion.MaxRank"}}:
+      <span>{{localize "PF1RS.MaxRank"}}:
         {{system.details.maxRank}}</span>
     {{/if}}
     <div>
-      <span>{{localize "PF1RS.Rebellion.Focus"}}:</span>
+      <span>{{localize "PF1RS.Focus"}}:</span>
       <select name="system.details.focus" data-dtype="String">
         {{#select system.details.focus}}
           <option hidden disabled selected value />
-          <option value="loyalty">{{localize "PF1RS.Rebellion.Loyalty"}}</option>
-          <option value="secrecy">{{localize "PF1RS.Rebellion.Secrecy"}}</option>
-          <option value="security">{{localize "PF1RS.Rebellion.Security"}}</option>
+          <option value="loyalty">{{localize "PF1RS.Loyalty"}}</option>
+          <option value="secrecy">{{localize "PF1RS.Secrecy"}}</option>
+          <option value="security">{{localize "PF1RS.Security"}}</option>
         {{/select}}
       </select>
     </div>
 
     <div class="horizLabeledValue">
-      <span>{{localize "PF1RS.Rebellion.Membership"}}:</span>
+      <span>{{localize "PF1RS.Membership"}}:</span>
       {{numberInput system.details.membership name="system.details.membership" step=1 min=0}}
     </div>
     <div class="horizLabeledValue">
-      <span>{{localize "PF1RS.Rebellion.Supporters"}}:</span>
+      <span>{{localize "PF1RS.Supporters"}}:</span>
       {{numberInput
         system.details.supporters
         name="system.details.supporters"
@@ -52,34 +49,34 @@
         max=system.details.population
       }}
     </div>
-    <span>{{localize "PF1RS.Rebellion.Population"}}:
+    <span>{{localize "PF1RS.Population"}}:
       {{system.details.population}}</span>
 
     <div class="horizLabeledValue">
-      <span>{{localize "PF1RS.Rebellion.Treasury"}}:</span>
+      <span>{{localize "PF1RS.Treasury"}}:</span>
       {{numberInput system.details.treasury name="system.details.treasury" step=1}}
     </div>
-    <span>{{localize "PF1RS.Rebellion.MinTreasury"}}:
+    <span>{{localize "PF1RS.MinTreasury"}}:
       {{system.minTreasury}}</span>
     <div class="horizLabeledValue">
-      <span>{{localize "PF1RS.Rebellion.Notoriety"}}:</span>
+      <span>{{localize "PF1RS.Notoriety"}}:</span>
       {{numberInput system.details.notoriety name="system.details.notoriety" step=1 min=0 max=100}}
     </div>
   </section>
 
   <section>
-    <h3>{{localize "PF1RS.Rebellion.OrgChecks"}}</h3>
+    <h3>{{localize "PF1RS.OrgChecks"}}</h3>
     <div class="checks">
       {{#each checks}}
         <span>{{label}}</span>
         <div class="labeledValue">
           <span>{{data.total}}</span>
-          <span>{{localize "PF1RS.Common.Total"}}</span>
+          <span>{{localize "PF1RS.Total"}}</span>
         </div>
         <span>=</span>
         <div class="labeledValue">
           <span>{{data.base}}</span>
-          <span>{{localize "PF1RS.Common.Base"}}</span>
+          <span>{{localize "PF1RS.Base"}}</span>
         </div>
         <span>+</span>
         <div class="labeledValue">
@@ -89,39 +86,39 @@
         <span>+</span>
         <div class="labeledValue">
           <span>{{data.sentinel}}</span>
-          <span>{{localize "PF1RS.Rebellion.Sentinel"}}</span>
+          <span>{{localize "PF1RS.Sentinel"}}</span>
         </div>
         <span>+</span>
         <div class="labeledValue">
           <span>{{data.other}}</span>
-          <span>{{localize "PF1RS.Common.Other"}}</span>
+          <span>{{localize "PF1RS.Other"}}</span>
         </div>
       {{/each}}
     </div>
   </section>
 
   <div class="flexrow">
-    <div class="flexcol">
+    <div class="flexcol flex2">
       <section>
-        <h3>{{localize "PF1RS.Rebellion.Actions"}}</h3>
+        <h3>{{localize "PF1RS.ActionsLabel"}}</h3>
         <div class="actions">
           <div class="horizLabeledValue">
             <div class="labeledValue">
               <span>{{system.maxActions}}</span>
-              <span>{{localize "PF1RS.Common.Total"}}</span>
+              <span>{{localize "PF1RS.Total"}}</span>
             </div>
             <span>=</span>
             <div class="labeledValue">
               <span>{{actions.rank}}</span>
-              <span>{{localize "PF1RS.Rebellion.Rank"}}</span>
+              <span>{{localize "PF1RS.Rank"}}</span>
             </div>
             <span>+</span>
             <div class="labeledValue">
               <span>{{actions.strategist}}</span>
-              <span>{{localize "PF1RS.Rebellion.Strategist"}}</span>
+              <span>{{localize "PF1RS.Strategist"}}</span>
             </div>
           </div>
-          <span>{{localize "PF1RS.Rebellion.AvailableActions"}}</span>
+          <span>{{localize "PF1RS.AvailableActions"}}</span>
           {{#each actions.available}}
             <div class="horizLabeledValue">
               {{#if available}}
@@ -136,24 +133,24 @@
       </section>
 
       <section>
-        <h3>{{localize "PF1RS.Rebellion.Events"}}</h3>
+        <h3>{{localize "PF1RS.Events"}}</h3>
         <div class="eventChance">
           <a>
-            <i class="fa-solid fa-dice-d20" data-tooltip={{localize "PF1RS.Rebellion.RollEvent"}}></i>
+            <i class="fa-solid fa-dice-d20" data-tooltip={{localize "PF1RS.RollEvent"}}></i>
           </a>
           <div class="labeledValue">
             <span>{{eventChance}} %</span>
-            <span>{{localize "PF1RS.Rebellion.EventChance"}}</span>
+            <span>{{localize "PF1RS.EventChance"}}</span>
           </div>
           <span>=</span>
           <div class="labeledValue">
             <span>{{system.details.notoriety}}</span>
-            <span>{{localize "PF1RS.Rebellion.Notoriety"}}</span>
+            <span>{{localize "PF1RS.Notoriety"}}</span>
           </div>
           <span>+</span>
           <div class="labeledValue">
             <span>{{danger}}</span>
-            <span>{{localize "PF1RS.Rebellion.Danger"}}</span>
+            <span>{{localize "PF1RS.Danger"}}</span>
           </div>
           <div class="labeledValue">
             <input type="checkbox" {{checked system.doubleEventChance}} name="system.doubleEventChance" />
@@ -161,14 +158,14 @@
           </div>
         </div>
 
-        <h4>{{localize "PF1RS.Rebellion.ActiveEvents"}}</h4>
+        <h4>{{localize "PF1RS.ActiveEvents"}}</h4>
 
         <div>
           <ol>
             <li class="horizLabeledValue">
-              <span>{{localize "PF1RS.Common.Persistent"}}?</span>
-              <span>{{localize "PF1RS.Common.Mitigated"}}?</span>
-              <span>{{localize "PF1RS.Rebellion.EventName"}}</span>
+              <span>{{localize "PF1RS.Persistent"}}?</span>
+              <span>{{localize "PF1RS.Mitigated"}}?</span>
+              <span>{{localize "PF1RS.EventName"}}</span>
             </li>
             {{#each events}}
               <li class="item horizLabeledValue" data-id="{{id}}">
@@ -188,10 +185,10 @@
                 />
                 <span>{{name}}</span>
                 <a class="item-edit">
-                  <i class="fa-solid fa-pen-to-square" data-tooltip={{localize "PF1RS.Common.EditItem"}}></i>
+                  <i class="fa-solid fa-pen-to-square" data-tooltip={{localize "PF1RS.EditItem"}}></i>
                 </a>
                 <a class="item-delete">
-                  <i class="fa-solid fa-trash" data-tooltip={{localize "PF1RS.Common.DeleteItem"}}></i>
+                  <i class="fa-solid fa-trash" data-tooltip={{localize "PF1RS.DeleteItem"}}></i>
                 </a>
               </li>
             {{/each}}
@@ -200,9 +197,9 @@
       </section>
     </div>
 
-    <div class="flexcol">
+    <div class="flexcol flex3">
       <section>
-        <h3>{{localize "PF1RS.Rebellion.Officers"}}</h3>
+        <h3>{{localize "PF1RS.Officers"}}</h3>
         <div class="officers">
           {{#each officers}}
             <span>{{label}}</span>
@@ -217,12 +214,21 @@
       </section>
 
       <section class="teams">
-        <h3>{{localize "PF1RS.Rebellion.Teams"}}</h3>
+        <h3>{{localize "PF1RS.TeamLabel"}}</h3>
         <div class="flexcol">
+          <div class="flexrow">
+            <span>{{localize "PF1RS.Name"}}</span>
+            <span>{{localize "PF1RS.TeamType"}}</span>
+            <span>{{localize "PF1RS.Manager"}}</span>
+            <span>{{localize "PF1RS.TeamSize"}}</span>
+            <span>{{localize "PF1RS.Bonus"}}</span>
+            <span>{{localize "PF1RS.Condition"}}</span>
+          </div>
           {{#each teams}}
             <div class="flexrow item" data-id="{{id}}">
               <span>{{name}}</span>
-              <span>{{system.manager}}</span>
+              <span>{{typeLabel}}</span>
+              <span>{{system.managerName}}</span>
               <span>{{system.size}}</span>
               <span>{{system.bonus}}</span>
               <input
@@ -235,10 +241,10 @@
               <input type="checkbox" disabled name="system.conditions.missing" {{checked system.conditions.missing}} />
               <span>Missing</span>
               <a class="item-edit">
-                <i class="fa-solid fa-pen-to-square" data-tooltip={{localize "PF1RS.Common.EditItem"}}></i>
+                <i class="fa-solid fa-pen-to-square" data-tooltip={{localize "PF1RS.EditItem"}}></i>
               </a>
               <a class="item-delete">
-                <i class="fa-solid fa-trash" data-tooltip={{localize "PF1RS.Common.DeleteItem"}}></i>
+                <i class="fa-solid fa-trash" data-tooltip={{localize "PF1RS.DeleteItem"}}></i>
               </a>
             </div>
           {{/each}}
@@ -249,7 +255,7 @@
       </section>
 
       <section class="allies">
-        <h3>{{localize "PF1RS.Rebellion.Allies"}}</h3>
+        <h3>{{localize "PF1RS.Allies"}}</h3>
         <div>
 
         </div>

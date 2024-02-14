@@ -82,16 +82,35 @@ export const actions = {
 export const alwaysAvailableActions = ["cor", "dt", "ge", "ll", "rs", "rt", "sa", "ut"];
 
 export const officerBonuses = {
-  demagogue: "PF1RS.Rebellion.Loyalty",
-  partisan: "PF1RS.Rebellion.Security",
-  recruiter: "PF1RS.Rebellion.Supporters",
-  sentinel: "PF1RS.Rebellion.Secondary",
-  spymaster: "PF1RS.Rebellion.Secrecy",
-  strategist: "PF1RS.Common.Action",
+  demagogue: "PF1RS.Loyalty",
+  partisan: "PF1RS.Security",
+  recruiter: "PF1RS.Supporters",
+  sentinel: "PF1RS.OfficerBonusSecondary",
+  spymaster: "PF1RS.Secrecy",
+  strategist: "PF1RS.OfficerBonusAction",
 };
 
 export const orgChecks = {
-  loyalty: "PF1RS.Rebellion.Loyalty",
-  secrecy: "PF1RS.Rebellion.Secrecy",
-  security: "PF1RS.Rebellion.Security",
+  loyalty: "PF1RS.Loyalty",
+  secrecy: "PF1RS.Secrecy",
+  security: "PF1RS.Security",
+};
+
+export const teamTypes = {
+  stp: "PF1RS.Teams.StreetPerformers",
+  rum: "PF1RS.Teams.Rumormongers",
+  agi: "PF1RS.Teams.Agitators",
+  cog: "PF1RS.Teams.Cognoscenti",
+  sne: "PF1RS.Teams.Sneaks",
+  thi: "PF1RS.Teams.Thieves",
+  smu: "PF1RS.Teams.Smugglers",
+  sab: "PF1RS.Teams.Saboteurs",
+  ffi: "PF1RS.Teams.FreedomFighters",
+  inf: "PF1RS.Teams.Infiltrators",
+  spe: "PF1RS.Teams.Spellcasters",
+  cab: "PF1RS.Teams.Cabalists",
+  ped: "PF1RS.Teams.Peddlers",
+  mer: "PF1RS.Teams.Merchants",
+  blm: "PF1RS.Teams.BlackMarketers",
+  mel: "PF1RS.Teams.MerchantLords",
 };
