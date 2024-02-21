@@ -68,7 +68,10 @@
     <h3>{{localize "PF1RS.OrgChecks"}}</h3>
     <div class="checks">
       {{#each checks}}
-        <span>{{label}}</span>
+        <div class="flexrow org-check" data-orgcheck="{{id}}">
+          <a class="rollable"><i class="fa-solid fa-dice-d20"></i></a>
+          <span>{{label}}</span>
+        </div>
         <div class="labeledValue">
           <span>{{data.total}}</span>
           <span>{{localize "PF1RS.Total"}}</span>

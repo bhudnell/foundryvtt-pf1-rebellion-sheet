@@ -1,4 +1,4 @@
-import { maxActions, maxTeams, orgChecks } from "../config.mjs";
+import { changeTargets, maxActions, maxTeams, orgChecks, orgOfficers } from "../config.mjs";
 
 export class RebellionModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
@@ -80,30 +80,101 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
     this.minTreasury = this.details.rank * 10;
     this.maxActions = maxActions[this.details.rank] + (this.officers.strategist.actorId ? 1 : 0);
     this.maxTeams = maxTeams[this.details.rank];
+
+    this.changes = this._prepareChanges();
   }
 
   get loyalty() {
-    return {
-      base: this.details.focus === "loyalty" ? this.focusBase : this.secondaryBase,
-      officer: this.officers.demagogue.bonus,
-      sentinel: this.details.focus !== "loyalty" && this.officers.sentinel.actorId ? 1 : 0,
-    };
+    const base = this.details.focus === "loyalty" ? this.focusBase : this.secondaryBase;
+    const officer = this.officers.demagogue.bonus;
+    const sentinel = this.details.focus !== "loyalty" && this.officers.sentinel.actorId ? 1 : 0;
+    const other = this.changes
+      .filter((c) => ["allOrgChecks", "loyalty"].includes(c.ability))
+      .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
+    const total = base + officer + sentinel + other;
+
+    return { base, officer, sentinel, other, total };
   }
 
   get secrecy() {
-    return {
-      base: this.details.focus === "secrecy" ? this.focusBase : this.secondaryBase,
-      officer: this.officers.spymaster.bonus,
-      sentinel: this.details.focus !== "secrecy" && this.officers.sentinel.actorId ? 1 : 0,
-    };
+    const base = this.details.focus === "secrecy" ? this.focusBase : this.secondaryBase;
+    const officer = this.officers.spymaster.bonus;
+    const sentinel = this.details.focus !== "secrecy" && this.officers.sentinel.actorId ? 1 : 0;
+    const other = this.changes
+      .filter((c) => ["allOrgChecks", "secrecy"].includes(c.ability))
+      .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
+    const total = base + officer + sentinel + other;
+
+    return { base, officer, sentinel, other, total };
   }
 
   get security() {
-    return {
-      base: this.details.focus === "security" ? this.focusBase : this.secondaryBase,
-      officer: this.officers.partisan.bonus,
-      sentinel: this.details.focus !== "security" && this.officers.sentinel.actorId ? 1 : 0,
+    const base = this.details.focus === "security" ? this.focusBase : this.secondaryBase;
+    const officer = this.officers.partisan.bonus;
+    const sentinel = this.details.focus !== "security" && this.officers.sentinel.actorId ? 1 : 0;
+    const other = this.changes
+      .filter((c) => ["allOrgChecks", "security"].includes(c.ability))
+      .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
+    const total = base + officer + sentinel + other;
+
+    return { base, officer, sentinel, other, total };
+  }
+
+  async rollOrgCheck(orgCheckId, options = {}) {
+    const check = this[orgCheckId];
+
+    const parts = [];
+
+    if (check.base) {
+      parts.push(`${check.base}[${game.i18n.localize("PF1RS.Base")}]`);
+    }
+    if (check.officer) {
+      parts.push(`${check.officer}[${game.i18n.localize(orgOfficers[orgCheckId])}]`);
+    }
+    if (check.sentinel) {
+      parts.push(`${check.sentinel}[${game.i18n.localize("PF1RS.Sentinel")}]`);
+    }
+
+    // calculate other (changes)
+    const changes = this.changes.filter((c) => ["allOrgChecks", orgCheckId].includes(c.ability));
+    changes.forEach((c) => parts.push(`${c.bonus}[${c.parentName}: ${game.i18n.localize(changeTargets[c.ability])}]`));
+
+    const label = game.i18n.localize(orgChecks[orgCheckId]);
+    const token = options.token ?? this.token;
+
+    const rollOptions = {
+      ...options,
+      parts,
+      flavor: game.i18n.format("PF1RS.OrgCheckRoll", { check: label }),
+      speaker: ChatMessage.implementation.getSpeaker({ actor: this, token, alias: token?.name }),
     };
+
+    return await pf1.dice.d20Roll(rollOptions);
+  }
+
+  _prepareChanges() {
+    const changeItems = this.parent.items.filter((item) => item.system.changes?.length > 0);
+
+    const changes = [];
+    for (const i of changeItems) {
+      changes.push(
+        ...i.system.changes.map((c) => ({
+          ...c,
+          parentId: i.id,
+          parentName: i.name,
+          mitigated: i.system.mitigated,
+        }))
+      );
+    }
+
+    const c = new Collection();
+    for (const change of changes) {
+      // Avoid ID conflicts
+      const parentId = change.parentId ?? "Actor";
+      const uniqueId = `${parentId}-${change.id}`;
+      c.set(uniqueId, change);
+    }
+    return c;
   }
 }
 

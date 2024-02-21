@@ -46,6 +46,7 @@
     "Actors": "readonly",
     "Items": "readonly",
     "pf1": "readonly",
-    "fromUuidSync": "readonly"
+    "fromUuidSync": "readonly",
+    "ChatMessage": "readonly"
   }
 }

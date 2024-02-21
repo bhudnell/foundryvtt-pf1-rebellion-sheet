@@ -11,6 +11,10 @@ import {
 } from "../config.mjs";
 import { getRankFromSupporters } from "../utils.mjs";
 
+// TODO tabs for each section?
+// TODO css it ugly currently
+// TODO rolls
+
 export class RebellionSheet extends ActorSheet {
   static get defaultOptions() {
     const options = super.defaultOptions;
@@ -20,7 +24,7 @@ export class RebellionSheet extends ActorSheet {
       classes: [...options.classes, "rebellion", "sheet"],
       dragDrop: [
         {
-          dragSelector: ".item-list .item[data-item-id]",
+          // dragSelector: ".item-list .item[data-item-id]",
           dropSelector: "form",
         },
       ],
@@ -84,8 +88,6 @@ export class RebellionSheet extends ActorSheet {
     data.teams = data.itemTypes[rebellionTeamId] ?? [];
     data.events = data.itemTypes[rebellionEventId] ?? [];
 
-    const eventChanges = this._prepareChanges(data.events);
-
     // indicators
     data.rankUpIndicator =
       getRankFromSupporters(actorData.details.supporters) > actorData.details.rank &&
@@ -97,10 +99,6 @@ export class RebellionSheet extends ActorSheet {
     // Organization checks
     for (const abl of data.checks) {
       abl.data = actorData[abl.id];
-      abl.data.other = eventChanges
-        .filter((c) => c.ability === abl.id || c.ability === "allOrgChecks")
-        .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
-      abl.data.total = abl.data.base + abl.data.officer + abl.data.sentinel + abl.data.other;
     }
 
     // available actions
@@ -118,7 +116,7 @@ export class RebellionSheet extends ActorSheet {
     // events
     data.danger =
       actorData.details.danger +
-      eventChanges
+      actorData.changes
         .filter((c) => c.ability === "danger")
         .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
     data.eventChance = Math.clamped(
@@ -141,36 +139,14 @@ export class RebellionSheet extends ActorSheet {
     data.validOfficerChoices = officerChoices;
 
     // teams
+    // TODO max teams
+    // TODO move below to team sheet (or figure out how to update team item from here)
     const managerChoices = { "": "" };
     data.officers.forEach((officer) => (managerChoices[officer.actorId] = officer.name));
     data.validManagerChoices = managerChoices;
     data.teams.forEach((team) => (team.typeLabel = game.i18n.localize(teamTypes[team.system.type])));
 
     return data;
-  }
-
-  _prepareChanges(items) {
-    const changeItems = items.filter((item) => item.system.changes?.length > 0);
-
-    const changes = [];
-    for (const i of changeItems) {
-      changes.push(
-        ...i.system.changes.map((c) => ({
-          ...c,
-          parentId: i.id,
-          mitigated: i.system.mitigated,
-        }))
-      );
-    }
-
-    const c = new Collection();
-    for (const change of changes) {
-      // Avoid ID conflicts
-      const parentId = change.parentId ?? "Actor";
-      const uniqueId = `${parentId}-${change.id}`;
-      c.set(uniqueId, change);
-    }
-    return c;
   }
 
   activateListeners(html) {
@@ -187,6 +163,8 @@ export class RebellionSheet extends ActorSheet {
     html.find(".item-delete").on("click", (e) => this._onItemDelete(e));
     html.find(".item-toggle-data").on("change", (e) => this._itemToggleData(e));
     html.find(".item-edit").on("click", (e) => this._onItemEdit(e));
+
+    html.find(".org-check .rollable").on("click", (e) => this._onRollOrgCheck(e));
   }
 
   _validateMinMax(e, min, max, minText, maxText) {
@@ -247,5 +225,11 @@ export class RebellionSheet extends ActorSheet {
     const item = this.document.items.get(itemId);
 
     item.sheet.render(true, { focus: true });
+  }
+
+  _onRollOrgCheck(event) {
+    event.preventDefault();
+    const orgCheck = event.currentTarget.closest(".org-check").dataset.orgcheck;
+    this.actor.system.rollOrgCheck(orgCheck, { token: this.token });
   }
 }

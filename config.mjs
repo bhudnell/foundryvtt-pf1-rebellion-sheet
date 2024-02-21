@@ -96,6 +96,20 @@ export const orgChecks = {
   security: "PF1RS.Security",
 };
 
+export const orgOfficers = {
+  loyalty: "PF1RS.Demagogue",
+  secrecy: "PF1RS.Spymaster",
+  security: "PF1RS.Partisan",
+};
+
+export const changeTargets = {
+  danger: "PF1RS.Danger",
+  allOrgChecks: "PF1RS.AllOrgChecks",
+  loyalty: "PF1RS.Loyalty",
+  secrecy: "PF1RS.Secrecy",
+  security: "PF1RS.Security",
+};
+
 export const teamTypes = {
   stp: "PF1RS.Teams.StreetPerformers",
   rum: "PF1RS.Teams.Rumormongers",

@@ -13,12 +13,12 @@ export class EventSheet extends ItemSheet {
   async getData() {
     const item = this.item;
 
-    const context = {
+    const data = {
       ...item,
       enrichedDesc: await TextEditor.enrichHTML(item.system.description),
     };
 
-    return context;
+    return data;
   }
 
   activateListeners(html) {
