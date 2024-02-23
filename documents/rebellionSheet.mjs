@@ -94,7 +94,9 @@ export class RebellionSheet extends ActorSheet {
       actorData.details.rank < actorData.details.maxRank;
 
     // details
-    data.focusLabel = orgChecks[actorData.details.focus];
+    data.focusOptions = Object.fromEntries(
+      Object.entries(orgChecks).map(([key, label]) => [key, game.i18n.localize(label)])
+    );
 
     // Organization checks
     for (const abl of data.checks) {

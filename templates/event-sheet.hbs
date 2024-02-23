@@ -30,14 +30,7 @@
         <input type="hidden" value="{{id}}" name="system.changes.{{idx}}.id" />
         <input type="number" value="{{bonus}}" name="system.changes.{{idx}}.bonus" step="1" placeholder="Formula" />
         <select name="system.changes.{{idx}}.ability">
-          {{#select ability}}
-            <option hidden disabled selected value />
-            <option value="danger">{{localize "PF1RS.Danger"}}</option>
-            <option value="allOrgChecks">{{localize "PF1RS.AllOrgChecks"}}</option>
-            <option value="loyalty">{{localize "PF1RS.Loyalty"}}</option>
-            <option value="secrecy">{{localize "PF1RS.Secrecy"}}</option>
-            <option value="security">{{localize "PF1RS.Security"}}</option>
-          {{/select}}
+          {{selectOptions @root.changeTargetOptions selected=ability blank=""}}
         </select>
         <a class="delete-change" data-change="{{id}}"><i class="fa-solid fa-trash"></i></a>
       {{/each}}

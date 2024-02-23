@@ -1,4 +1,4 @@
-import { CFG } from "../config.mjs";
+import { CFG, changeTargets } from "../config.mjs";
 
 export class EventSheet extends ItemSheet {
   static get defaultOptions() {
@@ -17,6 +17,10 @@ export class EventSheet extends ItemSheet {
       ...item,
       enrichedDesc: await TextEditor.enrichHTML(item.system.description),
     };
+
+    data.changeTargetOptions = Object.fromEntries(
+      Object.entries(changeTargets).map(([key, label]) => [key, game.i18n.localize(label)])
+    );
 
     return data;
   }

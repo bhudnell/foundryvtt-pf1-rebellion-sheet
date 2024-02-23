@@ -26,12 +26,7 @@
     <div>
       <span>{{localize "PF1RS.Focus"}}:</span>
       <select name="system.details.focus" data-dtype="String">
-        {{#select system.details.focus}}
-          <option hidden disabled selected value />
-          <option value="loyalty">{{localize "PF1RS.Loyalty"}}</option>
-          <option value="secrecy">{{localize "PF1RS.Secrecy"}}</option>
-          <option value="security">{{localize "PF1RS.Security"}}</option>
-        {{/select}}
+        {{selectOptions focusOptions selected=system.details.focus blank=""}}
       </select>
     </div>
 
