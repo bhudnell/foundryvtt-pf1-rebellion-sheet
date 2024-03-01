@@ -3,6 +3,7 @@ import {
   actions,
   alwaysAvailableActions,
   maxActions,
+  maxTeams,
   officerBonuses,
   orgChecks,
   rebellionEventId,
@@ -13,7 +14,14 @@ import { getRankFromSupporters } from "../utils.mjs";
 
 // TODO tabs for each section?
 // TODO css it ugly currently
-// TODO rolls
+// TODO rank doesnt lower due to losing supporters
+// TODO track safehouses +1 security for each max +5
+/* TODO rolls:
+- notoriety: d100 <= notoriety score
+- supporter attrition: DC 10 Loyalty On success lose 1d6 supporters. If nat 20, gain 1d6 supporters. On failed lose 2d4 + rank supporters.
+- notoriety max: notoriety = 100 lose 1d20 + rank supporters and pop
+- treasury shortage: treasury < min lose 2d4 + rank supporters
+*/
 
 export class RebellionSheet extends ActorSheet {
   static get defaultOptions() {
@@ -104,12 +112,12 @@ export class RebellionSheet extends ActorSheet {
     }
 
     // available actions
-    // TODO clicking action links to action's journal entry
+    const teamActions = this._prepareTeamActions(data.teams);
     data.actions = {
       available: Object.entries(actions).map(([actionId, label]) => ({
         id: actionId,
         label: game.i18n.localize(label),
-        available: alwaysAvailableActions.includes(actionId), // TODO check teams for more actions
+        available: alwaysAvailableActions.includes(actionId) || teamActions.has(actionId),
       })),
       rank: maxActions[actorData.details.rank],
       strategist: actorData.officers.strategist.actorId ? 1 : 0,
@@ -141,14 +149,25 @@ export class RebellionSheet extends ActorSheet {
     data.validOfficerChoices = officerChoices;
 
     // teams
-    // TODO max teams
     // TODO move below to team sheet (or figure out how to update team item from here)
+    data.maxTeams = maxTeams[actorData.details.rank];
     const managerChoices = { "": "" };
     data.officers.forEach((officer) => (managerChoices[officer.actorId] = officer.name));
     data.validManagerChoices = managerChoices;
     data.teams.forEach((team) => (team.typeLabel = game.i18n.localize(teamTypes[team.system.type])));
 
     return data;
+  }
+
+  _prepareTeamActions(teams) {
+    const actions = new Set();
+
+    teams
+      .filter((team) => !team.system.conditions.disabled && !team.system.conditions.missing)
+      .flatMap((team) => team.system.actions.value)
+      .forEach((action) => actions.add(action));
+
+    return actions;
   }
 
   activateListeners(html) {
@@ -169,7 +188,7 @@ export class RebellionSheet extends ActorSheet {
     html.find(".org-check .rollable").on("click", (e) => this._onRollOrgCheck(e));
   }
 
-  _validateMinMax(e, min, max, minText, maxText) {
+  async _validateMinMax(e, min, max, minText, maxText) {
     const result = Number(e.target.value);
 
     if (result < min) {
@@ -181,7 +200,7 @@ export class RebellionSheet extends ActorSheet {
     }
   }
 
-  _onItemDelete(event) {
+  async _onItemDelete(event) {
     event.preventDefault();
 
     const button = event.currentTarget;
@@ -221,7 +240,7 @@ export class RebellionSheet extends ActorSheet {
     item.update(updateData);
   }
 
-  _onItemEdit(event) {
+  async _onItemEdit(event) {
     event.preventDefault();
     const itemId = event.currentTarget.closest(".item").dataset.id;
     const item = this.document.items.get(itemId);
@@ -229,9 +248,9 @@ export class RebellionSheet extends ActorSheet {
     item.sheet.render(true, { focus: true });
   }
 
-  _onRollOrgCheck(event) {
+  async _onRollOrgCheck(event) {
     event.preventDefault();
     const orgCheck = event.currentTarget.closest(".org-check").dataset.orgcheck;
-    this.actor.system.rollOrgCheck(orgCheck, { token: this.token });
+    this.actor.system.rollOrgCheck(orgCheck, { token: this.token, skipDialog: true });
   }
 }

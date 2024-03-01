@@ -6,6 +6,41 @@
     </h1>
   </header>
 
+  <section>
+    <h3>Details</h3>
+    <div class="flexcol">
+      <select name="system.type">
+        {{selectOptions teamTypeChoices selected=system.type}}
+      </select>
+      <select name="system.managerId">
+        {{selectOptions validManagerChoices selected=system.managerId}}
+      </select>
+      <div class="flexrow">
+        <span>Size:</span>
+        <input type="number" step="1" name="system.size" value="{{system.size}}" />
+      </div>
+      <span>Bonus: {{system.bonus}}</span>
+      <div class="flexrow">
+        <div class="flexrow">
+          <span>Disabled:</span>
+          <input type="checkbox" name="system.conditions.disabled" {{checked system.conditions.disabled}} />
+        </div>
+        <div class="flexrow">
+          <span>Missing:</span>
+          <input type="checkbox" name="system.conditions.missing" {{checked system.conditions.missing}} />
+        </div>
+      </div>
+      <div class="flexcol">
+        {{#each actionLabels}}
+          <span>{{this}}</span>
+        {{/each}}
+        <a class="edit-actions">
+          <i class="fa-solid fa-pen-to-square" data-tooltip={{localize "PF1RS.EditItem"}}></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="description">
     <h3>Description</h3>
     {{editor enrichedDesc target="system.description" button=true}}

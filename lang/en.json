@@ -65,6 +65,7 @@
     "Condition": "Condition",
     "Disabled": "Disabled",
     "Missing": "Missing",
+    "MaxTeams": "Maximum Teams",
     "Teams": {
       "StreetPerformers": "Street Performers",
       "Rumormongers": "Rumormongers",
