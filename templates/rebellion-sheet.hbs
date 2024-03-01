@@ -125,6 +125,11 @@
                 <i class="fa-regular fa-square"></i>
               {{/if}}
               <span>{{label}}</span>
+              {{#if compendiumEntry}}
+                <a class="compendium-entry" data-compendium-entry="{{compendiumEntry}}"><i
+                    class="fa-solid fa-book"
+                  ></i></a>
+              {{/if}}
             </div>
           {{/each}}
         </div>

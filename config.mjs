@@ -79,6 +79,33 @@ export const actions = {
   ui: "PF1RS.Actions.Ui",
 };
 
+export const actionCompendiumEntries = {
+  abm: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.npdocimLRevIbHeF",
+  ash: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.d4pd0FEYdEz79vVw",
+  cor: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.fkVqaDZmKnnCmu5R",
+  ca: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.zWKvuFMQJhr9QQ02",
+  dt: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.fW2qFuyyLZD0fSmk",
+  eg: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.U4PvxxtchivVg1uE",
+  gi: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.4QG1oubvw1DLiNjt",
+  ge: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.AUHUpjmtggSwpj8o",
+  kc: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.T4Oyc6DSXbCwXhhs",
+  ll: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.RhQvHUwfRUjGbme8",
+  me: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.zbzww6LnGqPIqID3",
+  rs: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.9URQM0vRMNrT7pgH",
+  rt: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.ji3LtQQlg2L37JpR",
+  rd: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.1KDMTBjRKG4o62ay",
+  rm: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.H39FXaqzdziHURhQ",
+  rcc: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.XvU6yRcj770X77Lu",
+  rtc: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.JNZQ8Brj94ilDzUq",
+  sab: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.04wQsvaPHygnApHo",
+  sc: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.Usl02IS8Za8dMSku",
+  sa: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.qB0T4DCcL4F16XKm",
+  so: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.XcU9pznsBay4etLJ",
+  sd: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.zMEJt3qWPXfA0SIb",
+  ut: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.A0Xh9HGSv1cyowlO",
+  ui: "Compendium.pf1-rebellion-sheet.rules.JournalEntry.3VTskkxbkAScVTyI.JournalEntryPage.hqEctNHW0IsJMgRZ",
+};
+
 export const alwaysAvailableActions = ["cor", "dt", "ge", "ll", "rs", "rt", "sa", "ut"];
 
 export const officerBonuses = {

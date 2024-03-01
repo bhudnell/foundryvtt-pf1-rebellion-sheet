@@ -30,6 +30,52 @@
     }
   },
 
+  "packs": [
+    {
+      "name": "events",
+      "label": "Events",
+      "path": "packs/events",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER"
+      },
+      "system": "pf1"
+    },
+    {
+      "name": "teams",
+      "label": "Teams",
+      "path": "packs/teams",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER"
+      },
+      "system": "pf1"
+    },
+    {
+      "name": "rules",
+      "label": "Rules",
+      "path": "packs/rules",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER"
+      }
+    },
+    {
+      "name": "roll-tables",
+      "label": "Roll Tables",
+      "type": "RollTable",
+      "ownership": {
+        "PLAYER": "OBSERVER"
+      }
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Hell's Rebels",
+      "packs": ["events", "teams", "rules", "roll-tables"]
+    }
+  ],
+
   "languages": [
     {
       "lang": "en",

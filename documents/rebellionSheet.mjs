@@ -1,5 +1,6 @@
 import {
   CFG,
+  actionCompendiumEntries,
   actions,
   alwaysAvailableActions,
   maxActions,
@@ -118,6 +119,7 @@ export class RebellionSheet extends ActorSheet {
         id: actionId,
         label: game.i18n.localize(label),
         available: alwaysAvailableActions.includes(actionId) || teamActions.has(actionId),
+        compendiumEntry: actionCompendiumEntries[actionId],
       })),
       rank: maxActions[actorData.details.rank],
       strategist: actorData.officers.strategist.actorId ? 1 : 0,
@@ -186,6 +188,8 @@ export class RebellionSheet extends ActorSheet {
     html.find(".item-edit").on("click", (e) => this._onItemEdit(e));
 
     html.find(".org-check .rollable").on("click", (e) => this._onRollOrgCheck(e));
+
+    html.find("a.compendium-entry").on("click", (e) => this._onOpenCompendiumEntry(e));
   }
 
   async _validateMinMax(e, min, max, minText, maxText) {
@@ -252,5 +256,25 @@ export class RebellionSheet extends ActorSheet {
     event.preventDefault();
     const orgCheck = event.currentTarget.closest(".org-check").dataset.orgcheck;
     this.actor.system.rollOrgCheck(orgCheck, { token: this.token, skipDialog: true });
+  }
+
+  async _onOpenCompendiumEntry(event) {
+    const uuid = event.currentTarget.dataset.compendiumEntry;
+
+    const journal = await fromUuid(uuid);
+
+    if (journal instanceof JournalEntryPage) {
+      journal.parent.sheet.render(true, {
+        pageId: journal.id,
+        editable: false,
+        collapsed: true,
+        width: 600,
+        height: 700,
+      });
+    } else {
+      journal.sheet.render(true, { editable: false });
+    }
+
+    return journal;
   }
 }
