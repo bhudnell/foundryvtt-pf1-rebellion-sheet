@@ -1,4 +1,4 @@
-import { changeTargets, maxActions, maxTeams, orgChecks, orgOfficers } from "../config.mjs";
+import { CFG, changeTargets, maxActions, maxTeams, orgChecks, orgOfficers } from "../config.mjs";
 
 export class RebellionModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
@@ -146,10 +146,48 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
       ...options,
       parts,
       flavor: game.i18n.format("PF1RS.OrgCheckRoll", { check: label }),
-      speaker: ChatMessage.implementation.getSpeaker({ actor: this, token, alias: token?.name }),
+      speaker: ChatMessage.getSpeaker({ actor: this, token, alias: token?.name }),
     };
 
     return await pf1.dice.d20Roll(rollOptions);
+  }
+
+  async rollEvent(options = {}) {
+    const danger =
+      this.details.danger +
+      this.changes
+        .filter((c) => c.ability === "danger")
+        .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
+    const eventChance = Math.clamped((this.details.notoriety + danger) * (this.doubleEventChance ? 2 : 1), 10, 95);
+
+    const roll = new pf1.dice.RollPF("1d100");
+
+    await roll.evaluate();
+
+    const eventOccurred = roll.total <= eventChance;
+
+    const token = options.token ?? this.token;
+
+    const templateData = {
+      flavor: game.i18n.localize("PF1RS.EventChance"),
+      formula: roll.formula,
+      natural: roll.total,
+      bonus: 0,
+      total: roll.total,
+      tooltip: await roll.getTooltip(),
+      eventOccurred,
+    };
+
+    const messageData = {
+      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+      sound: options.noSound ? undefined : CONFIG.sounds.dice,
+      content: await renderTemplate(`modules/${CFG.id}/templates/event-roll.hbs`, templateData),
+      speaker: ChatMessage.getSpeaker({ actor: this, token, alias: token?.name }),
+      flags: {},
+    };
+    messageData.flags[CFG.id] = { eventChanceCard: true };
+
+    await ChatMessage.create(messageData);
   }
 
   _prepareChanges() {

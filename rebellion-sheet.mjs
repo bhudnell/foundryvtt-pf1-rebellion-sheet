@@ -5,6 +5,7 @@ import { TeamSheet } from "./documents/teamSheet.mjs";
 import { EventModel } from "./models/eventModel.mjs";
 import { RebellionModel } from "./models/rebellionModel.mjs";
 import { TeamModel } from "./models/teamModel.mjs";
+import { rollEventTable } from "./utils.mjs";
 
 Hooks.on("preCreateItem", (item, data, context, user) => {
   if (!item.actor) {
@@ -46,4 +47,10 @@ Hooks.once("init", () => {
     types: [rebellionTeamId],
     makeDefault: true,
   });
+});
+
+Hooks.on("renderChatMessage", (message, html) => {
+  if (message.flags?.[CFG.id]?.eventChanceCard) {
+    html.find("button.roll-event").on("click", (e) => rollEventTable(e, message));
+  }
 });

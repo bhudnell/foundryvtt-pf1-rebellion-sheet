@@ -188,6 +188,7 @@ export class RebellionSheet extends ActorSheet {
     html.find(".item-edit").on("click", (e) => this._onItemEdit(e));
 
     html.find(".org-check .rollable").on("click", (e) => this._onRollOrgCheck(e));
+    html.find(".eventChance .rollable").on("click", (e) => this._onRollEventChance(e));
 
     html.find("a.compendium-entry").on("click", (e) => this._onOpenCompendiumEntry(e));
   }
@@ -256,6 +257,11 @@ export class RebellionSheet extends ActorSheet {
     event.preventDefault();
     const orgCheck = event.currentTarget.closest(".org-check").dataset.orgcheck;
     this.actor.system.rollOrgCheck(orgCheck, { token: this.token, skipDialog: true });
+  }
+
+  async _onRollEventChance(event) {
+    event.preventDefault();
+    this.actor.system.rollEvent();
   }
 
   async _onOpenCompendiumEntry(event) {

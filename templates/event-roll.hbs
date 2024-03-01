@@ -1,0 +1,21 @@
+<div class="event-card">
+  <span class="flavor-text">
+    {{flavor}}
+  </span>
+
+  {{#if formula}}
+    <div class="dice-roll">
+      <div class="dice-result">
+        <h4 data-natural="{{natural}}" data-bonus="{{bonus}}" class="dice-total">{{total}}</h4>
+        {{{tooltip}}}
+      </div>
+    </div>
+  {{/if}}
+
+  {{#if eventOccurred}}
+    <span>{{localize "PF1RS.EventOccurred"}}</span>
+    <button class="roll-event">{{localize "PF1RS.RollEvent"}}</button>
+  {{else}}
+    <span>{{localize "PF1RS.NoEventOccurred"}}</span>
+  {{/if}}
+</div>
