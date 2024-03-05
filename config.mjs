@@ -123,6 +123,12 @@ export const orgChecks = {
   security: "PF1RS.Security",
 };
 
+export const orgCheckOfficer = {
+  loyalty: "demagogue",
+  secrecy: "spymaster",
+  security: "partisan",
+};
+
 export const orgOfficers = {
   loyalty: "PF1RS.Demagogue",
   secrecy: "PF1RS.Spymaster",

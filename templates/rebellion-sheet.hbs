@@ -9,7 +9,7 @@
   <section class="details">
     <div class="horizLabeledValue">
       <span>{{localize "PF1RS.Rank"}}:</span>
-      {{numberInput system.details.rank name="system.details.rank" step=1 min=1 max=system.details.maxRank}}
+      {{numberInput system.rank name="system.rank" step=1 min=1 max=system.maxRank}}
       {{#if rankUpIndicator}}
         <i class="fa-regular fa-circle-exclamation error" data-tooltip={{localize "PF1RS.AvailableRankUp"}}></i>
       {{/if}}
@@ -17,45 +17,39 @@
     {{#if isGM}}
       <div class="horizLabeledValue">
         <span>{{localize "PF1RS.MaxRank"}}:</span>
-        {{numberInput system.details.maxRank name="system.details.maxRank" step=1 min=5 max=20}}
+        {{numberInput system.maxRank name="system.maxRank" step=1 min=5 max=20}}
       </div>
     {{else}}
       <span>{{localize "PF1RS.MaxRank"}}:
-        {{system.details.maxRank}}</span>
+        {{system.maxRank}}</span>
     {{/if}}
     <div>
       <span>{{localize "PF1RS.Focus"}}:</span>
-      <select name="system.details.focus" data-dtype="String">
-        {{selectOptions focusOptions selected=system.details.focus blank=""}}
+      <select name="system.focus" data-dtype="String">
+        {{selectOptions focusOptions selected=system.focus blank=""}}
       </select>
     </div>
 
     <div class="horizLabeledValue">
       <span>{{localize "PF1RS.Membership"}}:</span>
-      {{numberInput system.details.membership name="system.details.membership" step=1 min=0}}
+      {{numberInput system.membership name="system.membership" step=1 min=0}}
     </div>
     <div class="horizLabeledValue">
       <span>{{localize "PF1RS.Supporters"}}:</span>
-      {{numberInput
-        system.details.supporters
-        name="system.details.supporters"
-        step=1
-        min=0
-        max=system.details.population
-      }}
+      {{numberInput system.supporters name="system.supporters" step=1 min=0 max=system.population}}
     </div>
     <span>{{localize "PF1RS.Population"}}:
-      {{system.details.population}}</span>
+      {{system.population}}</span>
 
     <div class="horizLabeledValue">
       <span>{{localize "PF1RS.Treasury"}}:</span>
-      {{numberInput system.details.treasury name="system.details.treasury" step=1}}
+      {{numberInput system.treasury name="system.treasury" step=1}}
     </div>
     <span>{{localize "PF1RS.MinTreasury"}}:
       {{system.minTreasury}}</span>
     <div class="horizLabeledValue">
       <span>{{localize "PF1RS.Notoriety"}}:</span>
-      {{numberInput system.details.notoriety name="system.details.notoriety" step=1 min=0 max=100}}
+      {{numberInput system.notoriety name="system.notoriety" step=1 min=0 max=100}}
     </div>
   </section>
 
@@ -147,12 +141,12 @@
           </div>
           <span>=</span>
           <div class="labeledValue">
-            <span>{{system.details.notoriety}}</span>
+            <span>{{system.notoriety}}</span>
             <span>{{localize "PF1RS.Notoriety"}}</span>
           </div>
           <span>+</span>
           <div class="labeledValue">
-            <span>{{danger}}</span>
+            <span>{{system.danger}}</span>
             <span>{{localize "PF1RS.Danger"}}</span>
           </div>
           <div class="labeledValue">

@@ -1,63 +1,61 @@
-import { CFG, changeTargets, maxActions, maxTeams, orgChecks, orgOfficers } from "../config.mjs";
+import { CFG, changeTargets, maxActions, maxTeams, orgCheckOfficer, orgChecks, orgOfficers } from "../config.mjs";
 
 export class RebellionModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     return {
-      details: new fields.SchemaField({
-        rank: new fields.NumberField({
-          integer: true,
-          min: 1,
-          max: 20,
-          initial: 1,
-          nullable: false,
-        }),
-        maxRank: new fields.NumberField({
-          integer: true,
-          min: 5,
-          max: 20,
-          initial: 5,
-          nullable: false,
-        }),
-        focus: new fields.StringField({
-          blank: true,
-          choices: Object.keys(orgChecks),
-        }),
-        membership: new fields.NumberField({
-          integer: true,
-          min: 0,
-          initial: 0,
-          nullable: false,
-        }),
-        supporters: new fields.NumberField({
-          integer: true,
-          min: 0,
-          initial: 0,
-          nullable: false,
-        }),
-        population: new fields.NumberField({
-          integer: true,
-          min: 0,
-          initial: 11900,
-          nullable: false,
-        }),
-        treasury: new fields.NumberField({
-          integer: true,
-          initial: 10,
-          nullable: false,
-        }),
-        notoriety: new fields.NumberField({
-          integer: true,
-          min: 0,
-          max: 100,
-          initial: 0,
-          nullable: false,
-        }),
-        danger: new fields.NumberField({
-          integer: true,
-          initial: 20,
-          nullable: false,
-        }),
+      rank: new fields.NumberField({
+        integer: true,
+        min: 1,
+        max: 20,
+        initial: 1,
+        nullable: false,
+      }),
+      maxRank: new fields.NumberField({
+        integer: true,
+        min: 5,
+        max: 20,
+        initial: 5,
+        nullable: false,
+      }),
+      focus: new fields.StringField({
+        blank: true,
+        choices: Object.keys(orgChecks),
+      }),
+      membership: new fields.NumberField({
+        integer: true,
+        min: 0,
+        initial: 0,
+        nullable: false,
+      }),
+      supporters: new fields.NumberField({
+        integer: true,
+        min: 0,
+        initial: 0,
+        nullable: false,
+      }),
+      population: new fields.NumberField({
+        integer: true,
+        min: 0,
+        initial: 11900,
+        nullable: false,
+      }),
+      treasury: new fields.NumberField({
+        integer: true,
+        initial: 10,
+        nullable: false,
+      }),
+      notoriety: new fields.NumberField({
+        integer: true,
+        min: 0,
+        max: 100,
+        initial: 0,
+        nullable: false,
+      }),
+      baseDanger: new fields.NumberField({
+        integer: true,
+        initial: 20,
+        nullable: false,
       }),
       officers: new fields.SchemaField({
         demagogue: new fields.EmbeddedDataField(defineOfficer("demagogue")),
@@ -71,53 +69,58 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
     };
   }
 
+  prepareBaseData() {
+    // initialize org check data
+    this.loyalty = {
+      base: 0,
+      officer: 0,
+      sentinel: 0,
+      other: 0,
+      total: 0,
+    };
+    this.secrecy = {
+      base: 0,
+      officer: 0,
+      sentinel: 0,
+      other: 0,
+      total: 0,
+    };
+    this.security = {
+      base: 0,
+      officer: 0,
+      sentinel: 0,
+      other: 0,
+      total: 0,
+    };
+  }
+
   prepareDerivedData() {
+    // changes
+    this.changes = this._prepareChanges();
+
     // organization checks
-    this.focusBase = Math.floor(this.details.rank / 2) + 2;
-    this.secondaryBase = Math.floor(this.details.rank / 3);
+    const focusBase = Math.floor(this.rank / 2) + 2;
+    const secondaryBase = Math.floor(this.rank / 3);
+
+    for (const check of Object.keys(orgChecks)) {
+      this[check].base += this.focus === check ? focusBase : secondaryBase;
+      this[check].officer += this.officers[orgCheckOfficer[check]].bonus;
+      this[check].sentinel += this.focus !== check && this.officers.sentinel.actorId ? 1 : 0;
+      this[check].other += this.changes
+        .filter((c) => ["allOrgChecks", check].includes(c.ability))
+        .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
+      this[check].total += this[check].base + this[check].officer + this[check].sentinel + this[check].other;
+    }
 
     // other details
-    this.minTreasury = this.details.rank * 10;
-    this.maxActions = maxActions[this.details.rank] + (this.officers.strategist.actorId ? 1 : 0);
-    this.maxTeams = maxTeams[this.details.rank];
-
-    this.changes = this._prepareChanges();
-  }
-
-  get loyalty() {
-    const base = this.details.focus === "loyalty" ? this.focusBase : this.secondaryBase;
-    const officer = this.officers.demagogue.bonus;
-    const sentinel = this.details.focus !== "loyalty" && this.officers.sentinel.actorId ? 1 : 0;
-    const other = this.changes
-      .filter((c) => ["allOrgChecks", "loyalty"].includes(c.ability))
-      .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
-    const total = base + officer + sentinel + other;
-
-    return { base, officer, sentinel, other, total };
-  }
-
-  get secrecy() {
-    const base = this.details.focus === "secrecy" ? this.focusBase : this.secondaryBase;
-    const officer = this.officers.spymaster.bonus;
-    const sentinel = this.details.focus !== "secrecy" && this.officers.sentinel.actorId ? 1 : 0;
-    const other = this.changes
-      .filter((c) => ["allOrgChecks", "secrecy"].includes(c.ability))
-      .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
-    const total = base + officer + sentinel + other;
-
-    return { base, officer, sentinel, other, total };
-  }
-
-  get security() {
-    const base = this.details.focus === "security" ? this.focusBase : this.secondaryBase;
-    const officer = this.officers.partisan.bonus;
-    const sentinel = this.details.focus !== "security" && this.officers.sentinel.actorId ? 1 : 0;
-    const other = this.changes
-      .filter((c) => ["allOrgChecks", "security"].includes(c.ability))
-      .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
-    const total = base + officer + sentinel + other;
-
-    return { base, officer, sentinel, other, total };
+    this.minTreasury = this.rank * 10;
+    this.maxActions = maxActions[this.rank] + (this.officers.strategist.actorId ? 1 : 0);
+    this.maxTeams = maxTeams[this.rank];
+    this.danger =
+      this.baseDanger +
+      this.changes
+        .filter((c) => c.ability === "danger")
+        .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
   }
 
   async rollOrgCheck(orgCheckId, options = {}) {
@@ -153,12 +156,7 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
   }
 
   async rollEvent(options = {}) {
-    const danger =
-      this.details.danger +
-      this.changes
-        .filter((c) => c.ability === "danger")
-        .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
-    const eventChance = Math.clamped((this.details.notoriety + danger) * (this.doubleEventChance ? 2 : 1), 10, 95);
+    const eventChance = Math.clamped((this.notoriety + this.danger) * (this.doubleEventChance ? 2 : 1), 10, 95);
 
     const roll = new pf1.dice.RollPF("1d100");
 

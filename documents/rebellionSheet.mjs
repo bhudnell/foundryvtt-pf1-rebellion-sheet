@@ -99,8 +99,7 @@ export class RebellionSheet extends ActorSheet {
 
     // indicators
     data.rankUpIndicator =
-      getRankFromSupporters(actorData.details.supporters) > actorData.details.rank &&
-      actorData.details.rank < actorData.details.maxRank;
+      getRankFromSupporters(actorData.supporters) > actorData.rank && actorData.rank < actorData.maxRank;
 
     // details
     data.focusOptions = Object.fromEntries(
@@ -121,18 +120,13 @@ export class RebellionSheet extends ActorSheet {
         available: alwaysAvailableActions.includes(actionId) || teamActions.has(actionId),
         compendiumEntry: actionCompendiumEntries[actionId],
       })),
-      rank: maxActions[actorData.details.rank],
+      rank: maxActions[actorData.rank],
       strategist: actorData.officers.strategist.actorId ? 1 : 0,
     };
 
     // events
-    data.danger =
-      actorData.details.danger +
-      actorData.changes
-        .filter((c) => c.ability === "danger")
-        .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
     data.eventChance = Math.clamped(
-      (actorData.details.notoriety + data.danger) * (actorData.doubleEventChance ? 2 : 1),
+      (actorData.notoriety + actorData.danger) * (actorData.doubleEventChance ? 2 : 1),
       10,
       95
     );
@@ -152,7 +146,7 @@ export class RebellionSheet extends ActorSheet {
 
     // teams
     // TODO move below to team sheet (or figure out how to update team item from here)
-    data.maxTeams = maxTeams[actorData.details.rank];
+    data.maxTeams = maxTeams[actorData.rank];
     const managerChoices = { "": "" };
     data.officers.forEach((officer) => (managerChoices[officer.actorId] = officer.name));
     data.validManagerChoices = managerChoices;
@@ -176,12 +170,12 @@ export class RebellionSheet extends ActorSheet {
     super.activateListeners(html);
 
     html
-      .find('input[name="system.details.rank"]')
-      .on("change", (e) => this._validateMinMax(e, 1, this.actor.system.details.maxRank, undefined, "the max rank"));
+      .find('input[name="system.rank"]')
+      .on("change", (e) => this._validateMinMax(e, 1, this.actor.system.maxRank, undefined, "the max rank"));
     html
-      .find('input[name="system.details.supporters"]')
+      .find('input[name="system.supporters"]')
       .on("change", (e) =>
-        this._validateMinMax(e, 0, this.actor.system.details.population, undefined, "the current population")
+        this._validateMinMax(e, 0, this.actor.system.population, undefined, "the current population")
       );
     html.find(".item-delete").on("click", (e) => this._onItemDelete(e));
     html.find(".item-toggle-data").on("change", (e) => this._itemToggleData(e));
