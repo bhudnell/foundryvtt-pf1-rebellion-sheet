@@ -126,7 +126,7 @@ export class RebellionSheet extends ActorSheet {
 
     // events
     data.eventChance = Math.clamped(
-      (actorData.notoriety + actorData.danger) * (actorData.doubleEventChance ? 2 : 1),
+      (actorData.notoriety + actorData.danger.total) * (actorData.doubleEventChance ? 2 : 1),
       10,
       95
     );

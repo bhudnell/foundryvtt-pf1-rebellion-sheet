@@ -52,10 +52,12 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
         initial: 0,
         nullable: false,
       }),
-      baseDanger: new fields.NumberField({
-        integer: true,
-        initial: 20,
-        nullable: false,
+      danger: new fields.SchemaField({
+        base: new fields.NumberField({
+          integer: true,
+          initial: 20,
+          nullable: false,
+        }),
       }),
       officers: new fields.SchemaField({
         demagogue: new fields.EmbeddedDataField(defineOfficer("demagogue")),
@@ -70,7 +72,9 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
   }
 
   prepareBaseData() {
-    // initialize org check data
+    this.danger.other = 0;
+    this.danger.total = this.danger.base + this.danger.other;
+
     this.loyalty = {
       base: 0,
       officer: 0,
@@ -116,11 +120,11 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
     this.minTreasury = this.rank * 10;
     this.maxActions = maxActions[this.rank] + (this.officers.strategist.actorId ? 1 : 0);
     this.maxTeams = maxTeams[this.rank];
-    this.danger =
-      this.baseDanger +
-      this.changes
-        .filter((c) => c.ability === "danger")
-        .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
+
+    this.danger.other += this.changes
+      .filter((c) => c.ability === "danger")
+      .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
+    this.danger.total = this.danger.base + this.danger.other;
   }
 
   async rollOrgCheck(orgCheckId, options = {}) {
