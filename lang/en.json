@@ -103,6 +103,8 @@
 
     "EditItem": "Edit Item",
     "DeleteItem": "Delete Item",
+    "UpdateItem": "Update Item",
+    "UpdateChangeTitle": "Update Change: {name}",
 
     "Sheet": {
       "Rebellion": "Rebellion Sheet",

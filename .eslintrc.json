@@ -50,6 +50,8 @@
     "Dialog": "readonly",
     "ChatMessage": "readonly",
     "JournalEntryPage": "readonly",
+    "ActiveEffect": "readonly",
+    "FormDataExtended": "readonly",
     "pf1": "readonly"
   }
 }

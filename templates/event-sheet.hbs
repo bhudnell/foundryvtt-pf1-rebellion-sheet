@@ -35,6 +35,16 @@
         <a class="delete-change" data-change="{{id}}"><i class="fa-solid fa-trash"></i></a>
       {{/each}}
     </div>
+    <div class="changes">
+      {{#each changes as |change idx|}}
+        <span>Key: {{change.key}}</span>
+        <span>Value: {{change.value}}</span>
+        <div>
+          <a class="edit-change" data-change="{{idx}}"><i class="fa-solid fa-pen-to-square"></i></a>
+          <a class="delete-change" data-change="{{idx}}"><i class="fa-solid fa-trash"></i></a>
+        </div>
+      {{/each}}
+    </div>
   </section>
 
   <section class="description">

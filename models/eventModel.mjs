@@ -1,3 +1,5 @@
+import { CFG } from "../config.mjs";
+
 export class EventModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -16,4 +18,13 @@ export class EventModel extends foundry.abstract.TypeDataModel {
   }
 
   prepareDerivedData() {}
+
+  prepareBaseData() {
+    if (!this.parent.effects.find((ae) => ae.getFlag(CFG.id, "changes") === true)) {
+      ActiveEffect.create(
+        { name: "Effect Changes", transfer: true, flags: { [CFG.id]: { changes: true } } },
+        { parent: this.parent, render: false }
+      );
+    }
+  }
 }
