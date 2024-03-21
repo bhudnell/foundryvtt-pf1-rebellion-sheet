@@ -9,6 +9,9 @@
   <section>
     <h3>Details</h3>
     <div class="flexcol">
+      <select name="system.subType">
+        {{selectOptions subTypeChoices selected=system.subType}}
+      </select>
       <select name="system.type">
         {{selectOptions teamTypeChoices selected=system.type}}
       </select>
@@ -23,19 +26,19 @@
       <div class="flexrow">
         <div class="flexrow">
           <span>Disabled:</span>
-          <input type="checkbox" name="system.conditions.disabled" {{checked system.conditions.disabled}} />
+          <input type="checkbox" name="system.disabled" {{checked system.disabled}} />
         </div>
         <div class="flexrow">
           <span>Missing:</span>
-          <input type="checkbox" name="system.conditions.missing" {{checked system.conditions.missing}} />
+          <input type="checkbox" name="system.missing" {{checked system.missing}} />
         </div>
       </div>
       <div class="flexcol">
         {{#each actionLabels}}
           <span>{{this}}</span>
         {{/each}}
-        <a class="edit-actions">
-          <i class="fa-solid fa-pen-to-square" data-tooltip={{localize "PF1RS.EditItem"}}></i>
+        <a class="edit-actions" data-tooltip="PF1RS.EditItem">
+          <i class="fa-solid fa-pen-to-square"></i>
         </a>
       </div>
     </div>

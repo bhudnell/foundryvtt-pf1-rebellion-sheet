@@ -95,6 +95,8 @@ export class RebellionSheet extends ActorSheet {
     // item types
     data.itemTypes = actor.itemTypes;
     data.teams = data.itemTypes[rebellionTeamId] ?? [];
+    data.teamType = rebellionTeamId;
+    data.teamSubType = "general"; // TODO
     data.events = data.itemTypes[rebellionEventId] ?? [];
 
     // indicators

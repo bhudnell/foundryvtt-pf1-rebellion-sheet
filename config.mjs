@@ -161,3 +161,8 @@ export const teamTypes = {
   blm: "PF1RS.Teams.BlackMarketers",
   mel: "PF1RS.Teams.MerchantLords",
 };
+
+export const teamSubTypes = {
+  general: "PF1RS.Teams.SubTypes.General",
+  unique: "PF1RS.Teams.SubTypes.Unique",
+};

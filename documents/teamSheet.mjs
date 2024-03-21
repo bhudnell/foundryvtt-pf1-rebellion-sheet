@@ -1,4 +1,4 @@
-import { CFG, actions, teamTypes } from "../config.mjs";
+import { CFG, actions, teamSubTypes, teamTypes } from "../config.mjs";
 
 export class TeamSheet extends ItemSheet {
   static get defaultOptions() {
@@ -17,6 +17,11 @@ export class TeamSheet extends ItemSheet {
       ...item,
       enrichedDesc: await TextEditor.enrichHTML(item.system.description),
     };
+
+    // sub-types
+    const subTypeChoices = {};
+    Object.entries(teamSubTypes).forEach(([key, label]) => (subTypeChoices[key] = game.i18n.localize(label)));
+    data.subTypeChoices = subTypeChoices;
 
     // team types
     const teamTypeChoices = { "": "" };

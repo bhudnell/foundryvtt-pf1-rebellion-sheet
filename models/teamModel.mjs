@@ -1,3 +1,5 @@
+import { teamSubTypes } from "../config.mjs";
+
 export class TeamModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -14,10 +16,9 @@ export class TeamModel extends foundry.abstract.TypeDataModel {
       size: new fields.NumberField({ integer: true }),
       description: new fields.HTMLField(),
       managerId: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
-      conditions: new fields.SchemaField({
-        disabled: new fields.BooleanField({ initial: false }),
-        missing: new fields.BooleanField({ initial: false }),
-      }),
+      disabled: new fields.BooleanField({ initial: false }),
+      missing: new fields.BooleanField({ initial: false }),
+      subType: new fields.StringField({ initial: "general", choices: Object.keys(teamSubTypes) }),
     };
   }
 
