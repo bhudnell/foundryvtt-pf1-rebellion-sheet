@@ -45,6 +45,7 @@
     "Actors": "readonly",
     "Items": "readonly",
     "ActorSheet": "readonly",
+    "Item": "readonly",
     "ItemSheet": "readonly",
     "TextEditor": "readonly",
     "Dialog": "readonly",

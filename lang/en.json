@@ -1,5 +1,7 @@
 {
   "PF1RS": {
+    "Summary": "Summary",
+    "AvailableRankUp": "Rank Up Available",
     "Rank": "Rank",
     "MaxRank": "Max Rank",
     "Focus": "Focus",
@@ -18,6 +20,7 @@
     "Security": "Security",
 
     "AvailableActions": "Available Actions",
+    "FromStrategist": "From Strategist",
     "ActionsLabel": "Actions",
     "Persistent": "Persistent",
     "Mitigated": "Mitigated",
@@ -82,11 +85,18 @@
       "Peddlers": "Peddlers",
       "Merchants": "Merchants",
       "BlackMarketers": "Black Marketers",
-      "MerchantLords": "Merchant Lords"
+      "MerchantLords": "Merchant Lords",
+
+      "SubTypes": {
+        "General": "General",
+        "Unique": "Unique"
+      }
     },
 
     "Events": "Events",
     "EventChance": "Event Chance",
+    "RollEvent": "Roll Event",
+    "NoEvent": "No Event Occurred",
     "Danger": "Danger",
     "ActiveEvents": "Active Events",
     "EventName": "Event Name",
@@ -95,6 +105,10 @@
 
     "Allies": "Allies",
 
+    "Notes": "Notes",
+
+    "FromRank": "From Rank",
+    "FromBonus": "From Bonus",
     "Total": "Total",
     "Base": "Base",
     "Other": "Other",
@@ -103,6 +117,8 @@
 
     "EditItem": "Edit Item",
     "DeleteItem": "Delete Item",
+    "CreateItem": "Create Item",
+    "NewItem": "New {type}",
 
     "Sheet": {
       "Rebellion": "Rebellion Sheet",

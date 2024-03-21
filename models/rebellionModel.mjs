@@ -110,9 +110,7 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
       this[check].base += this.focus === check ? focusBase : secondaryBase;
       this[check].officer += this.officers[orgCheckOfficer[check]].bonus;
       this[check].sentinel += this.focus !== check && this.officers.sentinel.actorId ? 1 : 0;
-      this[check].other += this.changes
-        .filter((c) => ["allOrgChecks", check].includes(c.ability))
-        .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
+      this[check].other += this._getChanges(["allOrgChecks", check]);
       this[check].total += this[check].base + this[check].officer + this[check].sentinel + this[check].other;
     }
 
@@ -121,10 +119,10 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
     this.maxActions = maxActions[this.rank] + (this.officers.strategist.actorId ? 1 : 0);
     this.maxTeams = maxTeams[this.rank];
 
-    this.danger.other += this.changes
-      .filter((c) => c.ability === "danger")
-      .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
+    this.danger.other += this._getChanges("danger");
     this.danger.total = this.danger.base + this.danger.other;
+
+    this.eventChance = Math.clamped((this.notoriety + this.danger.total) * (this.doubleEventChance ? 2 : 1), 10, 95);
   }
 
   async rollOrgCheck(orgCheckId, options = {}) {
@@ -160,13 +158,11 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
   }
 
   async rollEvent(options = {}) {
-    const eventChance = Math.clamped((this.notoriety + this.danger) * (this.doubleEventChance ? 2 : 1), 10, 95);
-
     const roll = new pf1.dice.RollPF("1d100");
 
     await roll.evaluate();
 
-    const eventOccurred = roll.total <= eventChance;
+    const eventOccurred = roll.total <= this.eventChance;
 
     const token = options.token ?? this.token;
 
@@ -185,9 +181,8 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
       sound: options.noSound ? undefined : CONFIG.sounds.dice,
       content: await renderTemplate(`modules/${CFG.id}/templates/event-roll.hbs`, templateData),
       speaker: ChatMessage.getSpeaker({ actor: this, token, alias: token?.name }),
-      flags: {},
+      flags: { [CFG.id]: { eventChanceCard: true } },
     };
-    messageData.flags[CFG.id] = { eventChanceCard: true };
 
     await ChatMessage.create(messageData);
   }
@@ -215,6 +210,13 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
       c.set(uniqueId, change);
     }
     return c;
+  }
+
+  _getChanges(ability) {
+    const abilityArr = Array.isArray(ability) ? ability : [ability];
+    return this.changes
+      .filter((c) => abilityArr.includes(c.ability))
+      .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
   }
 }
 

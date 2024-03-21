@@ -98,6 +98,7 @@ export class RebellionSheet extends ActorSheet {
     data.teamType = rebellionTeamId;
     data.teamSubType = "general"; // TODO
     data.events = data.itemTypes[rebellionEventId] ?? [];
+    data.eventType = rebellionEventId;
 
     // indicators
     data.rankUpIndicator =
@@ -125,13 +126,6 @@ export class RebellionSheet extends ActorSheet {
       rank: maxActions[actorData.rank],
       strategist: actorData.officers.strategist.actorId ? 1 : 0,
     };
-
-    // events
-    data.eventChance = Math.clamped(
-      (actorData.notoriety + actorData.danger.total) * (actorData.doubleEventChance ? 2 : 1),
-      10,
-      95
-    );
 
     // officers
     for (const officer of data.officers) {
@@ -179,9 +173,11 @@ export class RebellionSheet extends ActorSheet {
       .on("change", (e) =>
         this._validateMinMax(e, 0, this.actor.system.population, undefined, "the current population")
       );
+
     html.find(".item-delete").on("click", (e) => this._onItemDelete(e));
-    html.find(".item-toggle-data").on("change", (e) => this._itemToggleData(e));
+    html.find(".item-toggle-data").on("click", (e) => this._itemToggleData(e));
     html.find(".item-edit").on("click", (e) => this._onItemEdit(e));
+    html.find(".item-create").on("click", (e) => this._onItemCreate(e));
 
     html.find(".org-check .rollable").on("click", (e) => this._onRollOrgCheck(e));
     html.find(".eventChance .rollable").on("click", (e) => this._onRollEventChance(e));
@@ -215,16 +211,20 @@ export class RebellionSheet extends ActorSheet {
     button.disabled = true;
 
     const msg = `<p>${game.i18n.localize("PF1.DeleteItemConfirmation")}</p>`;
-    Dialog.confirm({
-      title: game.i18n.format("PF1.DeleteItemTitle", { name: item.name }),
-      content: msg,
-      yes: () => {
-        item.delete();
-        button.disabled = false;
-      },
-      no: () => (button.disabled = false),
-      rejectClose: true,
-    }).then(null, () => (button.disabled = false));
+    try {
+      await Dialog.confirm({
+        title: game.i18n.format("PF1.DeleteItemTitle", { name: item.name }),
+        content: msg,
+        yes: () => {
+          item.delete();
+          button.disabled = false;
+        },
+        no: () => (button.disabled = false),
+        rejectClose: true,
+      });
+    } catch (e) {
+      button.disabled = false;
+    }
   }
 
   async _itemToggleData(event) {
@@ -247,6 +247,25 @@ export class RebellionSheet extends ActorSheet {
     const item = this.document.items.get(itemId);
 
     item.sheet.render(true, { focus: true });
+  }
+
+  async _onItemCreate(event) {
+    event.preventDefault();
+    const header = event.currentTarget;
+
+    const type = header.dataset.type;
+    const subType = header.dataset.subType;
+    const typeName = game.i18n.localize(CONFIG.Item.typeLabels[type] || type);
+
+    const itemData = {
+      name: game.i18n.format("PF1.NewItem", { type: typeName }),
+      type,
+      system: { subType },
+    };
+
+    const newItem = new Item(itemData);
+
+    return this.actor.createEmbeddedDocuments("Item", [newItem.toObject()], { renderSheet: true });
   }
 
   async _onRollOrgCheck(event) {
