@@ -95,8 +95,10 @@
 
     "Events": "Events",
     "EventChance": "Event Chance",
+    "EventChanceRoll": "Event Chance: {chance}%",
     "RollEvent": "Roll Event",
     "NoEvent": "No Event Occurred",
+    "EventOccurred": "Event Occurred",
     "Danger": "Danger",
     "ActiveEvents": "Active Events",
     "EventName": "Event Name",

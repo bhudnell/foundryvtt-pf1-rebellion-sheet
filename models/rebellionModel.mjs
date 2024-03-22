@@ -167,7 +167,7 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
     const token = options.token ?? this.token;
 
     const templateData = {
-      flavor: game.i18n.localize("PF1RS.EventChance"),
+      label: game.i18n.format("PF1RS.EventChanceRoll", { chance: this.eventChance }),
       formula: roll.formula,
       natural: roll.total,
       bonus: 0,
