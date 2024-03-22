@@ -5,6 +5,7 @@ export const CFG = {
 export const rebellionSheetId = `${CFG.id}.rebellion`;
 export const rebellionTeamId = `${CFG.id}.team`;
 export const rebellionEventId = `${CFG.id}.event`;
+export const rebellionAllyId = `${CFG.id}.ally`;
 
 export const maxActions = {
   1: 1,

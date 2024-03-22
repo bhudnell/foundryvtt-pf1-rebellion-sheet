@@ -125,7 +125,8 @@
     "Sheet": {
       "Rebellion": "Rebellion Sheet",
       "Event": "Rebellion Event",
-      "Team": "Rebellion Team"
+      "Team": "Rebellion Team",
+      "Ally": "Rebellion Ally"
     }
   },
   "TYPES": {
@@ -137,7 +138,8 @@
     "Item": {
       "pf1-rebellion-sheet": {
         "event": "Rebellion Event",
-        "team": "Rebellion Team"
+        "team": "Rebellion Team",
+        "ally": "Rebellion Ally"
       }
     }
   }

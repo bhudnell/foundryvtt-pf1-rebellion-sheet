@@ -12,7 +12,7 @@
   ],
 
   "esmodules": ["rebellion-sheet.mjs"],
-  "styles": ["styles/common.css", "styles/event.css", "styles/rebellion.css", "styles/team.css"],
+  "styles": ["styles/common.css", "styles/event.css", "styles/rebellion.css", "styles/team.css", "styles/ally.css"],
 
   "documentTypes": {
     "Actor": {
@@ -26,11 +26,24 @@
       },
       "event": {
         "htmlFields": ["description"]
+      },
+      "ally": {
+        "htmlFields": ["description"]
       }
     }
   },
 
   "packs": [
+    {
+      "name": "allies",
+      "label": "Allies",
+      "path": "packs/allies",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER"
+      },
+      "system": "pf1"
+    },
     {
       "name": "events",
       "label": "Events",
@@ -72,7 +85,7 @@
   "packFolders": [
     {
       "name": "Hell's Rebels",
-      "packs": ["events", "teams", "rules", "roll-tables"]
+      "packs": ["allies", "events", "teams", "rules", "roll-tables"]
     }
   ],
 
@@ -87,12 +100,6 @@
   "compatibility": {
     "minimum": "11",
     "verified": "11.315"
-  },
-
-  "flags": {
-    "hotReload": {
-      "extensions": ["css", "hbs", "json"]
-    }
   },
 
   "manifest": "TODO",
