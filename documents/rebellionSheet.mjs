@@ -2,7 +2,6 @@ import {
   CFG,
   actionCompendiumEntries,
   actions,
-  alwaysAvailableActions,
   maxActions,
   maxTeams,
   officerBonuses,
@@ -47,6 +46,8 @@ export class RebellionSheet extends ActorSheet {
     const data = {
       ...this.actor,
       isGM: game.user.isGM,
+      enrichedNotes: await TextEditor.enrichHTML(actorData.notes),
+      editable: this.isEditable,
       checks: [
         {
           id: "loyalty",
@@ -115,13 +116,12 @@ export class RebellionSheet extends ActorSheet {
     }
 
     // available actions
-    const teamActions = this._prepareTeamActions(data.teams);
     data.actions = {
       available: Object.entries(actions).map(([actionId, label]) => ({
         id: actionId,
         label: game.i18n.localize(label),
-        available: alwaysAvailableActions.includes(actionId) || teamActions.has(actionId),
         compendiumEntry: actionCompendiumEntries[actionId],
+        data: actorData.actions[actionId],
       })),
       rank: maxActions[actorData.rank],
       strategist: actorData.officers.strategist.actorId ? 1 : 0,
@@ -149,17 +149,6 @@ export class RebellionSheet extends ActorSheet {
     data.teams.forEach((team) => (team.typeLabel = game.i18n.localize(teamTypes[team.system.type])));
 
     return data;
-  }
-
-  _prepareTeamActions(teams) {
-    const actions = new Set();
-
-    teams
-      .filter((team) => !team.system.conditions.disabled && !team.system.conditions.missing)
-      .flatMap((team) => team.system.actions.value)
-      .forEach((action) => actions.add(action));
-
-    return actions;
   }
 
   activateListeners(html) {

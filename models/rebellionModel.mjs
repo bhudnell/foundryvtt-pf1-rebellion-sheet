@@ -1,4 +1,14 @@
-import { CFG, changeTargets, maxActions, maxTeams, orgCheckOfficer, orgChecks, orgOfficers } from "../config.mjs";
+import {
+  CFG,
+  actions,
+  alwaysAvailableActions,
+  changeTargets,
+  maxActions,
+  maxTeams,
+  orgCheckOfficer,
+  orgChecks,
+  orgOfficers,
+} from "../config.mjs";
 
 export class RebellionModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
@@ -68,6 +78,33 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
         strategist: new fields.EmbeddedDataField(defineOfficer("strategist")),
       }),
       doubleEventChance: new fields.BooleanField({ initial: false }),
+      notes: new fields.HTMLField(),
+      actions: new fields.SchemaField({
+        abm: defineAction("secrecy"),
+        ash: defineAction(null),
+        cor: defineAction(null),
+        ca: defineAction(null),
+        dt: defineAction("loyalty"),
+        eg: defineAction("security"),
+        gi: defineAction("secrecy"),
+        ge: defineAction(null),
+        kc: defineAction("secrecy"),
+        ll: defineAction(null),
+        me: defineAction(null),
+        rs: defineAction("loyalty"),
+        rt: defineAction(null),
+        rd: defineAction("security"),
+        rm: defineAction(null),
+        rcc: defineAction("security"),
+        rtc: defineAction(null),
+        sab: defineAction("secrecy"),
+        sc: defineAction("secrecy"),
+        sa: defineAction(null),
+        so: defineAction(null),
+        sd: defineAction("secrecy"),
+        ut: defineAction(null),
+        ui: defineAction(null),
+      }),
     };
   }
 
@@ -112,6 +149,13 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
       this[check].sentinel += this.focus !== check && this.officers.sentinel.actorId ? 1 : 0;
       this[check].other += this._getChanges(["allOrgChecks", check]);
       this[check].total += this[check].base + this[check].officer + this[check].sentinel + this[check].other;
+    }
+
+    // actions
+    const itemActions = this._getItemActions();
+    for (const action of Object.keys(actions)) {
+      this.actions[action].changeBonus = this._getChanges(action);
+      this.actions[action].available = alwaysAvailableActions.includes(action) || itemActions.has(action);
     }
 
     // other details
@@ -212,12 +256,36 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
     return c;
   }
 
+  _getItemActions() {
+    const actionItems = this.parent.items.filter((item) => item.system.actions?.value.length > 0);
+    const actions = new Set();
+
+    actionItems
+      .filter((item) => !item.system.disabled && !item.system.missing)
+      .flatMap((item) => item.system.actions.value)
+      .forEach((action) => actions.add(action));
+
+    return actions;
+  }
+
   _getChanges(ability) {
     const abilityArr = Array.isArray(ability) ? ability : [ability];
     return this.changes
       .filter((c) => abilityArr.includes(c.ability))
       .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
   }
+}
+
+function defineAction(check) {
+  const fields = foundry.data.fields;
+
+  return new fields.SchemaField({
+    check: new fields.StringField({
+      initial: check,
+      nullable: true,
+      choices: Object.keys(orgChecks),
+    }),
+  });
 }
 
 function defineOfficer(name) {
