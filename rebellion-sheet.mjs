@@ -62,3 +62,14 @@ Hooks.on("renderChatMessage", (message, html) => {
     html.find("button.roll-event").on("click", (e) => rollEventTable(e, message));
   }
 });
+
+Hooks.once("ready", () => {
+  loadTemplates({
+    "rebellion-sheet-actions": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-actions.hbs`,
+    "rebellion-sheet-allies": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-allies.hbs`,
+    "rebellion-sheet-events": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-events.hbs`,
+    "rebellion-sheet-officers": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-officers.hbs`,
+    "rebellion-sheet-summary": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-summary.hbs`,
+    "rebellion-sheet-teams": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-teams.hbs`,
+  });
+});

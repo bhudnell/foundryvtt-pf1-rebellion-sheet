@@ -6,15 +6,13 @@ import {
   maxTeams,
   officerBonuses,
   orgChecks,
+  rebellionAllyId,
   rebellionEventId,
   rebellionTeamId,
   teamTypes,
 } from "../config.mjs";
 import { getRankFromSupporters } from "../utils.mjs";
 
-// TODO tabs for each section?
-// TODO css it ugly currently
-// TODO rank doesnt lower due to losing supporters
 // TODO track safehouses +1 security for each max +5
 /* TODO rolls:
 - notoriety: d100 <= notoriety score
@@ -22,6 +20,7 @@ import { getRankFromSupporters } from "../utils.mjs";
 - notoriety max: notoriety = 100 lose 1d20 + rank supporters and pop
 - treasury shortage: treasury < min lose 2d4 + rank supporters
 */
+// TODO strip more stuff out of unpacked compendia
 
 export class RebellionSheet extends ActorSheet {
   static get defaultOptions() {
@@ -30,10 +29,12 @@ export class RebellionSheet extends ActorSheet {
       ...options,
       template: `modules/${CFG.id}/templates/rebellion-sheet.hbs`,
       classes: [...options.classes, "rebellion", "sheet"],
-      dragDrop: [
+      tabs: [
         {
-          // dragSelector: ".item-list .item[data-item-id]",
-          dropSelector: "form",
+          navSelector: "nav.tabs[data-group='primary']",
+          contentSelector: "section.primary-body",
+          initial: "summary",
+          group: "primary",
         },
       ],
     };
@@ -94,12 +95,12 @@ export class RebellionSheet extends ActorSheet {
     };
 
     // item types
-    data.itemTypes = actor.itemTypes;
-    data.teams = data.itemTypes[rebellionTeamId] ?? [];
+    data.teamSections = this._prepareTeams();
     data.teamType = rebellionTeamId;
-    data.teamSubType = "general"; // TODO
-    data.events = data.itemTypes[rebellionEventId] ?? [];
+    data.events = actor.itemTypes[rebellionEventId] ?? [];
     data.eventType = rebellionEventId;
+    data.allies = actor.itemTypes[rebellionAllyId] ?? [];
+    data.allyType = rebellionAllyId;
 
     // indicators
     data.rankUpIndicator =
@@ -118,10 +119,11 @@ export class RebellionSheet extends ActorSheet {
     // available actions
     data.actions = {
       available: Object.entries(actions).map(([actionId, label]) => ({
+        ...actorData.actions[actionId],
         id: actionId,
         label: game.i18n.localize(label),
         compendiumEntry: actionCompendiumEntries[actionId],
-        data: actorData.actions[actionId],
+        check: game.i18n.localize(orgChecks[actorData.actions[actionId].check]),
       })),
       rank: maxActions[actorData.rank],
       strategist: actorData.officers.strategist.actorId ? 1 : 0,
@@ -141,14 +143,42 @@ export class RebellionSheet extends ActorSheet {
     data.validOfficerChoices = officerChoices;
 
     // teams
+    data.teamCount = {
+      active: data.teamSections[0].teams.length,
+      levels: maxTeams[actorData.rank],
+      bonus: 0,
+      max: maxTeams[actorData.rank],
+    };
     // TODO move below to team sheet (or figure out how to update team item from here)
-    data.maxTeams = maxTeams[actorData.rank];
     const managerChoices = { "": "" };
     data.officers.forEach((officer) => (managerChoices[officer.actorId] = officer.name));
     data.validManagerChoices = managerChoices;
-    data.teams.forEach((team) => (team.typeLabel = game.i18n.localize(teamTypes[team.system.type])));
 
     return data;
+  }
+
+  _prepareTeams() {
+    const teams = this.actor.itemTypes[rebellionTeamId];
+    const general = {
+      label: game.i18n.localize("PF1RS.Teams.SubTypes.General"),
+      subType: "general",
+      teams: [],
+    };
+    const unique = {
+      label: game.i18n.localize("PF1RS.Teams.SubTypes.Unique"),
+      subType: "unique",
+      teams: [],
+    };
+    teams.forEach((team) => {
+      team.typeLabel = game.i18n.localize(teamTypes[team.system.type]);
+      if (team.system.subType === general.subType) {
+        general.teams.push(team);
+      } else if (team.system.subType === unique.subType) {
+        unique.teams.push(team);
+      }
+    });
+
+    return [general, unique];
   }
 
   activateListeners(html) {

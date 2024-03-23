@@ -1,8 +1,8 @@
 <form autocomplete="off">
   <header class="header">
-    <img src="{{img}}" data-edit="img" />
+    <img src="{{ img }}" data-edit="img" />
     <h1>
-      <input type="text" name="name" value="{{name}}" data-dtype="String" />
+      <input type="text" name="name" value="{{ name }}" data-dtype="String" />
     </h1>
   </header>
 
@@ -20,9 +20,9 @@
       </select>
       <div class="flexrow">
         <span>Size:</span>
-        <input type="number" step="1" name="system.size" value="{{system.size}}" />
+        <input type="number" step="1" name="system.size" value="{{ system.size }}" />
       </div>
-      <span>Bonus: {{system.bonus}}</span>
+      <span>Bonus: {{ system.bonus }}</span>
       <div class="flexrow">
         <div class="flexrow">
           <span>Disabled:</span>
@@ -35,7 +35,7 @@
       </div>
       <div class="flexcol">
         {{#each actionLabels}}
-          <span>{{this}}</span>
+        <span>{{ this }}</span>
         {{/each}}
         <a class="edit-actions" data-tooltip="PF1RS.EditItem">
           <i class="fa-solid fa-pen-to-square"></i>
@@ -48,5 +48,4 @@
     <h3>Description</h3>
     {{editor enrichedDesc target="system.description" button=true}}
   </section>
-
 </form>

@@ -1,8 +1,8 @@
 <form autocomplete="off">
   <header class="header">
-    <img src="{{img}}" data-edit="img" />
+    <img src="{{ img }}" data-edit="img" />
     <h1>
-      <input type="text" name="name" value="{{name}}" data-dtype="String" />
+      <input type="text" name="name" value="{{ name }}" data-dtype="String" />
     </h1>
   </header>
 
@@ -27,11 +27,11 @@
       <span>{{localize "PF1RS.Target"}}</span>
       <a class="add-change"><i class="fa-solid fa-plus"></i></a>
       {{#each changes as |change idx|}}
-        <input type="hidden" value="{{id}}" name="system.changes.{{idx}}.id" />
-        <input type="hidden" value="{{ability}}" name="system.changes.{{idx}}.ability" />
-        <input type="number" value="{{bonus}}" name="system.changes.{{idx}}.bonus" step="1" placeholder="Formula" />
-        <span class="change-target" data-change="{{id}}">{{abilityLabel}}</span>
-        <a class="delete-change" data-change="{{id}}"><i class="fa-solid fa-trash"></i></a>
+      <input type="hidden" value="{{ id }}" name="system.changes.{{ idx }}.id" />
+      <input type="hidden" value="{{ ability }}" name="system.changes.{{ idx }}.ability" />
+      <input type="number" value="{{ bonus }}" name="system.changes.{{ idx }}.bonus" step="1" placeholder="Formula" />
+      <span class="change-target" data-change="{{ id }}">{{ abilityLabel }}</span>
+      <a class="delete-change" data-change="{{ id }}"><i class="fa-solid fa-trash"></i></a>
       {{/each}}
     </div>
   </section>
@@ -40,5 +40,4 @@
     <h3>Description</h3>
     {{editor enrichedDesc target="system.description" button=true}}
   </section>
-
 </form>

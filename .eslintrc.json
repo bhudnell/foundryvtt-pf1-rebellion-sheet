@@ -42,6 +42,7 @@
     "Hooks": "readonly",
     "fromUuid": "readonly",
     "renderTemplate": "readonly",
+    "loadTemplates": "readonly",
     "Actors": "readonly",
     "Items": "readonly",
     "ActorSheet": "readonly",

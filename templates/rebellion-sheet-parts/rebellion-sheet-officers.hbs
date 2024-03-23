@@ -1,0 +1,11 @@
+<div class="grid">
+  {{#each officers}}
+  <span>{{ label }}</span>
+  <select name="system.officers.{{ id }}.actorId">
+    {{selectOptions @root.validOfficerChoices selected=actorId}}
+  </select>
+  <span>+</span>
+  <span>{{ bonus }}</span>
+  <span>{{ bonusType }}</span>
+  {{/each}}
+</div>

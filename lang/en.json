@@ -14,14 +14,15 @@
 
     "AllOrgChecks": "All Organization Checks",
     "OrgChecks": "Organization Checks",
+    "OrgCheck": "Org Check",
     "OrgCheckRoll": "{check} Organization Check",
     "Loyalty": "Loyalty",
     "Secrecy": "Secrecy",
     "Security": "Security",
 
-    "AvailableActions": "Available Actions",
     "FromStrategist": "From Strategist",
     "ActionsLabel": "Actions",
+    "Action": "Action",
     "Persistent": "Persistent",
     "Mitigated": "Mitigated",
     "Actions": {
@@ -68,6 +69,7 @@
     "Condition": "Condition",
     "Disabled": "Disabled",
     "Missing": "Missing",
+    "CurrTeams": "Current Teams",
     "MaxTeams": "Maximum Teams",
     "Teams": {
       "StreetPerformers": "Street Performers",

@@ -1,266 +1,50 @@
 <form autocomplete="off">
-  <header class="header">
-    <img src="{{img}}" data-edit="img" />
-    <h1>
-      <input type="text" name="name" value="{{name}}" data-dtype="String" />
-    </h1>
-  </header>
+  {{! Sheet Navigation }}
+  <nav class="sheet-navigation tabs" data-group="primary">
+    <a class="item" data-tab="summary" data-group="primary">{{localize "PF1RS.Summary"}}</a>
+    <a class="item" data-tab="officers" data-group="primary">{{localize "PF1RS.Officers"}}</a>
+    <a class="item" data-tab="actions" data-group="primary">{{localize "PF1RS.ActionsLabel"}}</a>
+    <a class="item" data-tab="teams" data-group="primary">{{localize "PF1RS.TeamsLabel"}}</a>
+    <a class="item" data-tab="events" data-group="primary">{{localize "PF1RS.Events"}}</a>
+    <a class="item" data-tab="allies" data-group="primary">{{localize "PF1RS.Allies"}}</a>
+    <a class="item" data-tab="notes" data-group="primary">{{localize "PF1RS.Notes"}}</a>
+  </nav>
 
-  <section class="details">
-    <div class="horizLabeledValue">
-      <span>{{localize "PF1RS.Rank"}}:</span>
-      {{numberInput system.rank name="system.rank" step=1 min=1 max=system.maxRank}}
-      {{#if rankUpIndicator}}
-        <i class="fa-regular fa-circle-exclamation error" data-tooltip={{localize "PF1RS.AvailableRankUp"}}></i>
-      {{/if}}
-    </div>
-    {{#if isGM}}
-      <div class="horizLabeledValue">
-        <span>{{localize "PF1RS.MaxRank"}}:</span>
-        {{numberInput system.maxRank name="system.maxRank" step=1 min=5 max=20}}
-      </div>
-    {{else}}
-      <span>{{localize "PF1RS.MaxRank"}}:
-        {{system.maxRank}}</span>
-    {{/if}}
-    <div>
-      <span>{{localize "PF1RS.Focus"}}:</span>
-      <select name="system.focus" data-dtype="String">
-        {{selectOptions focusOptions selected=system.focus blank=""}}
-      </select>
+  {{! Sheet Body }}
+  <section class="primary-body">
+    {{! Summary Tab }}
+    <div class="tab summary flexcol" data-group="primary" data-tab="summary">
+      {{> rebellion-sheet-summary}}
     </div>
 
-    <div class="horizLabeledValue">
-      <span>{{localize "PF1RS.Membership"}}:</span>
-      {{numberInput system.membership name="system.membership" step=1 min=0}}
+    {{! Officers Tab }}
+    <div class="tab officers" data-group="primary" data-tab="officers">
+      {{> rebellion-sheet-officers}}
     </div>
-    <div class="horizLabeledValue">
-      <span>{{localize "PF1RS.Supporters"}}:</span>
-      {{numberInput system.supporters name="system.supporters" step=1 min=0 max=system.population}}
-    </div>
-    <span>{{localize "PF1RS.Population"}}:
-      {{system.population}}</span>
 
-    <div class="horizLabeledValue">
-      <span>{{localize "PF1RS.Treasury"}}:</span>
-      {{numberInput system.treasury name="system.treasury" step=1}}
+    {{! Actions Tab }}
+    <div class="tab actions flexcol" data-group="primary" data-tab="actions">
+      {{> rebellion-sheet-actions}}
     </div>
-    <span>{{localize "PF1RS.MinTreasury"}}:
-      {{system.minTreasury}}</span>
-    <div class="horizLabeledValue">
-      <span>{{localize "PF1RS.Notoriety"}}:</span>
-      {{numberInput system.notoriety name="system.notoriety" step=1 min=0 max=100}}
+
+    {{! Teams Tab }}
+    <div class="tab teams flexcol" data-group="primary" data-tab="teams">
+      {{> rebellion-sheet-teams}}
+    </div>
+
+    {{! Events Tab }}
+    <div class="tab events flexcol" data-group="primary" data-tab="events">
+      {{> rebellion-sheet-events}}
+    </div>
+
+    {{! Allies Tab }}
+    <div class="tab allies flexcol" data-group="primary" data-tab="allies">
+      {{> rebellion-sheet-allies}}
+    </div>
+
+    {{! Notes Tab }}
+    <div class="tab notes flexcol" data-group="primary" data-tab="notes">
+      {{editor enrichedNotes target="system.notes" button=true editable=editable engine="prosemirror"}}
     </div>
   </section>
-
-  <section>
-    <h3>{{localize "PF1RS.OrgChecks"}}</h3>
-    <div class="checks">
-      {{#each checks}}
-        <div class="flexrow org-check" data-orgcheck="{{id}}">
-          <a class="rollable"><i class="fa-solid fa-dice-d20"></i></a>
-          <span>{{label}}</span>
-        </div>
-        <div class="labeledValue">
-          <span>{{data.total}}</span>
-          <span>{{localize "PF1RS.Total"}}</span>
-        </div>
-        <span>=</span>
-        <div class="labeledValue">
-          <span>{{data.base}}</span>
-          <span>{{localize "PF1RS.Base"}}</span>
-        </div>
-        <span>+</span>
-        <div class="labeledValue">
-          <span>{{data.officer}}</span>
-          <span>{{officerLabel}}</span>
-        </div>
-        <span>+</span>
-        <div class="labeledValue">
-          <span>{{data.sentinel}}</span>
-          <span>{{localize "PF1RS.Sentinel"}}</span>
-        </div>
-        <span>+</span>
-        <div class="labeledValue">
-          <span>{{data.other}}</span>
-          <span>{{localize "PF1RS.Other"}}</span>
-        </div>
-      {{/each}}
-    </div>
-  </section>
-
-  <div class="flexrow">
-    <div class="flexcol flex2">
-      <section>
-        <h3>{{localize "PF1RS.ActionsLabel"}}</h3>
-        <div class="actions">
-          <div class="horizLabeledValue">
-            <div class="labeledValue">
-              <span>{{system.maxActions}}</span>
-              <span>{{localize "PF1RS.Total"}}</span>
-            </div>
-            <span>=</span>
-            <div class="labeledValue">
-              <span>{{actions.rank}}</span>
-              <span>{{localize "PF1RS.Rank"}}</span>
-            </div>
-            <span>+</span>
-            <div class="labeledValue">
-              <span>{{actions.strategist}}</span>
-              <span>{{localize "PF1RS.Strategist"}}</span>
-            </div>
-          </div>
-          <span>{{localize "PF1RS.AvailableActions"}}</span>
-          {{#each actions.available}}
-            <div class="horizLabeledValue">
-              {{#if available}}
-                <i class="fa-regular fa-square-check"></i>
-              {{else}}
-                <i class="fa-regular fa-square"></i>
-              {{/if}}
-              <span>{{label}}</span>
-              {{#if compendiumEntry}}
-                <a class="compendium-entry" data-compendium-entry="{{compendiumEntry}}"><i
-                    class="fa-solid fa-book"
-                  ></i></a>
-              {{/if}}
-            </div>
-          {{/each}}
-        </div>
-      </section>
-
-      <section>
-        <h3>{{localize "PF1RS.Events"}}</h3>
-        <div class="eventChance">
-          <a class="rollable">
-            <i class="fa-solid fa-dice-d20" data-tooltip={{localize "PF1RS.RollEvent"}}></i>
-          </a>
-          <div class="labeledValue">
-            <span>{{eventChance}} %</span>
-            <span>{{localize "PF1RS.EventChance"}}</span>
-          </div>
-          <span>=</span>
-          <div class="labeledValue">
-            <span>{{system.notoriety}}</span>
-            <span>{{localize "PF1RS.Notoriety"}}</span>
-          </div>
-          <span>+</span>
-          <div class="labeledValue">
-            <span>{{system.danger.total}}</span>
-            <span>{{localize "PF1RS.Danger"}}</span>
-          </div>
-          <div class="labeledValue">
-            <input type="checkbox" {{checked system.doubleEventChance}} name="system.doubleEventChance" />
-            <label for="{{id}}">x2</label>
-          </div>
-        </div>
-
-        <h4>{{localize "PF1RS.ActiveEvents"}}</h4>
-
-        <div>
-          <ol>
-            <li class="horizLabeledValue">
-              <span>{{localize "PF1RS.Persistent"}}?</span>
-              <span>{{localize "PF1RS.Mitigated"}}?</span>
-              <span>{{localize "PF1RS.EventName"}}</span>
-            </li>
-            {{#each events}}
-              <li class="item horizLabeledValue" data-id="{{id}}">
-                <input
-                  class="item-toggle-data"
-                  type="checkbox"
-                  {{checked system.persistent}}
-                  name="system.persistent"
-                  data-name="persistent"
-                />
-                <input
-                  class="item-toggle-data"
-                  type="checkbox"
-                  {{checked system.mitigated}}
-                  name="system.mitigated"
-                  data-name="mitigated"
-                />
-                <span>{{name}}</span>
-                <a class="item-edit">
-                  <i class="fa-solid fa-pen-to-square" data-tooltip={{localize "PF1RS.EditItem"}}></i>
-                </a>
-                <a class="item-delete">
-                  <i class="fa-solid fa-trash" data-tooltip={{localize "PF1RS.DeleteItem"}}></i>
-                </a>
-              </li>
-            {{/each}}
-          </ol>
-        </div>
-      </section>
-    </div>
-
-    <div class="flexcol flex3">
-      <section>
-        <h3>{{localize "PF1RS.Officers"}}</h3>
-        <div class="officers">
-          {{#each officers}}
-            <span>{{label}}</span>
-            <select name="system.officers.{{id}}.actorId">
-              {{selectOptions @root.validOfficerChoices selected=actorId}}
-            </select>
-            <span>+</span>
-            <span>{{bonus}}</span>
-            <span>{{bonusType}}</span>
-          {{/each}}
-        </div>
-      </section>
-
-      <section class="teams">
-        <h3>{{localize "PF1RS.TeamsLabel"}}</h3>
-        <div class="flexcol">
-          <div class="flexrow">
-            <span>{{localize "PF1RS.Name"}}</span>
-            <span>{{localize "PF1RS.TeamType"}}</span>
-            <span>{{localize "PF1RS.Manager"}}</span>
-            <span>{{localize "PF1RS.TeamSize"}}</span>
-            <span>{{localize "PF1RS.Bonus"}}</span>
-            <span>{{localize "PF1RS.Condition"}}</span>
-          </div>
-          {{#each teams}}
-            <div class="flexrow item" data-id="{{id}}">
-              <span>{{name}}</span>
-              <span>{{typeLabel}}</span>
-              <span>{{system.managerName}}</span>
-              <span>{{system.size}}</span>
-              <span>{{system.bonus}}</span>
-              <input
-                type="checkbox"
-                disabled
-                name="system.conditions.disabled"
-                {{checked system.conditions.disabled}}
-              />
-              <span>Disabled</span>
-              <input type="checkbox" disabled name="system.conditions.missing" {{checked system.conditions.missing}} />
-              <span>Missing</span>
-              <a class="item-edit">
-                <i class="fa-solid fa-pen-to-square" data-tooltip={{localize "PF1RS.EditItem"}}></i>
-              </a>
-              <a class="item-delete">
-                <i class="fa-solid fa-trash" data-tooltip={{localize "PF1RS.DeleteItem"}}></i>
-              </a>
-            </div>
-          {{/each}}
-          <div class="labeledValue">
-            <span>{{maxTeams}}</span>
-            <span>{{localize "PF1RS.MaxTeams"}}</span>
-          </div>
-        </div>
-        <div>
-
-        </div>
-      </section>
-
-      <section class="allies">
-        <h3>{{localize "PF1RS.Allies"}}</h3>
-        <div>
-
-        </div>
-      </section>
-    </div>
-  </div>
 </form>

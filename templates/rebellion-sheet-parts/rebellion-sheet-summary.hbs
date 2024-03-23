@@ -1,0 +1,85 @@
+<div class="header">
+  <img class="profile" src="{{ img }}" data-edit="img" />
+
+  <div class="flex-col">
+    <h1 class="flex-0">
+      <input type="text" name="name" value="{{ name }}" data-dtype="String" />
+    </h1>
+
+    <div class="details">
+      <span>{{localize "PF1RS.Rank"}}:</span>
+      <div class="horizLabeledValue">
+        {{numberInput system.rank name="system.rank" step=1 min=1 max=system.maxRank}}
+        {{#if rankUpIndicator}}
+        <i class="fa-regular fa-circle-exclamation error" data-tooltip="PF1RS.AvailableRankUp"></i>
+        {{/if}}
+      </div>
+
+      <span>{{localize "PF1RS.MaxRank"}}:</span>
+      {{#if isGM}}
+      {{numberInput system.maxRank name="system.maxRank" step=1 min=5 max=20}}
+      {{else}}
+      <span>{{ system.maxRank }}</span>
+      {{/if}}
+
+      <span>{{localize "PF1RS.Focus"}}:</span>
+      <select name="system.focus" data-dtype="String">
+        {{selectOptions focusOptions selected=system.focus blank=""}}
+      </select>
+
+      <span>{{localize "PF1RS.Membership"}}:</span>
+      {{numberInput system.membership name="system.membership" step=1 min=0}}
+
+      <span>{{localize "PF1RS.Supporters"}}:</span>
+      {{numberInput system.supporters name="system.supporters" step=1 min=0 max=system.population}}
+
+      <span>{{localize "PF1RS.Population"}}:</span>
+      <span>{{ system.population }}</span>
+
+      <span>{{localize "PF1RS.Treasury"}}:</span>
+      {{numberInput system.treasury name="system.treasury" step=1}}
+
+      <span>{{localize "PF1RS.MinTreasury"}}:</span>
+      <span>{{ system.minTreasury }}</span>
+
+      <span>{{localize "PF1RS.Notoriety"}}:</span>
+      {{numberInput system.notoriety name="system.notoriety" step=1 min=0 max=100}}
+    </div>
+  </div>
+</div>
+
+<div class="flex0">
+  <h3>{{localize "PF1RS.OrgChecks"}}</h3>
+  <div class="checks">
+    {{#each checks}}
+    <div class="flexrow org-check" data-orgcheck="{{ id }}">
+      <a class="rollable"><i class="fa-solid fa-dice-d20"></i></a>
+      <span>{{ label }}</span>
+    </div>
+    <div class="labeledValue">
+      <span>{{ data.total }}</span>
+      <span>{{localize "PF1RS.Total"}}</span>
+    </div>
+    <span>=</span>
+    <div class="labeledValue">
+      <span>{{ data.base }}</span>
+      <span>{{localize "PF1RS.Base"}}</span>
+    </div>
+    <span>+</span>
+    <div class="labeledValue">
+      <span>{{ data.officer }}</span>
+      <span>{{ officerLabel }}</span>
+    </div>
+    <span>+</span>
+    <div class="labeledValue">
+      <span>{{ data.sentinel }}</span>
+      <span>{{localize "PF1RS.Sentinel"}}</span>
+    </div>
+    <span>+</span>
+    <div class="labeledValue">
+      <span>{{ data.other }}</span>
+      <span>{{localize "PF1RS.Other"}}</span>
+    </div>
+    {{/each}}
+  </div>
+</div>
