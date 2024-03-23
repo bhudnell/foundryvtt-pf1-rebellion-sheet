@@ -26,12 +26,11 @@
       <span>{{localize "PF1RS.Change"}}</span>
       <span>{{localize "PF1RS.Target"}}</span>
       <a class="add-change"><i class="fa-solid fa-plus"></i></a>
-      {{#each system.changes as |change idx|}}
+      {{#each changes as |change idx|}}
         <input type="hidden" value="{{id}}" name="system.changes.{{idx}}.id" />
+        <input type="hidden" value="{{ability}}" name="system.changes.{{idx}}.ability" />
         <input type="number" value="{{bonus}}" name="system.changes.{{idx}}.bonus" step="1" placeholder="Formula" />
-        <select name="system.changes.{{idx}}.ability">
-          {{selectOptions @root.changeTargetOptions selected=ability blank=""}}
-        </select>
+        <span class="change-target" data-change="{{id}}">{{abilityLabel}}</span>
         <a class="delete-change" data-change="{{id}}"><i class="fa-solid fa-trash"></i></a>
       {{/each}}
     </div>

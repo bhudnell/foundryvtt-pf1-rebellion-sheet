@@ -1,8 +1,8 @@
 import {
   CFG,
   actions,
+  allChangeTargets,
   alwaysAvailableActions,
-  changeTargets,
   maxActions,
   maxTeams,
   orgCheckOfficer,
@@ -186,7 +186,9 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
 
     // calculate other (changes)
     const changes = this.changes.filter((c) => ["allOrgChecks", orgCheckId].includes(c.ability));
-    changes.forEach((c) => parts.push(`${c.bonus}[${c.parentName}: ${game.i18n.localize(changeTargets[c.ability])}]`));
+    changes.forEach((c) =>
+      parts.push(`${c.bonus}[${c.parentName}: ${game.i18n.localize(allChangeTargets[c.ability])}]`)
+    );
 
     const label = game.i18n.localize(orgChecks[orgCheckId]);
     const token = options.token ?? this.token;

@@ -136,12 +136,21 @@ export const orgOfficers = {
   security: "PF1RS.Partisan",
 };
 
-export const changeTargets = {
-  danger: "PF1RS.Danger",
+export const orgCheckChangeTargets = {
   allOrgChecks: "PF1RS.AllOrgChecks",
   loyalty: "PF1RS.Loyalty",
   secrecy: "PF1RS.Secrecy",
   security: "PF1RS.Security",
+};
+
+export const miscChangeTargets = {
+  danger: "PF1RS.Danger",
+};
+
+export const allChangeTargets = {
+  ...orgCheckChangeTargets,
+  ...actions,
+  ...miscChangeTargets,
 };
 
 export const teamTypes = {

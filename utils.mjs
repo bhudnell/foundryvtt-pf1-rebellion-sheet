@@ -1,3 +1,5 @@
+import { actions, miscChangeTargets, orgCheckChangeTargets } from "./config.mjs";
+
 export function getRankFromSupporters(supporters) {
   if (supporters > 5349) {
     return 20;
@@ -65,7 +67,27 @@ export async function rollEventTable(event, message) {
   const actor = ChatMessage.getSpeakerActor(message.speaker);
 
   const danger = actor.system.danger.total;
-  const table = await fromUuid("Compendium.pf1-rebellion-sheet.roll-tables.RollTable.EcWktui1hmf6I6rq"); // TODO right UUID from compendium once made
+  const table = await fromUuid("Compendium.pf1-rebellion-sheet.roll-tables.RollTable.lwDFVwZyV70DxBOj"); // TODO right UUID from compendium once made
   const roll = new pf1.dice.RollPF(`1d100 + ${danger}[${game.i18n.localize("PF1RS.Danger")}]`);
   return table.draw({ roll });
+}
+
+export function getChangeCategories() {
+  return [
+    {
+      key: "checks",
+      label: game.i18n.localize("PF1RS.OrgChecks"),
+      items: Object.entries(orgCheckChangeTargets).map(([key, label]) => ({ key, label: game.i18n.localize(label) })),
+    },
+    {
+      key: "actions",
+      label: game.i18n.localize("PF1RS.ActionsLabel"),
+      items: Object.entries(actions).map(([key, label]) => ({ key, label: game.i18n.localize(label) })),
+    },
+    {
+      key: "misc",
+      label: game.i18n.localize("PF1RS.Misc"),
+      items: Object.entries(miscChangeTargets).map(([key, label]) => ({ key, label: game.i18n.localize(label) })),
+    },
+  ];
 }
