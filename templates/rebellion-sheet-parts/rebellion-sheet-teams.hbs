@@ -4,6 +4,7 @@
     <li class="flexrow item-list-header">
       <span class="item-name">{{ label }}</span>
       <span class="item-detail item-type">{{localize "PF1RS.TeamType"}}</span>
+      <span class="item-detail item-tier">{{localize "PF1RS.TeamTier"}}</span>
       <span class="item-detail item-manager">{{localize "PF1RS.Manager"}}</span>
       <span class="item-detail item-size">{{localize "PF1RS.TeamSize"}}</span>
       <span class="item-detail item-bonus">{{localize "PF1RS.Bonus"}}</span>
@@ -26,7 +27,8 @@
         <div class="item-image" style="background-image: url('{{ img }}')"></div>
         <span>{{ name }}</span>
       </div>
-      <span class="item-detail item-type">{{ typeLabel }}</span>
+      <span class="item-detail item-type">{{ baseTypeLabel }}</span>
+      <span class="item-detail item-tier">{{ system.tier }}</span>
       <span class="item-detail item-manager">{{ system.managerName }}</span>
       <span class="item-detail item-size">{{ system.size }}</span>
       <span class="item-detail item-bonus">{{ system.bonus }}</span>

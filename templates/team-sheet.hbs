@@ -12,9 +12,13 @@
       <select name="system.subType">
         {{selectOptions subTypeChoices selected=system.subType}}
       </select>
-      <select name="system.type">
-        {{selectOptions teamTypeChoices selected=system.type}}
+      <select name="system.baseType">
+        {{selectOptions baseTypeChoices selected=system.baseType}}
       </select>
+      <div class="flexrow">
+        <span>Tier:</span>
+        <input type="number" step="1" name="system.tier" value="{{ system.tier }}" />
+      </div>
       <select name="system.managerId">
         {{selectOptions validManagerChoices selected=system.managerId}}
       </select>

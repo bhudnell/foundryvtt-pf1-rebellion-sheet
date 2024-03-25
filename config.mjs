@@ -153,7 +153,7 @@ export const allChangeTargets = {
   ...miscChangeTargets,
 };
 
-export const teamTypes = {
+export const teamBaseTypes = {
   stp: "PF1RS.Teams.StreetPerformers",
   rum: "PF1RS.Teams.Rumormongers",
   agi: "PF1RS.Teams.Agitators",

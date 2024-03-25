@@ -9,16 +9,20 @@ import {
   rebellionAllyId,
   rebellionEventId,
   rebellionTeamId,
-  teamTypes,
+  teamBaseTypes,
 } from "../config.mjs";
 import { getRankFromSupporters } from "../utils.mjs";
 
 // TODO track safehouses +1 security for each max +5
-/* TODO rolls:
+// TODO misc changes section to.... events?
+// TODO add tier to team
+// TODO add "unique" to team types
+// TODO add vertical scroll bars
+// TODO actions show what teams can do them ????
+// TODO add multiple recruiters
+// TODO item sheets' CSS
+/* TODO roll buttons:
 - notoriety: d100 <= notoriety score
-- supporter attrition: DC 10 Loyalty On success lose 1d6 supporters. If nat 20, gain 1d6 supporters. On failed lose 2d4 + rank supporters.
-- notoriety max: notoriety = 100 lose 1d20 + rank supporters and pop
-- treasury shortage: treasury < min lose 2d4 + rank supporters
 */
 // TODO strip more stuff out of unpacked compendia
 
@@ -170,7 +174,7 @@ export class RebellionSheet extends ActorSheet {
       teams: [],
     };
     teams.forEach((team) => {
-      team.typeLabel = game.i18n.localize(teamTypes[team.system.type]);
+      team.baseTypeLabel = game.i18n.localize(teamBaseTypes[team.system.baseType]);
       if (team.system.subType === general.subType) {
         general.teams.push(team);
       } else if (team.system.subType === unique.subType) {

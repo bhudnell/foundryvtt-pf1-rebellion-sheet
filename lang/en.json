@@ -64,6 +64,7 @@
 
     "TeamsLabel": "Teams",
     "TeamType": "Type",
+    "TeamTier": "Tier",
     "TeamSize": "Size",
     "Manager": "Manager",
     "Condition": "Condition",

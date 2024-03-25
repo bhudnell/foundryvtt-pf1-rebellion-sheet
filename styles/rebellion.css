@@ -196,6 +196,10 @@
         flex: 0 0 100px;
       }
 
+      &.item-tier {
+        flex: 0 0 32px;
+      }
+
       &.item-manager {
         flex: 0 0 200px;
       }

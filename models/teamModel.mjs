@@ -4,7 +4,9 @@ export class TeamModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     return {
-      type: new fields.StringField(),
+      subType: new fields.StringField({ initial: "general", choices: Object.keys(teamSubTypes) }),
+      baseType: new fields.StringField(), // type of team from teamBaseType definition
+      tier: new fields.NumberField(),
       cost: new fields.NumberField(),
       recruitment: new fields.SchemaField({
         dc: new fields.NumberField(),
@@ -18,7 +20,6 @@ export class TeamModel extends foundry.abstract.TypeDataModel {
       managerId: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
       disabled: new fields.BooleanField({ initial: false }),
       missing: new fields.BooleanField({ initial: false }),
-      subType: new fields.StringField({ initial: "general", choices: Object.keys(teamSubTypes) }),
     };
   }
 

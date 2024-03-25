@@ -1,4 +1,4 @@
-import { CFG, actions, teamSubTypes, teamTypes } from "../config.mjs";
+import { CFG, actions, teamSubTypes, teamBaseTypes } from "../config.mjs";
 
 export class TeamSheet extends ItemSheet {
   static get defaultOptions() {
@@ -24,9 +24,9 @@ export class TeamSheet extends ItemSheet {
     data.subTypeChoices = subTypeChoices;
 
     // team types
-    const teamTypeChoices = { "": "" };
-    Object.entries(teamTypes).forEach(([key, label]) => (teamTypeChoices[key] = game.i18n.localize(label)));
-    data.teamTypeChoices = teamTypeChoices;
+    const baseTypeChoices = { "": "" };
+    Object.entries(teamBaseTypes).forEach(([key, label]) => (baseTypeChoices[key] = game.i18n.localize(label)));
+    data.baseTypeChoices = baseTypeChoices;
 
     // manager choices TODO maybe only change from rebellion sheet?
     // TODO only officers on parent sheet can be managers
