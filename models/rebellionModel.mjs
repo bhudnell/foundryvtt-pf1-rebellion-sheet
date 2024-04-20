@@ -340,5 +340,21 @@ function defineOfficer(name) {
           return 0;
       }
     }
+
+    get maxTeams() {
+      const officer = game.actors.get(this.actorId);
+
+      if (!officer) {
+        return 0;
+      }
+
+      const hasNbl = officer.itemTypes.feat.some(
+        (i) => i.name.includes("Natural Born Leader") && i.system.subType === "trait"
+      );
+
+      const chaMod = hasNbl ? Math.max(2, officer.system.abilities.cha.mod + 1) : officer.system.abilities.cha.mod;
+
+      return Math.max(0, chaMod);
+    }
   };
 }

@@ -53,6 +53,7 @@
     },
 
     "Officers": "Officers",
+    "Officer": "Officer",
     "Demagogue": "Demagogue",
     "Partisan": "Partisan",
     "Recruiter": "Recruiter",
@@ -61,6 +62,8 @@
     "Strategist": "Strategist",
     "OfficerBonusAction": "action",
     "OfficerBonusSecondary": "to secondary",
+    "Position": "Position",
+    "TeamsManaged": "Teams Managed",
 
     "TeamsLabel": "Teams",
     "Team": "Team",

@@ -14,16 +14,18 @@ import {
 import { getRankFromSupporters } from "../utils.mjs";
 
 // TODO track safehouses +1 security for each max +5
-// TODO misc changes section to.... events?
+// TODO add what week the rebellion is in to rebellion model/sheet
+// TODO add "advance week" button that clears out appropriate data (safehouses?, non persistent active events, anything else)
+// TODO misc subtype to event model and misc section to rebellion sheet events file
 // TODO add vertical scroll bars
-// TODO show number of teams officer can manage
 // TODO actions show what teams can do them ????
 // TODO add multiple recruiters
-// TODO item sheets' CSS
 /* TODO roll buttons:
 - notoriety: d100 <= notoriety score
 */
-// TODO strip more stuff out of unpacked compendia
+// TODO make events and teams for compendiums
+// TODO edit rebellion event roll table to point to created events
+// TODO strip more stuff out of unpacked compendiums
 
 export class RebellionSheet extends ActorSheet {
   static get defaultOptions() {
@@ -138,6 +140,11 @@ export class RebellionSheet extends ActorSheet {
       officer.name = actorData.officers[officer.id].name;
       officer.bonus = actorData.officers[officer.id].bonus;
       officer.bonusType = game.i18n.localize(officerBonuses[officer.id]);
+      officer.maxTeamsManaged = actorData.officers[officer.id].maxTeams;
+      officer.currTeamsManaged = this.actor.itemTypes[rebellionTeamId].reduce(
+        (total, t) => total + (t.system.managerId === officer.actorId ? 1 : 0),
+        0
+      );
     }
     const officerChoices = { "": "" };
     game.actors

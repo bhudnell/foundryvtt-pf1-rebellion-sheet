@@ -1,11 +1,18 @@
-<div class="grid">
+<ol class="item-list">
+  <li class="flexrow item-list-header">
+    <span class="item-detail item-position">{{localize "PF1RS.Position"}}</span>
+    <span class="item-name">{{localize "PF1RS.Officer"}}</span>
+    <span class="item-detail item-officer-bonus">{{localize "PF1RS.Bonus"}}</span>
+    <span class="item-detail item-teams-managed">{{localize "PF1RS.TeamsManaged"}}</span>
+  </li>
   {{#each officers}}
-  <span>{{ label }}</span>
-  <select name="system.officers.{{ id }}.actorId">
-    {{selectOptions @root.validOfficerChoices selected=actorId}}
-  </select>
-  <span>+</span>
-  <span>{{ bonus }}</span>
-  <span>{{ bonusType }}</span>
+  <li class="flexrow item officer">
+    <span class="item-detail item-position">{{ label }}</span>
+    <select class="item-name" name="system.officers.{{ id }}.actorId">
+      {{selectOptions @root.validOfficerChoices selected=actorId}}
+    </select>
+    <span class="item-detail item-officer-bonus">+ {{ bonus }} {{ bonusType }}</span>
+    <span class="item-detail item-teams-managed">{{ currTeamsManaged }} / {{ maxTeamsManaged }}</span>
+  </li>
   {{/each}}
-</div>
+</ol>

@@ -36,18 +36,6 @@
     }
   }
 
-  .tab.officers {
-    margin-top: 8px;
-
-    .grid {
-      display: grid;
-      grid-template-columns: auto 1fr auto auto auto;
-      justify-items: center;
-      align-items: center;
-      gap: 8px;
-    }
-  }
-
   .tab.actions {
     .actionlist {
       display: flex;
@@ -82,6 +70,10 @@
   .item-list {
     padding: 0;
     list-style: none;
+
+    .officer {
+      padding-left: 2px;
+    }
 
     .item-list-header {
       margin: 2px 0;
@@ -187,6 +179,18 @@
 
       &.item-mitigated {
         flex: 0 0 62px;
+      }
+
+      &.item-position {
+        flex: 0 0 80px;
+      }
+
+      &.item-officer-bonus {
+        flex: 0 0 100px;
+      }
+
+      &.item-teams-managed {
+        flex: 0 0 90px;
       }
 
       &.item-check {
