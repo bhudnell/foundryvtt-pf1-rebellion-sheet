@@ -1,7 +1,10 @@
+import { eventSubTypes } from "../config.mjs";
+
 export class EventModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     return {
+      subType: new fields.StringField({ initial: "active", choices: Object.keys(eventSubTypes) }),
       description: new fields.HTMLField(),
       persistent: new fields.BooleanField({ initial: false }),
       mitigated: new fields.BooleanField({ initial: false }),

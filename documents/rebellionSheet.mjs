@@ -2,6 +2,7 @@ import {
   CFG,
   actionCompendiumEntries,
   actions,
+  itemSubTypes,
   maxActions,
   maxTeams,
   officerBonuses,
@@ -16,7 +17,6 @@ import { getRankFromSupporters } from "../utils.mjs";
 // TODO track safehouses +1 security for each max +5
 // TODO add what week the rebellion is in to rebellion model/sheet
 // TODO add "advance week" button that clears out appropriate data (safehouses?, non persistent active events, anything else)
-// TODO misc subtype to event model and misc section to rebellion sheet events file
 // TODO add vertical scroll bars
 // TODO actions show what teams can do them ????
 // TODO add multiple recruiters
@@ -102,7 +102,7 @@ export class RebellionSheet extends ActorSheet {
     // item types
     data.teamSections = this._prepareTeams();
     data.teamType = rebellionTeamId;
-    data.events = actor.itemTypes[rebellionEventId] ?? [];
+    data.eventSections = this._prepareEvents();
     data.eventType = rebellionEventId;
     data.allies = actor.itemTypes[rebellionAllyId] ?? [];
     data.allyType = rebellionAllyId;
@@ -185,6 +185,31 @@ export class RebellionSheet extends ActorSheet {
     });
 
     return [general, unique];
+  }
+
+  _prepareEvents() {
+    const events = this.actor.itemTypes[rebellionEventId];
+    const active = {
+      label: game.i18n.localize("PF1RS.Events.SubTypes.Active"),
+      showFlags: true,
+      subType: "active",
+      events: [],
+    };
+    const misc = {
+      label: game.i18n.localize("PF1RS.Events.SubTypes.Misc"),
+      showFlags: false,
+      subType: "misc",
+      events: [],
+    };
+    events.forEach((event) => {
+      if (event.system.subType === active.subType) {
+        active.events.push(event);
+      } else if (event.system.subType === misc.subType) {
+        misc.events.push(event);
+      }
+    });
+
+    return [active, misc];
   }
 
   activateListeners(html) {
@@ -280,7 +305,9 @@ export class RebellionSheet extends ActorSheet {
 
     const type = header.dataset.type;
     const subType = header.dataset.subType;
-    const typeName = game.i18n.localize(CONFIG.Item.typeLabels[type] || type);
+    const typeName =
+      (itemSubTypes[subType] ? `${game.i18n.localize(itemSubTypes[subType])} ` : "") +
+      game.i18n.localize(CONFIG.Item.typeLabels[type] || type);
 
     const itemData = {
       name: game.i18n.format("PF1.NewItem", { type: typeName }),

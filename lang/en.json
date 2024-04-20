@@ -100,7 +100,7 @@
       }
     },
 
-    "Events": "Events",
+    "EventsLabel": "Events",
     "Event": "Event",
     "EventChance": "Event Chance",
     "EventChanceRoll": "Event Chance: {chance}%",
@@ -108,16 +108,21 @@
     "NoEvent": "No Event Occurred",
     "EventOccurred": "Event Occurred",
     "Danger": "Danger",
-    "ActiveEvents": "Active Events",
-    "EventName": "Event Name",
-    "Change": "Change",
-    "Misc": "Miscellaneous",
-    "Target": "Target",
+    "Events": {
+      "SubTypes": {
+        "Active": "Active",
+        "Misc": "Miscellaneous"
+      }
+    },
 
     "Allies": "Allies",
     "Ally": "Ally",
 
     "Notes": "Notes",
+
+    "Change": "Change",
+    "Misc": "Miscellaneous",
+    "Target": "Target",
 
     "FromRank": "From Rank",
     "FromBonus": "From Bonus",
@@ -149,9 +154,9 @@
     },
     "Item": {
       "pf1-rebellion-sheet": {
-        "event": "Rebellion Event",
-        "team": "Rebellion Team",
-        "ally": "Rebellion Ally"
+        "event": "Event",
+        "team": "Team",
+        "ally": "Ally"
       }
     }
   }

@@ -153,6 +153,11 @@ export const allChangeTargets = {
   ...miscChangeTargets,
 };
 
+export const eventSubTypes = {
+  active: "PF1RS.Events.SubTypes.Active",
+  misc: "PF1RS.Events.SubTypes.Misc",
+};
+
 export const teamBaseTypes = {
   stp: "PF1RS.Teams.StreetPerformers",
   rum: "PF1RS.Teams.Rumormongers",
@@ -175,4 +180,9 @@ export const teamBaseTypes = {
 export const teamSubTypes = {
   general: "PF1RS.Teams.SubTypes.General",
   unique: "PF1RS.Teams.SubTypes.Unique",
+};
+
+export const itemSubTypes = {
+  ...eventSubTypes,
+  ...teamSubTypes,
 };
