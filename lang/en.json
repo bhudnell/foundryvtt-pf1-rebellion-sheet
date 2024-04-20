@@ -63,6 +63,7 @@
     "OfficerBonusSecondary": "to secondary",
 
     "TeamsLabel": "Teams",
+    "Team": "Team",
     "TeamType": "Type",
     "TeamTier": "Tier",
     "TeamSize": "Size",
@@ -97,6 +98,7 @@
     },
 
     "Events": "Events",
+    "Event": "Event",
     "EventChance": "Event Chance",
     "EventChanceRoll": "Event Chance: {chance}%",
     "RollEvent": "Roll Event",
@@ -110,6 +112,7 @@
     "Target": "Target",
 
     "Allies": "Allies",
+    "Ally": "Ally",
 
     "Notes": "Notes",
 
@@ -120,6 +123,8 @@
     "Other": "Other",
     "Bonus": "Bonus",
     "Name": "Name",
+    "Description": "Description",
+    "Details": "Details",
 
     "EditItem": "Edit Item",
     "DeleteItem": "Delete Item",

@@ -5,8 +5,16 @@ export class TeamSheet extends ItemSheet {
     const options = super.defaultOptions;
     return {
       ...options,
-      template: `modules/${CFG.id}/templates/team-sheet.hbs`,
-      classes: [...options.classes, "rebellion", "team"],
+      template: `modules/${CFG.id}/templates/item-sheet.hbs`,
+      classes: [...options.classes, "rebellion", "item", "team"],
+      tabs: [
+        {
+          navSelector: "nav.tabs[data-group='primary']",
+          contentSelector: "section.primary-body",
+          initial: "description",
+          group: "primary",
+        },
+      ],
     };
   }
 
@@ -15,8 +23,24 @@ export class TeamSheet extends ItemSheet {
 
     const data = {
       ...item,
+      isTeam: true,
+      type: game.i18n.localize("PF1RS.Team"),
+      isUnique: item.system.subType === "unique",
       enrichedDesc: await TextEditor.enrichHTML(item.system.description),
     };
+
+    data.states = [
+      {
+        field: "system.disabled",
+        value: item.system.disabled,
+        label: game.i18n.localize("PF1RS.Disabled"),
+      },
+      {
+        field: "system.missing",
+        value: item.system.missing,
+        label: game.i18n.localize("PF1RS.Missing"),
+      },
+    ];
 
     // sub-types
     const subTypeChoices = {};
@@ -28,16 +52,15 @@ export class TeamSheet extends ItemSheet {
     Object.entries(teamBaseTypes).forEach(([key, label]) => (baseTypeChoices[key] = game.i18n.localize(label)));
     data.baseTypeChoices = baseTypeChoices;
 
-    // manager choices TODO maybe only change from rebellion sheet?
-    // TODO only officers on parent sheet can be managers
+    // manager choices, only officers from parent sheet can be managers
     const managerChoices = { "": "" };
-    game.actors
-      .filter((actor) => actor.permission > 0 && (actor.type === "character" || actor.type === "npc"))
-      .forEach((actor) => (managerChoices[actor.id] = actor.name));
+    if (item.parent) {
+      Object.values(item.parent.system.officers).forEach((officer) => (managerChoices[officer.actorId] = officer.name));
+    }
     data.validManagerChoices = managerChoices;
 
     // actions
-    data.actionLabels = item.system.actions.value.map((action) => game.i18n.localize(actions[action]));
+    data.actions = item.system.actions.value.map((action) => game.i18n.localize(actions[action])).join(", ");
 
     return data;
   }

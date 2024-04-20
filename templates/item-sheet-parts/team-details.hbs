@@ -1,0 +1,53 @@
+<div class="form-group">
+  <label>Team</label>
+  <div class="form-fields">
+    {{#if isUnique}}
+    <span>{{localize "PF1RS.Teams.SubTypes.Unique"}}</span>
+    {{else}}
+    <select name="system.baseType">
+      {{selectOptions baseTypeChoices selected=system.baseType}}
+    </select>
+    {{/if}}
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Tier</label>
+  <div class="form-fields">
+    <input type="number" step="1" name="system.tier" value="{{ system.tier }}" />
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Size</label>
+  <div class="form-fields">
+    <input type="number" step="1" name="system.size" value="{{ system.size }}" />
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Manager</label>
+  <div class="form-fields">
+    <select name="system.managerId">
+      {{selectOptions validManagerChoices selected=system.managerId}}
+    </select>
+    <div class="flex0">
+      <span>Bonus</span>
+      <span>{{ system.bonus }}</span>
+    </div>
+  </div>
+</div>
+
+<h4 class="section-header">Granted Actions</h4>
+
+<div class="form-group">
+  <span>{{ actions }}</span>
+  <a class="flex0 edit-actions" data-tooltip="PF1RS.EditItem">
+    <i class="fa-solid fa-pen-to-square"></i>
+  </a>
+</div>
+
+<h4 class="section-header">Type</h4>
+<select name="system.subType">
+  {{selectOptions subTypeChoices selected=system.subType}}
+</select>

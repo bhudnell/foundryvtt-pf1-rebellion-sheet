@@ -6,8 +6,16 @@ export class EventSheet extends ItemSheet {
     const options = super.defaultOptions;
     return {
       ...options,
-      template: `modules/${CFG.id}/templates/event-sheet.hbs`,
-      classes: [...options.classes, "rebellion", "event"],
+      template: `modules/${CFG.id}/templates/item-sheet.hbs`,
+      classes: [...options.classes, "rebellion", "item", "event"],
+      tabs: [
+        {
+          navSelector: "nav.tabs[data-group='primary']",
+          contentSelector: "section.primary-body",
+          initial: "description",
+          group: "primary",
+        },
+      ],
     };
   }
 
@@ -16,8 +24,23 @@ export class EventSheet extends ItemSheet {
 
     const data = {
       ...item,
+      isEvent: true,
+      type: game.i18n.localize("PF1RS.Event"),
       enrichedDesc: await TextEditor.enrichHTML(item.system.description),
     };
+
+    data.states = [
+      {
+        field: "system.persistent",
+        value: item.system.persistent,
+        label: game.i18n.localize("PF1RS.Persistent"),
+      },
+      {
+        field: "system.mitigated",
+        value: item.system.mitigated,
+        label: game.i18n.localize("PF1RS.Mitigated"),
+      },
+    ];
 
     data.changes = item.system.changes.map((c) => ({
       ...c,

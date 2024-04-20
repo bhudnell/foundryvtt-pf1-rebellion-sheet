@@ -15,9 +15,8 @@ import { getRankFromSupporters } from "../utils.mjs";
 
 // TODO track safehouses +1 security for each max +5
 // TODO misc changes section to.... events?
-// TODO add tier to team
-// TODO add "unique" to team types
 // TODO add vertical scroll bars
+// TODO show number of teams officer can manage
 // TODO actions show what teams can do them ????
 // TODO add multiple recruiters
 // TODO item sheets' CSS
@@ -32,7 +31,7 @@ export class RebellionSheet extends ActorSheet {
     return {
       ...options,
       template: `modules/${CFG.id}/templates/rebellion-sheet.hbs`,
-      classes: [...options.classes, "rebellion", "sheet"],
+      classes: [...options.classes, "rebellion", "actor"],
       tabs: [
         {
           navSelector: "nav.tabs[data-group='primary']",
@@ -153,10 +152,6 @@ export class RebellionSheet extends ActorSheet {
       bonus: 0,
       max: maxTeams[actorData.rank],
     };
-    // TODO move below to team sheet (or figure out how to update team item from here)
-    const managerChoices = { "": "" };
-    data.officers.forEach((officer) => (managerChoices[officer.actorId] = officer.name));
-    data.validManagerChoices = managerChoices;
 
     return data;
   }

@@ -1,50 +1,11 @@
-.app.sheet.rebellion.sheet {
+.app.sheet.rebellion.actor {
   min-width: 650px;
   min-height: 650px;
 
-  .sheet-navigation {
-    flex: 0;
-
-    background: rgba(155, 155, 155, 0.3);
-    border: 1px solid transparent;
-    border-radius: 0.75rem 0.75rem 0 0;
-    /* font-size: var(--font-size-20, 1.25rem); */
-    column-gap: 2px;
-
-    .item {
-      line-height: 1.3rem;
-      height: 1.3rem;
-      margin: 0;
-      white-space: nowrap;
-      border: 1px solid transparent;
-      border-radius: 0.75rem 0.75rem 0 0;
-      flex: 1;
-
-      &.active {
-        background: rgba(155, 155, 155, 0.5);
-      }
-      &:hover {
-        background: rgba(155, 155, 155, 0.2);
-      }
-    }
-
-    &.tabs {
-      border-bottom: 2px groove #eeede0;
-    }
-  }
-
-  .primary-body {
-    flex: 1;
-
-    .tab {
-      height: 100%;
-    }
-  }
-
   .tab.summary {
     .profile {
-      height: 10rem;
-      width: 10rem;
+      height: 160px;
+      width: 160px;
       border: 0;
       border: 2px groove #eeede0;
     }
@@ -71,7 +32,7 @@
       grid-template-rows: repeat(3, 1fr);
       justify-items: center;
       align-items: center;
-      gap: 0.5rem;
+      gap: 8px;
     }
   }
 
@@ -83,7 +44,7 @@
       grid-template-columns: auto 1fr auto auto auto;
       justify-items: center;
       align-items: center;
-      gap: 0.5rem;
+      gap: 8px;
     }
   }
 
@@ -92,7 +53,7 @@
       display: flex;
       flex-direction: column;
       justify-items: center;
-      gap: 0.125rem;
+      gap: 2px;
     }
   }
 
@@ -109,7 +70,7 @@
       display: grid;
       grid-template-columns: auto auto 1fr auto auto;
       align-items: center;
-      gap: 0.125rem;
+      gap: 2px;
     }
   }
 
@@ -132,7 +93,7 @@
 
       .item-name {
         padding-left: 5px;
-        font-size: var(--font-size-12, 0.75rem);
+        font-size: var(--font-size-12, 9pt);
         font-weight: bold;
       }
     }
@@ -184,7 +145,7 @@
 
     .item-detail {
       flex: 0 0 80px;
-      font-size: var(--font-size-12, 0.75rem);
+      font-size: var(--font-size-12, 9pt);
       text-align: center;
       overflow: hidden;
       white-space: nowrap;
@@ -293,5 +254,17 @@
         border-right-style: solid;
       }
     }
+  }
+}
+
+.app.sheet.rebellion.actor h1 input {
+  flex: 0;
+  background: none;
+  height: 40px;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid black;
+    box-shadow: 0 0 8px red;
   }
 }

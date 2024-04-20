@@ -71,5 +71,8 @@ Hooks.once("ready", () => {
     "rebellion-sheet-officers": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-officers.hbs`,
     "rebellion-sheet-summary": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-summary.hbs`,
     "rebellion-sheet-teams": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-teams.hbs`,
+    "item-sheet-ally": `modules/${CFG.id}/templates/item-sheet-parts/ally-details.hbs`,
+    "item-sheet-event": `modules/${CFG.id}/templates/item-sheet-parts/event-details.hbs`,
+    "item-sheet-team": `modules/${CFG.id}/templates/item-sheet-parts/team-details.hbs`,
   });
 });

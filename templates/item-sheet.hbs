@@ -1,0 +1,44 @@
+<form autocomplete="off">
+  <header class="header">
+    <img class="profile" src="{{ img }}" data-edit="img" />
+    <div class="details">
+      <h1>
+        <input type="text" name="name" value="{{ name }}" data-dtype="String" />
+      </h1>
+      <ul class="summary">
+        <li>{{ type }}</li>
+        {{#each states}}
+        <li>
+          <input type="checkbox" name="{{ field }}" {{checked value}} />
+          <label>{{ label }}</label>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </header>
+
+  <nav class="sheet-navigation tabs" data-group="primary">
+    <a class="item" data-tab="description">{{ localize "PF1RS.Description" }}</a>
+    <a class="item" data-tab="details">{{ localize "PF1RS.Details" }}</a>
+  </nav>
+
+  <section class="primary-body">
+    <div class="tab notes flexcol" data-group="primary" data-tab="description">
+      {{editor enrichedDesc target="system.description" button=true engine="prosemirror"}}
+    </div>
+
+    <div class="tab details" data-group="primary" data-tab="details">
+      {{#if isAlly}}
+      {{> item-sheet-ally}}
+      {{/if}}
+
+      {{#if isEvent}}
+      {{> item-sheet-event}}
+      {{/if}}
+
+      {{#if isTeam}}
+      {{> item-sheet-team}}
+      {{/if}}
+    </div>
+  </section>
+</form>

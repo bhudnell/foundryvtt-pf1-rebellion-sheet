@@ -6,8 +6,16 @@ export class AllySheet extends ItemSheet {
     const options = super.defaultOptions;
     return {
       ...options,
-      template: `modules/${CFG.id}/templates/ally-sheet.hbs`,
-      classes: [...options.classes, "rebellion", "ally"],
+      template: `modules/${CFG.id}/templates/item-sheet.hbs`,
+      classes: [...options.classes, "rebellion", "item", "ally"],
+      tabs: [
+        {
+          navSelector: "nav.tabs[data-group='primary']",
+          contentSelector: "section.primary-body",
+          initial: "description",
+          group: "primary",
+        },
+      ],
     };
   }
 
@@ -16,6 +24,8 @@ export class AllySheet extends ItemSheet {
 
     const data = {
       ...item,
+      isAlly: true,
+      type: game.i18n.localize("PF1RS.Ally"),
       enrichedDesc: await TextEditor.enrichHTML(item.system.description),
     };
 

@@ -3,13 +3,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.125rem;
+    gap: 2px;
   }
 
   .horizLabeledValue {
     display: flex;
     align-items: center;
-    gap: 0.125rem;
+    gap: 2px;
   }
 
   .flex-col {
@@ -18,26 +18,66 @@
     flex: 1;
   }
 
-  .flex-0 {
-    flex: 0;
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   .error {
     color: red;
   }
 
+  .sheet-navigation {
+    flex: 0;
+
+    background: rgba(155, 155, 155, 0.3);
+    border: 1px solid transparent;
+    border-radius: 12px 12px 0 0;
+    column-gap: 2px;
+
+    .item {
+      line-height: 20px;
+      height: 20px;
+      margin: 0;
+      white-space: nowrap;
+      border: 1px solid transparent;
+      border-radius: 12px 12px 0 0;
+      flex: 1;
+
+      &.active {
+        background: rgba(155, 155, 155, 0.5);
+      }
+      &:hover {
+        background: rgba(155, 155, 155, 0.2);
+      }
+    }
+
+    &.tabs {
+      border-bottom: 2px groove #eeede0;
+    }
+  }
+
+  .primary-body {
+    flex: 1;
+
+    .tab {
+      height: 100%;
+    }
+  }
+
   :is(.notes, .description) {
-    flex: 1 2rem;
-    gap: 0.25rem;
+    flex: 1 32px;
+    gap: 4px;
   }
 
   :is(.notes, .description) .editor {
     border: 1px solid #ccc;
-    border-radius: 0.5rem;
+    border-radius: 8px;
     flex: 1;
-    padding: 0.25rem 0.5rem;
+    padding: 4px 8px;
     font-size: var(--font-size-14);
-    min-height: 6rem;
+    min-height: 96px;
   }
 
   .change-target {
@@ -50,7 +90,7 @@
     border-radius: 4px;
     text-align: center;
     cursor: pointer;
-    font-size: var(--font-size-12, 0.75rem);
+    font-size: var(--font-size-12, 12px);
 
     &:hover {
       box-shadow: 0 0 8px red;
@@ -59,8 +99,8 @@
 }
 
 .app.sheet.rebellion input[type="number"] {
-  width: 3rem;
-  height: 24px;
+  width: 48px;
+  height: 27px;
   text-align: center;
 }
 
