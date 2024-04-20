@@ -60,6 +60,7 @@
 
   .primary-body {
     flex: 1;
+    overflow: hidden;
 
     .tab {
       height: 100%;

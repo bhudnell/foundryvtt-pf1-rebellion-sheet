@@ -1,5 +1,5 @@
 .app.sheet.rebellion.actor {
-  min-width: 650px;
+  min-width: 750px;
   min-height: 650px;
 
   .tab.summary {
@@ -36,15 +36,6 @@
     }
   }
 
-  .tab.actions {
-    .actionlist {
-      display: flex;
-      flex-direction: column;
-      justify-items: center;
-      gap: 2px;
-    }
-  }
-
   .tab.events {
     .eventChance {
       display: grid;
@@ -52,13 +43,6 @@
       grid-template-rows: 1fr;
       justify-items: center;
       align-items: center;
-    }
-
-    .eventList {
-      display: grid;
-      grid-template-columns: auto auto 1fr auto auto;
-      align-items: center;
-      gap: 2px;
     }
   }
 
@@ -69,6 +53,7 @@
 
   .item-list {
     padding: 0;
+    overflow-y: auto;
     list-style: none;
 
     .officer {
