@@ -1,0 +1,343 @@
+name: Rebellion Events
+img: icons/svg/d20-grey.svg
+description: ''
+results:
+  - type: 2
+    weight: 1
+    range:
+      - 1
+      - 4
+    drawn: false
+    _id: WbaEzCYnaqwCAoCm
+    text: Week of Secrecy
+    documentId: bfGS8MSyschn3CbI
+    flags: {}
+    img: icons/svg/item-bag.svg
+    documentCollection: pf1-rebellion-sheet.events
+    _key: '!tables.results!lwDFVwZyV70DxBOj.WbaEzCYnaqwCAoCm'
+  - type: 2
+    weight: 1
+    range:
+      - 5
+      - 8
+    drawn: false
+    _id: hDbYpJlmXik3Kvfi
+    text: Successful Protest
+    documentId: h4VNzwCFcu5KNadh
+    flags: {}
+    img: icons/svg/item-bag.svg
+    documentCollection: pf1-rebellion-sheet.events
+    _key: '!tables.results!lwDFVwZyV70DxBOj.hDbYpJlmXik3Kvfi'
+  - type: 2
+    weight: 1
+    range:
+      - 9
+      - 14
+    drawn: false
+    _id: HJfRSF6pNimZ7OqS
+    text: Diminished Peril
+    documentId: 02OS1xJM1wX1zpxl
+    flags: {}
+    img: icons/svg/item-bag.svg
+    documentCollection: pf1-rebellion-sheet.events
+    _key: '!tables.results!lwDFVwZyV70DxBOj.HJfRSF6pNimZ7OqS'
+  - type: 2
+    weight: 1
+    range:
+      - 15
+      - 20
+    drawn: false
+    _id: VJBnX2weVlpva5Mk
+    text: Donation
+    documentId: lkYH031D7OdFTgp6
+    flags: {}
+    img: icons/svg/item-bag.svg
+    documentCollection: pf1-rebellion-sheet.events
+    _key: '!tables.results!lwDFVwZyV70DxBOj.VJBnX2weVlpva5Mk'
+  - type: 2
+    weight: 1
+    range:
+      - 21
+      - 28
+    drawn: false
+    _id: eT60P2nvBR71RsBn
+    text: Increased Support
+    documentId: jXwzHOEt5ZjPgpD0
+    flags: {}
+    img: icons/svg/item-bag.svg
+    documentCollection: pf1-rebellion-sheet.events
+    _key: '!tables.results!lwDFVwZyV70DxBOj.eT60P2nvBR71RsBn'
+  - type: 2
+    weight: 1
+    range:
+      - 29
+      - 38
+    drawn: false
+    _id: rNuLB1Ex9crg6zyL
+    text: Marketplace Boom
+    documentId: Rj3WbRvp6iqttjYj
+    flags: {}
+    img: icons/svg/item-bag.svg
+    documentCollection: pf1-rebellion-sheet.events
+    _key: '!tables.results!lwDFVwZyV70DxBOj.rNuLB1Ex9crg6zyL'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 39
+      - 48
+    drawn: false
+    _id: DZNsxO1H8gXbO8DP
+    text: All Is Calm
+    documentId: WQAQ5P7T5szm48CA
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.DZNsxO1H8gXbO8DP'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 49
+      - 51
+    drawn: false
+    _id: NKzCAbvssfMP3QGo
+    text: Roll Twice
+    documentId: FH7m7HXeC5TLvxSp
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.NKzCAbvssfMP3QGo'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 52
+      - 59
+    drawn: false
+    _id: tc2ZH2lpw31Q0FIO
+    text: Snitch
+    documentId: 0K9GzKA1Xt7VfHwv
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.tc2ZH2lpw31Q0FIO'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 60
+      - 63
+    drawn: false
+    _id: qPciI98KjMiCHVWf
+    text: Rivalry*
+    documentId: cRshqPd4ekGo2iaX
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.qPciI98KjMiCHVWf'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 64
+      - 67
+    drawn: false
+    _id: IwrFfEqrScxXSebH
+    text: Dangerous Times*
+    documentId: XYaqJw9bEeKA2UzS
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.IwrFfEqrScxXSebH'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 68
+      - 71
+    drawn: false
+    _id: rPFsufotP7DcRXM9
+    text: Missing in Action
+    documentId: yfQ2MKk3HJLVXzek
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.rPFsufotP7DcRXM9'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 72
+      - 75
+    drawn: false
+    _id: SoU8MBfxmtI7P946
+    text: Cache Discovered
+    documentId: ZYDsr0wi1orOz21f
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.SoU8MBfxmtI7P946'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 76
+      - 79
+    drawn: false
+    _id: 4WUiPn1H6juJA3f0
+    text: Increased Patrols*
+    documentId: MWALLXlDMI0HlXYw
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.4WUiPn1H6juJA3f0'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 80
+      - 83
+    drawn: false
+    _id: d5EOtCuHBlopNFTH
+    text: Low Morale*
+    documentId: Dwuum6chASrAjU0c
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.d5EOtCuHBlopNFTH'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 84
+      - 87
+    drawn: false
+    _id: AcV6muKUEX0JmRcD
+    text: Sickness*
+    documentId: MBxYtg03e0PbGF54
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.AcV6muKUEX0JmRcD'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 88
+      - 91
+    drawn: false
+    _id: B9u28FGDF8EVFtOL
+    text: Disabled Team
+    documentId: 57Gca5ToAv7oSvwl
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.B9u28FGDF8EVFtOL'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 92
+      - 95
+    drawn: false
+    _id: Nro8HUaDjxdy5QkY
+    text: Dissension in the Ranks*
+    documentId: h1vrvgrvfzLxhs7D
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.Nro8HUaDjxdy5QkY'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 96
+      - 99
+    drawn: false
+    _id: yAmXt72ojGGTErYe
+    text: Invasion
+    documentId: Oz5bY8eIknuA6q4N
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.yAmXt72ojGGTErYe'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 100
+      - 103
+    drawn: false
+    _id: 5JpQPUDAvtKUbqnP
+    text: Failed Protest
+    documentId: hs1MANfE5FwB7NcV
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.5JpQPUDAvtKUbqnP'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 104
+      - 107
+    drawn: false
+    _id: Gbp4eUqmtlxPb5TZ
+    text: Ally in Peril
+    documentId: tEQY5D2pdIdL2OcO
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.Gbp4eUqmtlxPb5TZ'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 108
+      - 111
+    drawn: false
+    _id: ltbxK6k5GdLHoWuz
+    text: Disastrous Mission
+    documentId: ex6mYwTUGshmVF3i
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.ltbxK6k5GdLHoWuz'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 112
+      - 115
+    drawn: false
+    _id: K3Wy2lipTzD5QOCd
+    text: Traitor
+    documentId: UJ24TyXWllMaQ36S
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.K3Wy2lipTzD5QOCd'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 116
+      - 119
+    drawn: false
+    _id: ow1f0upXaPSeDc6w
+    text: Diabolic Infiltration
+    documentId: LqzaDrnko5Zb29zV
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.ow1f0upXaPSeDc6w'
+  - type: 2
+    documentCollection: pf1-rebellion-sheet.events
+    weight: 1
+    range:
+      - 120
+      - 2000
+    drawn: false
+    _id: 4rfTdtoQbqNU9XYE
+    text: Inquisition*
+    documentId: XwQ0lsVCporBsPJC
+    flags: {}
+    img: icons/svg/item-bag.svg
+    _key: '!tables.results!lwDFVwZyV70DxBOj.4rfTdtoQbqNU9XYE'
+replacement: true
+displayRoll: true
+flags:
+  exportSource:
+    world: og-sandbox
+    system: pf1
+    coreVersion: '11.315'
+    systemVersion: '9.6'
+  core: {}
+formula: 1d200
+_id: lwDFVwZyV70DxBOj
+sort: 0
+_key: '!tables!lwDFVwZyV70DxBOj'
+

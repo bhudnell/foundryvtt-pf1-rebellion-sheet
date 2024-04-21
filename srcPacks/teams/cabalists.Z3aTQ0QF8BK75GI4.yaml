@@ -1,0 +1,30 @@
+name: Cabalists
+type: pf1-rebellion-sheet.team
+_id: Z3aTQ0QF8BK75GI4
+img: icons/svg/item-bag.svg
+system:
+  subType: general
+  tier: 3
+  cost: null
+  recruitment:
+    dc: null
+  actions:
+    value:
+      - me
+      - rd
+      - rcc
+  size: 6
+  description: >-
+    <p><strong>Cost</strong> 1,000 gp</p><p><strong>Granted Actions</strong>
+    Manipulate Events, Reduce Danger, and Rescue
+    Character</p><p><strong>Size</strong> 6 people</p><p><strong>Upgrades
+    From</strong> infiltrators</p><hr /><p>Cabalists are members of secret
+    societies and have numerous ties to the aristocracy; their words can
+    influence events across Kintargo.</p>
+  managerId: null
+  disabled: false
+  missing: false
+  baseType: cab
+sort: 0
+_key: '!items!Z3aTQ0QF8BK75GI4'
+

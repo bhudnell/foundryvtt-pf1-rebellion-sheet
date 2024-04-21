@@ -1,0 +1,27 @@
+name: Peddlers
+type: pf1-rebellion-sheet.team
+_id: aXYfPTzYTTynCGTa
+img: icons/svg/item-bag.svg
+system:
+  subType: general
+  tier: 1
+  cost: null
+  recruitment:
+    dc: null
+  actions:
+    value:
+      - eg
+  size: 6
+  description: >-
+    <p><strong>Recruitment</strong> Security DC 10</p><p><strong>Granted
+    Action</strong> Earn Gold</p><p><strong>Size</strong> 6
+    people</p><p><strong>Upgrades To</strong> merchants</p><hr /><p>Peddlers
+    include artisans, laborers, street vendors, and anyone else who sells a
+    specific type of good or service to bolster the Silver Ravens’ treasury.</p>
+  managerId: null
+  disabled: false
+  missing: false
+  baseType: ped
+sort: 0
+_key: '!items!aXYfPTzYTTynCGTa'
+

@@ -1,0 +1,30 @@
+name: Spellcasters
+type: pf1-rebellion-sheet.team
+_id: 3Mf4745EFqyiwdsK
+img: icons/svg/item-bag.svg
+system:
+  subType: general
+  tier: 3
+  cost: null
+  recruitment:
+    dc: null
+  actions:
+    value:
+      - rd
+      - rcc
+      - rtc
+  size: 6
+  description: >-
+    <p><strong>Cost</strong> 1,000 gp</p><p><strong>Granted Actions</strong>
+    Reduce Danger, Rescue Character, and Restore
+    Character</p><p><strong>Size</strong> 6 people</p><p><strong>Upgrades
+    From</strong> infiltrators</p><hr /><p>Spellcasters include clerics,
+    wizards, and all other magic-using characters. They can help to restore a
+    lost character, given the right resources.</p>
+  managerId: null
+  disabled: false
+  missing: false
+  baseType: spe
+sort: 0
+_key: '!items!3Mf4745EFqyiwdsK'
+

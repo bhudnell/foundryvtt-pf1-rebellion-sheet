@@ -1,0 +1,19 @@
+name: Rivalry*
+type: pf1-rebellion-sheet.event
+_id: cRshqPd4ekGo2iaX
+img: icons/svg/item-bag.svg
+system:
+  subType: active
+  description: >-
+    <p>Choose two random teams; those teams have developed an unhealthy but
+    temporary rivalry. During the next Activity phase, you can’t use either of
+    these teams to take actions. If you roll Rivalry twice in one Event phase,
+    it becomes persistent.</p><p>Mitigation: If a Silver Ravens officer makes a
+    DC 20 Bluff, Diplomacy, or Intimidate check to deal with the rivalry, it
+    ends.</p>
+  persistent: false
+  mitigated: false
+  changes: []
+sort: 1900000
+_key: '!items!cRshqPd4ekGo2iaX'
+

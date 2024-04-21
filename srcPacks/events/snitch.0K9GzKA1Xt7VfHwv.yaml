@@ -1,0 +1,19 @@
+name: Snitch
+type: pf1-rebellion-sheet.event
+_id: 0K9GzKA1Xt7VfHwv
+img: icons/svg/item-bag.svg
+system:
+  subType: active
+  description: >-
+    <p>One of your supporters is a snitch who has been leaking rumors and
+    information about the Silver Ravens to House Thrune and the church of
+    Asmodeus. Attempt a DC 15 Loyalty check. If you are successful, reduce your
+    supporters by 1, but you need fear no further repercussions as your other
+    loyal supporters have handled the situation. If you fail this Loyalty check,
+    reduce your supporters by 1 and your Notoriety score increases by 1d6.</p>
+  persistent: false
+  mitigated: false
+  changes: []
+sort: 2100000
+_key: '!items!0K9GzKA1Xt7VfHwv'
+

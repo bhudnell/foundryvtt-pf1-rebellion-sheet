@@ -1,0 +1,30 @@
+name: Merchant Lords
+type: pf1-rebellion-sheet.team
+_id: KKpB6QigWW6CkPyY
+img: icons/svg/item-bag.svg
+system:
+  subType: general
+  tier: 3
+  cost: null
+  recruitment:
+    dc: null
+  actions:
+    value:
+      - eg
+      - rm
+      - so
+  size: 6
+  description: >-
+    <p><strong>Cost</strong> 200 gp</p><p><strong>Granted Actions</strong> Earn
+    Gold, Refresh Marketplace, and Special Order</p><p><strong>Size</strong> 6
+    people</p><p><strong>Upgrades From</strong> merchants</p><hr /><p>Merchant
+    lords function as merchants, save that they can arrange for special orders
+    of high-cost items to be shipped to Kintargo at a slight discount to such an
+    item’s normal cost.</p>
+  managerId: null
+  disabled: false
+  missing: false
+  baseType: mel
+sort: 0
+_key: '!items!KKpB6QigWW6CkPyY'
+

@@ -1,0 +1,29 @@
+name: Thieves
+type: pf1-rebellion-sheet.team
+_id: bmeaA4f4HQzZoHVA
+img: icons/svg/item-bag.svg
+system:
+  subType: general
+  tier: 2
+  cost: null
+  recruitment:
+    dc: null
+  actions:
+    value:
+      - ash
+      - sc
+  size: 3
+  description: >-
+    <p><strong>Cost</strong> 250 gp</p><p><strong>Granted Actions</strong>
+    Activate Safe House and Secure Cache</p><p><strong>Size</strong> 3
+    people</p><p><strong>Upgrades From</strong> sneaks</p><p><strong>Upgrades
+    To</strong> saboteurs or spies</p><hr /><p>A thief is a more accomplished
+    sneak, and is capable of providing a safe place for other outlaws to hide
+    out or placing intermediate caches in risky locations.</p>
+  managerId: null
+  disabled: false
+  missing: false
+  baseType: thi
+sort: 0
+_key: '!items!bmeaA4f4HQzZoHVA'
+

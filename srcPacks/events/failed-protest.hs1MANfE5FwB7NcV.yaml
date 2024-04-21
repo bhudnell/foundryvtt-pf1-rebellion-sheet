@@ -1,0 +1,19 @@
+name: Failed Protest
+type: pf1-rebellion-sheet.event
+_id: hs1MANfE5FwB7NcV
+img: icons/svg/item-bag.svg
+system:
+  subType: active
+  description: >-
+    <p>Your supporters have failed in a protest against House Thrune or the
+    church of Asmodeus. Reduce your total supporters (and Kintargo’s population)
+    by 2d6.</p><p>Mitigation: A successful DC 25 Security check negates this
+    reduction. Regardless of that outcome, randomly determine one of Kintargo’s
+    settlement modifiers — Corruption, Crime, Economy, Law, Lore, or Society.
+    For the next week, this modifier is decreased by 4.</p>
+  persistent: false
+  mitigated: false
+  changes: []
+sort: 1100000
+_key: '!items!hs1MANfE5FwB7NcV'
+

@@ -1,0 +1,27 @@
+name: Sneaks
+type: pf1-rebellion-sheet.team
+_id: G6AS2WpyPuGAPTN9
+img: icons/svg/item-bag.svg
+system:
+  subType: general
+  tier: 1
+  cost: null
+  recruitment:
+    dc: null
+  actions:
+    value:
+      - sc
+  size: 3
+  description: >-
+    <p><strong>Recruitment</strong> Secrecy DC 15</p><p><strong>Granted
+    Action</strong> Secure Cache</p><p><strong>Size</strong> 3
+    people</p><p><strong>Upgrades To</strong> thieves</p><hr /><p>A team of
+    sneaks can secure minor caches of equipment for later use throughout the
+    city, but not in dangerous sites.</p>
+  managerId: null
+  disabled: false
+  missing: false
+  baseType: sne
+sort: 0
+_key: '!items!G6AS2WpyPuGAPTN9'
+

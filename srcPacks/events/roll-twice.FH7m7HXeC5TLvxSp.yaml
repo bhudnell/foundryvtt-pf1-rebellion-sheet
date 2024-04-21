@@ -1,0 +1,15 @@
+name: Roll Twice
+type: pf1-rebellion-sheet.event
+_id: FH7m7HXeC5TLvxSp
+img: icons/svg/item-bag.svg
+system:
+  subType: active
+  description: >-
+    <p>Roll two times. Both events occur this phase, in the order they are
+    rolled. Multiple rolls of Roll Twice stack.</p>
+  persistent: false
+  mitigated: false
+  changes: []
+sort: 0
+_key: '!items!FH7m7HXeC5TLvxSp'
+

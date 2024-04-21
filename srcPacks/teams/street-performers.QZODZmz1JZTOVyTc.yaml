@@ -1,0 +1,27 @@
+name: Street Performers
+type: pf1-rebellion-sheet.team
+_id: QZODZmz1JZTOVyTc
+img: icons/svg/item-bag.svg
+system:
+  subType: general
+  tier: 1
+  cost: null
+  recruitment:
+    dc: null
+  actions:
+    value:
+      - gi
+  size: 6
+  description: >-
+    <p><strong>Recruitment</strong> Secrecy DC 10</p><p><strong>Granted
+    Action</strong> Gather Information</p><p><strong>Size</strong> 6
+    people</p><p><strong>Upgrades To</strong> rumormongers</p><hr /><p>Street
+    performers can spread the word of the Silver Ravens through art while
+    keeping an ear to the ground for rumors.</p>
+  managerId: null
+  disabled: false
+  missing: false
+  baseType: stp
+sort: 0
+_key: '!items!QZODZmz1JZTOVyTc'
+

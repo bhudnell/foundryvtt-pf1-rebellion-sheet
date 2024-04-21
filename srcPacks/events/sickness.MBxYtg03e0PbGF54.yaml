@@ -1,0 +1,22 @@
+name: Sickness*
+type: pf1-rebellion-sheet.event
+_id: MBxYtg03e0PbGF54
+img: icons/svg/item-bag.svg
+system:
+  subType: active
+  description: >-
+    <p>Contagion has spread through the ranks, leaving your rebels listless and
+    sickly. For the next week (including the next week’s events, if any), all
+    Security checks take a –4 penalty. If you roll Sickness twice in one Event
+    phase, it becomes persistent.</p><p>Mitigation: If a Silver Ravens officer
+    makes a successful DC 20 Heal check to treat the sickness, this penalty is
+    reduced to –2.</p>
+  persistent: false
+  mitigated: false
+  changes:
+    - id: zOsShDBKozz8ZarH
+      ability: security
+      bonus: -4
+sort: 2000000
+_key: '!items!MBxYtg03e0PbGF54'
+

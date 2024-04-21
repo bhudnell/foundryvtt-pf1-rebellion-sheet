@@ -1,0 +1,614 @@
+name: Actions
+_id: 3VTskkxbkAScVTyI
+pages:
+  - sort: 100000
+    name: Activate Black Market
+    type: text
+    _id: npdocimLRevIbHeF
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Black Marketeers</p><p>To activate a black market, you must
+        attempt a DC 20 Secrecy check and spend 50 gp to smuggle goods and bribe
+        officials. On a successful check, the Silver Ravens set up a black
+        market for 1 week in Kintargo. During this week, the city’s base value
+        is doubled and all rolls to determine item availability increase from
+        75% to 90%. Furthermore, magic items sold to the black market sell for
+        55% of their normal price rather than 50%. On a failed check, your
+        Notoriety score increases by 1d6.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.npdocimLRevIbHeF'
+  - sort: 200000
+    name: Activate Safe House
+    type: text
+    _id: d4pd0FEYdEz79vVw
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Saboteurs, Spies, or Thieves</p><p>Your outlaw team secures a
+        small building somewhere in Kintargo and sets it up as a safe house. You
+        can select any building for this role, provided the building is not
+        located in the Castle District or the Greens (final selection subject to
+        GM approval). The building itself might be abandoned, or it might be a
+        home or humble business run by a rebellion supporter. An activated safe
+        house remains active for 1 week, during which time any characters
+        recovered via the Rescue Character action can be brought to the site
+        without fear. The building also presents a safe place to get food,
+        recover, and rest without worrying about wandering monsters or other
+        interruptions. A cache hidden in an active safe house can’t be lost by
+        the Cache Discovered event. Finally, for each active safe house, the
+        rebellion gains a cumulative +1 bonus on Security checks, to a maximum
+        bonus of +5.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.d4pd0FEYdEz79vVw'
+  - sort: 300000
+    name: Change Officer Role
+    type: text
+    _id: fkVqaDZmKnnCmu5R
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: None</p><p>One PC can change his or her officer role in the
+        Silver Ravens. Allies and cohorts can’t change their role with this
+        action.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.fkVqaDZmKnnCmu5R'
+  - sort: 400000
+    name: Covert Action
+    type: text
+    _id: zWKvuFMQJhr9QQ02
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Spies</p><p>By taking this action, spies can work with any
+        other team to hide any evidence that the rebellion was involved in an
+        operation. This grants all d20 rolls made to resolve the rebellion act
+        immediately following a Covert Action a bonus to the roll equal to the
+        spies’ manager’s Charisma bonus. Furthermore, any Notoriety gained from
+        this action is automatically reduced to the minimum amount possible.
+        Alternatively, a Covert Action can be used to place a contact or stash
+        of gear in a specific adventure site. Your GM will have information on
+        these acts when they become relevant during the course of the campaign,
+        but once you place a contact or stash in a site, it only remains for 1
+        week.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.zWKvuFMQJhr9QQ02'
+  - sort: 500000
+    name: Dismiss Team
+    type: text
+    _id: fW2qFuyyLZD0fSmk
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: None</p><p>By taking the Dismiss Team action, you remove a team
+        from the rebellion, freeing up that slot to recruit a new team. Attempt
+        a DC 10 Loyalty check when you take this action. If you fail, your
+        Notoriety score increases by 1d4 as disenfranchised team members’ loose
+        lips damage the rebellion’s secrecy.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.fW2qFuyyLZD0fSmk'
+  - sort: 600000
+    name: Earn Gold
+    type: text
+    _id: U4PvxxtchivVg1uE
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Black Marketeers, Merchant Lords, Merchants, or
+        Peddlers</p><p>Roll a Security check and multiply the result by the
+        team’s tier. The result of this check is how many gold pieces the team
+        earned for the week. Add this result to the Silver Ravens’ treasury. If
+        you roll a natural 1 on the Security check, you still earn gold, but
+        your Notoriety score increases by 1d6.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.U4PvxxtchivVg1uE'
+  - sort: 700000
+    name: Gather Information
+    type: text
+    _id: 4QG1oubvw1DLiNjt
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Agitators, Cognoscenti, Rumormongers, or Street
+        Performers</p><p>Attempt a DC 15 Secrecy check with a bonus equal to
+        twice the team’s tier. If you are successful, the team has gathered
+        information for you. This can either be a randomly determined rumor
+        (your GM has tables of rumors that change with each adventure) or a
+        specific piece of local information that you could learn by making a
+        Diplomacy check to gather information about that topic or individual.
+        For certain topics or individuals, the DC might be higher than 15. If
+        you roll a natural 1 on the Secrecy check, you don’t automatically fail,
+        but your Notoriety score increases by 1d6.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.4QG1oubvw1DLiNjt'
+  - sort: 800000
+    name: Guarantee Event
+    type: text
+    _id: AUHUpjmtggSwpj8o
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: None</p><p>By deliberately lowering the organization’s guard
+        and increasing your Notoriety score by 1d6, you can guarantee an event
+        occurs during the Event phase. If you perform this action, the GM rolls
+        twice and takes the lower roll as the actual result for the event.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.AUHUpjmtggSwpj8o'
+  - sort: 900000
+    name: Knowledge Check
+    type: text
+    _id: T4Oyc6DSXbCwXhhs
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Cognoscenti</p><p>The team of cognoscenti attempts to provide
+        an answer to any question you could normally answer with a successful
+        Knowledge check. Rather than roll a Knowledge check to provide this
+        answer, roll a Secrecy check. Modify this result by Kintargo’s Lore
+        modifier + 1/2 the rebellion’s rank. Treat the result as the DC achieved
+        in the desired Knowledge category.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.T4Oyc6DSXbCwXhhs'
+  - sort: 1000000
+    name: Lie Low
+    type: text
+    _id: RhQvHUwfRUjGbme8
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: None</p><p>If you choose to take no rebellion actions at all
+        during the phase, you can reduce your Notoriety score by an amount equal
+        to the rebellion’s total number of teams.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.RhQvHUwfRUjGbme8'
+  - sort: 1100000
+    name: Manipulate Events
+    type: text
+    _id: zbzww6LnGqPIqID3
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Cabalists</p><p>Cabalists are among the secret movers and
+        shakers of Kintargo’s society, and an idle comment or well-timed whisper
+        from them can set into motion significant events. When your cabalists
+        manipulate events, you automatically guarantee an event occurs during
+        the following Event phase. The GM rolls twice on the table, and the
+        manager of the cabalists gets to choose which of the two results take
+        place. If the event is detrimental, the cabalists’ manager can choose to
+        add his or her Charisma modifier to any d20 rolls made as a result of
+        the check to further influence the outcome.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.zbzww6LnGqPIqID3'
+  - sort: 1200000
+    name: Recruit Supporters
+    type: text
+    _id: 9URQM0vRMNrT7pgH
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: None</p><p>This check can only be made once per Activity phase.
+        By spending an amount of gold equal to the rebellion’s minimum treasury
+        value, you can attempt to recruit additional supporters. To do so,
+        attempt a Loyalty check. The DC of this check is equal to 10 + the
+        rebellion’s rank. On a successful check, increase the rebellion’s
+        supporters by 2d6 + any bonuses granted by Recruiter officers. If you
+        roll a natural 1 on the Loyalty check, you don’t automatically fail, but
+        your Notoriety score increases by 1d6. You can’t take this action if the
+        rebellion is at its current maximum rank.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.9URQM0vRMNrT7pgH'
+  - sort: 1300000
+    name: Recruit Team
+    type: text
+    _id: ji3LtQQlg2L37JpR
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: None</p><p>You can attempt to recruit a new team as long as you
+        are not already at the maximum number of teams allowed (discounting
+        bonus teams). The DC and specific Organization check required to recruit
+        the team depend on the type of team being recruited. If you roll a
+        natural 1 on the Organization check, you don’t automatically fail, but
+        your Notoriety score increases by 1d6.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.ji3LtQQlg2L37JpR'
+  - sort: 1400000
+    name: Reduce Danger
+    type: text
+    _id: 1KDMTBjRKG4o62ay
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Cabalists, Freedom Fighters, Infiltrators, or
+        Spellcasters</p><p>A successful DC 15 Security check reduces Kintargo’s
+        danger rating by 5 (to a minimum of 0) for the following week (including
+        the event rolled during the following Event phase). For every 10 points
+        by which you exceed this check, you reduce the danger rating by an
+        additional 5. On a failed check, your Notoriety score increases by 1d4
+        and Kintargo’s danger rating increases by 5 for the next Event phase and
+        following week.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.1KDMTBjRKG4o62ay'
+  - sort: 1500000
+    name: Refresh Marketplace
+    type: text
+    _id: H39FXaqzdziHURhQ
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Black Marketeers, Merchant Lords, or Merchants</p><p>By
+        expending 100 gp on bribes and other expenses, the team removes the
+        currently available specific magic items for sale from distribution. The
+        GM rolls up new magic items randomly to determine what items become
+        available at the end of the following week. If you use a Tier 3 team to
+        refresh the marketplace, you can ask the GM to reroll one magic item
+        result in each category (minor, medium, and major).</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.H39FXaqzdziHURhQ'
+  - sort: 1600000
+    name: Rescue Character
+    type: text
+    _id: XvU6yRcj770X77Lu
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Cabalists, Infiltrators, or Spellcasters</p><p>The team breaks
+        into a prison or other secure site to rescue a captured character
+        (either a PC or an NPC). To do so, attempt a Security check (DC = 10 +
+        the captured character’s level). A successfully recovered character can
+        be brought to any location in Kintargo that is currently controlled by
+        the rebellion (typically the current headquarters, but also any safe
+        house activated by an outlaw team). A successful rescue increases your
+        Notoriety score by an amount equal to the level of the rescued
+        character. A failed rescue increases your Notoriety score by half this
+        amount, but doesn’t rescue the character. Note that certain NPCs can’t
+        be rescued by infiltrators, and must instead be rescued by the PCs
+        themselves. The Rescue Character action only rescues one character per
+        action.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.XvU6yRcj770X77Lu'
+  - sort: 1700000
+    name: Restore Character
+    type: text
+    _id: JNZQ8Brj94ilDzUq
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Spellcasters</p><p>Your spellcasters can heal damage or remove
+        debilitating conditions from a character. This action can be used to
+        perform one of the following for the entire party for free: heal all
+        ability score damage, heal all hit point damage, or receive one 3rd- or
+        lower-level restorative spell (such as dispel magic, remove
+        blindness/deafness, remove disease, or remove paralysis). It can also
+        provide the effects of a break enchantment spell, a raise dead spell, a
+        restoration spell, or a stone to flesh spell on an individual (not
+        party) basis. The body or remains of the character to be restored must
+        be brought to the Silver Ravens’ headquarters (possibly requiring a
+        separate successful Rescue Character action). These greater spell
+        effects are provided via scroll use, and require an expenditure of gold
+        equal to the cost of the scroll in question (1,125 gp for break
+        enchantment, 6,125 for raise dead, 1,700 gp for restoration, and 1,650
+        gp for stone to flesh). Additional restorative effects might be
+        available at the GM’s discretion.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.JNZQ8Brj94ilDzUq'
+  - sort: 1800000
+    name: Sabotage
+    type: text
+    _id: 04wQsvaPHygnApHo
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Saboteurs</p><p>Your saboteurs attempt to damage a structure or
+        meddle with the political machinations of House Thrune or the church of
+        Asmodeus. With a successful DC 20 Secrecy check, Thrune and church
+        agents are distracted for the following week, and all Organization
+        checks you make during that week gain a +2 bonus. In addition, reduce
+        your Notoriety score by 2d6. On a failed check, the sabotage backfires
+        and reduces both your supporters and Kintargo’s population by 2d6.
+        Alternatively, the Sabotage action can also be used to attempt
+        location-specific deeds that will affect adventuring that takes place in
+        those locations. Your GM will have information on these acts when they
+        become relevant during the course of the campaign.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.04wQsvaPHygnApHo'
+  - sort: 1900000
+    name: Secure Cache
+    type: text
+    _id: Usl02IS8Za8dMSku
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Saboteurs, Sneaks, Spies, or Thieves</p><p>You can arrange for
+        a cache of equipment to be hidden somewhere in Kintargo. Doing so
+        requires purchasing the items in question (or simply providing the team
+        with items already owned) and a successful Secrecy check to stash the
+        items. Caches come in three categories—minor, intermediate, and major
+        (see the sidebar above). Sneaks can only secure minor caches, while
+        thieves can secure minor or intermediate caches, and both saboteurs and
+        spies can secure all three categories. You can have the team secure an
+        outdoor cache in any location in Kintargo (such caches are typically
+        hidden in alleys or parks or other relatively out-of-the-way areas) or
+        inside a specific structure. When placed in a specific structure, the
+        cache is typically hidden near the entrance, but additional locations
+        are available in certain buildings. (Your GM has this information as it
+        is needed.) Placing a cache inside of “enemy territory” (subject to the
+        GM) increases the DC by 5 to 10. Make sure to keep track of the
+        locations you’ve hidden caches and what kinds of caches they are! See
+        the sidebar above for DCs and additional details on the three
+        categories.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.Usl02IS8Za8dMSku'
+  - sort: 2000000
+    name: Special Action
+    type: text
+    _id: qB0T4DCcL4F16XKm
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: None</p><p>Sometimes an officer must take a Special action to
+        deal with the results of a previous week’s event or a development in the
+        course of an adventure. The nature of these Special actions vary wildly,
+        and rules for how they work can be found in the event or development
+        that calls for them.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.qB0T4DCcL4F16XKm'
+  - sort: 2100000
+    name: Special Order
+    type: text
+    _id: XcU9pznsBay4etLJ
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Merchant Lords</p><p>By relying on contacts in other cities
+        throughout the Inner Sea region, a team of merchant lords can place a
+        special order for a specific expensive item that costs more than
+        Kintargo’s base value and is not currently available in the city’s
+        shops. The cost for the item in question must be paid up front (although
+        the actual price includes a 5% discount due to the merchant lords’
+        expertise at haggling), and it is delivered to Kintargo in 2d6 days.
+        (For an additional cost of 900 gp, this delivery time can be reduced to
+        1 day by having the item delivered by teleportation. This additional
+        cost is equal to the cost of two teleport spells, since the deliverer’s
+        return trip must also be accounted for.) The GM has final say on whether
+        or not an item is available for special order.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.XcU9pznsBay4etLJ'
+  - sort: 2200000
+    name: Spread Disinformation
+    type: text
+    _id: zMEJt3qWPXfA0SIb
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Agitators, Cognoscenti, or Rumormongers</p><p>The team spreads
+        false information about the rebellion throughout Kintargo. With a
+        successful DC 20 Secrecy check, reduce your current Notoriety score by
+        1d6. For every 10 points by which you exceed this DC, reduce your
+        Notoriety score by an additional 1d6. If you fail the check by 5 or
+        more, your Notoriety score is instead increased by 1d6.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.zMEJt3qWPXfA0SIb'
+  - sort: 2300000
+    name: Upgrade Team
+    type: text
+    _id: A0Xh9HGSv1cyowlO
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: None</p><p>By spending the amount of gold pieces listed for an
+        upgraded team’s cost, you can upgrade a lower-tier team to that new type
+        of team. A single team can be upgraded only once per week, but you can
+        upgrade as many different teams as you can afford in gold and rebellion
+        actions for that week.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.A0Xh9HGSv1cyowlO'
+  - sort: 2400000
+    name: Urban Influence
+    type: text
+    _id: hqEctNHW0IsJMgRZ
+    title:
+      show: true
+      level: 1
+    image: {}
+    text:
+      format: 1
+      content: >-
+        <p>Team: Agitators</p><p>Your agitators work to manipulate Kintargo’s
+        modifiers. Spend 100 gp to fund the influence, then choose one of the
+        following settlement modifiers: Corruption, Crime, Economy, Law, Lore,
+        or Society. Adjust one of those modifiers by 2 in either direction for 1
+        week.</p>
+    video:
+      controls: true
+      volume: 0.5
+    src: null
+    system: {}
+    _key: '!journal.pages!3VTskkxbkAScVTyI.hqEctNHW0IsJMgRZ'
+sort: 0
+_key: '!journal!3VTskkxbkAScVTyI'
+

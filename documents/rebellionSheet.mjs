@@ -23,7 +23,6 @@ import { getRankFromSupporters } from "../utils.mjs";
 /* TODO roll buttons:
 - notoriety: d100 <= notoriety score
 */
-// TODO strip more stuff out of unpacked compendiums
 
 export class RebellionSheet extends ActorSheet {
   static get defaultOptions() {

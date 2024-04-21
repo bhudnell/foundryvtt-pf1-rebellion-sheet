@@ -1,0 +1,29 @@
+name: Saboteurs
+type: pf1-rebellion-sheet.team
+_id: 295PQI6OEWX8CK0f
+img: icons/svg/item-bag.svg
+system:
+  subType: general
+  tier: 3
+  cost: null
+  recruitment:
+    dc: null
+  actions:
+    value:
+      - ash
+      - sab
+      - sc
+  size: 3
+  description: >-
+    <p><strong>Cost</strong> 1,000 gp</p><p><strong>Granted Actions</strong>
+    Activate Safe House, Sabotage, and Secure Cache</p><p><strong>Size</strong>
+    3 people</p><p><strong>Upgrades From</strong> thieves</p><hr /><p>Saboteurs
+    are specialists in the arena of undermining oppressive governments. They can
+    also place major caches.</p>
+  managerId: null
+  disabled: false
+  missing: false
+  baseType: sab
+sort: 0
+_key: '!items!295PQI6OEWX8CK0f'
+

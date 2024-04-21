@@ -4,6 +4,7 @@ import path from "path";
 import { extractPack } from "@foundryvtt/foundryvtt-cli";
 
 import { compiledPacksDir, sourcePacksDir } from "./config.mjs";
+import * as utils from "./utils.mjs";
 
 function sluggify(string) {
   return string
@@ -14,17 +15,20 @@ function sluggify(string) {
 }
 
 function sanitizePackEntry(entry, documentType = "") {
-  delete entry._stats;
-
-  if (documentType === "JournalEntryPage") {
-    return entry;
-  }
-
   delete entry.ownership;
+  delete entry._stats;
+  if ("effects" in entry && entry.effects.length === 0) {
+    delete entry.effects;
+  }
 
   // Remove folders if null
   if (entry.folder === null) {
     delete entry.folder;
+  }
+
+  // TODO if adding any flags make sure they dont get deleted here
+  if (utils.isEmpty(entry.flags)) {
+    delete entry.flags;
   }
 
   if (entry.pages) {

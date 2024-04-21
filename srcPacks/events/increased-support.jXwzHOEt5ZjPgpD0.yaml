@@ -1,0 +1,15 @@
+name: Increased Support
+type: pf1-rebellion-sheet.event
+_id: jXwzHOEt5ZjPgpD0
+img: icons/svg/item-bag.svg
+system:
+  subType: active
+  description: >-
+    <p>An unexpected number of new supporters join the cause. Increase the
+    rebellion’s supporters by 2d6.</p>
+  persistent: false
+  mitigated: false
+  changes: []
+sort: 1300000
+_key: '!items!jXwzHOEt5ZjPgpD0'
+

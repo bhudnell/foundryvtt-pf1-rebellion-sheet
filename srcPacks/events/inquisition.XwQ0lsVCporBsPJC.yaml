@@ -1,0 +1,21 @@
+name: Inquisition*
+type: pf1-rebellion-sheet.event
+_id: XwQ0lsVCporBsPJC
+img: icons/svg/item-bag.svg
+system:
+  subType: active
+  description: >-
+    <p>Thrune and the church have grown tired of the rebellion, and for the
+    following week, the rebellion loses twice as many supporters as indicated
+    whenever supporters are lost. In addition, the bonuses and penalties applied
+    to Kintargo’s modifiers by the city’s martial law disadvantage are doubled
+    for the week. If you roll Inquisition twice in one Event phase, it becomes
+    persistent.</p><p>Mitigation: By taking the Lie Low action, the rebellion
+    can end a persistent Inquisition by making a successful DC 20 Secrecy
+    check.</p>
+  persistent: false
+  mitigated: false
+  changes: []
+sort: 1400000
+_key: '!items!XwQ0lsVCporBsPJC'
+

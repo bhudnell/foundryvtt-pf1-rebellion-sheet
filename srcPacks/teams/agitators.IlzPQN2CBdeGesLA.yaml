@@ -1,0 +1,30 @@
+name: Agitators
+type: pf1-rebellion-sheet.team
+_id: IlzPQN2CBdeGesLA
+img: icons/svg/item-bag.svg
+system:
+  subType: general
+  tier: 3
+  cost: null
+  recruitment:
+    dc: null
+  actions:
+    value:
+      - gi
+      - sd
+      - ui
+  size: 6
+  description: >-
+    <p><strong>Cost</strong> 200 gp</p><p><strong>Granted Actions</strong>
+    Gather Information, Spread Disinformation, and Urban
+    Influence</p><p><strong>Size</strong> 6 people</p><p><strong>Upgrades
+    From</strong> rumormongers</p><hr /><p>Agitators are highly specialized
+    rumormongers capable of influencing the very nature of Kintargo’s society
+    with their whispers and scuttlebutt.</p>
+  managerId: null
+  disabled: false
+  missing: false
+  baseType: agi
+sort: 0
+_key: '!items!IlzPQN2CBdeGesLA'
+
