@@ -17,6 +17,8 @@ import { getRankFromSupporters } from "../utils.mjs";
 // TODO track safehouses +1 security for each max +5
 // TODO? add "advance week" button that clears out appropriate data (safehouses?, non persistent active events, anything else)
 // TODO? actions show what teams can do them
+// TODO add tooltips showing what affects each number on rebellion sheet (ie other category)
+// TODO add item dropdown that shows description on click (like pf1 does)
 // TODO add multiple recruiters
 /* TODO roll buttons:
 - notoriety: d100 <= notoriety score
