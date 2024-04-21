@@ -55,7 +55,7 @@ export class EventSheet extends ItemSheet {
 
     html.find(".add-change").click((e) => this._onAddChange(e));
     html.find(".delete-change").click((e) => this._onDeleteChange(e));
-    html.find(".change-target").click((e) => this._onChangeTargetControl(e));
+    html.find(".target-change").click((e) => this._onTargetChange(e));
   }
 
   async _onAddChange(event) {
@@ -74,10 +74,8 @@ export class EventSheet extends ItemSheet {
 
   async _onDeleteChange(event) {
     event.preventDefault();
-    const a = event.currentTarget;
 
-    const li = a.closest(".delete-change");
-    const changeId = li.dataset.change;
+    const changeId = event.currentTarget.closest(".item").dataset.id;
 
     const changes = foundry.utils.deepClone(this.item.system.changes ?? []);
     changes.findSplice((c) => c.id === changeId);
@@ -87,12 +85,10 @@ export class EventSheet extends ItemSheet {
     });
   }
 
-  _onChangeTargetControl(event) {
+  _onTargetChange(event) {
     event.preventDefault();
-    const a = event.currentTarget;
 
-    const li = a.closest(".change-target");
-    const changeId = li.dataset.change;
+    const changeId = event.currentTarget.closest(".item").dataset.id;
     const change = this.item.system.changes.find((c) => c.id === changeId);
 
     const item = change.ability;

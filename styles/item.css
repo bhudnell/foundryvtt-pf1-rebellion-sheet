@@ -72,11 +72,21 @@
     }
   }
 
-  .changes {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 0.5em;
+  .target-change {
+    border: 1px solid var(--color-border-light-tertiary);
+    background: rgba(0, 0, 0, 0.05);
+    white-space: nowrap;
+    overflow: hidden;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    font-size: var(--font-size-12, 12px);
+
+    &:hover {
+      box-shadow: 0 0 8px red;
+    }
   }
 }
 

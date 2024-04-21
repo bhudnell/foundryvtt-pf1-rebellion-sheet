@@ -21,8 +21,6 @@ import { getRankFromSupporters } from "../utils.mjs";
 /* TODO roll buttons:
 - notoriety: d100 <= notoriety score
 */
-// TODO make events and teams for compendiums
-// TODO edit rebellion event roll table to point to created events
 // TODO strip more stuff out of unpacked compendiums
 
 export class RebellionSheet extends ActorSheet {
