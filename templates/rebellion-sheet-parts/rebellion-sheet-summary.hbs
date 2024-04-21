@@ -2,9 +2,15 @@
   <img class="profile" src="{{ img }}" data-edit="img" />
 
   <div class="flex-col">
-    <h1>
-      <input type="text" name="name" value="{{ name }}" data-dtype="String" />
-    </h1>
+    <div class="flexrow">
+      <h1>
+        <input type="text" name="name" value="{{ name }}" data-dtype="String" />
+      </h1>
+      <div class="labeledValue week flex0">
+        <span>{{localize "PF1RS.Week"}}</span>
+        {{numberInput system.week name="system.week" step=1 min=0}}
+      </div>
+    </div>
 
     <div class="details">
       <span>{{localize "PF1RS.Rank"}}:</span>

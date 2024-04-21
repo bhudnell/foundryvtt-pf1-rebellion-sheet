@@ -15,9 +15,8 @@ import {
 import { getRankFromSupporters } from "../utils.mjs";
 
 // TODO track safehouses +1 security for each max +5
-// TODO add what week the rebellion is in to rebellion model/sheet
-// TODO add "advance week" button that clears out appropriate data (safehouses?, non persistent active events, anything else)
-// TODO actions show what teams can do them ????
+// TODO? add "advance week" button that clears out appropriate data (safehouses?, non persistent active events, anything else)
+// TODO? actions show what teams can do them
 // TODO add multiple recruiters
 /* TODO roll buttons:
 - notoriety: d100 <= notoriety score

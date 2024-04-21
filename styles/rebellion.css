@@ -15,6 +15,12 @@
       gap: 4px;
       flex: 0;
       margin-bottom: 4px;
+
+      .week {
+        flex: 0 0 80px;
+        margin-bottom: 8px;
+        border-bottom: 2px solid var(--color-underline-header);
+      }
     }
 
     .details {
@@ -33,6 +39,11 @@
       justify-items: center;
       align-items: center;
       gap: 8px;
+
+      .org-check {
+        display: flex;
+        gap: 8px;
+      }
     }
   }
 
@@ -247,9 +258,8 @@
 }
 
 .app.sheet.rebellion.actor h1 input {
-  flex: 0;
   background: none;
-  height: 40px;
+  height: 100%;
   border: 1px solid transparent;
 
   &:hover {

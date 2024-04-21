@@ -62,6 +62,12 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
         initial: 0,
         nullable: false,
       }),
+      week: new fields.NumberField({
+        integer: true,
+        min: 0,
+        initial: 0,
+        nullable: false,
+      }),
       danger: new fields.SchemaField({
         base: new fields.NumberField({
           integer: true,
