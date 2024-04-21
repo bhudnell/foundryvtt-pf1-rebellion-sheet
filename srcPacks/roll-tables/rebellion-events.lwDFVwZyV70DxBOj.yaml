@@ -329,13 +329,6 @@ results:
     _key: '!tables.results!lwDFVwZyV70DxBOj.4rfTdtoQbqNU9XYE'
 replacement: true
 displayRoll: true
-flags:
-  exportSource:
-    world: og-sandbox
-    system: pf1
-    coreVersion: '11.315'
-    systemVersion: '9.6'
-  core: {}
 formula: 1d200
 _id: lwDFVwZyV70DxBOj
 sort: 0
