@@ -46,7 +46,7 @@ jobs:
           tag: ${{ github.event.release.tag_name }}
           body: ${{ github.event.release.body }}
           
-      # POST to the package admin release endpoint    
+      # POST to the package admin release endpoint TODO
       #- name: Publish Module to FoundryVTT Website
       #  id: publish-to-foundry-website
       #  uses: cs96and/FoundryVTT-release-package@v1
