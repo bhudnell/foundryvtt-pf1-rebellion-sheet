@@ -10,6 +10,9 @@ jobs:
     steps:
       # Checkout
       - uses: actions/checkout@v2
+
+      # install deps
+      - run: npm ci
       
       # pack packs
       - run: npm run pack
