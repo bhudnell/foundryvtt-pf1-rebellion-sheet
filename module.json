@@ -11,7 +11,7 @@
     }
   ],
 
-  "esmodules": ["rebellion-sheet.mjs"],
+  "esmodules": ["src/main.mjs"],
   "styles": ["styles/common.css", "styles/item.css", "styles/rebellion.css"],
 
   "documentTypes": {
