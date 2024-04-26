@@ -1,3 +1,3 @@
-# v1.0.0
+# 0.0.2
 
-- TODO
+Initial release to Foundry
