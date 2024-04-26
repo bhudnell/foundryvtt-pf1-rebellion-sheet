@@ -1,4 +1,4 @@
-import { CFG, allChangeTargets } from "../config.mjs";
+import { CFG, allChangeTargets, eventSubTypes } from "../config.mjs";
 import { getChangeCategories } from "../utils.mjs";
 
 export class EventSheet extends ItemSheet {
@@ -29,18 +29,26 @@ export class EventSheet extends ItemSheet {
       enrichedDesc: await TextEditor.enrichHTML(item.system.description),
     };
 
-    data.states = [
-      {
-        field: "system.persistent",
-        value: item.system.persistent,
-        label: game.i18n.localize("PF1RS.Persistent"),
-      },
-      {
-        field: "system.mitigated",
-        value: item.system.mitigated,
-        label: game.i18n.localize("PF1RS.Mitigated"),
-      },
-    ];
+    data.states =
+      item.system.subType === "active"
+        ? [
+            {
+              field: "system.persistent",
+              value: item.system.persistent,
+              label: game.i18n.localize("PF1RS.Persistent"),
+            },
+            {
+              field: "system.mitigated",
+              value: item.system.mitigated,
+              label: game.i18n.localize("PF1RS.Mitigated"),
+            },
+          ]
+        : [];
+
+    // sub-types
+    const subTypeChoices = {};
+    Object.entries(eventSubTypes).forEach(([key, label]) => (subTypeChoices[key] = game.i18n.localize(label)));
+    data.subTypeChoices = subTypeChoices;
 
     data.changes = item.system.changes.map((c) => ({
       ...c,
@@ -53,9 +61,11 @@ export class EventSheet extends ItemSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    html.find(".add-change").click((e) => this._onAddChange(e));
-    html.find(".delete-change").click((e) => this._onDeleteChange(e));
-    html.find(".target-change").click((e) => this._onTargetChange(e));
+    html.find(".add-change").on("click", (e) => this._onAddChange(e));
+    html.find(".delete-change").on("click", (e) => this._onDeleteChange(e));
+    html.find(".target-change").on("click", (e) => this._onTargetChange(e));
+
+    html.find(".sub-type-selector").on("change", (e) => this._onSubTypeChange(e));
   }
 
   async _onAddChange(event) {
@@ -112,5 +122,11 @@ export class EventSheet extends ItemSheet {
       { category, item }
     );
     w.render(true);
+  }
+
+  _onSubTypeChange(event) {
+    if (event.target.value === "misc") {
+      this.item.update({ "system.persistent": false, "system.mitigated": false });
+    }
   }
 }

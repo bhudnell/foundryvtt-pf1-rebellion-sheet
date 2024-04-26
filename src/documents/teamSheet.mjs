@@ -68,7 +68,7 @@ export class TeamSheet extends ItemSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    html.find(".edit-actions").click(() => this._onActionsEdit());
+    html.find(".edit-actions").on("click", () => this._onActionsEdit());
   }
 
   _onActionsEdit() {

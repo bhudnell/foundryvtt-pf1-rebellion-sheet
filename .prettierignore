@@ -2,3 +2,6 @@ node_modules/
 
 # have to ignore this file because prettier cant handle triple-stash's and ignoring hte individual line wasnt working
 templates/event-roll.hbs
+
+# ignore srcPacks, theyre formatted by foundry
+srcPacks/

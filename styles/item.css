@@ -48,6 +48,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex: 0;
 
     font-variant: small-caps;
     font-size: var(--font-size-20, 16pt);
@@ -57,9 +58,15 @@
   .details {
     display: flex;
     flex-direction: column;
+
+    .sub-type-selector {
+      width: 100%;
+    }
   }
 
   .form-group {
+    flex: 0;
+
     .form-fields {
       justify-content: start;
     }

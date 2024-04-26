@@ -40,9 +40,9 @@ export class AllySheet extends ItemSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    html.find(".add-change").click((e) => this._onAddChange(e));
-    html.find(".delete-change").click((e) => this._onDeleteChange(e));
-    html.find(".target-change").click((e) => this._onTargetChange(e));
+    html.find(".add-change").on("click", (e) => this._onAddChange(e));
+    html.find(".delete-change").on("click", (e) => this._onDeleteChange(e));
+    html.find(".target-change").on("click", (e) => this._onTargetChange(e));
   }
 
   async _onAddChange(event) {

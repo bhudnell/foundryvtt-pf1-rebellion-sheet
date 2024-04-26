@@ -15,7 +15,6 @@ import {
 import { getRankFromSupporters } from "../utils.mjs";
 
 // TODO track safehouses +1 security for each max +5
-// TODO change event from event <--> misc, remove persistent/mitigated from misc events
 // TODO? add "advance week" button that clears out appropriate data (safehouses?, non persistent active events, anything else)
 // TODO? actions show what teams can do them
 // TODO add tooltips showing what affects each number on rebellion sheet (ie other category)
