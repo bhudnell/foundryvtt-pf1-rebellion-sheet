@@ -35,16 +35,6 @@
 
   "packs": [
     {
-      "name": "allies",
-      "label": "Allies",
-      "path": "packs/allies",
-      "type": "Item",
-      "ownership": {
-        "PLAYER": "OBSERVER"
-      },
-      "system": "pf1"
-    },
-    {
       "name": "events",
       "label": "Events",
       "path": "packs/events",
@@ -85,7 +75,7 @@
   "packFolders": [
     {
       "name": "Hell's Rebels",
-      "packs": ["allies", "events", "teams", "rules", "roll-tables"]
+      "packs": ["events", "teams", "rules", "roll-tables"]
     }
   ],
 
