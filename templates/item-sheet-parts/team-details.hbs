@@ -1,5 +1,5 @@
 <div class="form-group">
-  <label>Team</label>
+  <label>{{localize "PF1RS.Team"}}</label>
   <div class="form-fields">
     {{#if isUnique}}
     <span>{{localize "PF1RS.Teams.SubTypes.Unique"}}</span>
@@ -12,33 +12,33 @@
 </div>
 
 <div class="form-group">
-  <label>Tier</label>
+  <label>{{localize "PF1RS.TeamTier"}}</label>
   <div class="form-fields">
     <input type="number" step="1" name="system.tier" value="{{ system.tier }}" />
   </div>
 </div>
 
 <div class="form-group">
-  <label>Size</label>
+  <label>{{localize "PF1RS.TeamTier"}}</label>
   <div class="form-fields">
     <input type="number" step="1" name="system.size" value="{{ system.size }}" />
   </div>
 </div>
 
 <div class="form-group">
-  <label>Manager</label>
+  <label>{{localize "PF1RS.Manager"}}</label>
   <div class="form-fields">
     <select name="system.managerId">
       {{selectOptions validManagerChoices selected=system.managerId}}
     </select>
     <div class="flex0">
-      <span>Bonus</span>
+      <span>{{localize "PF1RS.Bonus"}}</span>
       <span>{{ system.bonus }}</span>
     </div>
   </div>
 </div>
 
-<h4 class="section-header">Granted Actions</h4>
+<h4 class="section-header">{{localize "PF1RS.GrantedActions"}}</h4>
 
 <div class="form-group">
   <span>{{ actions }}</span>
@@ -47,7 +47,7 @@
   </a>
 </div>
 
-<h4 class="section-header">Type</h4>
+<h4 class="section-header">{{localize "PF1RS.Type"}}</h4>
 <div class="flex0">
   <select class="sub-type-selector" name="system.subType">
     {{selectOptions subTypeChoices selected=system.subType}}

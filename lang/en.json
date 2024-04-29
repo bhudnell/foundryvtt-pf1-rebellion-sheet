@@ -68,7 +68,6 @@
 
     "TeamsLabel": "Teams",
     "Team": "Team",
-    "TeamType": "Type",
     "TeamTier": "Tier",
     "TeamSize": "Size",
     "Manager": "Manager",
@@ -77,6 +76,7 @@
     "Missing": "Missing",
     "CurrTeams": "Current Teams",
     "MaxTeams": "Maximum Teams",
+    "GrantedActions": "Granted Actions",
     "Teams": {
       "StreetPerformers": "Street Performers",
       "Rumormongers": "Rumormongers",
@@ -134,6 +134,7 @@
     "Name": "Name",
     "Description": "Description",
     "Details": "Details",
+    "Type": "Type",
 
     "EditItem": "Edit Item",
     "DeleteItem": "Delete Item",

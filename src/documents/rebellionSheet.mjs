@@ -14,16 +14,6 @@ import {
 } from "../config.mjs";
 import { getRankFromSupporters } from "../utils.mjs";
 
-// TODO track safehouses +1 security for each max +5
-// TODO? add "advance week" button that clears out appropriate data (safehouses?, non persistent active events, anything else)
-// TODO? actions show what teams can do them
-// TODO add tooltips showing what affects each number on rebellion sheet (ie other category)
-// TODO add item dropdown that shows description on click (like pf1 does)
-// TODO add multiple recruiters
-/* TODO roll buttons:
-- notoriety: d100 <= notoriety score
-*/
-
 export class RebellionSheet extends ActorSheet {
   static get defaultOptions() {
     const options = super.defaultOptions;
@@ -165,11 +155,13 @@ export class RebellionSheet extends ActorSheet {
     const general = {
       label: game.i18n.localize("PF1RS.Teams.SubTypes.General"),
       subType: "general",
+      showType: true,
       teams: [],
     };
     const unique = {
       label: game.i18n.localize("PF1RS.Teams.SubTypes.Unique"),
       subType: "unique",
+      showType: false,
       teams: [],
     };
     teams.forEach((team) => {
@@ -188,14 +180,14 @@ export class RebellionSheet extends ActorSheet {
     const events = this.actor.itemTypes[rebellionEventId];
     const active = {
       label: game.i18n.localize("PF1RS.Events.SubTypes.Active"),
-      showFlags: true,
       subType: "active",
+      showFlags: true,
       events: [],
     };
     const misc = {
       label: game.i18n.localize("PF1RS.Events.SubTypes.Misc"),
-      showFlags: false,
       subType: "misc",
+      showFlags: false,
       events: [],
     };
     events.forEach((event) => {

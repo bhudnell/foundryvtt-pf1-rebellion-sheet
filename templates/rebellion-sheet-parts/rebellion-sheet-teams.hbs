@@ -3,7 +3,9 @@
   <ol class="item-list">
     <li class="flexrow item-list-header">
       <span class="item-name">{{ label }}</span>
-      <span class="item-detail item-type">{{localize "PF1RS.TeamType"}}</span>
+      {{#if showType}}
+      <span class="item-detail item-type">{{localize "PF1RS.Type"}}</span>
+      {{/if}}
       <span class="item-detail item-tier">{{localize "PF1RS.TeamTier"}}</span>
       <span class="item-detail item-manager">{{localize "PF1RS.Manager"}}</span>
       <span class="item-detail item-size">{{localize "PF1RS.TeamSize"}}</span>
@@ -27,7 +29,9 @@
         <div class="item-image" style="background-image: url('{{ img }}')"></div>
         <span>{{ name }}</span>
       </div>
+      {{#if ../showType}}
       <span class="item-detail item-type">{{ baseTypeLabel }}</span>
+      {{/if }}
       <span class="item-detail item-tier">{{ system.tier }}</span>
       <span class="item-detail item-manager">{{ system.managerName }}</span>
       <span class="item-detail item-size">{{ system.size }}</span>

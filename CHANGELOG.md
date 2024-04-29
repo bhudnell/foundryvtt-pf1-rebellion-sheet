@@ -1,3 +1,7 @@
+# Next
+
+- Added missing localizations
+
 # 0.0.4
 
 - Removed unused "allies" pack
