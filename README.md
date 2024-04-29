@@ -1,12 +1,13 @@
 # foundryvtt-pf1-rebellion-sheet
 
-Provides support for running a rebellion within the Pathfinder 1 game system. Includes the Rebellion Sheet actor type and Event, Team, and Ally item types. 
+Provides support for running a rebellion within the Pathfinder 1 game system. Includes the Rebellion Sheet actor type and Event, Team, and Ally item types.
 
 ---
 
 # Actors
 
 ## Rebellion Sheet
+
 The base actor for managing a rebellion. Events, teams, and allies are Items that can be added to the sheet
 
 # Items
