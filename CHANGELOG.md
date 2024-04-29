@@ -1,6 +1,7 @@
 # Next
 
 - Added missing localizations
+- Removed unassigned officers from team manager list
 
 # 0.0.4
 

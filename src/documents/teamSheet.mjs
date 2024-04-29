@@ -55,7 +55,11 @@ export class TeamSheet extends ItemSheet {
     // manager choices, only officers from parent sheet can be managers
     const managerChoices = { "": "" };
     if (item.parent) {
-      Object.values(item.parent.system.officers).forEach((officer) => (managerChoices[officer.actorId] = officer.name));
+      Object.values(item.parent.system.officers).forEach((officer) => {
+        if (officer.actorId) {
+          managerChoices[officer.actorId] = officer.name;
+        }
+      });
     }
     data.validManagerChoices = managerChoices;
 
