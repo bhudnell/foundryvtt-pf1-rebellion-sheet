@@ -15,11 +15,16 @@ import {
 import { getRankFromSupporters } from "../utils.mjs";
 
 export class RebellionSheet extends ActorSheet {
+  constructor(...args) {
+    super(...args);
+
+    this._expandedItems = new Set();
+  }
   static get defaultOptions() {
     const options = super.defaultOptions;
     return {
       ...options,
-      template: `modules/${CFG.id}/templates/rebellion-sheet.hbs`,
+      template: `modules/${CFG.id}/templates/actors/rebellion-sheet.hbs`,
       classes: [...options.classes, "rebellion", "actor"],
       tabs: [
         {
@@ -217,6 +222,7 @@ export class RebellionSheet extends ActorSheet {
     html.find(".item-toggle-data").on("click", (e) => this._itemToggleData(e));
     html.find(".item-edit").on("click", (e) => this._onItemEdit(e));
     html.find(".item-create").on("click", (e) => this._onItemCreate(e));
+    html.find(".item .expand-summary").on("click", (e) => this._onItemSummary(e));
 
     html.find(".org-check .rollable").on("click", (e) => this._onRollOrgCheck(e));
     html.find(".eventChance .rollable").on("click", (e) => this._onRollEventChance(e));
@@ -307,6 +313,34 @@ export class RebellionSheet extends ActorSheet {
     const newItem = new Item(itemData);
 
     return this.actor.createEmbeddedDocuments("Item", [newItem.toObject()], { renderSheet: true });
+  }
+
+  async _onItemSummary(event) {
+    event.preventDefault();
+    const elem = event.target.closest(".item");
+    const itemId = elem.dataset.id;
+    const item = this.actor.items.get(itemId);
+
+    if (this._expandedItems.has(itemId)) {
+      const summary = elem.querySelector(".item-summary");
+      $(summary).slideUp(200, () => summary.remove());
+
+      this._expandedItems.delete(itemId);
+    } else {
+      const templateData = {
+        description: item.system.description,
+      };
+      let content = await renderTemplate(`modules/${CFG.id}/templates/actors/parts/item-summary.hbs`, templateData);
+      content = await TextEditor.enrichHTML(content);
+
+      const div = $(content);
+
+      div.hide();
+      elem.append(...div);
+      div.slideDown(200);
+
+      this._expandedItems.add(itemId);
+    }
   }
 
   async _onRollOrgCheck(event) {

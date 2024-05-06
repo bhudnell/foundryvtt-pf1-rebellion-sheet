@@ -65,14 +65,14 @@ Hooks.on("renderChatMessage", (message, html) => {
 
 Hooks.once("ready", () => {
   loadTemplates({
-    "rebellion-sheet-actions": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-actions.hbs`,
-    "rebellion-sheet-allies": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-allies.hbs`,
-    "rebellion-sheet-events": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-events.hbs`,
-    "rebellion-sheet-officers": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-officers.hbs`,
-    "rebellion-sheet-summary": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-summary.hbs`,
-    "rebellion-sheet-teams": `modules/${CFG.id}/templates/rebellion-sheet-parts/rebellion-sheet-teams.hbs`,
-    "item-sheet-ally": `modules/${CFG.id}/templates/item-sheet-parts/ally-details.hbs`,
-    "item-sheet-event": `modules/${CFG.id}/templates/item-sheet-parts/event-details.hbs`,
-    "item-sheet-team": `modules/${CFG.id}/templates/item-sheet-parts/team-details.hbs`,
+    "rebellion-sheet-actions": `modules/${CFG.id}/templates/actors/parts/actions.hbs`,
+    "rebellion-sheet-allies": `modules/${CFG.id}/templates/actors/parts/allies.hbs`,
+    "rebellion-sheet-events": `modules/${CFG.id}/templates/actors/parts/events.hbs`,
+    "rebellion-sheet-officers": `modules/${CFG.id}/templates/actors/parts/officers.hbs`,
+    "rebellion-sheet-summary": `modules/${CFG.id}/templates/actors/parts/summary.hbs`,
+    "rebellion-sheet-teams": `modules/${CFG.id}/templates/actors/parts/teams.hbs`,
+    "item-sheet-ally": `modules/${CFG.id}/templates/items/parts/ally-details.hbs`,
+    "item-sheet-event": `modules/${CFG.id}/templates/items/parts/event-details.hbs`,
+    "item-sheet-team": `modules/${CFG.id}/templates/items/parts/team-details.hbs`,
   });
 });

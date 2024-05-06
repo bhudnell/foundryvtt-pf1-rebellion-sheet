@@ -89,7 +89,7 @@
     border-radius: 4px;
     text-align: center;
     cursor: pointer;
-    font-size: var(--font-size-12, 12px);
+    font-size: var(--font-size-12, 9pt);
 
     &:hover {
       box-shadow: 0 0 8px red;

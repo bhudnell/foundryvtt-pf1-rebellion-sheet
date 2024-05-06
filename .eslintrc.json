@@ -52,6 +52,7 @@
     "Dialog": "readonly",
     "ChatMessage": "readonly",
     "JournalEntryPage": "readonly",
-    "pf1": "readonly"
+    "pf1": "readonly",
+    "$": "readonly"
   }
 }

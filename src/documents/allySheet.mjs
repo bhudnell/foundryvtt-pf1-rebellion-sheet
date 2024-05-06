@@ -6,7 +6,7 @@ export class AllySheet extends ItemSheet {
     const options = super.defaultOptions;
     return {
       ...options,
-      template: `modules/${CFG.id}/templates/item-sheet.hbs`,
+      template: `modules/${CFG.id}/templates/items/item-sheet.hbs`,
       classes: [...options.classes, "rebellion", "item", "ally"],
       tabs: [
         {

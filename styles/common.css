@@ -156,6 +156,14 @@
           background-size: contain;
         }
       }
+
+      .item-summary {
+        flex: 0 0 100%;
+        font-size: var(--font-size-12, 9pt);
+        line-height: 1.5;
+        padding: 0.25em 0.5em;
+        border-top: 1px solid #c9c7b8;
+      }
     }
 
     :is(.item-list-header, .item) {

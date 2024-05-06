@@ -57,6 +57,12 @@
     }
   }
 
+  .item-list .item .expand-summary:hover {
+    color: var(--pf1-item-hover-text);
+    text-shadow: var(--pf1-item-hover-shadow);
+    cursor: pointer;
+  }
+
   .info-box {
     flex: 1;
     display: flex;

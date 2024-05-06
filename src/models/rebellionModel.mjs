@@ -231,7 +231,7 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
     const messageData = {
       type: CONST.CHAT_MESSAGE_TYPES.ROLL,
       sound: options.noSound ? undefined : CONFIG.sounds.dice,
-      content: await renderTemplate(`modules/${CFG.id}/templates/event-roll.hbs`, templateData),
+      content: await renderTemplate(`modules/${CFG.id}/templates/chat/event-roll.hbs`, templateData),
       speaker: ChatMessage.getSpeaker({ actor: this, token, alias: token?.name }),
       flags: { [CFG.id]: { eventChanceCard: true } },
     };

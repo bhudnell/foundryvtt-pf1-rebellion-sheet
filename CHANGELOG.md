@@ -1,7 +1,9 @@
 # Next
 
+- Removed "type" field from the unique team list
 - Added missing localizations
 - Removed unassigned officers from team manager list
+- Added dropdown on clicking item name that shows the details for events/teams/allies
 
 # 0.0.4
 
