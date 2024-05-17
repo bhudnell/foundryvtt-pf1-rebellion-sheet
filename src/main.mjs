@@ -68,7 +68,6 @@ Hooks.once("ready", () => {
     "rebellion-sheet-actions": `modules/${CFG.id}/templates/actors/parts/actions.hbs`,
     "rebellion-sheet-allies": `modules/${CFG.id}/templates/actors/parts/allies.hbs`,
     "rebellion-sheet-events": `modules/${CFG.id}/templates/actors/parts/events.hbs`,
-    "rebellion-sheet-officers": `modules/${CFG.id}/templates/actors/parts/officers.hbs`,
     "rebellion-sheet-summary": `modules/${CFG.id}/templates/actors/parts/summary.hbs`,
     "rebellion-sheet-teams": `modules/${CFG.id}/templates/actors/parts/teams.hbs`,
     "item-sheet-ally": `modules/${CFG.id}/templates/items/parts/ally-details.hbs`,

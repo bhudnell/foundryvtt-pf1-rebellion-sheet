@@ -3,6 +3,13 @@
   min-height: 650px;
 
   .tab.summary {
+    gap: 8px;
+
+    > * {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
     .profile {
       height: 160px;
       width: 160px;
@@ -32,18 +39,11 @@
       align-items: center;
     }
 
-    .checks {
-      display: grid;
-      grid-template-columns: 1fr 1fr auto 1fr auto 1fr auto 1fr auto 1fr;
-      grid-template-rows: repeat(3, 1fr);
-      justify-items: center;
+    .org-check {
+      display: flex;
+      gap: 4px;
       align-items: center;
-      gap: 8px;
-
-      .org-check {
-        display: flex;
-        gap: 8px;
-      }
+      justify-content: center;
     }
   }
 

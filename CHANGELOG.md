@@ -4,6 +4,7 @@
 - Added missing localizations
 - Removed unassigned officers from team manager list
 - Added dropdown on clicking item name that shows the details for events/teams/allies
+- Moved Officers tab into Summary tab
 
 # 0.0.4
 

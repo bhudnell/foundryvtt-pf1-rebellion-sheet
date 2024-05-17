@@ -56,36 +56,39 @@
 
 <div class="flex0">
   <h3>{{localize "PF1RS.OrgChecks"}}</h3>
-  <div class="checks">
+  <div class="info-box-joined flex0">
     {{#each checks}}
-    <div class="flexrow org-check" data-orgcheck="{{ id }}">
-      <a class="rollable"><i class="fa-solid fa-dice-d20"></i></a>
-      <span>{{ label }}</span>
-    </div>
-    <div class="labeledValue">
-      <span>{{ data.total }}</span>
-      <span>{{localize "PF1RS.Total"}}</span>
-    </div>
-    <span>=</span>
-    <div class="labeledValue">
-      <span>{{ data.base }}</span>
-      <span>{{localize "PF1RS.Base"}}</span>
-    </div>
-    <span>+</span>
-    <div class="labeledValue">
-      <span>{{ data.officer }}</span>
-      <span>{{ officerLabel }}</span>
-    </div>
-    <span>+</span>
-    <div class="labeledValue">
-      <span>{{ data.sentinel }}</span>
-      <span>{{localize "PF1RS.Sentinel"}}</span>
-    </div>
-    <span>+</span>
-    <div class="labeledValue">
-      <span>{{ data.other }}</span>
-      <span>{{localize "PF1RS.Other"}}</span>
+    <div class="info-box">
+      <div class="label org-check" data-orgcheck="{{ id }}">
+        <a class="rollable"><i class="fa-solid fa-dice-d20"></i></a>
+        <span>{{ label }}</span>
+      </div>
+      <span class="value">{{ data.total }}</span>
     </div>
     {{/each}}
   </div>
 </div>
+
+<h3 class="flex0">{{localize "PF1RS.Officers"}}</h3>
+<ol class="item-list">
+  <li class="flexrow item-list-header">
+    <span class="item-detail item-position">{{localize "PF1RS.Position"}}</span>
+    <span class="item-name">{{localize "PF1RS.Officer"}}</span>
+    <span class="item-detail item-officer-bonus">{{localize "PF1RS.Bonus"}}</span>
+    <span class="item-detail item-teams-managed">{{localize "PF1RS.TeamsManaged"}}</span>
+  </li>
+  {{#each officers}}
+  <li class="flexrow item officer">
+    <span class="item-detail item-position">{{ label }}</span>
+    <select class="item-name" name="system.officers.{{ id }}.actorId">
+      {{selectOptions @root.validOfficerChoices selected=actorId}}
+    </select>
+    <span class="item-detail item-officer-bonus">+ {{ bonus }} {{ bonusType }}</span>
+    <span class="item-detail item-teams-managed">
+      {{#if actorId}}
+      {{ currTeamsManaged }} / {{ maxTeamsManaged }}
+      {{/if}}
+    </span>
+  </li>
+  {{/each}}
+</ol>
