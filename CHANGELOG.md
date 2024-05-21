@@ -5,6 +5,7 @@
 - Removed unassigned officers from team manager list
 - Added dropdown on clicking item name that shows the details for events/teams/allies
 - Moved Officers tab into Summary tab
+- Added tooltips to org checks, danger, and action bonuses
 
 # 0.0.4
 

@@ -58,7 +58,7 @@
   <h3>{{localize "PF1RS.OrgChecks"}}</h3>
   <div class="info-box-joined flex0">
     {{#each checks}}
-    <div class="info-box">
+    <div class="info-box" data-tooltip-extended="{{ id }}">
       <div class="label org-check" data-orgcheck="{{ id }}">
         <a class="rollable"><i class="fa-solid fa-dice-d20"></i></a>
         <span>{{ label }}</span>

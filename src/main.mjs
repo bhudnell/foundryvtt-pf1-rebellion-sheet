@@ -70,6 +70,7 @@ Hooks.once("ready", () => {
     "rebellion-sheet-events": `modules/${CFG.id}/templates/actors/parts/events.hbs`,
     "rebellion-sheet-summary": `modules/${CFG.id}/templates/actors/parts/summary.hbs`,
     "rebellion-sheet-teams": `modules/${CFG.id}/templates/actors/parts/teams.hbs`,
+    "tooltip-content": `modules/${CFG.id}/templates/actors/parts/tooltip-content.hbs`,
     "item-sheet-ally": `modules/${CFG.id}/templates/items/parts/ally-details.hbs`,
     "item-sheet-event": `modules/${CFG.id}/templates/items/parts/event-details.hbs`,
     "item-sheet-team": `modules/${CFG.id}/templates/items/parts/team-details.hbs`,

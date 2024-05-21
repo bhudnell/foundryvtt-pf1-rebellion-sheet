@@ -7,6 +7,7 @@ import {
   maxTeams,
   officerBonuses,
   orgChecks,
+  orgOfficers,
   rebellionAllyId,
   rebellionEventId,
   rebellionTeamId,
@@ -228,6 +229,8 @@ export class RebellionSheet extends ActorSheet {
     html.find(".eventChance .rollable").on("click", (e) => this._onRollEventChance(e));
 
     html.find("a.compendium-entry").on("click", (e) => this._onOpenCompendiumEntry(e));
+    html.find("[data-tooltip-extended]").on("mouseenter", (e) => this._activateExtendedTooltip(e));
+    html.find("[data-tooltip-extended]").on("mouseleave", () => game.tooltip.deactivate());
   }
 
   async _validateMinMax(e, min, max, minText, maxText) {
@@ -372,5 +375,67 @@ export class RebellionSheet extends ActorSheet {
     }
 
     return journal;
+  }
+
+  async _activateExtendedTooltip(event) {
+    const el = event.currentTarget;
+    const [id, subId] = el.dataset.tooltipExtended.split(".");
+    if (!id) {
+      return;
+    }
+
+    const templateData = this._generateTooltipData(id, subId);
+
+    if (!templateData.length) {
+      return;
+    }
+
+    const text = await renderTemplate(`modules/${CFG.id}/templates/actors/parts/tooltip-content.hbs`, templateData);
+
+    game.tooltip.activate(el, {
+      text,
+      cssClass: "rebellion",
+    });
+  }
+
+  _generateTooltipData(id, subId) {
+    const data = [];
+    const actorData = this.actor.system;
+    switch (id) {
+      case "loyalty":
+      case "security":
+      case "secrecy": {
+        const orgCheck = actorData[id];
+        if (orgCheck.base) {
+          data.push({ label: game.i18n.localize("PF1RS.Base"), value: orgCheck.base });
+        }
+        if (orgCheck.officer) {
+          data.push({ label: game.i18n.localize(orgOfficers[id]), value: orgCheck.officer });
+        }
+        if (orgCheck.sentinel) {
+          data.push({ label: game.i18n.localize("PF1RS.Sentinel"), value: orgCheck.sentinel });
+        }
+        actorData.changes
+          .filter((c) => c.ability && ["allOrgChecks", id].includes(c.ability))
+          .forEach((c) => data.push({ label: c.parentName, value: c.mitigated ? Math.floor(c.bonus / 2) : c.bonus }));
+        break;
+      }
+      case "danger": {
+        if (actorData.danger.base) {
+          data.push({ label: game.i18n.localize("PF1RS.Base"), value: actorData.danger.base });
+        }
+        actorData.changes
+          .filter((c) => c.ability && [id].includes(c.ability))
+          .forEach((c) => data.push({ label: c.parentName, value: c.mitigated ? Math.floor(c.bonus / 2) : c.bonus }));
+        break;
+      }
+      case "action": {
+        actorData.changes
+          .filter((c) => c.ability && [subId].includes(c.ability))
+          .forEach((c) => data.push({ label: c.parentName, value: c.mitigated ? Math.floor(c.bonus / 2) : c.bonus }));
+        break;
+      }
+    }
+    return data;
   }
 }
