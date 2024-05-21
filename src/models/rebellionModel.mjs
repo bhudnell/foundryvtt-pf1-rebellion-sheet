@@ -85,6 +85,12 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
       }),
       doubleEventChance: new fields.BooleanField({ initial: false }),
       notes: new fields.HTMLField(),
+      safehouses: new fields.NumberField({
+        integer: true,
+        min: 0,
+        initial: 0,
+        nullable: false,
+      }),
       actions: new fields.SchemaField({
         abm: defineAction("secrecy"),
         ash: defineAction(null),
@@ -154,6 +160,11 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
       this[check].officer += this.officers[orgCheckOfficer[check]].bonus;
       this[check].sentinel += this.focus !== check && this.officers.sentinel.actorId ? 1 : 0;
       this[check].other += this._getChanges(["allOrgChecks", check]);
+
+      if (check === "security") {
+        this[check].other += Math.min(5, this.safehouses);
+      }
+
       this[check].total += this[check].base + this[check].officer + this[check].sentinel + this[check].other;
     }
 

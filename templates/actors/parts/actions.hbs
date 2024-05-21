@@ -33,6 +33,10 @@
         <i class="fa-solid fa-book"></i>
       </a>
       {{/if}}
+      {{#if showSafehouses}}
+      {{localize "PF1RS.Total"}}:
+      {{numberInput @root.system.safehouses name="system.safehouses" step=1 min=0}}
+      {{/if}}
     </div>
     <div class="item-detail item-bonus" data-tooltip-extended="action.{{ id }}">{{ changeBonus }}</div>
     <div class="item-detail item-check">{{ check }}</div>

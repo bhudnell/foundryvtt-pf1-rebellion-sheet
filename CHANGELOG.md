@@ -1,3 +1,7 @@
+# Next
+
+- Added safehouse count
+
 # 0.1.0
 
 - Removed "type" field from the unique team list

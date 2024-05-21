@@ -122,6 +122,7 @@ export class RebellionSheet extends ActorSheet {
         label: game.i18n.localize(label),
         compendiumEntry: actionCompendiumEntries[actionId],
         check: game.i18n.localize(orgChecks[actorData.actions[actionId].check]),
+        showSafehouses: actionId === "ash",
       })),
       rank: maxActions[actorData.rank],
       strategist: actorData.officers.strategist.actorId ? 1 : 0,
@@ -414,6 +415,9 @@ export class RebellionSheet extends ActorSheet {
         }
         if (orgCheck.sentinel) {
           data.push({ label: game.i18n.localize("PF1RS.Sentinel"), value: orgCheck.sentinel });
+        }
+        if (id === "security" && actorData.safehouses) {
+          data.push({ label: game.i18n.localize("PF1RS.Safehouses"), value: actorData.safehouses });
         }
         actorData.changes
           .filter((c) => c.ability && ["allOrgChecks", id].includes(c.ability))

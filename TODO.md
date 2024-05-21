@@ -1,6 +1,4 @@
-- track safehouses +1 security for each max +5
 - add multiple recruiters
 - roll buttons:
   - notoriety: d100 <= notoriety score
-- MAYBE actions show what teams can do them
-- MAYBE add "advance week" button that clears out appropriate data (safehouses?, non persistent active events, anything else)
+- actions show what teams can do them

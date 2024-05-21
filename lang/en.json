@@ -26,6 +26,7 @@
     "Action": "Action",
     "Persistent": "Persistent",
     "Mitigated": "Mitigated",
+    "Safehouses": "Safehouses",
     "Actions": {
       "Abm": "Activate Black Market",
       "Ash": "Activate Safe House",
