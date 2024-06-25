@@ -4,7 +4,7 @@
   "description": "Everything needed to run a rebellion from Hell's Rebels",
   "author": "bhudnell",
   "license": "MIT",
-  "main": "rebellion-sheet.mjs",
+  "main": "src/main.mjs",
   "scripts": {
     "lint": "eslint --fix .",
     "prettier": "prettier --write .",

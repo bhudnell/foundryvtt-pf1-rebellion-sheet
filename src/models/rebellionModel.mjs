@@ -208,13 +208,14 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
     );
 
     const label = game.i18n.localize(orgChecks[orgCheckId]);
+    const actor = options.actor ?? this.actor;
     const token = options.token ?? this.token;
 
     const rollOptions = {
       ...options,
       parts,
       flavor: game.i18n.format("PF1RS.OrgCheckRoll", { check: label }),
-      speaker: ChatMessage.getSpeaker({ actor: this, token, alias: token?.name }),
+      speaker: ChatMessage.getSpeaker({ actor, token, alias: token?.name }),
     };
 
     return await pf1.dice.d20Roll(rollOptions);
@@ -227,6 +228,7 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
 
     const eventOccurred = roll.total <= this.eventChance;
 
+    const actor = options.actor ?? this.actor;
     const token = options.token ?? this.token;
 
     const templateData = {
@@ -243,7 +245,7 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
       type: CONST.CHAT_MESSAGE_TYPES.ROLL,
       sound: options.noSound ? undefined : CONFIG.sounds.dice,
       content: await renderTemplate(`modules/${CFG.id}/templates/chat/event-roll.hbs`, templateData),
-      speaker: ChatMessage.getSpeaker({ actor: this, token, alias: token?.name }),
+      speaker: ChatMessage.getSpeaker({ actor, token, alias: token?.name }),
       flags: { [CFG.id]: { eventChanceCard: true } },
     };
 

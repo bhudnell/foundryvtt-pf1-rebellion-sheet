@@ -350,12 +350,12 @@ export class RebellionSheet extends ActorSheet {
   async _onRollOrgCheck(event) {
     event.preventDefault();
     const orgCheck = event.currentTarget.closest(".org-check").dataset.orgcheck;
-    this.actor.system.rollOrgCheck(orgCheck, { token: this.token, skipDialog: true });
+    this.actor.system.rollOrgCheck(orgCheck, { actor: this.actor, skipDialog: true });
   }
 
   async _onRollEventChance(event) {
     event.preventDefault();
-    this.actor.system.rollEvent();
+    this.actor.system.rollEvent({ actor: this.actor });
   }
 
   async _onOpenCompendiumEntry(event) {
