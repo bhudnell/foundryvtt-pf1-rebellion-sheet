@@ -10,6 +10,9 @@ export class AllyModel extends foundry.abstract.TypeDataModel {
           bonus: new fields.NumberField({ integer: true }),
         })
       ),
+      actions: new fields.SchemaField({
+        value: new fields.ArrayField(new fields.StringField()),
+      }),
     };
   }
 

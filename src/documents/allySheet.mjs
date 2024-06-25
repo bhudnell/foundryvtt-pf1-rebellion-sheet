@@ -1,4 +1,4 @@
-import { CFG, allChangeTargets } from "../config.mjs";
+import { CFG, actions, allChangeTargets } from "../config.mjs";
 import { getChangeCategories } from "../utils.mjs";
 
 export class AllySheet extends ItemSheet {
@@ -34,6 +34,9 @@ export class AllySheet extends ItemSheet {
       abilityLabel: game.i18n.localize(allChangeTargets[c.ability]),
     }));
 
+    // actions
+    data.actions = item.system.actions.value.map((action) => game.i18n.localize(actions[action])).join(", ");
+
     return data;
   }
 
@@ -43,6 +46,8 @@ export class AllySheet extends ItemSheet {
     html.find(".add-change").on("click", (e) => this._onAddChange(e));
     html.find(".delete-change").on("click", (e) => this._onDeleteChange(e));
     html.find(".target-change").on("click", (e) => this._onTargetChange(e));
+
+    html.find(".edit-actions").on("click", () => this._onActionsEdit());
   }
 
   async _onAddChange(event) {
@@ -83,7 +88,7 @@ export class AllySheet extends ItemSheet {
     const category = categories.find((c) => c.items.some((i) => i.key === item))?.key;
 
     // Show widget
-    const w = new pf1.applications.Widget_CategorizedItemPicker(
+    const app = new pf1.applications.Widget_CategorizedItemPicker(
       { title: "PF1.Application.ChangeTargetSelector.Title", classes: ["change-target-selector"] },
       categories,
       (key) => {
@@ -98,6 +103,18 @@ export class AllySheet extends ItemSheet {
       },
       { category, item }
     );
-    w.render(true);
+    app.render(true);
+  }
+
+  _onActionsEdit() {
+    const choices = Object.fromEntries(Object.entries(actions).map(([key, label]) => [key, game.i18n.localize(label)]));
+
+    const app = new pf1.applications.ActorTraitSelector(this.item, {
+      name: "system.actions",
+      title: "Test2",
+      subject: "actions",
+      choices,
+    });
+    app.render(true, { focus: true });
   }
 }

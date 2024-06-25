@@ -1,3 +1,2 @@
 - add multiple recruiters
 - actions show what teams can do them
-- Allies can add granted actions
