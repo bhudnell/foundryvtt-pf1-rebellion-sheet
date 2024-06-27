@@ -1,4 +1,4 @@
-# Next
+# 1.0.0
 
 - Added safehouse count
 - Fixed issue when rolling events with a different token selected
