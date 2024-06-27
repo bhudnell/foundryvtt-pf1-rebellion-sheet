@@ -38,3 +38,10 @@ Event chance (then the event if it occurs) can also be rolled using the roll but
 ## Actions
 
 The list of available actions and their rules are available in the provided compendium.
+
+---
+
+# Attribution
+
+- Big thanks to the developers of the [Pf1e system](https://gitlab.com/foundryvtt_pathfinder1e/foundryvtt-pathfinder1) for the sheet styling I tried to match
+- Big thanks to [M.A.](https://gitlab.com/mkahvi) for the Companion Link and Item Hints modules, which I took inspiration from for various functionality
