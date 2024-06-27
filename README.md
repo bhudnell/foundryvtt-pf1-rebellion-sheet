@@ -44,4 +44,4 @@ The list of available actions and their rules are available in the provided comp
 # Attribution
 
 - Big thanks to the developers of the [Pf1e system](https://gitlab.com/foundryvtt_pathfinder1e/foundryvtt-pathfinder1) for the sheet styling I tried to match
-- Big thanks to [M.A.](https://gitlab.com/mkahvi) for the Companion Link and Item Hints modules, which I took inspiration from for various functionality
+- Big thanks to [M.A.](https://gitlab.com/mkahvi) for answering many of my noobie questions as I got started and for the Companion Link and Item Hints modules, which I took inspiration from for various functionality
