@@ -74,10 +74,6 @@ export class RebellionSheet extends ActorSheet {
           label: game.i18n.localize("PF1RS.Partisan"),
         },
         {
-          id: "recruiter",
-          label: game.i18n.localize("PF1RS.Recruiter"),
-        },
-        {
           id: "sentinel",
           label: game.i18n.localize("PF1RS.Sentinel"),
         },
@@ -128,7 +124,7 @@ export class RebellionSheet extends ActorSheet {
       strategist: actorData.officers.strategist.actorId ? 1 : 0,
     };
 
-    // officers
+    // non-recruiter officers
     for (const officer of data.officers) {
       officer.actorId = actorData.officers[officer.id].actorId;
       officer.name = actorData.officers[officer.id].name;
@@ -140,6 +136,24 @@ export class RebellionSheet extends ActorSheet {
         0
       );
     }
+    // recruiter officers
+    data.recruiters = actorData.officers.recruiters.map((recruiter, idx) => {
+      return {
+        id: recruiter.id,
+        label: game.i18n.localize("PF1RS.Recruiter"),
+        canDelete: idx > 0,
+        actorId: recruiter.actorId,
+        name: recruiter.name,
+        bonus: recruiter.bonus,
+        bonusType: game.i18n.localize(officerBonuses.recruiter),
+        maxTeamsManaged: recruiter.maxTeams,
+        currTeamsManaged: this.actor.itemTypes[rebellionTeamId].reduce(
+          (total, t) => total + (t.system.managerId === recruiter.actorId ? 1 : 0),
+          0
+        ),
+      };
+    });
+
     const officerChoices = { "": "" };
     game.actors
       .filter((actor) => actor.permission > 0 && (actor.type === "character" || actor.type === "npc"))
@@ -220,6 +234,9 @@ export class RebellionSheet extends ActorSheet {
         this._validateMinMax(e, 0, this.actor.system.population, undefined, "the current population")
       );
 
+    html.find(".recruiter-create").on("click", (e) => this._onRecruiterCreate(e));
+    html.find(".recruiter-delete").on("click", (e) => this._onRecruiterDelete(e));
+
     html.find(".item-delete").on("click", (e) => this._onItemDelete(e));
     html.find(".item-toggle-data").on("click", (e) => this._itemToggleData(e));
     html.find(".item-edit").on("click", (e) => this._onItemEdit(e));
@@ -244,6 +261,33 @@ export class RebellionSheet extends ActorSheet {
       ui.notifications.warn(`Cant be higher than ${maxText ?? max}`);
       e.target.value = max;
     }
+  }
+
+  async _onRecruiterCreate(event) {
+    event.preventDefault();
+
+    const recruiters = foundry.utils.deepClone(this.actor.system.officers.recruiters ?? []);
+    recruiters.push({
+      actorId: null,
+      type: "recruiter",
+      id: foundry.utils.randomID(),
+    });
+    await this._onSubmit(event, {
+      updateData: { "system.officers.recruiters": recruiters },
+    });
+  }
+
+  async _onRecruiterDelete(event) {
+    event.preventDefault();
+
+    const recruiterId = event.currentTarget.closest(".item").dataset.id;
+
+    const recruiters = foundry.utils.deepClone(this.actor.system.officers.recruiters ?? []);
+    recruiters.findSplice((recruiter) => recruiter.id === recruiterId);
+
+    return this._onSubmit(event, {
+      updateData: { "system.officers.recruiters": recruiters },
+    });
   }
 
   async _onItemDelete(event) {

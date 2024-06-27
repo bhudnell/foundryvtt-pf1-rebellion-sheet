@@ -1,2 +1,1 @@
-- add multiple recruiters
 - actions show what teams can do them

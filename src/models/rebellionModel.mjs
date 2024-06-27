@@ -78,10 +78,12 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
       officers: new fields.SchemaField({
         demagogue: new fields.EmbeddedDataField(defineOfficer("demagogue")),
         partisan: new fields.EmbeddedDataField(defineOfficer("partisan")),
-        recruiter: new fields.EmbeddedDataField(defineOfficer("recruiter")),
         sentinel: new fields.EmbeddedDataField(defineOfficer("sentinel")),
         spymaster: new fields.EmbeddedDataField(defineOfficer("spymaster")),
         strategist: new fields.EmbeddedDataField(defineOfficer("strategist")),
+        recruiters: new fields.ArrayField(new fields.EmbeddedDataField(defineOfficer("recruiter")), {
+          initial: [{ actorId: null, type: "recruiter", id: foundry.utils.randomID() }],
+        }),
       }),
       doubleEventChance: new fields.BooleanField({ initial: false }),
       notes: new fields.HTMLField(),
@@ -309,7 +311,7 @@ function defineAction(check) {
   });
 }
 
-function defineOfficer(name) {
+function defineOfficer(type) {
   return class OfficerModel extends foundry.abstract.TypeDataModel {
     static defineSchema() {
       const fields = foundry.data.fields;
@@ -322,7 +324,8 @@ function defineOfficer(name) {
     _initialize(...args) {
       super._initialize(...args);
 
-      this.id = name;
+      this.type = type;
+      this.id = foundry.utils.randomID();
     }
 
     get name() {
@@ -342,7 +345,7 @@ function defineOfficer(name) {
         return 0;
       }
 
-      switch (this.id) {
+      switch (this.type) {
         case "demagogue":
           return Math.max(officer.system.abilities.con.mod, officer.system.abilities.cha.mod);
         case "partisan":

@@ -3,6 +3,7 @@
 - Added safehouse count
 - Fixed issue when rolling events with a different token selected
 - Added ability for Ally Items to grant actions
+- Added ability to add multiple Recruiters
 
 # 0.1.0
 

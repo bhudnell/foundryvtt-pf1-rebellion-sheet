@@ -63,6 +63,14 @@
     cursor: pointer;
   }
 
+  .item-list .item-detail.officer-controls {
+    flex: 0 0 32px;
+
+    .officer-control {
+      flex: 0 0 16px;
+    }
+  }
+
   .info-box {
     flex: 1;
     display: flex;
