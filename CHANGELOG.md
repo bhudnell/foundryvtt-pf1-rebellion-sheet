@@ -4,6 +4,7 @@
 - Fixed issue when rolling events with a different token selected
 - Added ability for Ally Items to grant actions
 - Added ability to add multiple Recruiters
+- Actions now show the source that grants them
 
 # 0.1.0
 

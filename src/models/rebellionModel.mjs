@@ -175,6 +175,7 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
     for (const action of Object.keys(actions)) {
       this.actions[action].changeBonus = this._getChanges(action);
       this.actions[action].available = alwaysAvailableActions.includes(action) || itemActions.has(action);
+      this.actions[action].sources = itemActions.get(action);
     }
 
     // other details
@@ -280,13 +281,17 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
   }
 
   _getItemActions() {
-    const actionItems = this.parent.items.filter((item) => item.system.actions?.value.length > 0);
-    const actions = new Set();
+    const actionItems = this.parent.items.filter(
+      (item) => !item.system.disabled && !item.system.missing && item.system.actions?.value.length > 0
+    );
+    const actions = new Map();
 
-    actionItems
-      .filter((item) => !item.system.disabled && !item.system.missing)
-      .flatMap((item) => item.system.actions.value)
-      .forEach((action) => actions.add(action));
+    for (const item of actionItems) {
+      for (const action of item.system.actions.value) {
+        const sources = actions.get(action);
+        actions.set(action, [...(sources ?? []), item.name]);
+      }
+    }
 
     return actions;
   }
