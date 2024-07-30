@@ -93,9 +93,8 @@
         "id": "pf1",
         "type": "system",
         "compatibility": {
-          "minimum": "9.6",
-          "verified": "9.6",
-          "maximum": "9.6"
+          "minimum": "9",
+          "verified": "10.4"
         }
       }
     ]
