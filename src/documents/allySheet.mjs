@@ -111,7 +111,7 @@ export class AllySheet extends ItemSheet {
 
     const app = new pf1.applications.ActorTraitSelector(this.item, {
       name: "system.actions",
-      title: "Test2",
+      title: "Test2", // TODO rename
       subject: "actions",
       choices,
     });
