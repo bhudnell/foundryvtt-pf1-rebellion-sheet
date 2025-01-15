@@ -1,4 +1,4 @@
-import { actions, miscChangeTargets, orgCheckChangeTargets } from "./config.mjs";
+import { actions, miscChangeTargets, orgCheckChangeTargets } from "../config/config.mjs";
 
 export function getRankFromSupporters(supporters) {
   if (supporters > 5349) {
