@@ -3,7 +3,7 @@ import path from "path";
 
 import { extractPack } from "@foundryvtt/foundryvtt-cli";
 
-import { CFG } from "../src/config.mjs";
+import { moduleId } from "../src/config/config.mjs";
 
 import { compiledPacksDir, sourcePacksDir } from "./config.mjs";
 import * as utils from "./utils.mjs";
@@ -32,7 +32,7 @@ function sanitizePackEntry(entry, documentType = "") {
   for (const key of Object.keys(entry.flags ?? {})) {
     if (utils.isEmpty(entry.flags[key])) {
       delete entry.flags[key];
-    } else if (![CFG.id, "core"].includes(key)) {
+    } else if (![moduleId, "core"].includes(key)) {
       delete entry.flags[key];
     }
   }

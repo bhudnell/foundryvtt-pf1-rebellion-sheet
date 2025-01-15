@@ -89,3 +89,23 @@ export const buffTargetCategories = {
     filters: { item: { include: armyItemTypes } },
   },
 };
+
+export function getChangeCategories() {
+  return [
+    {
+      key: "checks",
+      label: game.i18n.localize("PF1RS.OrgChecks"),
+      items: Object.entries(orgCheckChangeTargets).map(([key, label]) => ({ key, label: game.i18n.localize(label) })),
+    },
+    {
+      key: "actions",
+      label: game.i18n.localize("PF1RS.ActionsLabel"),
+      items: Object.entries(actions).map(([key, label]) => ({ key, label: game.i18n.localize(label) })),
+    },
+    {
+      key: "misc",
+      label: game.i18n.localize("PF1RS.Misc"),
+      items: Object.entries(miscChangeTargets).map(([key, label]) => ({ key, label: game.i18n.localize(label) })),
+    },
+  ];
+}

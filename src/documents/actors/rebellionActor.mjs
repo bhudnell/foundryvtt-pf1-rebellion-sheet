@@ -3,7 +3,7 @@ import { DefaultChange } from "../../util/utils.mjs";
 
 import { BaseActor } from "./baseActor.mjs";
 
-export class KingdomActor extends BaseActor {
+export class RebellionActor extends BaseActor {
   prepareDerivedData() {
     // todo remove if nothing added
     super.prepareDerivedData();
