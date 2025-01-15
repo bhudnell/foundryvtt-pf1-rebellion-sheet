@@ -5,13 +5,21 @@ export class AllyModel extends ItemBaseModel {
     const fields = foundry.data.fields;
 
     const schema = {
-      actions: new fields.SchemaField({
+      rActions: new fields.SchemaField({
         value: new fields.ArrayField(new fields.StringField()),
       }),
     };
     this.addDefaultSchemaFields(schema);
 
     return schema;
+  }
+
+  static migrateData(data) {
+    super.migrateData(data);
+
+    if (data.actions) {
+      data.rActions = { value: data.actions.value };
+    }
   }
 
   prepareDerivedData() {}

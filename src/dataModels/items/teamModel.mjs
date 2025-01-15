@@ -15,7 +15,7 @@ export class TeamModel extends ItemBaseModel {
         dc: new fields.NumberField(),
         ability: new fields.StringField(),
       }),
-      actions: new fields.SchemaField({
+      rActions: new fields.SchemaField({
         value: new fields.ArrayField(new fields.StringField()),
       }),
       size: new fields.NumberField({ integer: true }),
@@ -26,6 +26,14 @@ export class TeamModel extends ItemBaseModel {
     this.addDefaultSchemaFields(schema);
 
     return schema;
+  }
+
+  static migrateData(data) {
+    super.migrateData(data);
+
+    if (data.actions) {
+      data.rActions = { value: data.actions.value };
+    }
   }
 
   prepareDerivedData() {}

@@ -28,7 +28,7 @@ export class TeamSheet extends ItemBaseSheet {
     context.validManagerOptions = managerOptions;
 
     // actions
-    context.actions = itemData.actions.value.map((action) => game.i18n.localize(actions[action])).join(", ");
+    context.actions = itemData.rActions.value.map((action) => game.i18n.localize(actions[action])).join(", ");
 
     // sidebar info
     context.states = [
@@ -57,7 +57,7 @@ export class TeamSheet extends ItemBaseSheet {
     const choices = Object.fromEntries(Object.entries(actions).map(([key, label]) => [key, game.i18n.localize(label)]));
 
     const app = new pf1.applications.ActorTraitSelector(this.item, {
-      name: "system.actions",
+      name: "system.rActions",
       title: "Test2", // TODO rename
       subject: "actions",
       choices,

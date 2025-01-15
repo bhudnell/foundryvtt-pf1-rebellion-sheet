@@ -87,7 +87,6 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
         }),
       }),
       doubleEventChance: new fields.BooleanField({ initial: false }),
-      notes: new fields.HTMLField(),
       safehouses: new fields.NumberField({
         integer: true,
         min: 0,
@@ -120,7 +119,16 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
         ut: defineAction(null),
         ui: defineAction(null),
       }),
+      notes: new fields.SchemaField({
+        value: new fields.HTMLField({ required: false, blank: true }),
+      }),
     };
+  }
+
+  static migrateData(data) {
+    if (typeof data.notes === "string") {
+      data.notes = { value: data.notes };
+    }
   }
 
   prepareBaseData() {
@@ -217,12 +225,12 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
 
   _getItemActions() {
     const actionItems = this.parent.items.filter(
-      (item) => !item.system.disabled && !item.system.missing && item.system.actions?.value.length > 0
+      (item) => !item.system.disabled && !item.system.missing && item.system.rActions?.value.length > 0
     );
     const actions = new Map();
 
     for (const item of actionItems) {
-      for (const action of item.system.actions.value) {
+      for (const action of item.system.rActions.value) {
         const sources = actions.get(action);
         actions.set(action, [...(sources ?? []), item.name]);
       }
