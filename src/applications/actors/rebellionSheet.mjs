@@ -12,21 +12,15 @@ import {
   rebellionEventId,
   rebellionTeamId,
   teamBaseTypes,
-} from "../config.mjs";
-import { getRankFromSupporters } from "../utils.mjs";
+} from "../../config/config.mjs";
+import { getRankFromSupporters } from "../../util/utils.mjs";
 
-export class RebellionSheet extends ActorSheet {
-  constructor(...args) {
-    super(...args);
-
-    this._expandedItems = new Set();
-  }
+export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
   static get defaultOptions() {
     const options = super.defaultOptions;
     return {
       ...options,
-      template: `modules/${CFG.id}/templates/actors/rebellion-sheet.hbs`,
-      classes: [...options.classes, "rebellion", "actor"],
+      classes: [...options.classes, "rebellion"],
       tabs: [
         {
           navSelector: "nav.tabs[data-group='primary']",
@@ -38,54 +32,27 @@ export class RebellionSheet extends ActorSheet {
     };
   }
 
+  get template() {
+    return `modules/${pf1rs.config.moduleId}/templates/actors/rebellion/${this.isEditable ? "edit" : "view"}.hbs`;
+  }
+
   async getData() {
     const actor = this.actor;
     const actorData = actor.system;
+    const isOwner = actor.isOwner;
 
     const data = {
       ...this.actor,
       isGM: game.user.isGM,
-      enrichedNotes: await TextEditor.enrichHTML(actorData.notes),
+      owner: isOwner,
+      enrichedNotes: await TextEditor.enrichHTML(actorData.notes.value ?? "", {
+        rolldata: actor.getRollData(),
+        async: true,
+        secrets: this.object.isOwner,
+        relativeTo: this.actor,
+      }),
       editable: this.isEditable,
-      checks: [
-        {
-          id: "loyalty",
-          label: game.i18n.localize("PF1RS.Loyalty"),
-          officerLabel: game.i18n.localize("PF1RS.Demagogue"),
-        },
-        {
-          id: "secrecy",
-          label: game.i18n.localize("PF1RS.Secrecy"),
-          officerLabel: game.i18n.localize("PF1RS.Spymaster"),
-        },
-        {
-          id: "security",
-          label: game.i18n.localize("PF1RS.Security"),
-          officerLabel: game.i18n.localize("PF1RS.Partisan"),
-        },
-      ],
-      officers: [
-        {
-          id: "demagogue",
-          label: game.i18n.localize("PF1RS.Demagogue"),
-        },
-        {
-          id: "partisan",
-          label: game.i18n.localize("PF1RS.Partisan"),
-        },
-        {
-          id: "sentinel",
-          label: game.i18n.localize("PF1RS.Sentinel"),
-        },
-        {
-          id: "spymaster",
-          label: game.i18n.localize("PF1RS.Spymaster"),
-        },
-        {
-          id: "strategist",
-          label: game.i18n.localize("PF1RS.Strategist"),
-        },
-      ],
+      cssClass: isOwner ? "editable" : "locked",
     };
 
     // item types
@@ -154,11 +121,11 @@ export class RebellionSheet extends ActorSheet {
       };
     });
 
-    const officerChoices = { "": "" };
+    const officerOptions = { "": "" };
     game.actors
       .filter((actor) => actor.permission > 0 && (actor.type === "character" || actor.type === "npc"))
-      .forEach((actor) => (officerChoices[actor.id] = actor.name));
-    data.validOfficerChoices = officerChoices;
+      .forEach((actor) => (officerOptions[actor.id] = actor.name));
+    data.validOfficerOptions = officerOptions;
 
     // teams
     data.teamCount = {
@@ -237,18 +204,10 @@ export class RebellionSheet extends ActorSheet {
     html.find(".recruiter-create").on("click", (e) => this._onRecruiterCreate(e));
     html.find(".recruiter-delete").on("click", (e) => this._onRecruiterDelete(e));
 
-    html.find(".item-delete").on("click", (e) => this._onItemDelete(e));
     html.find(".item-toggle-data").on("click", (e) => this._itemToggleData(e));
-    html.find(".item-edit").on("click", (e) => this._onItemEdit(e));
-    html.find(".item-create").on("click", (e) => this._onItemCreate(e));
-    html.find(".item .expand-summary").on("click", (e) => this._onItemSummary(e));
 
     html.find(".org-check .rollable").on("click", (e) => this._onRollOrgCheck(e));
-    html.find(".eventChance .rollable").on("click", (e) => this._onRollEventChance(e));
-
-    html.find("a.compendium-entry").on("click", (e) => this._onOpenCompendiumEntry(e));
-    html.find("[data-tooltip-extended]").on("mouseenter", (e) => this._activateExtendedTooltip(e));
-    html.find("[data-tooltip-extended]").on("mouseleave", () => game.tooltip.deactivate());
+    html.find(".event-chance .rollable").on("click", (e) => this._onRollEventChance(e));
   }
 
   async _validateMinMax(e, min, max, minText, maxText) {
@@ -290,36 +249,6 @@ export class RebellionSheet extends ActorSheet {
     });
   }
 
-  async _onItemDelete(event) {
-    event.preventDefault();
-
-    const button = event.currentTarget;
-    if (button.disabled) {
-      return;
-    }
-
-    const itemId = event.currentTarget.closest(".item").dataset.id;
-    const item = this.actor.items.get(itemId);
-
-    button.disabled = true;
-
-    const msg = `<p>${game.i18n.localize("PF1.DeleteItemConfirmation")}</p>`;
-    try {
-      await Dialog.confirm({
-        title: game.i18n.format("PF1.DeleteItemTitle", { name: item.name }),
-        content: msg,
-        yes: () => {
-          item.delete();
-          button.disabled = false;
-        },
-        no: () => (button.disabled = false),
-        rejectClose: true,
-      });
-    } catch (e) {
-      button.disabled = false;
-    }
-  }
-
   async _itemToggleData(event) {
     event.preventDefault();
     const el = event.currentTarget;
@@ -334,63 +263,6 @@ export class RebellionSheet extends ActorSheet {
     item.update(updateData);
   }
 
-  async _onItemEdit(event) {
-    event.preventDefault();
-    const itemId = event.currentTarget.closest(".item").dataset.id;
-    const item = this.document.items.get(itemId);
-
-    item.sheet.render(true, { focus: true });
-  }
-
-  async _onItemCreate(event) {
-    event.preventDefault();
-    const header = event.currentTarget;
-
-    const type = header.dataset.type;
-    const subType = header.dataset.subType;
-    const typeName =
-      (itemSubTypes[subType] ? `${game.i18n.localize(itemSubTypes[subType])} ` : "") +
-      game.i18n.localize(CONFIG.Item.typeLabels[type] || type);
-
-    const itemData = {
-      name: game.i18n.format("PF1.NewItem", { type: typeName }),
-      type,
-      system: { subType },
-    };
-
-    const newItem = new Item(itemData);
-
-    return this.actor.createEmbeddedDocuments("Item", [newItem.toObject()], { renderSheet: true });
-  }
-
-  async _onItemSummary(event) {
-    event.preventDefault();
-    const elem = event.target.closest(".item");
-    const itemId = elem.dataset.id;
-    const item = this.actor.items.get(itemId);
-
-    if (this._expandedItems.has(itemId)) {
-      const summary = elem.querySelector(".item-summary");
-      $(summary).slideUp(200, () => summary.remove());
-
-      this._expandedItems.delete(itemId);
-    } else {
-      const templateData = {
-        description: item.system.description,
-      };
-      let content = await renderTemplate(`modules/${CFG.id}/templates/actors/parts/item-summary.hbs`, templateData);
-      content = await TextEditor.enrichHTML(content);
-
-      const div = $(content);
-
-      div.hide();
-      elem.append(...div);
-      div.slideDown(200);
-
-      this._expandedItems.add(itemId);
-    }
-  }
-
   async _onRollOrgCheck(event) {
     event.preventDefault();
     const orgCheck = event.currentTarget.closest(".org-check").dataset.orgcheck;
@@ -402,88 +274,79 @@ export class RebellionSheet extends ActorSheet {
     this.actor.system.rollEvent({ actor: this.actor });
   }
 
-  async _onOpenCompendiumEntry(event) {
-    const uuid = event.currentTarget.dataset.compendiumEntry;
-
-    const journal = await fromUuid(uuid);
-
-    if (journal instanceof JournalEntryPage) {
-      journal.parent.sheet.render(true, {
-        pageId: journal.id,
-        editable: false,
-        collapsed: true,
-        width: 600,
-        height: 700,
-      });
-    } else {
-      journal.sheet.render(true, { editable: false });
+  // overrides
+  _focusTabByItem(item) {
+    let tabId;
+    switch (item.type) {
+      case pf1rs.config.teamId:
+        tabId = "teams";
+        break;
+      case pf1rs.config.eventId:
+        tabId = "events";
+        break;
+      case pf1rs.config.allyId:
+        tabId = "allies";
+        break;
+      default:
+        tabId = "summary";
     }
 
-    return journal;
+    if (tabId) {
+      this.activateTab(tabId, "primary");
+    }
   }
 
-  async _activateExtendedTooltip(event) {
-    const el = event.currentTarget;
-    const [id, subId] = el.dataset.tooltipExtended.split(".");
-    if (!id) {
-      return;
-    }
+  _getTooltipContext(fullId, context) {
+    const actor = this.actor;
+    const actorData = actor.system;
 
-    const templateData = this._generateTooltipData(id, subId);
+    // Lazy roll data
+    const lazy = {
+      get rollData() {
+        this._rollData ??= actor.getRollData();
+        return this._rollData;
+      },
+    };
 
-    if (!templateData.length) {
-      return;
-    }
+    const getSource = (path) => this.actor.sourceDetails[path];
 
-    const text = await renderTemplate(`modules/${CFG.id}/templates/actors/parts/tooltip-content.hbs`, templateData);
+    const getNotes = (context) => {
+      const noteObjs = actor.getContextNotes(context);
+      return actor.formatContextNotes(noteObjs, lazy.rollData, { roll: false });
+    };
 
-    game.tooltip.activate(el, {
-      text,
-      cssClass: "rebellion",
-    });
-  }
+    let header, subHeader;
+    const details = [];
+    const paths = [];
+    const sources = [];
+    let notes;
 
-  _generateTooltipData(id, subId) {
-    const data = [];
-    const actorData = this.actor.system;
+    const re = /^(?<id>[\w-]+)(?:\.(?<detail>.*))?$/.exec(fullId);
+    const { id, detail } = re?.groups ?? {};
+
+    // TODO all the tooltips
     switch (id) {
-      case "loyalty":
-      case "security":
-      case "secrecy": {
-        const orgCheck = actorData[id];
-        if (orgCheck.base) {
-          data.push({ label: game.i18n.localize("PF1RS.Base"), value: orgCheck.base });
-        }
-        if (orgCheck.officer) {
-          data.push({ label: game.i18n.localize(orgOfficers[id]), value: orgCheck.officer });
-        }
-        if (orgCheck.sentinel) {
-          data.push({ label: game.i18n.localize("PF1RS.Sentinel"), value: orgCheck.sentinel });
-        }
-        if (id === "security" && actorData.safehouses) {
-          data.push({ label: game.i18n.localize("PF1RS.Safehouses"), value: actorData.safehouses });
-        }
-        actorData.changes
-          .filter((c) => c.ability && ["allOrgChecks", id].includes(c.ability))
-          .forEach((c) => data.push({ label: c.parentName, value: c.mitigated ? Math.floor(c.bonus / 2) : c.bonus }));
+      case "consumption":
+        paths.push({
+          path: `@${id}.total`,
+          value: actorData[id].total,
+        });
+        sources.push({
+          sources: getSource(`system.${id}.total`),
+          untyped: true,
+        });
+        notes = getNotes(`${pf1rs.config.changePrefix}_${id}`);
         break;
-      }
-      case "danger": {
-        if (actorData.danger.base) {
-          data.push({ label: game.i18n.localize("PF1RS.Base"), value: actorData.danger.base });
-        }
-        actorData.changes
-          .filter((c) => c.ability && [id].includes(c.ability))
-          .forEach((c) => data.push({ label: c.parentName, value: c.mitigated ? Math.floor(c.bonus / 2) : c.bonus }));
-        break;
-      }
-      case "action": {
-        actorData.changes
-          .filter((c) => c.ability && [subId].includes(c.ability))
-          .forEach((c) => data.push({ label: c.parentName, value: c.mitigated ? Math.floor(c.bonus / 2) : c.bonus }));
-        break;
-      }
+
+      default:
+        throw new Error(`Invalid extended tooltip identifier "${fullId}"`);
     }
-    return data;
+
+    context.header = header;
+    context.subHeader = subHeader;
+    context.details = details;
+    context.paths = paths;
+    context.sources = sources;
+    context.notes = notes ?? [];
   }
 }
