@@ -45,14 +45,14 @@
     "loadTemplates": "readonly",
     "Actors": "readonly",
     "Items": "readonly",
-    "ActorSheet": "readonly",
+    "Actor": "readonly",
     "Item": "readonly",
     "ItemSheet": "readonly",
     "TextEditor": "readonly",
     "Dialog": "readonly",
     "ChatMessage": "readonly",
-    "JournalEntryPage": "readonly",
     "pf1": "readonly",
-    "$": "readonly"
+    "pf1rs": "readonly",
+    "libWrapper": "readonly"
   }
 }
