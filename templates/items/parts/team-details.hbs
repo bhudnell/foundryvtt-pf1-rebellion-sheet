@@ -5,7 +5,7 @@
     <span>{{localize "PF1RS.Teams.SubTypes.Unique"}}</span>
     {{else}}
     <select name="system.baseType">
-      {{selectOptions baseTypeChoices selected=system.baseType}}
+      {{selectOptions baseTypeOptions selected=system.baseType}}
     </select>
     {{/if}}
   </div>
@@ -29,7 +29,7 @@
   <label>{{localize "PF1RS.Manager"}}</label>
   <div class="form-fields">
     <select name="system.managerId">
-      {{selectOptions validManagerChoices selected=system.managerId}}
+      {{selectOptions validManagerOptions selected=system.managerId}}
     </select>
     <div class="flex0">
       <span>{{localize "PF1RS.Bonus"}}</span>
@@ -49,6 +49,6 @@
 <h4 class="section-header">{{localize "PF1RS.Type"}}</h4>
 <div class="flex0">
   <select class="sub-type-selector" name="system.subType">
-    {{selectOptions subTypeChoices selected=system.subType}}
+    {{selectOptions subTypeOptions selected=system.subType}}
   </select>
 </div>

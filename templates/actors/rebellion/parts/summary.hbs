@@ -87,7 +87,7 @@
   <li class="flexrow item officer">
     <span class="item-detail item-position">{{ label }}</span>
     <select class="item-name" name="system.officers.{{ id }}.actorId">
-      {{selectOptions @root.validOfficerChoices selected=actorId}}
+      {{selectOptions @root.validOfficerOptions selected=actorId}}
     </select>
     <span class="item-detail item-officer-bonus">+ {{ bonus }} {{ bonusType }}</span>
     <span class="item-detail item-teams-managed">
@@ -103,7 +103,7 @@
   <li class="flexrow item officer" data-id="{{ id }}">
     <span class="item-detail item-position">{{ label }}</span>
     <select class="item-name" name="system.officers.recruiters.{{ idx }}.actorId">
-      {{selectOptions @root.validOfficerChoices selected=actorId}}
+      {{selectOptions @root.validOfficerOptions selected=actorId}}
     </select>
     <span class="item-detail item-officer-bonus">+ {{ bonus }} {{ bonusType }}</span>
     <span class="item-detail item-teams-managed">
