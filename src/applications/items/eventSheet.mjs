@@ -1,5 +1,4 @@
-import { CFG, allChangeTargets, eventSubTypes } from "../../config/config.mjs";
-import { getChangeCategories } from "../../util/utils.mjs";
+import { eventSubTypes } from "../../config/config.mjs";
 
 import { ItemBaseSheet } from "./itemBaseSheet.mjs";
 

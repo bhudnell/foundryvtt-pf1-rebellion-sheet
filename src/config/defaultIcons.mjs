@@ -1,9 +1,9 @@
-import { allyId, eventId, rebellionId, teamId } from "./config.mjs";
+import { allyId, eventId, sheetId, teamId } from "./config.mjs";
 
 export const defaultIcons = {
   // TODO
   actors: {
-    [rebellionId]: "icons/svg/city.svg",
+    [sheetId]: "icons/svg/city.svg",
   },
   items: {
     [allyId]: "icons/svg/house.svg",

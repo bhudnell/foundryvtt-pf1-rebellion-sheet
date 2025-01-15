@@ -1,4 +1,4 @@
-import { kingdomBuffTargets, commonBuffTargets } from "../../config/buffTargets.mjs";
+import { buffTargets } from "../../config/buffTargets.mjs";
 import { DefaultChange } from "../../util/utils.mjs";
 
 import { BaseActor } from "./baseActor.mjs";
@@ -97,7 +97,7 @@ export class RebellionActor extends BaseActor {
   _setSourceDetails() {
     // Get empty source arrays
     const sourceDetails = {};
-    for (const b of Object.keys({ ...kingdomBuffTargets, ...commonBuffTargets })) {
+    for (const b of Object.keys(buffTargets)) {
       const buffTargets = pf1.documents.actor.changes.getChangeFlat.call(this, b, null);
       for (const bt of buffTargets) {
         if (!sourceDetails[bt]) {

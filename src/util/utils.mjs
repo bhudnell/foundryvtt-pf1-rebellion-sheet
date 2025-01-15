@@ -1,5 +1,3 @@
-import { actions, miscChangeTargets, orgCheckChangeTargets } from "../config/config.mjs";
-
 export function getRankFromSupporters(supporters) {
   if (supporters > 5349) {
     return 20;
@@ -67,7 +65,7 @@ export async function rollEventTable(event, message) {
   const actor = ChatMessage.getSpeakerActor(message.speaker);
 
   const danger = actor.system.danger.total;
-  const table = await fromUuid("Compendium.pf1-rebellion-sheet.roll-tables.RollTable.lwDFVwZyV70DxBOj");
+  const table = await fromUuid(`Compendium.${pf1rs.config.moduleId}.roll-tables.RollTable.lwDFVwZyV70DxBOj`);
   const roll = new pf1.dice.RollPF(`1d100 + ${danger}[${game.i18n.localize("PF1RS.Danger")}]`);
   return table.draw({ roll });
 }
@@ -90,4 +88,42 @@ export function moduleToObject(module) {
     }
   }
   return result;
+}
+
+export function keepUpdateArray(sourceObj, targetObj, keepPath) {
+  const newValue = foundry.utils.getProperty(targetObj, keepPath);
+  if (newValue == null) {
+    return;
+  }
+  if (Array.isArray(newValue)) {
+    return;
+  }
+
+  const newArray = foundry.utils.deepClone(foundry.utils.getProperty(sourceObj, keepPath) || []);
+
+  for (const [key, value] of Object.entries(newValue)) {
+    if (foundry.utils.getType(value) === "Object") {
+      const subData = foundry.utils.expandObject(value);
+      newArray[key] = foundry.utils.mergeObject(newArray[key], subData);
+    } else {
+      newArray[key] = value;
+    }
+  }
+
+  foundry.utils.setProperty(targetObj, keepPath, newArray);
+}
+
+export class DefaultChange extends pf1.components.ItemChange {
+  constructor(formula, target, flavor, options = {}) {
+    const data = {
+      formula,
+      target,
+      type: "untyped",
+      operator: "add",
+      priority: 1000,
+      flavor: game.i18n.localize(flavor),
+    };
+
+    super(data, options);
+  }
 }

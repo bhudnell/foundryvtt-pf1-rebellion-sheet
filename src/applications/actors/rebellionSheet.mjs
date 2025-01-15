@@ -1,5 +1,4 @@
 import {
-  CFG,
   actionCompendiumEntries,
   actions,
   itemSubTypes,
@@ -8,9 +7,6 @@ import {
   officerBonuses,
   orgChecks,
   orgOfficers,
-  rebellionAllyId,
-  rebellionEventId,
-  rebellionTeamId,
   teamBaseTypes,
 } from "../../config/config.mjs";
 import { getRankFromSupporters } from "../../util/utils.mjs";
@@ -57,11 +53,11 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
 
     // item types
     data.teamSections = this._prepareTeams();
-    data.teamType = rebellionTeamId;
+    data.teamType = pf1rs.config.teamId;
     data.eventSections = this._prepareEvents();
-    data.eventType = rebellionEventId;
-    data.allies = actor.itemTypes[rebellionAllyId] ?? [];
-    data.allyType = rebellionAllyId;
+    data.eventType = pf1rs.config.eventId;
+    data.allies = actor.itemTypes[pf1rs.config.allyId] ?? [];
+    data.allyType = pf1rs.config.allyId;
 
     // indicators
     data.rankUpIndicator =
@@ -98,7 +94,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
       officer.bonus = actorData.officers[officer.id].bonus;
       officer.bonusType = game.i18n.localize(officerBonuses[officer.id]);
       officer.maxTeamsManaged = actorData.officers[officer.id].maxTeams;
-      officer.currTeamsManaged = this.actor.itemTypes[rebellionTeamId].reduce(
+      officer.currTeamsManaged = this.actor.itemTypes[pf1rs.config.teamId].reduce(
         (total, t) => total + (t.system.managerId === officer.actorId ? 1 : 0),
         0
       );
@@ -114,7 +110,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
         bonus: recruiter.bonus,
         bonusType: game.i18n.localize(officerBonuses.recruiter),
         maxTeamsManaged: recruiter.maxTeams,
-        currTeamsManaged: this.actor.itemTypes[rebellionTeamId].reduce(
+        currTeamsManaged: this.actor.itemTypes[pf1rs.config.teamId].reduce(
           (total, t) => total + (t.system.managerId === recruiter.actorId ? 1 : 0),
           0
         ),
@@ -139,7 +135,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
   }
 
   _prepareTeams() {
-    const teams = this.actor.itemTypes[rebellionTeamId];
+    const teams = this.actor.itemTypes[pf1rs.config.teamId];
     const general = {
       label: game.i18n.localize("PF1RS.Teams.SubTypes.General"),
       subType: "general",
@@ -165,7 +161,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
   }
 
   _prepareEvents() {
-    const events = this.actor.itemTypes[rebellionEventId];
+    const events = this.actor.itemTypes[pf1rs.config.eventId];
     const active = {
       label: game.i18n.localize("PF1RS.Events.SubTypes.Active"),
       subType: "active",

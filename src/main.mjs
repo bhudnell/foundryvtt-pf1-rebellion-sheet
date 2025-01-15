@@ -167,11 +167,11 @@ Hooks.once("ready", () => {
   }
 
   loadTemplates({
-    "rebellion-sheet-actions": `modules/${PF1RS.moduleId}/templates/actors/parts/actions.hbs`,
-    "rebellion-sheet-allies": `modules/${PF1RS.moduleId}/templates/actors/parts/allies.hbs`,
-    "rebellion-sheet-events": `modules/${PF1RS.moduleId}/templates/actors/parts/events.hbs`,
-    "rebellion-sheet-summary": `modules/${PF1RS.moduleId}/templates/actors/parts/summary.hbs`,
-    "rebellion-sheet-teams": `modules/${PF1RS.moduleId}/templates/actors/parts/teams.hbs`,
+    "rebellion-sheet-actions": `modules/${PF1RS.moduleId}/templates/actors/rebellion/parts/actions.hbs`,
+    "rebellion-sheet-allies": `modules/${PF1RS.moduleId}/templates/actors/rebellion/parts/allies.hbs`,
+    "rebellion-sheet-events": `modules/${PF1RS.moduleId}/templates/actors/rebellion/parts/events.hbs`,
+    "rebellion-sheet-summary": `modules/${PF1RS.moduleId}/templates/actors/rebellion/parts/summary.hbs`,
+    "rebellion-sheet-teams": `modules/${PF1RS.moduleId}/templates/actors/rebellion/parts/teams.hbs`,
 
     "item-sheet-ally": `modules/${PF1RS.moduleId}/templates/items/parts/ally-details.hbs`,
     "item-sheet-event": `modules/${PF1RS.moduleId}/templates/items/parts/event-details.hbs`,

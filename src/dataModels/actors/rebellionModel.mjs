@@ -1,7 +1,5 @@
 import {
-  CFG,
   actions,
-  allChangeTargets,
   alwaysAvailableActions,
   maxActions,
   maxTeams,
@@ -238,5 +236,9 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
     return this.changes
       .filter((c) => abilityArr.includes(c.ability))
       .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
+  }
+
+  get skills() {
+    return {};
   }
 }

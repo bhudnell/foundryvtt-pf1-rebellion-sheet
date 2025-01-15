@@ -1,80 +1,45 @@
-import { armyId, boonId, buildingId, eventId, improvementId, specialId, tacticId } from "./config.mjs";
-// TODO
+import { allyId, eventId, teamId } from "./config.mjs";
+
 export const sheetSections = {
-  armyFeature: {
-    tactic: {
-      create: { type: tacticId },
-      filters: [{ type: tacticId }],
-      interface: {
-        disable: true,
-      },
-      label: `PF1.Subtypes.Item.${tacticId}.Plural`,
-      browseLabel: "PF1KS.Browse.Tactics",
-    },
-    special: {
-      create: { type: specialId },
-      filters: [{ type: specialId }],
-      interface: {},
-      label: `PF1.Subtypes.Item.${specialId}.Plural`,
-      browseLabel: "PF1KS.Browse.Special",
-    },
-  },
-  armyCommander: {
-    boon: {
-      create: { type: boonId },
-      filters: [{ type: boonId }],
-      interface: {},
-      label: `PF1.Subtypes.Item.${boonId}.Plural`,
-      browseLabel: "PF1KS.Browse.Boons",
-    },
-  },
-  kingdomSettlement: {
+  rebellionAlly: {
     building: {
-      create: { type: buildingId },
-      filters: [{ type: buildingId }],
+      create: { type: allyId },
+      filters: [{ type: allyId }],
       interface: {},
-      label: `PF1.Subtypes.Item.${buildingId}.Plural`,
-      browseLabel: "PF1KS.Browse.Buildings",
+      label: `PF1.Subtypes.Item.${allyId}.Plural`,
+      browseLabel: "PF1RS.Browse.Allies",
     },
   },
-  kingdomTerrain: {
-    general: {
-      create: { type: improvementId, system: { subType: "general" } },
-      filters: [{ type: improvementId, subTypes: ["general"] }],
-      interface: {},
-      label: `PF1.Subtypes.Item.${improvementId}.general.Plural`,
-      browseLabel: "PF1KS.Browse.Improvements",
-    },
-    special: {
-      create: { type: improvementId, system: { subType: "special" } },
-      filters: [{ type: improvementId, subTypes: ["special"] }],
-      interface: {},
-      label: `PF1.Subtypes.Item.${improvementId}.special.Plural`,
-      browseLabel: "PF1KS.Browse.Improvements",
-    },
-  },
-  kingdomEvent: {
+  rebellionEvent: {
     active: {
       create: { type: eventId, system: { subType: "active" } },
       filters: [{ type: eventId, subTypes: ["active"] }],
       interface: {},
       label: `PF1.Subtypes.Item.${eventId}.active.Plural`,
-      browseLabel: "PF1KS.Browse.Events",
+      browseLabel: "PF1RS.Browse.Events",
     },
     misc: {
       create: { type: eventId, system: { subType: "misc" } },
       filters: [{ type: eventId, subTypes: ["misc"] }],
       interface: {},
       label: `PF1.Subtypes.Item.${eventId}.misc.Plural`,
-      browseLabel: "PF1KS.Browse.Events",
+      browseLabel: "PF1RS.Browse.Events",
     },
   },
-  kingdomArmy: {
-    army: {
-      create: { type: armyId },
-      filters: [{ type: armyId }],
+  rebellionTeam: {
+    general: {
+      create: { type: teamId, system: { subType: "general" } },
+      filters: [{ type: teamId, subTypes: ["general"] }],
       interface: {},
-      label: `PF1.Subtypes.Item.${armyId}.Plural`,
+      label: `PF1.Subtypes.Item.${teamId}.general.Plural`,
+      browseLabel: "PF1RS.Browse.Teams",
+    },
+    special: {
+      create: { type: teamId, system: { subType: "unique" } },
+      filters: [{ type: teamId, subTypes: ["unique"] }],
+      interface: {},
+      label: `PF1.Subtypes.Item.${teamId}.unique.Plural`,
+      browseLabel: "PF1RS.Browse.Teams",
     },
   },
 };

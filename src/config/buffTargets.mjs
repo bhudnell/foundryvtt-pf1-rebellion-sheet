@@ -1,111 +1,35 @@
-import {
-  actions,
-  allSettlementModifiers,
-  armyAttributes,
-  armyItemTypes,
-  changePrefix,
-  kingdomItemTypes,
-  kingdomStats,
-  magicItemTypes,
-} from "./config.mjs";
-// TODO
-
-export const orgCheckChangeTargets = {
-  allOrgChecks: "PF1RS.AllOrgChecks",
-  loyalty: "PF1RS.Loyalty",
-  secrecy: "PF1RS.Secrecy",
-  security: "PF1RS.Security",
-};
-
-export const miscChangeTargets = {
-  danger: "PF1RS.Danger",
-};
-
-export const allChangeTargets = {
-  ...orgCheckChangeTargets,
-  ...actions,
-  ...miscChangeTargets,
-};
+import { actions, changePrefix, itemTypes, orgChecks } from "./config.mjs";
 
 export const buffTargets = {
-  ...Object.entries(kingdomStats).reduce((acc, [key, label]) => {
-    acc[`${changePrefix}_${key}`] = { category: `${changePrefix}_kingdom_stats`, label };
+  ...Object.entries(orgChecks).reduce((acc, [key, label]) => {
+    acc[`${changePrefix}_${key}`] = { category: `${changePrefix}_org_checks`, label };
     return acc;
   }, {}),
-  ...Object.entries(allSettlementModifiers).reduce((acc, [key, label]) => {
-    acc[`${changePrefix}_${key}`] = { category: `${changePrefix}_settlement_modifiers`, label };
+  [`${changePrefix}_allOrgChecks`]: {
+    category: `${changePrefix}_org_checks`,
+    label: "PF1RS.AllOrgChecks",
+  },
+  ...Object.entries(actions).reduce((acc, [key, label]) => {
+    acc[`${changePrefix}_${key}`] = { category: `${changePrefix}_actions`, label };
     return acc;
   }, {}),
-  ...Object.entries(magicItemTypes).reduce((acc, [key, label]) => {
-    acc[`${changePrefix}_magic_item_${key}`] = { category: `${changePrefix}_magic_items`, label };
-    return acc;
-  }, {}),
-  [`${changePrefix}_bonusBP`]: {
+  [`${changePrefix}_danger`]: {
     category: `${changePrefix}_misc`,
-    label: "PF1KS.BonusBP",
-    filters: { item: { include: kingdomItemTypes } },
-  },
-  [`${changePrefix}_fame`]: {
-    category: `${changePrefix}_misc`,
-    label: "PF1KS.Fame",
-    filters: { item: { include: kingdomItemTypes } },
-  },
-  [`${changePrefix}_infamy`]: {
-    category: `${changePrefix}_misc`,
-    label: "PF1KS.Infamy",
-    filters: { item: { include: kingdomItemTypes } },
-  },
-  [`${changePrefix}_unrest_drop`]: {
-    category: `${changePrefix}_misc`,
-    label: "PF1KS.UnrestOnDrop",
-    filters: { item: { include: kingdomItemTypes } },
-  },
-  [`${changePrefix}_unrest_continuous`]: {
-    category: `${changePrefix}_misc`,
-    label: "PF1KS.UnrestContinuous",
-    filters: { item: { include: kingdomItemTypes } },
+    label: "PF1RS.Danger",
   },
 };
 
 export const buffTargetCategories = {
-  [`${changePrefix}_kingdom_stats`]: {
-    label: "PF1KS.KingdomStat",
-    filters: { item: { include: kingdomItemTypes } },
+  [`${changePrefix}_org_checks`]: {
+    label: "PF1RS.OrgCheck",
+    filters: { item: { include: itemTypes } },
   },
-  [`${changePrefix}_settlement_modifiers`]: {
-    label: "PF1KS.SettlementModifiers",
-    filters: { item: { include: kingdomItemTypes } },
-  },
-  [`${changePrefix}_magic_items`]: {
-    label: "PF1KS.MagicItems",
-    filters: { item: { include: kingdomItemTypes } },
+  [`${changePrefix}_actions`]: {
+    label: "PF1RS.ActionsLabel",
+    filters: { item: { include: itemTypes } },
   },
   [`${changePrefix}_misc`]: {
     label: "PF1.Misc",
-    filters: { item: { include: [...kingdomItemTypes, ...armyItemTypes] } },
-  },
-  [`${changePrefix}_army_attributes`]: {
-    label: "PF1KS.ArmyAttributes",
-    filters: { item: { include: armyItemTypes } },
+    filters: { item: { include: itemTypes } },
   },
 };
-
-export function getChangeCategories() {
-  return [
-    {
-      key: "checks",
-      label: game.i18n.localize("PF1RS.OrgChecks"),
-      items: Object.entries(orgCheckChangeTargets).map(([key, label]) => ({ key, label: game.i18n.localize(label) })),
-    },
-    {
-      key: "actions",
-      label: game.i18n.localize("PF1RS.ActionsLabel"),
-      items: Object.entries(actions).map(([key, label]) => ({ key, label: game.i18n.localize(label) })),
-    },
-    {
-      key: "misc",
-      label: game.i18n.localize("PF1RS.Misc"),
-      items: Object.entries(miscChangeTargets).map(([key, label]) => ({ key, label: game.i18n.localize(label) })),
-    },
-  ];
-}

@@ -7,6 +7,8 @@ export const allyId = `${moduleId}.ally`;
 export const eventId = `${moduleId}.event`;
 export const teamId = `${moduleId}.team`;
 
+export const itemTypes = [allyId, eventId, teamId];
+
 export const maxActions = {
   1: 1,
   2: 2,

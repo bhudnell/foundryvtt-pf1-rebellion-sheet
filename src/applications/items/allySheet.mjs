@@ -1,5 +1,4 @@
-import { CFG, actions, allChangeTargets } from "../../config/config.mjs";
-import { getChangeCategories } from "../../util/utils.mjs";
+import { actions } from "../../config/config.mjs";
 
 import { ItemBaseSheet } from "./itemBaseSheet.mjs";
 

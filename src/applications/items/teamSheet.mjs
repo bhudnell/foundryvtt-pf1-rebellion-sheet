@@ -1,4 +1,4 @@
-import { CFG, actions, teamSubTypes, teamBaseTypes } from "../../config/config.mjs";
+import { actions, teamSubTypes, teamBaseTypes } from "../../config/config.mjs";
 
 import { ItemBaseSheet } from "./itemBaseSheet.mjs";
 
