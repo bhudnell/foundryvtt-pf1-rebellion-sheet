@@ -20,7 +20,7 @@
     "no-duplicate-imports": "warn",
     "curly": "warn",
     "dot-notation": "warn",
-    "eqeqeq": "warn",
+    "eqeqeq": ["warn", "smart"],
     "no-else-return": "warn",
     "no-unused-vars": "off",
     "import/order": [
