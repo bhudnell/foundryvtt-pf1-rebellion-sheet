@@ -8,23 +8,27 @@ system:
   cost: null
   recruitment:
     dc: null
-  actions:
-    value:
-      - gi
-      - kc
-      - sd
   size: 6
-  description: >-
-    <p><strong>Cost</strong> 200 gp</p><p><strong>Granted Actions</strong>
-    Gather Information, Knowledge Check, and Spread
-    Disinformation</p><p><strong>Size</strong> 6 people</p><p><strong>Upgrades
-    From</strong> rumormongers</p><hr /><p>A group of cognoscenti are experts in
-    a wide range of diverse fields; they can be consulted for advice or
-    information of all sorts.</p>
+  description:
+    value: >-
+      <p><strong>Cost</strong> 200 gp</p><p><strong>Granted Actions</strong>
+      Gather Information, Knowledge Check, and Spread
+      Disinformation</p><p><strong>Size</strong> 6 people</p><p><strong>Upgrades
+      From</strong> rumormongers</p><hr /><p>A group of cognoscenti are experts
+      in a wide range of diverse fields; they can be consulted for advice or
+      information of all sorts.</p>
   managerId: null
   disabled: false
   missing: false
   baseType: cog
+  rActions:
+    value:
+      - gi
+      - kc
+      - sd
+  changes: []
+  contextNotes: []
+  sources: []
 sort: 0
 _key: '!items!BC38U1eBtjTni858'
 

@@ -4,21 +4,24 @@ _id: yfQ2MKk3HJLVXzek
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>Randomly determine one of your teams that was committed to an action this
-    week. That team accomplished its goal, but soon thereafter went missing. The
-    missing team still counts against the maximum number of teams the rebellion
-    can have. During the next Upkeep phase, attempt a DC 15 Security check. If
-    you’re successful, the team is rescued or returns to base, but must wait
-    until the next week to be used for rebellion actions. If you fail, the team
-    remains missing for another week. If you roll a natural 1 on this Security
-    check, the team is lost.</p><p>If no teams were committed to an action
-    during the week, treat this event as a result of
-    @UUID[Compendium.pf1-rebellion-sheet.events.Item.XYaqJw9bEeKA2UzS]{Dangerous
-    Times}.</p>
+  description:
+    value: >-
+      <p>Randomly determine one of your teams that was committed to an action
+      this week. That team accomplished its goal, but soon thereafter went
+      missing. The missing team still counts against the maximum number of teams
+      the rebellion can have. During the next Upkeep phase, attempt a DC 15
+      Security check. If you’re successful, the team is rescued or returns to
+      base, but must wait until the next week to be used for rebellion actions.
+      If you fail, the team remains missing for another week. If you roll a
+      natural 1 on this Security check, the team is lost.</p><p>If no teams were
+      committed to an action during the week, treat this event as a result of
+      @UUID[Compendium.pf1-rebellion-sheet.events.Item.XYaqJw9bEeKA2UzS]{Dangerous
+      Times}.</p>
   persistent: false
   mitigated: false
   changes: []
+  contextNotes: []
+  sources: []
 sort: 1800000
 _key: '!items!yfQ2MKk3HJLVXzek'
 

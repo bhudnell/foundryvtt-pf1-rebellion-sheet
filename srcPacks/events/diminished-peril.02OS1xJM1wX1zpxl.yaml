@@ -4,16 +4,22 @@ _id: 02OS1xJM1wX1zpxl
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>The streets of Kintargo are unusually safe. For the following week
-    (including the next week’s events, if any), decrease Kintargo’s danger
-    rating by 10.</p>
+  description:
+    value: >-
+      <p>The streets of Kintargo are unusually safe. For the following week
+      (including the next week’s events, if any), decrease Kintargo’s danger
+      rating by 10.</p>
   persistent: false
   mitigated: false
   changes:
-    - id: Uh4X64hOEQ2qeFNz
-      ability: danger
-      bonus: -10
+    - _id: Uh4X64hOEQ2qeFNz
+      formula: '-10'
+      target: pf1rs_danger
+      type: untyped
+      operator: add
+      priority: 0
+  contextNotes: []
+  sources: []
 sort: 500000
 _key: '!items!02OS1xJM1wX1zpxl'
 

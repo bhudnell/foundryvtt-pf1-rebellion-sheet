@@ -4,19 +4,25 @@ _id: Dwuum6chASrAjU0c
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>Things in Kintargo have begun to overwhelm the rebels with a sense of
-    hopelessness and despair. For the next week (including the next week’s
-    events, if any), all Loyalty checks take a –4 penalty. If you roll Low
-    Morale twice in one Event phase, it becomes persistent.</p><p>Mitigation: If
-    a Silver Ravens officer makes a successful DC 20 Perform check to entertain
-    the rebels and raise spirits, this penalty is reduced to –2.</p>
+  description:
+    value: >-
+      <p>Things in Kintargo have begun to overwhelm the rebels with a sense of
+      hopelessness and despair. For the next week (including the next week’s
+      events, if any), all Loyalty checks take a –4 penalty. If you roll Low
+      Morale twice in one Event phase, it becomes persistent.</p><p>Mitigation:
+      If a Silver Ravens officer makes a successful DC 20 Perform check to
+      entertain the rebels and raise spirits, this penalty is reduced to –2.</p>
   persistent: false
   mitigated: false
   changes:
-    - id: iSIvP9Xrhqq3j24J
-      ability: loyalty
-      bonus: -4
+    - _id: iSIvP9Xrhqq3j24J
+      formula: '-4'
+      target: pf1rs_loyalty
+      type: untyped
+      operator: add
+      priority: 0
+  contextNotes: []
+  sources: []
 sort: 1600000
 _key: '!items!Dwuum6chASrAjU0c'
 

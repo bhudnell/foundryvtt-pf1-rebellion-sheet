@@ -4,39 +4,42 @@ _id: UJ24TyXWllMaQ36S
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>One of the Silver Ravens is revealed to be a traitor! Randomly determine
-    one team from all of your teams; that team is the one that housed the
-    traitor. That team becomes disabled after the traitor is uncovered. If you
-    make a successful DC 20 Loyalty check, the traitor has been discovered
-    before he or she could significantly damage the Silver Ravens and you can
-    either attempt to redeem, execute, exile, or imprison the traitor. If you
-    fail this Loyalty check (or if you do not take any of the previously four
-    mentioned responses), the traitor escapes and the Silver Ravens’ Notoriety
-    score increases by 2d6.</p><p>If you wish to attempt to redeem a captured
-    traitor, you must first imprison him or her, then take a Special Action
-    during the next Activity phase, during which the Silver Ravens must make a
-    successful DC 20 Loyalty check. If you succeed, the traitor changes
-    allegiance, your disabled team is no longer disabled, and you need not fear
-    an increase in your Notoriety score in the future from this particular
-    one-time traitor. Each time you redeem a traitor in this way, you
-    automatically gain 1d6 supporters at the start of the next Upkeep
-    phase.</p><p>If you capture and execute the traitor, you prevent any
-    increase in your Notoriety score but damage the Silver Ravens’ morale,
-    causing the rebels to suffer from a persistent Low Morale unless you make a
-    successful DC 20 Loyalty check.</p><p>If you capture and wish to exile the
-    traitor, you must make a successful DC 25 Security check to convince the
-    traitor to never return to Kintargo. Failure results in an increase of 2d6
-    to your Notoriety score as the traitor sneaks back into the city to report
-    to Barzillai Thrune.</p><p>If you capture and imprison the traitor, you must
-    make a successful DC 20 Secrecy check during every Upkeep phase until you
-    choose to execute, exile, or successfully redeem the traitor. If you fail
-    this Secrecy check, the traitor escapes and the rebellion’s Notoriety score
-    increases by 2d6.</p><p>If the Silver Ravens do not currently have any
-    teams, treat this event as no event.</p>
+  description:
+    value: >-
+      <p>One of the Silver Ravens is revealed to be a traitor! Randomly
+      determine one team from all of your teams; that team is the one that
+      housed the traitor. That team becomes disabled after the traitor is
+      uncovered. If you make a successful DC 20 Loyalty check, the traitor has
+      been discovered before he or she could significantly damage the Silver
+      Ravens and you can either attempt to redeem, execute, exile, or imprison
+      the traitor. If you fail this Loyalty check (or if you do not take any of
+      the previously four mentioned responses), the traitor escapes and the
+      Silver Ravens’ Notoriety score increases by 2d6.</p><p>If you wish to
+      attempt to redeem a captured traitor, you must first imprison him or her,
+      then take a Special Action during the next Activity phase, during which
+      the Silver Ravens must make a successful DC 20 Loyalty check. If you
+      succeed, the traitor changes allegiance, your disabled team is no longer
+      disabled, and you need not fear an increase in your Notoriety score in the
+      future from this particular one-time traitor. Each time you redeem a
+      traitor in this way, you automatically gain 1d6 supporters at the start of
+      the next Upkeep phase.</p><p>If you capture and execute the traitor, you
+      prevent any increase in your Notoriety score but damage the Silver Ravens’
+      morale, causing the rebels to suffer from a persistent Low Morale unless
+      you make a successful DC 20 Loyalty check.</p><p>If you capture and wish
+      to exile the traitor, you must make a successful DC 25 Security check to
+      convince the traitor to never return to Kintargo. Failure results in an
+      increase of 2d6 to your Notoriety score as the traitor sneaks back into
+      the city to report to Barzillai Thrune.</p><p>If you capture and imprison
+      the traitor, you must make a successful DC 20 Secrecy check during every
+      Upkeep phase until you choose to execute, exile, or successfully redeem
+      the traitor. If you fail this Secrecy check, the traitor escapes and the
+      rebellion’s Notoriety score increases by 2d6.</p><p>If the Silver Ravens
+      do not currently have any teams, treat this event as no event.</p>
   persistent: false
   mitigated: false
   changes: []
+  contextNotes: []
+  sources: []
 sort: 2300000
 _key: '!items!UJ24TyXWllMaQ36S'
 

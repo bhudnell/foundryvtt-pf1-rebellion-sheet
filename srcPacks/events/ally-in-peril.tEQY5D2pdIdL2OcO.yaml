@@ -4,20 +4,23 @@ _id: tEQY5D2pdIdL2OcO
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>One of your allies, randomly determined, is put in peril. Attempt a
-    Security check (DC = 20 – the ally’s level; minimum DC 10). If the check is
-    a success, the ally is merely missing for a week. During the next Upkeep
-    phase, attempt a new Security check against the same DC. If that check is
-    successful, the ally returns with a harrowing story or the like of how he or
-    she had to flee or lie low for a time, but if that check is a failure, the
-    ally has been captured. If you fail the initial check, the ally is also
-    captured. The GM decides who captured the ally and where he or she is being
-    held prisoner, but in most cases, the ally can be rescued by a successful
-    Rescue Character action.</p>
+  description:
+    value: >-
+      <p>One of your allies, randomly determined, is put in peril. Attempt a
+      Security check (DC = 20 – the ally’s level; minimum DC 10). If the check
+      is a success, the ally is merely missing for a week. During the next
+      Upkeep phase, attempt a new Security check against the same DC. If that
+      check is successful, the ally returns with a harrowing story or the like
+      of how he or she had to flee or lie low for a time, but if that check is a
+      failure, the ally has been captured. If you fail the initial check, the
+      ally is also captured. The GM decides who captured the ally and where he
+      or she is being held prisoner, but in most cases, the ally can be rescued
+      by a successful Rescue Character action.</p>
   persistent: false
   mitigated: false
   changes: []
+  contextNotes: []
+  sources: []
 sort: 200000
 _key: '!items!tEQY5D2pdIdL2OcO'
 

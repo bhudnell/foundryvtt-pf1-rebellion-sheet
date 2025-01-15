@@ -4,13 +4,16 @@ _id: lkYH031D7OdFTgp6
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>One or several of your wealthier supporters have donated food, gold, and
-    supplies to the Silver Ravens. Roll a Loyalty check. The Rebellion treasury
-    gains gold equal to the result of this check × 20.</p>
+  description:
+    value: >-
+      <p>One or several of your wealthier supporters have donated food, gold,
+      and supplies to the Silver Ravens. Roll a Loyalty check. The Rebellion
+      treasury gains gold equal to the result of this check × 20.</p>
   persistent: false
   mitigated: false
   changes: []
+  contextNotes: []
+  sources: []
 sort: 1000000
 _key: '!items!lkYH031D7OdFTgp6'
 

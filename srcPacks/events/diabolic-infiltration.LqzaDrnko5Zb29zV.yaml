@@ -4,21 +4,25 @@ _id: LqzaDrnko5Zb29zV
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>One of the Silver Ravens is in fact a magically disguised devil, or has
-    been possessed by a diabolic spirit. Roll 1d6; if you roll a 6 (and each
-    time thereafter you roll a 6), roll another 1d6 and add those results
-    together. The final result tells you the number of weeks that the
-    infiltration has persisted unnoticed until this event reveals the truth; the
-    infiltration cannot last more weeks than the Silver Ravens have been active.
-    Increase you Notoriety score by 1d6 for each week that the infiltration was
-    active; a successful DC 15 Loyalty check halves this Notoriety
-    gain.</p><p>Mitigation: If an officer makes a successful DC 20 Sense Motive
-    check, the infiltration is noticed early. Halve all results for determining
-    the number of weeks the infiltration has been afflicting the rebellion.</p>
+  description:
+    value: >-
+      <p>One of the Silver Ravens is in fact a magically disguised devil, or has
+      been possessed by a diabolic spirit. Roll 1d6; if you roll a 6 (and each
+      time thereafter you roll a 6), roll another 1d6 and add those results
+      together. The final result tells you the number of weeks that the
+      infiltration has persisted unnoticed until this event reveals the truth;
+      the infiltration cannot last more weeks than the Silver Ravens have been
+      active. Increase you Notoriety score by 1d6 for each week that the
+      infiltration was active; a successful DC 15 Loyalty check halves this
+      Notoriety gain.</p><p>Mitigation: If an officer makes a successful DC 20
+      Sense Motive check, the infiltration is noticed early. Halve all results
+      for determining the number of weeks the infiltration has been afflicting
+      the rebellion.</p>
   persistent: false
   mitigated: false
   changes: []
+  contextNotes: []
+  sources: []
 sort: 400000
 _key: '!items!LqzaDrnko5Zb29zV'
 

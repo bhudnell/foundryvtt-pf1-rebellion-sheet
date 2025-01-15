@@ -8,23 +8,27 @@ system:
   cost: null
   recruitment:
     dc: null
-  actions:
-    value:
-      - ash
-      - ca
-      - sc
   size: 3
-  description: >-
-    <p><strong>Cost</strong> 1,000 gp</p><p><strong>Granted Actions</strong>
-    Activate Safe House, Covert Action, and Secure
-    Cache</p><p><strong>Size</strong> 3 people</p><p><strong>Upgrades
-    From</strong> thieves</p><hr /><p>Spies can provide safe havens in which
-    rebels can hide, orchestrate covert actions against House Thrune, and are
-    capable of stashing major caches in high-risk locations.</p>
+  description:
+    value: >-
+      <p><strong>Cost</strong> 1,000 gp</p><p><strong>Granted Actions</strong>
+      Activate Safe House, Covert Action, and Secure
+      Cache</p><p><strong>Size</strong> 3 people</p><p><strong>Upgrades
+      From</strong> thieves</p><hr /><p>Spies can provide safe havens in which
+      rebels can hide, orchestrate covert actions against House Thrune, and are
+      capable of stashing major caches in high-risk locations.</p>
   managerId: null
   disabled: false
   missing: false
   baseType: spi
+  rActions:
+    value:
+      - ash
+      - ca
+      - sc
+  changes: []
+  contextNotes: []
+  sources: []
 sort: 0
 _key: '!items!kAmPxZ3pJ3WnMAcA'
 

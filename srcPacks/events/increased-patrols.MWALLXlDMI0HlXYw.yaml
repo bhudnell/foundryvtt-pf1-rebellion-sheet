@@ -4,20 +4,26 @@ _id: MWALLXlDMI0HlXYw
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>Dottari patrols on the streets of Kintargo are increased this week,
-    resulting in heightened security. For the next week (including the next
-    week’s events, if any), all Secrecy checks take a –4 penalty. If you roll
-    Increased Patrols twice in one Event phase, it becomes
-    persistent.</p><p>Mitigation: If a Silver Ravens officer makes a successful
-    DC 20 Survival check to study the patrol routes and interpret the patterns,
-    this penalty is reduced to –2.</p>
+  description:
+    value: >-
+      <p>Dottari patrols on the streets of Kintargo are increased this week,
+      resulting in heightened security. For the next week (including the next
+      week’s events, if any), all Secrecy checks take a –4 penalty. If you roll
+      Increased Patrols twice in one Event phase, it becomes
+      persistent.</p><p>Mitigation: If a Silver Ravens officer makes a
+      successful DC 20 Survival check to study the patrol routes and interpret
+      the patterns, this penalty is reduced to –2.</p>
   persistent: false
   mitigated: false
   changes:
-    - id: Q2IeKz2ZGcWKQBJA
-      ability: secrecy
-      bonus: -4
+    - _id: Q2IeKz2ZGcWKQBJA
+      formula: '-4'
+      target: pf1rs_secrecy
+      type: untyped
+      operator: add
+      priority: 0
+  contextNotes: []
+  sources: []
 sort: 1200000
 _key: '!items!MWALLXlDMI0HlXYw'
 

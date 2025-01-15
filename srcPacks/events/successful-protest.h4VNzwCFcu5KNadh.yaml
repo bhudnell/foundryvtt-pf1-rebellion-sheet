@@ -4,14 +4,17 @@ _id: h4VNzwCFcu5KNadh
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>Your supporters have successfully protested against House Thrune or the
-    church of Asmodeus. Increase your total supporters by 2d6. Select one of the
-    following settlement modifiers — Corruption, Crime, Economy, Law, Lore, or
-    Society. For the next week, this modifier is increased by 4.</p>
+  description:
+    value: >-
+      <p>Your supporters have successfully protested against House Thrune or the
+      church of Asmodeus. Increase your total supporters by 2d6. Select one of
+      the following settlement modifiers — Corruption, Crime, Economy, Law,
+      Lore, or Society. For the next week, this modifier is increased by 4.</p>
   persistent: false
   mitigated: false
   changes: []
+  contextNotes: []
+  sources: []
 sort: 2200000
 _key: '!items!h4VNzwCFcu5KNadh'
 

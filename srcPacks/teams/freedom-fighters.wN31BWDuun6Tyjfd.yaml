@@ -8,22 +8,26 @@ system:
   cost: null
   recruitment:
     dc: null
-  actions:
-    value:
-      - rd
   size: 6
-  description: >-
-    <p><strong>Recruitment</strong> Security DC 15</p><p><strong>Granted
-    Action</strong> Reduce Danger</p><p><strong>Size</strong> 6
-    people</p><p><strong>Upgrades To</strong> infiltrators</p><hr /><p>Freedom
-    fighters patrol the streets of Kintargo and are ready to step in to aid
-    citizens who need help, but also serve to distract Thrune forces and track
-    areas of danger in the city so the PCs can avoid trouble more
-    efficiently.</p>
+  description:
+    value: >-
+      <p><strong>Recruitment</strong> Security DC 15</p><p><strong>Granted
+      Action</strong> Reduce Danger</p><p><strong>Size</strong> 6
+      people</p><p><strong>Upgrades To</strong> infiltrators</p><hr /><p>Freedom
+      fighters patrol the streets of Kintargo and are ready to step in to aid
+      citizens who need help, but also serve to distract Thrune forces and track
+      areas of danger in the city so the PCs can avoid trouble more
+      efficiently.</p>
   managerId: null
   disabled: false
-  missing: false
+  missing: true
   baseType: ffi
+  rActions:
+    value:
+      - rd
+  changes: []
+  contextNotes: []
+  sources: []
 sort: 0
 _key: '!items!wN31BWDuun6Tyjfd'
 

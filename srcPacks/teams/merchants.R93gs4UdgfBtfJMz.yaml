@@ -8,22 +8,27 @@ system:
   cost: null
   recruitment:
     dc: null
-  actions:
-    value:
-      - eg
-      - rm
   size: 6
-  description: >-
-    <p><strong>Cost</strong> 50 gp</p><p><strong>Granted Actions</strong> Earn
-    Gold and Refresh Marketplace</p><p><strong>Size</strong> 6
-    people</p><p><strong>Upgrades From</strong> peddlers</p><p><strong>Upgrades
-    To</strong> black marketeers or merchant lords</p><hr /><p>Merchants can
-    earn gold for the Silver Ravens, or they can move magic items through the
-    marketplaces of Kintargo to bring in new stock.</p>
+  description:
+    value: >-
+      <p><strong>Cost</strong> 50 gp</p><p><strong>Granted Actions</strong> Earn
+      Gold and Refresh Marketplace</p><p><strong>Size</strong> 6
+      people</p><p><strong>Upgrades From</strong>
+      peddlers</p><p><strong>Upgrades To</strong> black marketeers or merchant
+      lords</p><hr /><p>Merchants can earn gold for the Silver Ravens, or they
+      can move magic items through the marketplaces of Kintargo to bring in new
+      stock.</p>
   managerId: null
   disabled: false
   missing: false
   baseType: mer
+  rActions:
+    value:
+      - eg
+      - rm
+  changes: []
+  contextNotes: []
+  sources: []
 sort: 0
 _key: '!items!R93gs4UdgfBtfJMz'
 
