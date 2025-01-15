@@ -1,9 +1,12 @@
-import { teamSubTypes } from "../config.mjs";
+import { teamSubTypes } from "../../config/config.mjs";
 
-export class TeamModel extends foundry.abstract.TypeDataModel {
+import { ItemBaseModel } from "./itemBaseModel.mjs";
+
+export class TeamModel extends ItemBaseModel {
   static defineSchema() {
     const fields = foundry.data.fields;
-    return {
+
+    const schema = {
       subType: new fields.StringField({ initial: "general", choices: Object.keys(teamSubTypes) }),
       baseType: new fields.StringField(), // type of team from teamBaseType definition
       tier: new fields.NumberField(),
@@ -16,11 +19,13 @@ export class TeamModel extends foundry.abstract.TypeDataModel {
         value: new fields.ArrayField(new fields.StringField()),
       }),
       size: new fields.NumberField({ integer: true }),
-      description: new fields.HTMLField(),
       managerId: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
       disabled: new fields.BooleanField({ initial: false }),
       missing: new fields.BooleanField({ initial: false }),
     };
+    this.addDefaultSchemaFields(schema);
+
+    return schema;
   }
 
   prepareDerivedData() {}
