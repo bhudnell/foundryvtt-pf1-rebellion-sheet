@@ -1,11 +1,11 @@
-export const CFG = {
-  id: "pf1-rebellion-sheet",
-};
+export const moduleId = "pf1-rebellion-sheet";
+export const changePrefix = "pf1rs";
 
-export const rebellionSheetId = `${CFG.id}.rebellion`;
-export const rebellionTeamId = `${CFG.id}.team`;
-export const rebellionEventId = `${CFG.id}.event`;
-export const rebellionAllyId = `${CFG.id}.ally`;
+export const sheetId = `${moduleId}.rebellion`;
+
+export const allyId = `${moduleId}.ally`;
+export const eventId = `${moduleId}.event`;
+export const teamId = `${moduleId}.team`;
 
 export const maxActions = {
   1: 1,
@@ -134,23 +134,6 @@ export const orgOfficers = {
   loyalty: "PF1RS.Demagogue",
   secrecy: "PF1RS.Spymaster",
   security: "PF1RS.Partisan",
-};
-
-export const orgCheckChangeTargets = {
-  allOrgChecks: "PF1RS.AllOrgChecks",
-  loyalty: "PF1RS.Loyalty",
-  secrecy: "PF1RS.Secrecy",
-  security: "PF1RS.Security",
-};
-
-export const miscChangeTargets = {
-  danger: "PF1RS.Danger",
-};
-
-export const allChangeTargets = {
-  ...orgCheckChangeTargets,
-  ...actions,
-  ...miscChangeTargets,
 };
 
 export const eventSubTypes = {
