@@ -53,7 +53,7 @@ export class ItemBaseModel extends foundry.abstract.TypeDataModel {
       data.changes = data.changes.map((change) => ({
         _id: change._id ?? change.id,
         formula: change.formula ?? change.bonus ?? "",
-        target: change.target ?? `${pf1rs.config.changePrefix}_${change.ability}`,
+        target: change.target ?? (change.ability ? `${pf1rs.config.changePrefix}_${change.ability}` : ""),
         type: change.type ?? "untyped",
         operator: change.operator ?? "add",
         priority: change.priority ?? 0,

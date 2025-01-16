@@ -194,9 +194,14 @@ Hooks.once("ready", () => {
 });
 
 Hooks.once("i18nInit", () => {
-  // TODO
   const toLocalize = [
-    //"kingdomStats",
+    "actions",
+    "officerBonuses",
+    "orgChecks",
+    "orgOfficers",
+    "eventSubTypes",
+    "teamBaseTypes",
+    "teamSubTypes",
   ];
 
   const doLocalize = (obj, cat) => {
@@ -220,4 +225,7 @@ Hooks.once("i18nInit", () => {
   for (let o of toLocalize) {
     pf1rs.config[o] = doLocalize(pf1rs.config[o], o);
   }
+
+  // localize rebellionActions in pf1 config
+  pf1.config.rebellionActions = doLocalize(pf1.config.rebellionActions, "rebellionActions");
 });

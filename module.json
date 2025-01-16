@@ -12,7 +12,7 @@
   ],
 
   "esmodules": ["src/main.mjs"],
-  "styles": ["styles/common.css", "styles/actor.css"],
+  "styles": ["styles/common.css", "styles/actor.css", "styles/item.css"],
 
   "documentTypes": {
     "Actor": {

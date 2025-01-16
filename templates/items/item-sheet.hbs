@@ -48,32 +48,22 @@
 
   <nav class="sheet-navigation tabs" data-group="primary">
     <a class="item" data-tab="description">{{ localize "PF1.Description" }}</a>
-    {{#if showDetails}}
     <a class="item" data-tab="details">{{ localize "PF1.Details" }}</a>
-    {{/if}}
     <a class="item" data-tab="changes">{{ localize "PF1.Changes" }}</a>
   </nav>
 
   <section class="primary-body">
     {{~> "systems/pf1/templates/items/parts/item-description.hbs"}}
 
-    {{#if showDetails}}
     <div class="tab details" data-group="primary" data-tab="details">
-      {{#if isBuilding}}
-      {{~> item-sheet-building}}
+      {{#if isAlly}}
+      {{~> item-sheet-ally}}
       {{else if isEvent}}
       {{~> item-sheet-event}}
-      {{else if isImprovement}}
-      {{~> item-sheet-improvement}}
-      {{else if isBoon}}
-      {{~> item-sheet-boon}}
-      {{else if isSpecial}}
-      {{~> item-sheet-special}}
-      {{else if isTactic}}
-      {{~> item-sheet-tactic}}
+      {{else if isTeam}}
+      {{~> item-sheet-team}}
       {{/if}}
     </div>
-    {{/if}}
 
     <div class="tab changes" data-group="primary" data-tab="changes">
       {{~> item-sheet-changes}}

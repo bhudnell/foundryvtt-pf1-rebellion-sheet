@@ -166,8 +166,3 @@ export const teamSubTypes = {
   general: "PF1RS.Teams.SubTypes.General",
   unique: "PF1RS.Teams.SubTypes.Unique",
 };
-
-export const itemSubTypes = {
-  ...eventSubTypes,
-  ...teamSubTypes,
-};
