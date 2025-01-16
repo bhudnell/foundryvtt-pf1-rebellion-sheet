@@ -1,5 +1,3 @@
-import { eventSubTypes } from "../../config/config.mjs";
-
 import { ItemBaseSheet } from "./itemBaseSheet.mjs";
 
 export class EventSheet extends ItemBaseSheet {
@@ -11,6 +9,7 @@ export class EventSheet extends ItemBaseSheet {
     context.subTypeOptions = pf1rs.config.eventSubTypes;
 
     // sidebar info
+    context.subType = pf1rs.config.eventSubTypes[itemData.subType];
     if (itemData.subType === "active") {
       context.states = [
         {
