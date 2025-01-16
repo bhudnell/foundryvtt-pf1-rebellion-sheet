@@ -17,7 +17,7 @@ export class AllyModel extends ItemBaseModel {
   static migrateData(data) {
     super.migrateData(data);
 
-    if (data.actions) {
+    if (data.actions?.value.length) {
       data.rActions = { value: data.actions.value };
     }
   }
