@@ -1,5 +1,3 @@
-import { orgChecks } from "../../config/config.mjs";
-
 export function defineAction(check) {
   const fields = foundry.data.fields;
 
@@ -7,7 +5,7 @@ export function defineAction(check) {
     check: new fields.StringField({
       initial: check,
       nullable: true,
-      choices: Object.keys(orgChecks),
+      choices: Object.keys(pf1rs.config.orgChecks),
     }),
   });
 }

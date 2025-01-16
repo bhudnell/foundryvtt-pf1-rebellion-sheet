@@ -1,13 +1,3 @@
-import {
-  actions,
-  alwaysAvailableActions,
-  maxActions,
-  maxTeams,
-  orgCheckOfficer,
-  orgChecks,
-  orgOfficers,
-} from "../../config/config.mjs";
-
 import { defineAction } from "./actionModel.mjs";
 import { defineOfficer } from "./officerModel.mjs";
 
@@ -31,7 +21,7 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
       }),
       focus: new fields.StringField({
         blank: true,
-        choices: Object.keys(orgChecks),
+        choices: Object.keys(pf1rs.config.orgChecks),
       }),
       membership: new fields.NumberField({
         integer: true,
@@ -166,9 +156,9 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
     const focusBase = Math.floor(this.rank / 2) + 2;
     const secondaryBase = Math.floor(this.rank / 3);
 
-    for (const check of Object.keys(orgChecks)) {
+    for (const check of Object.keys(pf1rs.config.orgChecks)) {
       this[check].base += this.focus === check ? focusBase : secondaryBase;
-      this[check].officer += this.officers[orgCheckOfficer[check]].bonus;
+      this[check].officer += this.officers[pf1rs.config.orgCheckOfficer[check]].bonus;
       this[check].sentinel += this.focus !== check && this.officers.sentinel.actorId ? 1 : 0;
       this[check].other += this._getChanges(["allOrgChecks", check]);
 
@@ -181,16 +171,16 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
 
     // actions
     const itemActions = this._getItemActions();
-    for (const action of Object.keys(actions)) {
+    for (const action of Object.keys(pf1rs.config.actions)) {
       this.actions[action].changeBonus = this._getChanges(action);
-      this.actions[action].available = alwaysAvailableActions.includes(action) || itemActions.has(action);
+      this.actions[action].available = pf1rs.config.alwaysAvailableActions.includes(action) || itemActions.has(action);
       this.actions[action].sources = itemActions.get(action);
     }
 
     // other details
     this.minTreasury = this.rank * 10;
-    this.maxActions = maxActions[this.rank] + (this.officers.strategist.actorId ? 1 : 0);
-    this.maxTeams = maxTeams[this.rank];
+    this.maxActions = pf1rs.config.maxActions[this.rank] + (this.officers.strategist.actorId ? 1 : 0);
+    this.maxTeams = pf1rs.config.maxTeams[this.rank];
 
     this.danger.other += this._getChanges("danger");
     this.danger.total = this.danger.base + this.danger.other;

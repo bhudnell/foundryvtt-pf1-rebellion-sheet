@@ -1,5 +1,3 @@
-import { teamSubTypes } from "../../config/config.mjs";
-
 import { ItemBaseModel } from "./itemBaseModel.mjs";
 
 export class TeamModel extends ItemBaseModel {
@@ -7,7 +5,7 @@ export class TeamModel extends ItemBaseModel {
     const fields = foundry.data.fields;
 
     const schema = {
-      subType: new fields.StringField({ initial: "general", choices: Object.keys(teamSubTypes) }),
+      subType: new fields.StringField({ initial: "general", choices: Object.keys(pf1rs.config.teamSubTypes) }),
       baseType: new fields.StringField(), // type of team from teamBaseType definition
       tier: new fields.NumberField(),
       cost: new fields.NumberField(),
