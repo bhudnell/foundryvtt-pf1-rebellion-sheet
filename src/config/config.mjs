@@ -9,6 +9,7 @@ export const teamId = `${moduleId}.team`;
 
 export const itemTypes = [allyId, eventId, teamId];
 
+// rank: maxActions
 export const maxActions = {
   1: 1,
   2: 2,
@@ -32,6 +33,7 @@ export const maxActions = {
   20: 6,
 };
 
+// rank: maxTeams
 export const maxTeams = {
   1: 2,
   2: 2,
@@ -110,6 +112,15 @@ export const actionCompendiumEntries = {
 };
 
 export const alwaysAvailableActions = ["cor", "dt", "ge", "ll", "rs", "rt", "sa", "ut"];
+
+export const officerRoles = {
+  demagogue: "PF1RS.Demagogue",
+  partisan: "PF1RS.Partisan",
+  sentinel: "PF1RS.Sentinel",
+  spymaster: "PF1RS.Spymaster",
+  strategist: "PF1RS.Strategist",
+  recruiter: "PF1RS.Recruiter",
+};
 
 export const officerBonuses = {
   demagogue: "PF1RS.Loyalty",

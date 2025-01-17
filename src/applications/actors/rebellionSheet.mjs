@@ -1,14 +1,3 @@
-import {
-  actionCompendiumEntries,
-  actions,
-  itemSubTypes,
-  maxActions,
-  maxTeams,
-  officerBonuses,
-  orgChecks,
-  orgOfficers,
-  teamBaseTypes,
-} from "../../config/config.mjs";
 import { getRankFromSupporters } from "../../util/utils.mjs";
 
 export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
@@ -65,50 +54,61 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
 
     // details
     data.focusOptions = Object.fromEntries(
-      Object.entries(orgChecks).map(([key, label]) => [key, game.i18n.localize(label)])
+      Object.entries(pf1rs.config.orgChecks).map(([key, label]) => [key, game.i18n.localize(label)])
     );
 
     // Organization checks
-    for (const abl of data.checks) {
-      abl.data = actorData[abl.id];
+    data.checks = [];
+    for (const [id, label] of Object.entries(pf1rs.config.orgChecks)) {
+      data.checks.push({ id, label, value: actorData[id] });
     }
 
     // available actions
     data.actions = {
-      available: Object.entries(actions).map(([actionId, label]) => ({
+      available: Object.entries(pf1rs.config.actions).map(([actionId, label]) => ({
         ...actorData.actions[actionId],
         id: actionId,
         label: game.i18n.localize(label),
-        compendiumEntry: actionCompendiumEntries[actionId],
-        check: game.i18n.localize(orgChecks[actorData.actions[actionId].check]),
+        compendiumEntry: pf1rs.config.actionCompendiumEntries[actionId],
+        check: game.i18n.localize(pf1rs.config.orgChecks[actorData.actions[actionId].check]),
         showSafehouses: actionId === "ash",
       })),
-      rank: maxActions[actorData.rank],
+      rank: pf1rs.config.maxActions[actorData.rank],
       strategist: actorData.officers.strategist.actorId ? 1 : 0,
     };
 
     // non-recruiter officers
-    for (const officer of data.officers) {
-      officer.actorId = actorData.officers[officer.id].actorId;
-      officer.name = actorData.officers[officer.id].name;
-      officer.bonus = actorData.officers[officer.id].bonus;
-      officer.bonusType = game.i18n.localize(officerBonuses[officer.id]);
-      officer.maxTeamsManaged = actorData.officers[officer.id].maxTeams;
-      officer.currTeamsManaged = this.actor.itemTypes[pf1rs.config.teamId].reduce(
-        (total, t) => total + (t.system.managerId === officer.actorId ? 1 : 0),
-        0
-      );
-    }
+    data.officers = Object.entries(actorData.officers).reduce((acc, [id, officer]) => {
+      if (id === "recruiters") {
+        return acc;
+      }
+
+      acc.push({
+        id,
+        label: pf1rs.config.officerRoles[id],
+        actorId: officer.actorId,
+        bonus: officer.bonus,
+        bonusType: pf1rs.config.officerBonuses[id],
+        currTeamsManaged: this.actor.itemTypes[pf1rs.config.teamId].reduce(
+          (total, t) => total + (t.system.managerId === officer.actorId ? 1 : 0),
+          0
+        ),
+        maxTeamsManaged: officer.maxTeams,
+      });
+
+      return acc;
+    }, []);
+
     // recruiter officers
     data.recruiters = actorData.officers.recruiters.map((recruiter, idx) => {
       return {
         id: recruiter.id,
-        label: game.i18n.localize("PF1RS.Recruiter"),
+        label: pf1rs.config.officerRoles.recruiter,
         canDelete: idx > 0,
         actorId: recruiter.actorId,
         name: recruiter.name,
         bonus: recruiter.bonus,
-        bonusType: game.i18n.localize(officerBonuses.recruiter),
+        bonusType: pf1rs.config.officerBonuses.recruiter,
         maxTeamsManaged: recruiter.maxTeams,
         currTeamsManaged: this.actor.itemTypes[pf1rs.config.teamId].reduce(
           (total, t) => total + (t.system.managerId === recruiter.actorId ? 1 : 0),
@@ -126,9 +126,9 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
     // teams
     data.teamCount = {
       active: data.teamSections[0].teams.length,
-      levels: maxTeams[actorData.rank],
+      levels: pf1rs.config.maxTeams[actorData.rank],
       bonus: 0,
-      max: maxTeams[actorData.rank],
+      max: pf1rs.config.maxTeams[actorData.rank],
     };
 
     return data;
@@ -149,7 +149,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
       teams: [],
     };
     teams.forEach((team) => {
-      team.baseTypeLabel = game.i18n.localize(teamBaseTypes[team.system.baseType]);
+      team.baseTypeLabel = game.i18n.localize(pf1rs.config.teamBaseTypes[team.system.baseType]);
       if (team.system.subType === general.subType) {
         general.teams.push(team);
       } else if (team.system.subType === unique.subType) {
@@ -188,15 +188,6 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
   activateListeners(html) {
     super.activateListeners(html);
 
-    html
-      .find('input[name="system.rank"]')
-      .on("change", (e) => this._validateMinMax(e, 1, this.actor.system.maxRank, undefined, "the max rank"));
-    html
-      .find('input[name="system.supporters"]')
-      .on("change", (e) =>
-        this._validateMinMax(e, 0, this.actor.system.population, undefined, "the current population")
-      );
-
     html.find(".recruiter-create").on("click", (e) => this._onRecruiterCreate(e));
     html.find(".recruiter-delete").on("click", (e) => this._onRecruiterDelete(e));
 
@@ -204,18 +195,6 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
 
     html.find(".org-check .rollable").on("click", (e) => this._onRollOrgCheck(e));
     html.find(".event-chance .rollable").on("click", (e) => this._onRollEventChance(e));
-  }
-
-  async _validateMinMax(e, min, max, minText, maxText) {
-    const result = Number(e.target.value);
-
-    if (result < min) {
-      ui.notifications.warn(`Cant be lower than ${minText ?? min}`);
-      e.target.value = min;
-    } else if (result > max) {
-      ui.notifications.warn(`Cant be higher than ${maxText ?? max}`);
-      e.target.value = max;
-    }
   }
 
   async _onRecruiterCreate(event) {
@@ -261,13 +240,13 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
 
   async _onRollOrgCheck(event) {
     event.preventDefault();
-    const orgCheck = event.currentTarget.closest(".org-check").dataset.orgcheck;
-    this.actor.system.rollOrgCheck(orgCheck, { actor: this.actor, skipDialog: true });
+    const orgCheck = event.currentTarget.closest(".org-check").dataset.orgCheck;
+    this.actor.rollOrgCheck(orgCheck, { actor: this.actor, skipDialog: true });
   }
 
   async _onRollEventChance(event) {
     event.preventDefault();
-    this.actor.system.rollEvent({ actor: this.actor });
+    this.actor.rollEvent({ actor: this.actor });
   }
 
   // overrides

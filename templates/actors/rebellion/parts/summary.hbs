@@ -1,125 +1,119 @@
-<div class="header">
+<div class="summary-header">
   <img class="profile" src="{{ img }}" data-edit="img" />
 
-  <div class="flex-col">
-    <div class="flexrow">
-      <h1>
-        <input type="text" name="name" value="{{ name }}" data-dtype="String" />
+  <div class="flex-col basic-info">
+    <div class="flexrow name-xp">
+      <h1 class="char-name">
+        <input type="text" name="name" value="{{ name }}" />
       </h1>
-      <div class="labeledValue week flex0">
-        <span>{{localize "PF1RS.Week"}}</span>
-        {{numberInput system.week name="system.week" step=1 min=0}}
+      <div class="info-box">
+        <h5>{{localize "PF1RS.Week" }}</h5>
+        <span class="value text-box direct" name="system.week" data-dtype="Number">{{ system.week }}</span>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="details">
-      <span>{{localize "PF1RS.Rank"}}:</span>
-      <div class="horizLabeledValue">
-        {{numberInput system.rank name="system.rank" step=1 min=1 max=system.maxRank}}
-        {{#if rankUpIndicator}}
-        <i class="fa-regular fa-circle-exclamation error" data-tooltip="PF1RS.AvailableRankUp"></i>
+<div class="attributes flexrow">
+  <div class="info-box-header">
+    <h3>{{localize "PF1RS.Attributes"}}</h3>
+    <div class="info-box-joined">
+      <div class="info-box">
+        <h5>
+          {{#if rankUpIndicator}}
+          <i class="fa-regular fa-circle-exclamation" data-tooltip="PF1RS.AvailableRankUp"></i>
+          {{/if}}
+          <span>{{localize "PF1RS.Rank" }}</span>
+        </h5>
+        <span
+          class="value text-box direct"
+          name="system.rank"
+          data-dtype="Number"
+          data-min="1"
+          data-max="{{ system.maxRank }}"
+          >{{ system.rank }}</span
+        >
+      </div>
+      <div class="info-box">
+        <h5>{{localize "PF1RS.MaxRank" }}</h5>
+        {{#if isGM}}
+        <span class="value text-box direct" name="system.maxRank" data-dtype="Number">{{ system.maxRank }}</span>
+        {{else}}
+        <span class="value">{{ system.maxRank }}</span>
         {{/if}}
       </div>
-
-      <span>{{localize "PF1RS.MaxRank"}}:</span>
-      {{#if isGM}}
-      {{numberInput system.maxRank name="system.maxRank" step=1 min=5 max=20}}
-      {{else}}
-      <span>{{ system.maxRank }}</span>
-      {{/if}}
-
-      <span>{{localize "PF1RS.Focus"}}:</span>
-      <select name="system.focus" data-dtype="String">
-        {{selectOptions focusOptions selected=system.focus blank=""}}
-      </select>
-
-      <span>{{localize "PF1RS.Membership"}}:</span>
-      {{numberInput system.membership name="system.membership" step=1 min=0}}
-
-      <span>{{localize "PF1RS.Supporters"}}:</span>
-      {{numberInput system.supporters name="system.supporters" step=1 min=0 max=system.population}}
-
-      <span>{{localize "PF1RS.Population"}}:</span>
-      <span>{{ system.population }}</span>
-
-      <span>{{localize "PF1RS.Treasury"}}:</span>
-      {{numberInput system.treasury name="system.treasury" step=1}}
-
-      <span>{{localize "PF1RS.MinTreasury"}}:</span>
-      <span>{{ system.minTreasury }}</span>
-
-      <span>{{localize "PF1RS.Notoriety"}}:</span>
-      {{numberInput system.notoriety name="system.notoriety" step=1 min=0 max=100}}
-    </div>
-  </div>
-</div>
-
-<div class="flex0">
-  <h3>{{localize "PF1RS.OrgChecks"}}</h3>
-  <div class="info-box-joined flex0">
-    {{#each checks}}
-    <div class="info-box" data-tooltip-extended="{{ id }}">
-      <div class="label org-check" data-orgcheck="{{ id }}">
-        <a class="rollable"><i class="fa-solid fa-dice-d20"></i></a>
-        <span>{{ label }}</span>
+      <div class="info-box">
+        <h5>{{ localize "PF1RS.Focus" }}</h5>
+        <select name="system.focus">
+          {{selectOptions focusOptions selected=system.focus blank=""}}
+        </select>
       </div>
-      <span class="value">{{ data.total }}</span>
+      <div class="info-box">
+        <h5>{{localize "PF1RS.Notoriety" }}</h5>
+        <span class="value text-box direct" name="system.notoriety" data-dtype="Number">{{ system.notoriety }}</span>
+      </div>
     </div>
-    {{/each}}
   </div>
 </div>
 
-<h3 class="flex0">{{localize "PF1RS.Officers"}}</h3>
-<ol class="item-list">
-  <li class="flexrow item-list-header">
-    <span class="item-detail item-position">{{localize "PF1RS.Position"}}</span>
-    <span class="item-name">{{localize "PF1RS.Officer"}}</span>
-    <span class="item-detail item-officer-bonus">{{localize "PF1RS.Bonus"}}</span>
-    <span class="item-detail item-teams-managed">{{localize "PF1RS.TeamsManaged"}}</span>
-    <div class="item-detail officer-controls">
-      <a class="officer-control recruiter-create" data-tooltip="PF1RS.AddRecruiter">
-        <i class="fa-solid fa-plus"></i>
-      </a>
+<div class="attributes flexrow">
+  <div class="info-box-header">
+    <h3>{{localize "PF1RS.Treasury"}}</h3>
+    <div class="info-box-joined">
+      <div class="info-box">
+        <h5>{{localize "PF1RS.Current" }}</h5>
+        <span class="value text-box direct" name="system.treasury" data-dtype="Number">{{ system.treasury }}</span>
+      </div>
+      <div class="info-box">
+        <h5>{{localize "PF1RS.Min" }}</h5>
+        <span class="value">{{ system.minTreasury }}</span>
+      </div>
     </div>
-  </li>
+  </div>
 
-  {{#each officers}}
-  <li class="flexrow item officer">
-    <span class="item-detail item-position">{{ label }}</span>
-    <select class="item-name" name="system.officers.{{ id }}.actorId">
-      {{selectOptions @root.validOfficerOptions selected=actorId}}
-    </select>
-    <span class="item-detail item-officer-bonus">+ {{ bonus }} {{ bonusType }}</span>
-    <span class="item-detail item-teams-managed">
-      {{#if actorId}}
-      {{ currTeamsManaged }} / {{ maxTeamsManaged }}
-      {{/if}}
-    </span>
-    <div class="item-detail officer-controls"></div>
-  </li>
-  {{/each}}
-
-  {{#each recruiters as |recruiter idx|}}
-  <li class="flexrow item officer" data-id="{{ id }}">
-    <span class="item-detail item-position">{{ label }}</span>
-    <select class="item-name" name="system.officers.recruiters.{{ idx }}.actorId">
-      {{selectOptions @root.validOfficerOptions selected=actorId}}
-    </select>
-    <span class="item-detail item-officer-bonus">+ {{ bonus }} {{ bonusType }}</span>
-    <span class="item-detail item-teams-managed">
-      {{#if actorId}}
-      {{ currTeamsManaged }} / {{ maxTeamsManaged }}
-      {{/if}}
-    </span>
-    <input type="hidden" value="{{ id }}" name="system.officers.recruiters.{{ idx }}.id" />
-    <input type="hidden" value="{{ type }}" name="system.officers.recruiters.{{ idx }}.type" />
-    <div class="item-detail officer-controls">
-      {{#if canDelete}}
-      <a class="officer-control recruiter-delete" data-tooltip="PF1RS.RemoveRecruiter">
-        <i class="fa-solid fa-trash"></i>
-      </a>
-      {{/if}}
+  <div class="info-box-header">
+    <h3>{{localize "PF1RS.PopulationOrSomething"}}</h3>
+    <div class="info-box-joined">
+      <div class="info-box">
+        <h5>{{localize "PF1RS.Membership" }}</h5>
+        <span class="value text-box direct" name="system.membership" data-dtype="Number">{{ system.membership }}</span>
+      </div>
+      <div class="info-box">
+        <h5>{{localize "PF1RS.Supporters" }}</h5>
+        <span
+          class="value text-box direct"
+          name="system.supporters"
+          data-dtype="Number"
+          data-min="0"
+          data-max="{{ system.population }}"
+          >{{ system.supporters }}</span
+        >
+      </div>
+      <div class="info-box">
+        <h5>{{localize "PF1RS.Population" }}</h5>
+        {{#if isGM}}
+        <span class="value text-box direct" name="system.population" data-dtype="Number">{{ system.population }}</span>
+        {{else}}
+        <span class="value">{{ system.population }}</span>
+        {{/if}}
+      </div>
     </div>
-  </li>
-  {{/each}}
-</ol>
+  </div>
+</div>
+
+<div class="attributes flexrow">
+  <div class="info-box-header">
+    <h3>{{localize "PF1RS.OrgChecks"}}</h3>
+    <div class="info-box-joined">
+      {{#each checks}}
+      <div class="info-box" data-tooltip-extended="{{ id }}">
+        <h5 class="org-check" data-org-check="{{ id }}">
+          <a class="rollable"><i class="fa-solid fa-dice-d20"></i></a>
+          <span>{{ label }}</span>
+        </h5>
+        <span class="value">{{ numberFormat value.total sign=true }}</span>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

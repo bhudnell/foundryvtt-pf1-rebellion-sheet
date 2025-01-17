@@ -170,6 +170,7 @@ Hooks.once("ready", () => {
     "rebellion-sheet-actions": `modules/${PF1RS.moduleId}/templates/actors/rebellion/parts/actions.hbs`,
     "rebellion-sheet-allies": `modules/${PF1RS.moduleId}/templates/actors/rebellion/parts/allies.hbs`,
     "rebellion-sheet-events": `modules/${PF1RS.moduleId}/templates/actors/rebellion/parts/events.hbs`,
+    "rebellion-sheet-officers": `modules/${PF1RS.moduleId}/templates/actors/rebellion/parts/officers.hbs`,
     "rebellion-sheet-summary": `modules/${PF1RS.moduleId}/templates/actors/rebellion/parts/summary.hbs`,
     "rebellion-sheet-teams": `modules/${PF1RS.moduleId}/templates/actors/rebellion/parts/teams.hbs`,
 
@@ -196,6 +197,7 @@ Hooks.once("ready", () => {
 Hooks.once("i18nInit", () => {
   const toLocalize = [
     "actions",
+    "officerRoles",
     "officerBonuses",
     "orgChecks",
     "orgOfficers",

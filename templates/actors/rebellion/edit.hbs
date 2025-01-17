@@ -1,7 +1,8 @@
-<form autocomplete="off">
+<form class="{{ cssClass }}" data-tooltip-class="pf1" autocomplete="off">
   {{! Sheet Navigation }}
   <nav class="sheet-navigation tabs" data-group="primary">
     <a class="item" data-tab="summary" data-group="primary">{{localize "PF1RS.Summary"}}</a>
+    <a class="item" data-tab="officers" data-group="primary">{{localize "PF1RS.Officers"}}</a>
     <a class="item" data-tab="actions" data-group="primary">{{localize "PF1RS.ActionsLabel"}}</a>
     <a class="item" data-tab="teams" data-group="primary">{{localize "PF1RS.TeamsLabel"}}</a>
     <a class="item" data-tab="events" data-group="primary">{{localize "PF1RS.EventsLabel"}}</a>
@@ -12,33 +13,40 @@
   {{! Sheet Body }}
   <section class="primary-body">
     {{! Summary Tab }}
-    <div class="tab summary flexcol" data-group="primary" data-tab="summary">
-      {{> rebellion-sheet-summary}}
+    <div class="tab summary" data-group="primary" data-tab="summary">
+      {{~> rebellion-sheet-summary}}
+    </div>
+
+    {{! Officers Tab }}
+    <div class="tab officers" data-group="primary" data-tab="officers">
+      {{~> rebellion-sheet-officers}}
     </div>
 
     {{! Actions Tab }}
-    <div class="tab actions flexcol" data-group="primary" data-tab="actions">
-      {{> rebellion-sheet-actions}}
+    <div class="tab actions" data-group="primary" data-tab="actions">
+      {{~> rebellion-sheet-actions}}
     </div>
 
     {{! Teams Tab }}
-    <div class="tab teams flexcol" data-group="primary" data-tab="teams">
-      {{> rebellion-sheet-teams}}
+    <div class="tab teams" data-group="primary" data-tab="teams">
+      {{~> rebellion-sheet-teams}}
     </div>
 
     {{! Events Tab }}
-    <div class="tab events flexcol" data-group="primary" data-tab="events">
-      {{> rebellion-sheet-events}}
+    <div class="tab events" data-group="primary" data-tab="events">
+      {{~> rebellion-sheet-events}}
     </div>
 
     {{! Allies Tab }}
-    <div class="tab allies flexcol" data-group="primary" data-tab="allies">
-      {{> rebellion-sheet-allies}}
+    <div class="tab allies" data-group="primary" data-tab="allies">
+      {{~> rebellion-sheet-allies}}
     </div>
 
     {{! Notes Tab }}
-    <div class="tab notes flexcol" data-group="primary" data-tab="notes">
-      {{editor enrichedNotes target="system.notes" button=true editable=editable engine="prosemirror"}}
+    <div class="tab actor-notes" data-group="primary" data-tab="notes">
+      <div class="primary-content">
+        {{editor enrichedNotes target="system.notes.value" button=true editable=editable engine="prosemirror"}}
+      </div>
     </div>
   </section>
 </form>
