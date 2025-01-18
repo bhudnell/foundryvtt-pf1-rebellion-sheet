@@ -1,53 +1,71 @@
-<ol class="item-list">
-  <li class="flexrow item-list-header">
-    <span class="item-detail item-position">{{localize "PF1RS.Position"}}</span>
-    <span class="item-name">{{localize "PF1RS.Officer"}}</span>
-    <span class="item-detail item-officer-bonus">{{localize "PF1RS.Bonus"}}</span>
-    <span class="item-detail item-teams-managed">{{localize "PF1RS.TeamsManaged"}}</span>
-    <div class="item-detail officer-controls">
-      <a class="officer-control recruiter-create" data-tooltip="PF1RS.AddRecruiter">
-        <i class="fa-solid fa-plus"></i>
-      </a>
-    </div>
-  </li>
+<ol class="item-groups-list">
+  <ol class="item-list">
+    <li class="item-list-header flexrow">
+      <div class="item-detail item-position">
+        <h3>{{localize "PF1RS.Position"}}</h3>
+      </div>
+      <div class="item-detail item-actor">
+        <label>{{localize "PF1RS.Officer"}}</label>
+      </div>
+      <div class="item-detail item-officer-bonus">
+        <label>{{localize "PF1.Bonus"}}</label>
+      </div>
+      <div class="item-detail item-teams-managed">
+        <label>{{localize "PF1RS.TeamsManaged"}}</label>
+      </div>
+      {{#if @root.owner}}
+      <div class="item-controls one-button">
+        <a class="recruiter-create" data-tooltip="PF1RS.AddRecruiter">
+          <i class="fa-solid fa-plus"></i>
+        </a>
+      </div>
+      {{/if}}
+    </li>
 
-  {{#each officers}}
-  <li class="flexrow item officer">
-    <span class="item-detail item-position">{{ label }}</span>
-    <select class="item-name" name="system.officers.{{ id }}.actorId">
-      {{selectOptions @root.validOfficerOptions selected=actorId}}
-    </select>
-    <span class="item-detail item-officer-bonus">+ {{ bonus }} {{ bonusType }}</span>
-    <span class="item-detail item-teams-managed">
-      {{#if actorId}}
-      {{ currTeamsManaged }} / {{ maxTeamsManaged }}
-      {{/if}}
-    </span>
-    <div class="item-detail officer-controls"></div>
-  </li>
-  {{/each}}
+    {{#each officers}}
+    <li class="flexrow item">
+      <div class="item-detail item-position">
+        <span>{{ label }}</span>
+      </div>
+      <div class="item-detail item-actor">
+        <select name="system.officers.{{ id }}.actorId">
+          {{selectOptions @root.validOfficerOptions selected=actorId}}
+        </select>
+      </div>
+      <div class="item-detail item-officer-bonus">
+        <span>{{ numberFormat bonus sign=true }} {{ bonusType }}</span>
+      </div>
+      <div class="item-detail item-teams-managed">
+        <span>{{#if actorId}} {{ currTeamsManaged }} / {{ maxTeamsManaged }} {{/if}}</span>
+      </div>
+      <div class="item-controls one-button"></div>
+    </li>
+    {{/each}}
 
-  {{#each recruiters as |recruiter idx|}}
-  <li class="flexrow item officer" data-id="{{ id }}">
-    <span class="item-detail item-position">{{ label }}</span>
-    <select class="item-name" name="system.officers.recruiters.{{ idx }}.actorId">
-      {{selectOptions @root.validOfficerOptions selected=actorId}}
-    </select>
-    <span class="item-detail item-officer-bonus">+ {{ bonus }} {{ bonusType }}</span>
-    <span class="item-detail item-teams-managed">
-      {{#if actorId}}
-      {{ currTeamsManaged }} / {{ maxTeamsManaged }}
-      {{/if}}
-    </span>
-    <input type="hidden" value="{{ id }}" name="system.officers.recruiters.{{ idx }}.id" />
-    <input type="hidden" value="{{ type }}" name="system.officers.recruiters.{{ idx }}.type" />
-    <div class="item-detail officer-controls">
-      {{#if canDelete}}
-      <a class="officer-control recruiter-delete" data-tooltip="PF1RS.RemoveRecruiter">
-        <i class="fa-solid fa-trash"></i>
-      </a>
-      {{/if}}
-    </div>
-  </li>
-  {{/each}}
+    {{#each recruiters as |recruiter idx|}}
+    <li class="flexrow item" data-item-id="{{ id }}">
+      <div class="item-detail item-position">
+        <span>{{ label }}</span>
+      </div>
+      <div class="item-detail item-actor">
+        <select name="system.officers.recruiters.{{ idx }}.actorId">
+          {{selectOptions @root.validOfficerOptions selected=actorId}}
+        </select>
+      </div>
+      <div class="item-detail item-officer-bonus">
+        <span>{{ numberFormat bonus sign=true }} {{ bonusType }}</span>
+      </div>
+      <div class="item-detail item-teams-managed">
+        <span>{{#if actorId}} {{ currTeamsManaged }} / {{ maxTeamsManaged }} {{/if}}</span>
+      </div>
+      <div class="item-controls one-button">
+        {{#if canDelete}}
+        <a class="recruiter-delete" data-tooltip="PF1RS.RemoveRecruiter">
+          <i class="fa-solid fa-trash"></i>
+        </a>
+        {{/if}}
+      </div>
+    </li>
+    {{/each}}
+  </ol>
 </ol>

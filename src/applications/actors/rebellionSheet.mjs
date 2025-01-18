@@ -200,12 +200,11 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
   async _onRecruiterCreate(event) {
     event.preventDefault();
 
-    const recruiters = foundry.utils.deepClone(this.actor.system.officers.recruiters ?? []);
+    const recruiters = foundry.utils.duplicate(this.actor.system.officers.recruiters ?? []);
     recruiters.push({
-      actorId: null,
-      type: "recruiter",
-      id: foundry.utils.randomID(),
+      role: "recruiter",
     });
+
     await this._onSubmit(event, {
       updateData: { "system.officers.recruiters": recruiters },
     });
@@ -214,14 +213,32 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
   async _onRecruiterDelete(event) {
     event.preventDefault();
 
-    const recruiterId = event.currentTarget.closest(".item").dataset.id;
-
-    const recruiters = foundry.utils.deepClone(this.actor.system.officers.recruiters ?? []);
+    const recruiterId = event.currentTarget.closest(".item").dataset.itemId;
+    const recruiters = foundry.utils.duplicate(this.actor.system.officers.recruiters ?? []);
     recruiters.findSplice((recruiter) => recruiter.id === recruiterId);
 
-    return this._onSubmit(event, {
-      updateData: { "system.officers.recruiters": recruiters },
-    });
+    const button = event.currentTarget;
+    if (button.disabled) {
+      return;
+    }
+    button.disabled = true;
+
+    try {
+      await Dialog.confirm({
+        title: game.i18n.localize("PF1RS.RemoveRecruiter"),
+        content: `<p>${game.i18n.localize("PF1RS.RemoveRecruiterConfirmation")}</p>`,
+        yes: () => {
+          this._onSubmit(event, {
+            updateData: { "system.officers.recruiters": recruiters },
+          });
+          button.disabled = false;
+        },
+        no: () => (button.disabled = false),
+        rejectClose: true,
+      });
+    } catch (e) {
+      button.disabled = false;
+    }
   }
 
   async _itemToggleData(event) {

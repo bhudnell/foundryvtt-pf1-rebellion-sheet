@@ -1,18 +1,26 @@
-export function defineOfficer(type) {
+export function defineOfficer(role) {
   return class OfficerModel extends foundry.abstract.DataModel {
+    _initialize(...args) {
+      super._initialize(...args);
+
+      if (!this.role) {
+        this.role = role;
+      }
+    }
+
     static defineSchema() {
       const fields = foundry.data.fields;
 
       return {
+        id: new fields.StringField({
+          blank: false,
+          initial: () => foundry.utils.randomID(),
+          required: true,
+          readonly: true,
+        }),
         actorId: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
+        role: new fields.StringField({ choices: Object.keys(pf1rs.config.officerRoles) }),
       };
-    }
-
-    _initialize(...args) {
-      super._initialize(...args);
-
-      this.type = type;
-      this.id = foundry.utils.randomID();
     }
 
     get name() {
@@ -32,7 +40,7 @@ export function defineOfficer(type) {
         return 0;
       }
 
-      switch (this.type) {
+      switch (this.role) {
         case "demagogue":
           return Math.max(officer.system.abilities.con.mod, officer.system.abilities.cha.mod);
         case "partisan":
