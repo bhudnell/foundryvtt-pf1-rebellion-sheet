@@ -66,16 +66,13 @@ export class BaseItem extends pf1.documents.item.ItemPF {
   async update(data, context = {}) {
     const changed = foundry.utils.expandObject(data);
 
-    // No system data changes
-    if (!changed.system) {
-      return;
-    }
+    if (changed.system) {
+      const keepPaths = ["system.contextNotes"];
 
-    const keepPaths = ["system.contextNotes"];
-
-    const itemData = this.toObject();
-    for (const path of keepPaths) {
-      keepUpdateArray(itemData, changed, path);
+      const itemData = this.toObject();
+      for (const path of keepPaths) {
+        keepUpdateArray(itemData, changed, path);
+      }
     }
 
     super.update(foundry.utils.flattenObject(changed), context);

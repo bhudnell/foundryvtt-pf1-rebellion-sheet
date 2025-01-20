@@ -1,4 +1,28 @@
 .app.sheet.rebellion.actor {
+  .tab.actions {
+    .item-name {
+      cursor: pointer;
+      padding-right: 6px;
+      height: 24px;
+
+      .details {
+        flex: 1;
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+      }
+
+      .compendium-entry {
+        display: none;
+      }
+
+      &:hover {
+        .compendium-entry {
+          display: inline;
+        }
+      }
+    }
+  }
   /* .tab.events {
     .event-chance {
       flex: 0;

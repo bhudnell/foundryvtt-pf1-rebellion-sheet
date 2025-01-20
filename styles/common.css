@@ -41,10 +41,21 @@
     &.item-teams-managed {
       flex: 0 0 90px;
     }
+
+    /* action stuff */
+    &.item-bonus {
+      flex: 0 0 60px;
+    }
+
+    &.item-check {
+      flex: 0 0 80px;
+    }
   }
 }
 
 .app.sheet.rebellion input[type="number"] {
+  height: unset;
+  width: 40px;
   text-align: center;
 }
 

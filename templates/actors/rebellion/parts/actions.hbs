@@ -1,50 +1,67 @@
 <div class="info-box-joined flex0">
   <div class="info-box">
-    <span class="label">{{localize "PF1RS.Total"}}</span>
+    <h5>{{localize "PF1RS.TotalActions"}}</h5>
     <span class="value">{{ system.maxActions }}</span>
   </div>
   <div class="info-box">
-    <span class="label">{{localize "PF1RS.FromRank"}}</span>
+    <h5>{{localize "PF1RS.FromRank"}}</h5>
     <span class="value">{{ actions.rank }}</span>
   </div>
   <div class="info-box">
-    <span class="label">{{localize "PF1RS.FromStrategist"}}</span>
+    <h5>{{localize "PF1RS.FromStrategist"}}</h5>
     <span class="value">{{ actions.strategist }}</span>
   </div>
 </div>
 
-<ul class="item-list">
-  <li class="flexrow item-list-header">
-    <span class="item-name">{{localize "PF1RS.Action"}}</span>
-    <span class="item-detail item-bonus">{{localize "PF1RS.Bonus"}}</span>
-    <span class="item-detail item-check">{{localize "PF1RS.OrgCheck"}}</span>
-  </li>
-  {{#each actions.available}}
-  <li class="flexrow item">
-    <div class="item-name">
-      {{#if available}}
-      <i class="fa-regular fa-square-check"></i>
-      {{else}}
-      <i class="fa-regular fa-square"></i>
-      {{/if}}
-      <span>{{ label }}</span>
-      {{#if compendiumEntry}}
-      <a class="compendium-entry" data-compendium-entry="{{ compendiumEntry }}">
-        <i class="fa-solid fa-book"></i>
-      </a>
-      {{/if}}
-      {{#if showSafehouses}}
-      {{localize "PF1RS.Total"}}:
-      {{numberInput @root.system.safehouses name="system.safehouses" step=1 min=0}}
-      {{/if}}
-      <div class="item-hints">
-        {{#each sources}}
-        <span class="item-hint">{{ this }}</span>
-        {{/each}}
+<ol class="item-groups-list">
+  <ol class="item-list">
+    <li class="item-list-header flexrow">
+      <div class="item-name">
+        <h3>{{localize "PF1RS.Action"}}</h3>
       </div>
-    </div>
-    <div class="item-detail item-bonus" data-tooltip-extended="action.{{ id }}">{{ changeBonus }}</div>
-    <div class="item-detail item-check">{{ check }}</div>
-  </li>
-  {{/each}}
-</ul>
+      <div class="item-detail item-bonus">
+        <label>{{localize "PF1RS.Bonus"}}</label>
+      </div>
+      <div class="item-detail item-check">
+        <label>{{localize "PF1RS.OrgCheck"}}</label>
+      </div>
+    </li>
+    {{#each actions.available}}
+    <li class="flexrow item">
+      <div class="item-name" data-tooltip-extended="action.{{ id }}">
+        <div class="details">
+          {{#if available}}
+          <i class="fa-regular fa-square-check"></i>
+          {{else}}
+          <i class="fa-regular fa-square"></i>
+          {{/if}}
+          <span>{{ label }}</span>
+          {{#if showSafehouses}}
+          <div data-tooltip="PF1RS.SafehouseCount">
+            {{numberInput @root.system.safehouses name="system.safehouses" step=1 min=0}}
+          </div>
+          {{/if}}
+          <div class="tag-list">
+            {{#each sources}}
+            <span class="tag">{{ this }}</span>
+            {{/each}}
+          </div>
+        </div>
+        <div class="controls">
+          {{#if compendiumEntry}}
+          <a class="compendium-entry" data-compendium-entry="{{ compendiumEntry }}" data-document-type="JournalEntry">
+            <i class="fa-solid fa-book"></i>
+          </a>
+          {{/if}}
+        </div>
+      </div>
+      <div class="item-detail item-bonus">
+        <span>{{ changeBonus }}</span>
+      </div>
+      <div class="item-detail item-check">
+        <span>{{ check }}</span>
+      </div>
+    </li>
+    {{/each}}
+  </ol>
+</ol>
