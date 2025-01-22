@@ -23,16 +23,25 @@
       }
     }
   }
-  /* .tab.events {
+  .tab.events {
     .event-chance {
       flex: 0;
 
       .rollable {
         align-items: center;
       }
-    }
-  } */
 
+      .event-details {
+        flex: 1;
+        display: flex;
+        gap: 3px;
+
+        .sources {
+          flex: 3;
+        }
+      }
+    }
+  }
   .fa-triangle-exclamation {
     color: var(--pf1-color-text-error);
     text-shadow: 0 0 3px var(--pf1-faint);

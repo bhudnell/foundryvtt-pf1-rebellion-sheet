@@ -1,57 +1,94 @@
-<div class="eventChance flex0">
-  <div class="horizLabeledValue">
-    <a class="rollable" data-tooltip="PF1RS.RollEvent">
-      <i class="fa-solid fa-dice-d20"></i>
-    </a>
-    <div class="labeledValue">
-      <span>{{ system.eventChance }} %</span>
-      <span>{{localize "PF1RS.EventChance"}}</span>
+<div class="event-chance">
+  <div class="info-box-header">
+    <h3>
+      <a class="rollable" data-tooltip="PF1RS.RollEvent">
+        <i class="fa-solid fa-dice"></i>
+        <span>{{localize "PF1RS.Event"}}</span>
+      </a>
+    </h3>
+
+    <div class="event-details">
+      <div class="info-box-joined">
+        <div class="info-box">
+          <h5>{{ localize "PF1RS.EventChance" }}</h5>
+          <span class="value">{{ system.eventChance }}%</span>
+        </div>
+      </div>
+
+      <div class="info-box-joined sources">
+        <div class="info-box">
+          <h5>{{ localize "PF1RS.Notoriety" }}</h5>
+          <span class="value">{{ system.notoriety }}</span>
+        </div>
+        <div class="info-box" data-tooltip-extended="danger">
+          <h5>{{ localize "PF1RS.Danger" }}</h5>
+          <span class="value">{{ system.danger.total }}</span>
+        </div>
+        <div class="info-box">
+          <h5>{{localize "PF1RS.DoubleEventChance" }}</h5>
+          <div class="value">
+            <input type="checkbox" name="system.doubleEventChance" {{checked system.doubleEventChance}} />
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <span>=</span>
-  <div class="labeledValue">
-    <span>{{ system.notoriety }}</span>
-    <span>{{localize "PF1RS.Notoriety"}}</span>
-  </div>
-  <span>+</span>
-  <div class="labeledValue" data-tooltip-extended="danger">
-    <span>{{ system.danger.total }}</span>
-    <span>{{localize "PF1RS.Danger"}}</span>
-  </div>
-  <div class="labeledValue">
-    <input type="checkbox" {{checked system.doubleEventChance}} name="system.doubleEventChance" />
-    <label for="{{ id }}">x2</label>
   </div>
 </div>
 
+<hr />
+
+<div class="inventory-filters flexrow">
+  {{~> "systems/pf1/templates/internal/item-search.hbs" category="events"}}
+
+  <ul class="filter-list flexrow" data-category="events">
+    {{#each sections.events as |section sid|}}
+    <li class="filter-item" data-category="events" data-filter="{{ section.id }}">{{ section.label }}</li>
+    {{/each}}
+  </ul>
+</div>
+
 <ol class="item-groups-list">
-  {{#each eventSections}}
+  {{#each sections.events as |section sid|}}
+  {{#unless section._hidden}}
   <ol class="item-list">
-    <li class="flexrow item-list-header">
-      <span class="item-name">{{ label }}</span>
-      {{#if showFlags}}
-      <span class="item-detail item-persistent">{{localize "PF1RS.Persistent"}}</span>
-      <span class="item-detail item-mitigated">{{localize "PF1RS.Mitigated"}}</span>
-      {{/if}}
-      <div class="item-detail item-controls">
-        <a
-          class="item-control item-create"
-          data-type="{{ @root.eventType }}"
-          data-sub-type="{{ subType }}"
-          data-tooltip="PF1RS.CreateItem"
-        >
-          <i class="fa-solid fa-plus"></i>
-        </a>
-      </div>
-    </li>
-    {{#each events}}
-    <li class="flexrow item" data-id="{{ id }}">
-      <div class="item-name expand-summary">
-        <div class="item-image" style="background-image: url('{{ img }}')"></div>
-        <span>{{ name }}</span>
+    <li class="item-list-header flexrow">
+      <div class="item-name">
+        <h3>{{ label }}</h3>
       </div>
 
-      {{#if ../showFlags}}
+      {{#if section.interface.showFlags}}
+      <div class="item-detail item-persistent">
+        <label>{{localize "PF1RS.Persistent"}}</label>
+      </div>
+      <div class="item-detail item-mitigated">
+        <label>{{localize "PF1RS.Mitigated"}}</label>
+      </div>
+      {{/if}}
+
+      {{#if @root.owner}}
+      <div class="item-controls">
+        <a class="item-control item-create" data-tooltip="PF1.CreateItem" data-create="{{ section.path }}"
+          ><i class="fas fa-plus"></i
+        ></a>
+        <a data-action="browse" data-category="event" data-tooltip="{{ section.browseLabel }}"
+          ><i class="fas fa-folder-plus"></i
+        ></a>
+      </div>
+      {{/if}}
+    </li>
+
+    {{#each section.items as |item iid|}}
+    <li class="item flexrow" data-item-id="{{ item.id }}">
+      <div class="item-name rollable">
+        <div
+          class="item-image"
+          style="background-image: url(&quot;{{ item.img }}&quot;)"
+          data-tooltip="PF1.DisplayInChat"
+        ></div>
+        <h4>{{ item.name }}</h4>
+      </div>
+
+      {{#if section.interface.showFlags}}
       <a class="item-detail item-persistent item-toggle-data" data-name="persistent">
         {{#if system.persistent}}
         <i class="fas fa-check"></i>
@@ -67,16 +104,17 @@
         {{/if}}
       </a>
       {{/if}}
-      <div class="flexrow item-detail item-controls">
-        <a class="item-control item-edit" data-tooltip="PF1RS.EditItem">
-          <i class="fa-solid fa-pen-to-square"></i>
-        </a>
-        <a class="item-control item-delete" data-tooltip="PF1RS.DeleteItem">
-          <i class="fa-solid fa-trash"></i>
-        </a>
+
+      {{#if @root.owner}}
+      <div class="item-controls">
+        <a class="item-control item-edit" data-tooltip="PF1.EditItem"><i class="fas fa-edit"></i></a>
+        <a class="item-control item-duplicate" data-tooltip="PF1.DuplicateItem"><i class="fas fa-copy"></i></a>
+        <a class="item-control item-delete" data-tooltip="PF1.DeleteItem"><i class="fas fa-trash"></i></a>
       </div>
+      {{/if}}
     </li>
     {{/each}}
   </ol>
+  {{/unless}}
   {{/each}}
 </ol>

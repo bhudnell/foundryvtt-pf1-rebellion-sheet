@@ -174,7 +174,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
     const categories = [
       { key: "teams", sections: teamsSections },
       { key: "events", sections: eventsSections },
-      { key: "allies", sections: eventsSections },
+      { key: "allies", sections: alliesSections },
     ];
 
     for (const { key, sections } of categories) {

@@ -79,6 +79,15 @@
     &.item-missing {
       flex: 0 0 48px;
     }
+
+    /* event stuff */
+    &.item-persistent {
+      flex: 0 0 64px;
+    }
+
+    &.item-mitigated {
+      flex: 0 0 64px;
+    }
   }
 }
 

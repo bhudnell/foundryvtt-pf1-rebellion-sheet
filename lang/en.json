@@ -112,6 +112,7 @@
     "EventsLabel": "Events",
     "Event": "Event",
     "EventChance": "Event Chance",
+    "DoubleEventChance": "Double Event Chance",
     "EventChanceRoll": "Event Chance: {chance}%",
     "RollEvent": "Roll Event",
     "NoEvent": "No Event Occurred",
