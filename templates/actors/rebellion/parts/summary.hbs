@@ -21,7 +21,7 @@
       <div class="info-box">
         <h5>
           {{#if rankUpIndicator}}
-          <i class="fa-solid fa-triangle-exclamation" data-tooltip="PF1RS.AvailableRankUp"></i>
+          <i class="fas fa-triangle-exclamation" data-tooltip="PF1RS.AvailableRankUp"></i>
           {{/if}}
           <span>{{localize "PF1RS.Rank" }}</span>
         </h5>
@@ -108,7 +108,7 @@
       {{#each checks}}
       <div class="info-box" data-tooltip-extended="{{ id }}">
         <h5 class="org-check" data-org-check="{{ id }}">
-          <a class="rollable"><i class="fa-solid fa-dice-d20"></i></a>
+          <a class="rollable"><i class="fas fa-dice-d20"></i></a>
           <span>{{ label }}</span>
         </h5>
         <span class="value">{{ numberFormat value.total sign=true }}</span>

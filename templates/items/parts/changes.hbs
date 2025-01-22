@@ -16,10 +16,10 @@
       <span class="operator"
         {{#if isAdd}}
         data-tooltip="PF1.Application.ChangeEditor.Operator.AddHint">
-        <i class="fa-solid fa-plus-minus fa-fw"></i>
+        <i class="fas fa-plus-minus fa-fw"></i>
         {{else if isSet}}
         data-tooltip="PF1.Application.ChangeEditor.Operator.SetHint">
-        <i class="fa-solid fa-equals fa-fw"></i>
+        <i class="fas fa-equals fa-fw"></i>
         {{else}}
         data-tooltip="PF1.Application.ChangeEditor.Operator.InvalidHint">
         {{operator}}
@@ -39,7 +39,7 @@
             {{#if isValid}}
             {{label}}
             {{else}}
-            <i class="fa-solid fa-triangle-exclamation"></i>
+            <i class="fas fa-triangle-exclamation"></i>
             {{localize "PF1.Application.ChangeEditor.Invalid"}}{{#if subTarget}} ({{subTarget}}){{/if}}
             {{/if}}
           </span>
@@ -51,7 +51,7 @@
             {{#if isValidType}}
             {{typeLabel}}
             {{else}}
-            <i class="fa-solid fa-triangle-exclamation"></i>
+            <i class="fas fa-triangle-exclamation"></i>
             {{localize "PF1.Application.ChangeEditor.Invalid"}}{{#if modifier}} ({{modifier}}){{/if}}
             {{/if}}
           </span>
@@ -72,7 +72,7 @@
 
       <div class="controls">
         <a class="menu" data-change-id="{{id}}">
-          <i class="fa-solid fa-ellipsis-vertical fa-fw"></i>
+          <i class="fas fa-ellipsis-vertical fa-fw"></i>
         </a>
       </div>
     </li>

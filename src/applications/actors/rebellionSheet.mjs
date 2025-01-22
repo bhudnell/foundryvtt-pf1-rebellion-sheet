@@ -40,13 +40,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
       cssClass: isOwner ? "editable" : "locked",
     };
 
-    // item types
-    data.teamSections = this._prepareTeams();
-    data.teamType = pf1rs.config.teamId;
-    data.eventSections = this._prepareEvents();
-    data.eventType = pf1rs.config.eventId;
-    data.allies = actor.itemTypes[pf1rs.config.allyId] ?? [];
-    data.allyType = pf1rs.config.allyId;
+    data.sections = this._prepareItems();
 
     // indicators
     data.rankUpIndicator =
@@ -125,7 +119,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
 
     // teams
     data.teamCount = {
-      active: data.teamSections[0].teams.length,
+      active: data.sections.teams[0].items?.length ?? 0,
       levels: pf1rs.config.maxTeams[actorData.rank],
       bonus: 0,
       max: pf1rs.config.maxTeams[actorData.rank],
@@ -134,55 +128,66 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
     return data;
   }
 
-  _prepareTeams() {
-    const teams = this.actor.itemTypes[pf1rs.config.teamId];
-    const general = {
-      label: game.i18n.localize("PF1RS.Teams.SubTypes.General"),
-      subType: "general",
-      showType: true,
-      teams: [],
-    };
-    const unique = {
-      label: game.i18n.localize("PF1RS.Teams.SubTypes.Unique"),
-      subType: "unique",
-      showType: false,
-      teams: [],
-    };
-    teams.forEach((team) => {
-      team.baseTypeLabel = game.i18n.localize(pf1rs.config.teamBaseTypes[team.system.baseType]);
-      if (team.system.subType === general.subType) {
-        general.teams.push(team);
-      } else if (team.system.subType === unique.subType) {
-        unique.teams.push(team);
+  _prepareItems() {
+    const items = this.actor.items.map((i) => i).sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    const [teams, events, allies] = items.reduce(
+      (arr, item) => {
+        if (item.type === pf1rs.config.teamId) {
+          arr[0].push(item);
+        } else if (item.type === pf1rs.config.eventId) {
+          arr[1].push(item);
+        } else {
+          arr[2].push(item);
+        }
+        return arr;
+      },
+      [[], [], []]
+    );
+
+    const teamsSections = Object.values(pf1.config.sheetSections.rebellionTeam).map((data) => ({ ...data }));
+    for (const i of teams) {
+      const section = teamsSections.find((section) => this._applySectionFilter(i, section));
+      if (section) {
+        section.items ??= [];
+        section.items.push({ ...i, id: i.id, teamType: pf1rs.config.teamBaseTypes[i.system.baseType] });
       }
-    });
+    }
 
-    return [general, unique];
-  }
-
-  _prepareEvents() {
-    const events = this.actor.itemTypes[pf1rs.config.eventId];
-    const active = {
-      label: game.i18n.localize("PF1RS.Events.SubTypes.Active"),
-      subType: "active",
-      showFlags: true,
-      events: [],
-    };
-    const misc = {
-      label: game.i18n.localize("PF1RS.Events.SubTypes.Misc"),
-      subType: "misc",
-      showFlags: false,
-      events: [],
-    };
-    events.forEach((event) => {
-      if (event.system.subType === active.subType) {
-        active.events.push(event);
-      } else if (event.system.subType === misc.subType) {
-        misc.events.push(event);
+    const eventsSections = Object.values(pf1.config.sheetSections.rebellionEvent).map((data) => ({ ...data }));
+    for (const i of events) {
+      const section = eventsSections.find((section) => this._applySectionFilter(i, section));
+      if (section) {
+        section.items ??= [];
+        section.items.push(i);
       }
-    });
+    }
 
-    return [active, misc];
+    const alliesSections = Object.values(pf1.config.sheetSections.rebellionAlly).map((data) => ({ ...data }));
+    for (const i of allies) {
+      const section = alliesSections.find((section) => this._applySectionFilter(i, section));
+      if (section) {
+        section.items ??= [];
+        section.items.push(i);
+      }
+    }
+
+    const categories = [
+      { key: "teams", sections: teamsSections },
+      { key: "events", sections: eventsSections },
+      { key: "allies", sections: eventsSections },
+    ];
+
+    for (const { key, sections } of categories) {
+      const set = this._filters.sections[key];
+      for (const section of sections) {
+        if (!section) {
+          continue;
+        }
+        section._hidden = set?.size > 0 && !set.has(section.id);
+      }
+    }
+
+    return { teams: teamsSections, events: eventsSections, allies: alliesSections };
   }
 
   activateListeners(html) {
@@ -245,7 +250,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
     event.preventDefault();
     const el = event.currentTarget;
 
-    const itemId = el.closest(".item").dataset.id;
+    const itemId = el.closest(".item").dataset.itemId;
     const item = this.actor.items.get(itemId);
     const property = el.dataset.name;
 

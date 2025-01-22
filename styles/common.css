@@ -43,12 +43,41 @@
     }
 
     /* action stuff */
-    &.item-bonus {
+    &.item-action-bonus {
       flex: 0 0 60px;
     }
 
     &.item-check {
       flex: 0 0 80px;
+    }
+
+    /* team stuff */
+    &.item-type {
+      flex: 0 0 100px;
+    }
+
+    &.item-tier {
+      flex: 0 0 32px;
+    }
+
+    &.item-manager {
+      flex: 0 0 200px;
+    }
+
+    &.item-size {
+      flex: 0 0 32px;
+    }
+
+    &.item-team-bonus {
+      flex: 0 0 40px;
+    }
+
+    &.item-disabled {
+      flex: 0 0 52px;
+    }
+
+    &.item-missing {
+      flex: 0 0 48px;
     }
   }
 }

@@ -1,41 +1,84 @@
+<div class="inventory-filters flexrow">
+  {{~> "systems/pf1/templates/internal/item-search.hbs" category="teams"}}
+
+  <ul class="filter-list flexrow" data-category="teams">
+    {{#each sections.teams as |section sid|}}
+    <li class="filter-item" data-category="teams" data-filter="{{ section.id }}">{{ section.label }}</li>
+    {{/each}}
+  </ul>
+</div>
+
 <ol class="item-groups-list">
-  {{#each teamSections}}
+  {{#each sections.teams as |section sid|}}
+  {{#unless section._hidden}}
   <ol class="item-list">
-    <li class="flexrow item-list-header">
-      <span class="item-name">{{ label }}</span>
-      {{#if showType}}
-      <span class="item-detail item-type">{{localize "PF1RS.Type"}}</span>
+    <li class="item-list-header flexrow">
+      <div class="item-name">
+        <h3>{{ section.label }}</h3>
+      </div>
+      {{#if section.interface.showType}}
+      <div class="item-detail item-type">
+        <label>{{localize "PF1RS.Type"}}</label>
+      </div>
       {{/if}}
-      <span class="item-detail item-tier">{{localize "PF1RS.TeamTier"}}</span>
-      <span class="item-detail item-manager">{{localize "PF1RS.Manager"}}</span>
-      <span class="item-detail item-size">{{localize "PF1RS.TeamSize"}}</span>
-      <span class="item-detail item-bonus">{{localize "PF1RS.Bonus"}}</span>
-      <span class="item-detail item-disabled">{{localize "PF1RS.Disabled"}}</span>
-      <span class="item-detail item-missing">{{localize "PF1RS.Missing"}}</span>
-      <div class="item-detail item-controls">
-        <a
-          class="item-control item-create"
-          data-type="{{@root.teamType}}"
-          data-sub-type="{{ subType }}"
-          data-tooltip="PF1RS.CreateItem"
-        >
-          <i class="fa-solid fa-plus"></i>
+      <div class="item-detail item-tier">
+        <span>{{localize "PF1RS.TeamTier"}}</span>
+      </div>
+      <div class="item-detail item-manager">
+        <span>{{localize "PF1RS.Manager"}}</span>
+      </div>
+      <div class="item-detail item-size">
+        <span>{{localize "PF1RS.TeamSize"}}</span>
+      </div>
+      <div class="item-detail item-team-bonus">
+        <span>{{localize "PF1RS.Bonus"}}</span>
+      </div>
+      <div class="item-detail item-disabled">
+        <span>{{localize "PF1RS.Disabled"}}</span>
+      </div>
+      <div class="item-detail item-missing">
+        <span>{{localize "PF1RS.Missing"}}</span>
+      </div>
+
+      {{#if @root.owner}}
+      <div class="item-controls">
+        <a class="item-control item-create" data-tooltip="PF1.CreateItem" data-create="{{ section.path }}">
+          <i class="fas fa-plus"></i>
+        </a>
+        <a data-action="browse" data-category="team" data-tooltip="{{ section.browseLabel }}">
+          <i class="fas fa-folder-plus"></i>
         </a>
       </div>
+      {{/if}}
     </li>
-    {{#each teams}}
-    <li class="flexrow item" data-id="{{ id }}">
-      <div class="item-name expand-summary">
-        <div class="item-image" style="background-image: url('{{ img }}')"></div>
-        <span>{{ name }}</span>
+
+    {{#each section.items as |item iid|}}
+    <li class="item flexrow" data-item-id="{{ item.id }}">
+      <div class="item-name rollable">
+        <div
+          class="item-image"
+          style="background-image: url(&quot;{{ item.img }}&quot;)"
+          data-tooltip="PF1.DisplayInChat"
+        ></div>
+        <h4>{{ item.name }}</h4>
       </div>
-      {{#if ../showType}}
-      <span class="item-detail item-type">{{ baseTypeLabel }}</span>
+      {{#if section.interface.showType}}
+      <div class="item-detail item-type">
+        <span>{{ teamType }}</span>
+      </div>
       {{/if }}
-      <span class="item-detail item-tier">{{ system.tier }}</span>
-      <span class="item-detail item-manager">{{ system.managerName }}</span>
-      <span class="item-detail item-size">{{ system.size }}</span>
-      <span class="item-detail item-bonus">{{ system.bonus }}</span>
+      <div class="item-detail item-tier">
+        <span>{{ system.tier }}</span>
+      </div>
+      <div class="item-detail item-manager">
+        <span>{{ system.managerName }}</span>
+      </div>
+      <div class="item-detail item-size">
+        <span>{{ system.size }}</span>
+      </div>
+      <div class="item-detail item-team-bonus">
+        <span>{{ system.bonus }}</span>
+      </div>
       <a class="item-detail item-disabled item-toggle-data" data-name="disabled">
         {{#if system.disabled}}
         <i class="fas fa-check"></i>
@@ -50,36 +93,38 @@
         <i class="fas fa-times"></i>
         {{/if}}
       </a>
-      <div class="flexrow item-detail item-controls">
-        <a class="item-control item-edit" data-tooltip="PF1RS.EditItem">
-          <i class="fa-solid fa-pen-to-square"></i>
-        </a>
-        <a class="item-control item-delete" data-tooltip="PF1RS.DeleteItem">
-          <i class="fa-solid fa-trash"></i>
-        </a>
+      {{#if @root.owner}}
+      <div class="item-controls">
+        <a class="item-control item-edit" data-tooltip="PF1.EditItem"><i class="fas fa-edit"></i></a>
+        <a class="item-control item-duplicate" data-tooltip="PF1.DuplicateItem"><i class="fas fa-copy"></i></a>
+        <a class="item-control item-delete" data-tooltip="PF1.DeleteItem"><i class="fas fa-trash"></i></a>
       </div>
+      {{/if}}
     </li>
     {{/each}}
   </ol>
+  {{/unless}}
   {{/each}}
 </ol>
+
 <hr />
+
 <footer>
   <div class="info-box-joined">
     <div class="info-box">
-      <span class="label">{{localize "PF1RS.CurrTeams"}}</span>
+      <h5>{{localize "PF1RS.CurrTeams"}}</h5>
       <span class="value">{{ teamCount.active }}</span>
     </div>
     <div class="info-box">
-      <span class="label">{{localize "PF1RS.FromRank"}}</span>
+      <h5>{{localize "PF1RS.FromRank"}}</h5>
       <span class="value">{{ teamCount.levels }}</span>
     </div>
     <div class="info-box">
-      <span class="label">{{localize "PF1RS.FromBonus"}}</span>
+      <h5>{{localize "PF1RS.FromBonus"}}</h5>
       <span class="value">{{ teamCount.bonus }}</span>
     </div>
     <div class="info-box">
-      <span class="label">{{localize "PF1RS.MaxTeams"}}</span>
+      <h5>{{localize "PF1RS.MaxTeams"}}</h5>
       <span class="value">{{ teamCount.max }}</span>
     </div>
   </div>

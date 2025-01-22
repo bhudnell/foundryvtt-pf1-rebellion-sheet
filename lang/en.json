@@ -1,6 +1,7 @@
 {
   "PF1RS": {
     "Summary": "Summary",
+    "Attributes": "Attributes",
     "AvailableRankUp": "Rank Up Available",
     "Rank": "Rank",
     "MaxRank": "Max Rank",
@@ -9,6 +10,8 @@
     "Supporters": "Supporters",
     "Population": "Population",
     "Treasury": "Treasury",
+    "Current": "Current",
+    "Min": "Minimum",
     "MinTreasury": "Min Treasury",
     "Notoriety": "Notoriety",
     "Week": "Week",
@@ -24,9 +27,11 @@
     "FromStrategist": "From Strategist",
     "ActionsLabel": "Actions",
     "Action": "Action",
+    "TotalActions": "Total Actions",
     "Persistent": "Persistent",
     "Mitigated": "Mitigated",
     "Safehouses": "Safehouses",
+    "SafehouseCount": "Safehouse Count",
     "Actions": {
       "Abm": "Activate Black Market",
       "Ash": "Activate Safe House",
@@ -144,6 +149,12 @@
     "CreateItem": "Create Item",
     "NewItem": "New {type}",
 
+    "Browse": {
+      "Allies": "Browse Allies",
+      "Events": "Browse Events",
+      "Teams": "Browse Teams"
+    },
+
     "Sheet": {
       "Rebellion": "Rebellion Sheet",
       "Event": "Rebellion Event",
@@ -162,6 +173,38 @@
         "event": "Event",
         "team": "Team",
         "ally": "Ally"
+      }
+    }
+  },
+  "PF1": {
+    "Subtypes": {
+      "Item": {
+        "pf1-rebellion-sheet": {
+          "ally": {
+            "Single": "Ally",
+            "Plural": "Allies"
+          },
+          "event": {
+            "active": {
+              "Single": "Active Event",
+              "Plural": "Active"
+            },
+            "misc": {
+              "Single": "Miscellaneous Event",
+              "Plural": "Miscellaneous"
+            }
+          },
+          "team": {
+            "general": {
+              "Single": "General Team",
+              "Plural": "General"
+            },
+            "unique": {
+              "Single": "Unique Team",
+              "Plural": "Unique"
+            }
+          }
+        }
       }
     }
   }

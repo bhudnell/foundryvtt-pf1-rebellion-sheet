@@ -19,7 +19,7 @@
       <div class="item-name">
         <h3>{{localize "PF1RS.Action"}}</h3>
       </div>
-      <div class="item-detail item-bonus">
+      <div class="item-detail item-action-bonus">
         <label>{{localize "PF1RS.Bonus"}}</label>
       </div>
       <div class="item-detail item-check">
@@ -31,9 +31,9 @@
       <div class="item-name" data-tooltip-extended="action.{{ id }}">
         <div class="details">
           {{#if available}}
-          <i class="fa-regular fa-square-check"></i>
+          <i class="far fa-square-check"></i>
           {{else}}
-          <i class="fa-regular fa-square"></i>
+          <i class="far fa-square"></i>
           {{/if}}
           <span>{{ label }}</span>
           {{#if showSafehouses}}
@@ -50,12 +50,12 @@
         <div class="controls">
           {{#if compendiumEntry}}
           <a class="compendium-entry" data-compendium-entry="{{ compendiumEntry }}" data-document-type="JournalEntry">
-            <i class="fa-solid fa-book"></i>
+            <i class="fas fa-book"></i>
           </a>
           {{/if}}
         </div>
       </div>
-      <div class="item-detail item-bonus">
+      <div class="item-detail item-action-bonus">
         <span>{{ changeBonus }}</span>
       </div>
       <div class="item-detail item-check">

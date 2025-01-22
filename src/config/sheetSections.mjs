@@ -2,7 +2,7 @@ import { allyId, eventId, teamId } from "./config.mjs";
 
 export const sheetSections = {
   rebellionAlly: {
-    building: {
+    ally: {
       create: { type: allyId },
       filters: [{ type: allyId }],
       interface: {},
@@ -14,7 +14,7 @@ export const sheetSections = {
     active: {
       create: { type: eventId, system: { subType: "active" } },
       filters: [{ type: eventId, subTypes: ["active"] }],
-      interface: {},
+      interface: { showFlags: true },
       label: `PF1.Subtypes.Item.${eventId}.active.Plural`,
       browseLabel: "PF1RS.Browse.Events",
     },
@@ -30,7 +30,7 @@ export const sheetSections = {
     general: {
       create: { type: teamId, system: { subType: "general" } },
       filters: [{ type: teamId, subTypes: ["general"] }],
-      interface: {},
+      interface: { showType: true },
       label: `PF1.Subtypes.Item.${teamId}.general.Plural`,
       browseLabel: "PF1RS.Browse.Teams",
     },
