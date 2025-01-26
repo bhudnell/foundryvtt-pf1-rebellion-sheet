@@ -1,13 +1,12 @@
-import { allyId, eventId, sheetId, teamId } from "./config.mjs";
+import { allyId, eventId, moduleId, sheetId, teamId } from "./config.mjs";
 
 export const defaultIcons = {
-  // TODO
   actors: {
-    [sheetId]: "icons/svg/city.svg",
+    [sheetId]: `modules/${moduleId}/assets/uprising.svg`,
   },
   items: {
-    [allyId]: "icons/svg/house.svg",
-    [eventId]: "icons/svg/clockwork.svg",
-    [teamId]: "icons/svg/windmill.svg",
+    [allyId]: "icons/svg/angel.svg",
+    [eventId]: "icons/svg/hazard.svg",
+    [teamId]: "systems/pf1/icons/conditions/staggered.svg",
   },
 };
