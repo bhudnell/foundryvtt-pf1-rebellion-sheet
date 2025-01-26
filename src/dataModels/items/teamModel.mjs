@@ -54,10 +54,10 @@ export class TeamModel extends ItemBaseModel {
     }
 
     const hasLeadership = managerActor.itemTypes.feat.some(
-      (i) => i.name === "Leadership" && i.system.subType === "feat"
+      (i) => i.name === game.i18n.localize("PF1RS.Leadership") && i.system.subType === "feat"
     );
     const hasNbl = managerActor.itemTypes.feat.some(
-      (i) => i.name.includes("Natural Born Leader") && i.system.subType === "trait"
+      (i) => i.name.includes(game.i18n.localize("PF1RS.NaturalBornLeader")) && i.system.subType === "trait"
     );
 
     const chaMod = hasNbl

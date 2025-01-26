@@ -66,7 +66,7 @@ export function defineOfficer(role) {
       }
 
       const hasNbl = officer.itemTypes.feat.some(
-        (i) => i.name.includes("Natural Born Leader") && i.system.subType === "trait"
+        (i) => i.name.includes(game.i18n.localize("PF1RS.NaturalBornLeader")) && i.system.subType === "trait"
       );
 
       const chaMod = hasNbl ? Math.max(2, officer.system.abilities.cha.mod + 1) : officer.system.abilities.cha.mod;

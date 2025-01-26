@@ -85,6 +85,8 @@
     "CurrTeams": "Current Teams",
     "MaxTeams": "Maximum Teams",
     "GrantedActions": "Granted Actions",
+    "Leadership": "Leadership",
+    "NaturalBornLeader": "Natural Born Leader",
     "Teams": {
       "StreetPerformers": "Street Performers",
       "Rumormongers": "Rumormongers",
