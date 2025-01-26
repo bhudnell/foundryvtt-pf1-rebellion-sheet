@@ -321,9 +321,10 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
     const re = /^(?<id>[\w-]+)(?:\.(?<detail>.*))?$/.exec(fullId);
     const { id, detail } = re?.groups ?? {};
 
-    // TODO all the tooltips
     switch (id) {
-      case "consumption":
+      case "loyalty":
+      case "secrecy":
+      case "security":
         paths.push({
           path: `@${id}.total`,
           value: actorData[id].total,
@@ -333,6 +334,26 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
           untyped: true,
         });
         notes = getNotes(`${pf1rs.config.changePrefix}_${id}`);
+        break;
+      case "action":
+        paths.push({
+          path: `@actions.${detail}.bonus`,
+          value: actorData.actions[detail].bonus,
+        });
+        sources.push({
+          sources: getSource(`system.actions.${detail}.bonus`),
+          untyped: true,
+        });
+        break;
+      case "danger":
+        paths.push({
+          path: "@danger.total",
+          value: actorData.danger.total,
+        });
+        sources.push({
+          sources: getSource(`system.danger.total`),
+          untyped: true,
+        });
         break;
 
       default:

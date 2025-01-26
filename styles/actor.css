@@ -10,6 +10,11 @@
         display: inline-flex;
         gap: 6px;
         align-items: center;
+
+        .safehouse-input {
+          height: unset;
+          width: 40px;
+        }
       }
 
       .compendium-entry {

@@ -5,10 +5,21 @@ import { BaseActor } from "./baseActor.mjs";
 
 export class RebellionActor extends BaseActor {
   prepareDerivedData() {
-    // todo remove if nothing added
     super.prepareDerivedData();
 
-    this._setSourceDetails();
+    // actions
+    for (const action of Object.keys(pf1rs.config.actions)) {
+      this.system.actions[action].available =
+        pf1rs.config.alwaysAvailableActions.includes(action) || this.rActions.has(action);
+      this.system.actions[action].sources = this.rActions.get(action);
+    }
+
+    // event chance
+    this.system.eventChance = Math.clamped(
+      (this.system.notoriety + this.system.danger.total) * (this.system.doubleEventChance ? 2 : 1),
+      10,
+      95
+    );
   }
 
   async rollOrgCheck(orgCheckId, options = {}) {
@@ -83,15 +94,33 @@ export class RebellionActor extends BaseActor {
 
   _addDefaultChanges(changes) {
     const system = this.system;
-    // todo
-    // edicts
-    // changes.push(
-    //   new DefaultChange(
-    //     pf1rs.config.edictEffects.holiday[system.edicts.holiday]?.loyalty ?? 0,
-    //     `${pf1rs.config.changePrefix}_loyalty`,
-    //     game.i18n.format("PF1RS.Edict.HolidayChange", { value: pf1rs.config.edicts.holiday[system.edicts.holiday] })
-    //   ),
-    // );
+
+    // org checks
+    for (const check of Object.keys(pf1rs.config.orgChecks)) {
+      changes.push(
+        new DefaultChange(
+          this.system.officers[pf1rs.config.orgCheckOfficer[check]].bonus,
+          `${pf1rs.config.changePrefix}_${check}`,
+          pf1rs.config.orgOfficers[check]
+        )
+      );
+
+      if (this.system.focus !== check && this.system.officers.sentinel.actorId) {
+        changes.push(
+          new DefaultChange(1, `${pf1rs.config.changePrefix}_${check}`, game.i18n.localize("PF1RS.Sentinel"))
+        );
+      }
+
+      if (check === "security" && this.system.safehouses) {
+        changes.push(
+          new DefaultChange(
+            Math.min(5, this.system.safehouses),
+            `${pf1rs.config.changePrefix}_${check}`,
+            game.i18n.localize("PF1RS.Safehouses")
+          )
+        );
+      }
+    }
   }
 
   _setSourceDetails() {
@@ -106,29 +135,12 @@ export class RebellionActor extends BaseActor {
       }
     }
 
-    // todo
-    // kingdom modifiers
-    // Object.keys(pf1rs.config.settlementModifiers).forEach((mod) => {
-    //   sourceDetails[`system.modifiers.${mod}.total`] = [];
-    //   if (this.system.modifiers[mod].alignment) {
-    //     sourceDetails[`system.modifiers.${mod}.total`].push({
-    //       name: game.i18n.localize("PF1.Alignment"),
-    //       value: this.system.modifiers[mod].alignment,
-    //     });
-    //   }
-    //   if (this.system.modifiers[mod].government) {
-    //     sourceDetails[`system.modifiers.${mod}.total`].push({
-    //       name: game.i18n.localize("PF1RS.GovernmentLabel"),
-    //       value: this.system.modifiers[mod].government,
-    //     });
-    //   }
-    //   if (this.system.modifiers[mod].allSettlements) {
-    //     sourceDetails[`system.modifiers.${mod}.total`].push({
-    //       name: game.i18n.localize("PF1RS.Settlements"),
-    //       value: this.system.modifiers[mod].allSettlements,
-    //     });
-    //   }
-    // });
+    for (const stat of [...Object.keys(pf1rs.config.orgChecks), "danger"]) {
+      sourceDetails[`system.${stat}.total`].push({
+        name: game.i18n.localize("PF1.Base"),
+        value: this.system[stat].base,
+      });
+    }
 
     // Add extra data
     const rollData = this.getRollData();
@@ -166,24 +178,5 @@ export class RebellionActor extends BaseActor {
     }
 
     this.sourceDetails = sourceDetails;
-  }
-
-  _getChanges(target, type) {
-    if (!this.changes) {
-      return 0;
-    }
-
-    return this.changes
-      .filter((c) => {
-        const changeTarget = c.target.split("_").pop();
-        if (changeTarget !== target) {
-          return false;
-        }
-        if (type && c.parent.type !== type) {
-          return false;
-        }
-        return true;
-      })
-      .reduce((total, c) => total + c.value, 0);
   }
 }

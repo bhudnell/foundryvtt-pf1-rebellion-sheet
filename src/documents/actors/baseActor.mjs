@@ -46,6 +46,7 @@ export class BaseActor extends pf1.documents.actor.ActorBasePF {
     super.applyActiveEffects();
 
     this._prepareChanges();
+    this._prepareRActions();
   }
 
   prepareBaseData() {
@@ -220,5 +221,24 @@ export class BaseActor extends pf1.documents.actor.ActorBasePF {
       c.set(uniqueId, change);
     }
     this.changes = c;
+  }
+
+  _prepareRActions() {
+    this.actionItems = this.items.filter(
+      (item) => item.type.startsWith(`${pf1rs.config.moduleId}`) && item.hasRActions && item.isActive
+    );
+
+    const actions = [];
+    for (const i of this.changeItems) {
+      actions.push(...i.rActions);
+    }
+
+    const a = new Collection();
+    for (const action of actions) {
+      const prior = a.get(action.key);
+      a.set(action.key, [...(prior ?? []), action.source]);
+    }
+
+    this.rActions = a;
   }
 }

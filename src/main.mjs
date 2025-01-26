@@ -14,7 +14,7 @@ import { TeamModel } from "./dataModels/items/teamModel.mjs";
 import { RebellionActor } from "./documents/actors/rebellionActor.mjs";
 import { BaseItem } from "./documents/items/baseItem.mjs";
 import { getChangeFlat } from "./hooks/getChangeFlat.mjs";
-import { moduleToObject, rollEventTable } from "./util/utils.mjs";
+import { applyChange, moduleToObject, rollEventTable } from "./util/utils.mjs";
 
 export { PF1RS as config };
 globalThis.pf1rs = moduleToObject({
@@ -75,20 +75,19 @@ Hooks.once("libWrapper.Ready", () => {
     libWrapper.MIXED
   );
 
-  // TODO needed?
-  // lets changes be multiplied by quantity for module
-  // libWrapper.register(
-  //   PF1RS.moduleId,
-  //   "pf1.components.ItemChange.prototype.applyChange",
-  //   function (wrapper, actor, targets, options) {
-  //     if (actor.type.startsWith(PF1RS.moduleId)) {
-  //       applyChange(this, actor, targets, options);
-  //     } else {
-  //       return wrapper(actor, targets, options);
-  //     }
-  //   },
-  //   libWrapper.MIXED
-  // );
+  // lets changes be halved if item has mitigated flag for module
+  libWrapper.register(
+    PF1RS.moduleId,
+    "pf1.components.ItemChange.prototype.applyChange",
+    function (wrapper, actor, targets, options) {
+      if (actor.type.startsWith(PF1RS.moduleId)) {
+        applyChange(this, actor, targets, options);
+      } else {
+        return wrapper(actor, targets, options);
+      }
+    },
+    libWrapper.MIXED
+  );
 });
 
 Hooks.on("pf1GetChangeFlat", getChangeFlat);

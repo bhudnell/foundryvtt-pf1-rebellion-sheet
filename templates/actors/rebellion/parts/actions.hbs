@@ -38,7 +38,7 @@
           <span>{{ label }}</span>
           {{#if showSafehouses}}
           <div data-tooltip="PF1RS.SafehouseCount">
-            {{numberInput @root.system.safehouses name="system.safehouses" step=1 min=0}}
+            {{numberInput @root.system.safehouses class="safehouse-input" name="system.safehouses" step=1 min=0}}
           </div>
           {{/if}}
           <div class="tag-list">
@@ -56,7 +56,7 @@
         </div>
       </div>
       <div class="item-detail item-action-bonus">
-        <span>{{ changeBonus }}</span>
+        <span>{{ bonus }}</span>
       </div>
       <div class="item-detail item-check">
         <span>{{ check }}</span>

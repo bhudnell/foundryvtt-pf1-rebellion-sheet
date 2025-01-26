@@ -92,8 +92,6 @@
 }
 
 .app.sheet.rebellion input[type="number"] {
-  height: unset;
-  width: 40px;
   text-align: center;
 }
 

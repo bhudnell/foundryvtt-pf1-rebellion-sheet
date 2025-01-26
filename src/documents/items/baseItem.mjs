@@ -14,9 +14,12 @@ export class BaseItem extends pf1.documents.item.ItemPF {
     return this.constructor.hasChanges;
   }
 
+  get hasRActions() {
+    return this.rActions.length > 0;
+  }
+
   get isActive() {
-    // TODO
-    return !this.system.disabled && !this.system.damaged && (this.system.quantity == null || this.system.quantity > 0);
+    return !this.system.disabled && !this.system.missing;
   }
 
   static getDefaultArtwork(itemData) {
@@ -61,6 +64,8 @@ export class BaseItem extends pf1.documents.item.ItemPF {
   prepareDerivedData() {
     super.prepareDerivedData();
     this.flags ??= {};
+
+    this._prepareRActions();
   }
 
   async update(data, context = {}) {
@@ -84,5 +89,20 @@ export class BaseItem extends pf1.documents.item.ItemPF {
 
   get defaultAction() {
     return this.actions?.get(this.system.actions?.[0]?._id);
+  }
+
+  _prepareRActions() {
+    const prior = this.rActions;
+    const collection = new Collection();
+
+    for (const a of this.system.rActions?.value ?? []) {
+      const action = {
+        key: a,
+        source: this.name,
+      };
+      collection.set(a, action);
+    }
+
+    this.rActions = collection;
   }
 }

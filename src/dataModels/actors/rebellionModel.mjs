@@ -122,59 +122,25 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
   }
 
   prepareBaseData() {
-    this.danger.other = 0;
-    this.danger.total = this.danger.base + this.danger.other;
+    for (const stat of [...Object.keys(pf1rs.config.orgChecks), "danger"]) {
+      this[stat] ??= {};
+      this[stat].base ??= 0;
+      this[stat].total = 0;
+    }
 
-    this.loyalty = {
-      base: 0,
-      officer: 0,
-      sentinel: 0,
-      other: 0,
-      total: 0,
-    };
-    this.secrecy = {
-      base: 0,
-      officer: 0,
-      sentinel: 0,
-      other: 0,
-      total: 0,
-    };
-    this.security = {
-      base: 0,
-      officer: 0,
-      sentinel: 0,
-      other: 0,
-      total: 0,
-    };
+    for (const action of Object.keys(pf1rs.config.actions)) {
+      this.actions[action].bonus = 0;
+    }
   }
 
   prepareDerivedData() {
-    // changes
-    this.changes = this._prepareChanges();
-
     // organization checks
     const focusBase = Math.floor(this.rank / 2) + 2;
     const secondaryBase = Math.floor(this.rank / 3);
 
     for (const check of Object.keys(pf1rs.config.orgChecks)) {
-      this[check].base += this.focus === check ? focusBase : secondaryBase;
-      this[check].officer += this.officers[pf1rs.config.orgCheckOfficer[check]].bonus;
-      this[check].sentinel += this.focus !== check && this.officers.sentinel.actorId ? 1 : 0;
-      this[check].other += this._getChanges(["allOrgChecks", check]);
-
-      if (check === "security") {
-        this[check].other += Math.min(5, this.safehouses);
-      }
-
-      this[check].total += this[check].base + this[check].officer + this[check].sentinel + this[check].other;
-    }
-
-    // actions
-    const itemActions = this._getItemActions();
-    for (const action of Object.keys(pf1rs.config.actions)) {
-      this.actions[action].changeBonus = this._getChanges(action);
-      this.actions[action].available = pf1rs.config.alwaysAvailableActions.includes(action) || itemActions.has(action);
-      this.actions[action].sources = itemActions.get(action);
+      this[check].base = this.focus === check ? focusBase : secondaryBase;
+      this[check].total = this[check].base;
     }
 
     // other details
@@ -182,58 +148,8 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
     this.maxActions = pf1rs.config.maxActions[this.rank] + (this.officers.strategist.actorId ? 1 : 0);
     this.maxTeams = pf1rs.config.maxTeams[this.rank];
 
-    this.danger.other += this._getChanges("danger");
-    this.danger.total = this.danger.base + this.danger.other;
-
-    this.eventChance = Math.clamped((this.notoriety + this.danger.total) * (this.doubleEventChance ? 2 : 1), 10, 95);
-  }
-
-  _prepareChanges() {
-    const changeItems = this.parent.items.filter((item) => item.system.changes?.length > 0);
-
-    const changes = [];
-    for (const i of changeItems) {
-      changes.push(
-        ...i.system.changes.map((c) => ({
-          ...c,
-          parentId: i.id,
-          parentName: i.name,
-          mitigated: i.system.mitigated,
-        }))
-      );
-    }
-
-    const c = new Collection();
-    for (const change of changes) {
-      // Avoid ID conflicts
-      const parentId = change.parentId ?? "Actor";
-      const uniqueId = `${parentId}-${change.id}`;
-      c.set(uniqueId, change);
-    }
-    return c;
-  }
-
-  _getItemActions() {
-    const actionItems = this.parent.items.filter(
-      (item) => !item.system.disabled && !item.system.missing && item.system.rActions?.value.length > 0
-    );
-    const actions = new Map();
-
-    for (const item of actionItems) {
-      for (const action of item.system.rActions.value) {
-        const sources = actions.get(action);
-        actions.set(action, [...(sources ?? []), item.name]);
-      }
-    }
-
-    return actions;
-  }
-
-  _getChanges(ability) {
-    const abilityArr = Array.isArray(ability) ? ability : [ability];
-    return this.changes
-      .filter((c) => abilityArr.includes(c.ability))
-      .reduce((total, c) => total + (c.mitigated ? Math.floor(c.bonus / 2) : c.bonus), 0);
+    // danger
+    this.danger.total = this.danger.base;
   }
 
   get skills() {

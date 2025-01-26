@@ -52,6 +52,16 @@
         <h5>{{localize "PF1RS.Notoriety" }}</h5>
         <span class="value text-box direct" name="system.notoriety" data-dtype="Number">{{ system.notoriety }}</span>
       </div>
+      <div class="info-box" data-tooltip-extended="danger">
+        <h5>{{localize "PF1RS.Danger" }}</h5>
+        {{#if isGM}}
+        <span class="value text-box direct" name="system.danger.base" data-dtype="Number">{{
+          system.danger.total
+        }}</span>
+        {{else}}
+        <span class="value">{{ system.danger.total }}</span>
+        {{/if}}
+      </div>
     </div>
   </div>
 </div>
