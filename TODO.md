@@ -1,1 +1,1 @@
-Recruiters currently cant be but should be able to be team managers
+- Add buttons to actions tabe to roll each action

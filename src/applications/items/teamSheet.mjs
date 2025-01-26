@@ -16,12 +16,13 @@ export class TeamSheet extends ItemBaseSheet {
     // manager choices, only officers from parent sheet can be managers
     const managerOptions = { "": "" };
     if (item.parent) {
-      Object.values(item.parent.system.officers).forEach((officer) => {
-        console.error(officer); // todo probably need a flatmap here
-        if (officer.actorId) {
-          managerOptions[officer.actorId] = officer.name;
-        }
-      });
+      Object.values(item.parent.system.officers)
+        .flatMap((o) => o)
+        .forEach((officer) => {
+          if (officer.actorId) {
+            managerOptions[officer.actorId] = officer.name;
+          }
+        });
     }
     context.validManagerOptions = managerOptions;
 
