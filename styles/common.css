@@ -34,21 +34,12 @@
       flex: 1;
     }
 
-    &.item-officer-bonus {
+    &.item-bonus {
       flex: 0 0 100px;
     }
 
     &.item-teams-managed {
       flex: 0 0 90px;
-    }
-
-    /* action stuff */
-    &.item-action-bonus {
-      flex: 0 0 60px;
-    }
-
-    &.item-check {
-      flex: 0 0 80px;
     }
 
     /* team stuff */
@@ -101,7 +92,30 @@
   border: unset;
 }
 
-.app.sheet.rebellion :is(span.text-box, input.text-box) {
+.app.sheet.rebellion :is(span.text-box, input.text-box):not(.readonly) {
   width: unset;
   border-radius: unset;
+}
+
+.app.sheet.rebellion span.text-box {
+  color: inherit;
+}
+
+.app.dialog.rebellion .radio {
+  gap: 0.5em;
+  display: flex;
+  flex-flow: row nowrap;
+  margin-bottom: 8px;
+
+  > label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0 0.3em;
+
+    > input {
+      height: 16px;
+      top: unset;
+      margin: unset;
+    }
+  }
 }

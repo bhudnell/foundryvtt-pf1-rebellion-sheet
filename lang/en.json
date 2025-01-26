@@ -32,6 +32,11 @@
     "Mitigated": "Mitigated",
     "Safehouses": "Safehouses",
     "SafehouseCount": "Safehouse Count",
+    "RollAction": "Roll Action",
+    "ActionRoll": "{action} Check",
+    "SelectTeam": "Select Team",
+    "NoTeam": "No team",
+    "Roll": "Roll",
     "Actions": {
       "Abm": "Activate Black Market",
       "Ash": "Activate Safe House",

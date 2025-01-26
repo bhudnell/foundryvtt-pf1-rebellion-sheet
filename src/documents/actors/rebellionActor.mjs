@@ -9,8 +9,7 @@ export class RebellionActor extends BaseActor {
 
     // actions
     for (const action of Object.keys(pf1rs.config.actions)) {
-      this.system.actions[action].available =
-        pf1rs.config.alwaysAvailableActions.includes(action) || this.rActions.has(action);
+      this.system.actions[action].alwaysAvailable = pf1rs.config.alwaysAvailableActions.includes(action);
       this.system.actions[action].sources = this.rActions.get(action);
     }
 
@@ -54,6 +53,86 @@ export class RebellionActor extends BaseActor {
       parts,
       rollData,
       flavor: game.i18n.format("PF1RS.OrgCheckRoll", { check: label }),
+      chatTemplateData: { properties: props },
+      speaker: ChatMessage.getSpeaker({ actor, token, alias: token?.name }),
+    };
+
+    return await pf1.dice.d20Roll(rollOptions);
+  }
+
+  async rollAction(actionId, options = {}) {
+    const action = this.system.actions[actionId];
+
+    const parts = [];
+    const props = [];
+
+    const orgCheck = action.check;
+    parts.push(`${this.system[orgCheck].total}[${pf1rs.config.orgChecks[orgCheck]}]`);
+
+    const changes = pf1.documents.actor.changes.getHighestChanges(
+      this.changes.filter(
+        (c) => c.operator !== "set" && c.target === `${pf1rs.config.changePrefix}_${actionId}` && c.value
+      ),
+      { ignoreTarget: true }
+    );
+
+    for (const c of changes) {
+      parts.push(`${c.value}[${c.flavor}]`);
+    }
+
+    // Add context notes
+    const rollData = options.rollData || this.getRollData();
+    const noteObjects = this.getContextNotes(`${pf1rs.config.changePrefix}_${actionId}`);
+    const notes = this.formatContextNotes(noteObjects, rollData);
+    if (notes.length > 0) {
+      props.push({ header: game.i18n.localize("PF1.Notes"), value: notes });
+    }
+
+    let sourceId = action.sources?.[0].id;
+    // if more than 1 source (action.sources + in always available actions) open dialog to choose
+    if (action.sources?.length > (action.alwaysAvailable ? 0 : 1)) {
+      const content = await renderTemplate(`modules/${pf1rs.config.moduleId}/templates/dialog/team-picker.hbs`, {
+        defaultSource: action.alwaysAvailable,
+        sources: action.sources,
+      });
+      const response = await Dialog.prompt({
+        title: game.i18n.localize("PF1RS.SelectTeam"),
+        content,
+        label: game.i18n.localize("PF1RS.Roll"),
+        callback: (html) => {
+          const form = html[0].querySelector("form");
+          const formData = foundry.utils.expandObject(new FormDataExtended(form).object);
+          sourceId = formData.team;
+        },
+        options: { classes: ["dialog", "rebellion"] },
+      });
+
+      if (!response) {
+        return;
+      }
+    }
+
+    const source = this.getEmbeddedDocument("Item", sourceId);
+    const bonus = source?.system.bonus ?? 0;
+    const tier = source?.system.tier ?? 0;
+
+    if (bonus) {
+      parts.push(`${bonus}[${source.name}]`);
+    }
+
+    if (actionId === "gi" && tier) {
+      parts.push(`${tier * 2}[${source.name} (${game.i18n.localize("PF1RS.TeamTier")})]`);
+    }
+
+    const label = pf1rs.config.actions[actionId];
+    const actor = options.actor ?? this;
+    const token = options.token ?? this.token;
+
+    const rollOptions = {
+      ...options,
+      parts,
+      rollData,
+      flavor: game.i18n.format("PF1RS.ActionRoll", { action: label }),
       chatTemplateData: { properties: props },
       speaker: ChatMessage.getSpeaker({ actor, token, alias: token?.name }),
     };

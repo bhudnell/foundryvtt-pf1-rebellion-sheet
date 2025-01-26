@@ -49,6 +49,7 @@
     "Item": "readonly",
     "ItemSheet": "readonly",
     "TextEditor": "readonly",
+    "FormDataExtended": "readonly",
     "Dialog": "readonly",
     "ChatMessage": "readonly",
     "pf1": "readonly",

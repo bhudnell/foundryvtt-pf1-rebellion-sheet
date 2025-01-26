@@ -7,7 +7,7 @@
       <div class="item-detail item-actor">
         <label>{{localize "PF1RS.Officer"}}</label>
       </div>
-      <div class="item-detail item-officer-bonus">
+      <div class="item-detail item-bonus">
         <label>{{localize "PF1.Bonus"}}</label>
       </div>
       <div class="item-detail item-teams-managed">
@@ -32,7 +32,7 @@
           {{selectOptions @root.validOfficerOptions selected=actorId}}
         </select>
       </div>
-      <div class="item-detail item-officer-bonus">
+      <div class="item-detail item-bonus">
         <span>{{ numberFormat bonus sign=true }} {{ bonusType }}</span>
       </div>
       <div class="item-detail item-teams-managed">
@@ -52,7 +52,7 @@
           {{selectOptions @root.validOfficerOptions selected=actorId}}
         </select>
       </div>
-      <div class="item-detail item-officer-bonus">
+      <div class="item-detail item-bonus">
         <span>{{ numberFormat bonus sign=true }} {{ bonusType }}</span>
       </div>
       <div class="item-detail item-teams-managed">

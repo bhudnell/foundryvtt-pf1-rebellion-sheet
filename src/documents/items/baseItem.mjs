@@ -15,7 +15,7 @@ export class BaseItem extends pf1.documents.item.ItemPF {
   }
 
   get hasRActions() {
-    return this.rActions.length > 0;
+    return this.rActions.size > 0;
   }
 
   get isActive() {
@@ -98,7 +98,10 @@ export class BaseItem extends pf1.documents.item.ItemPF {
     for (const a of this.system.rActions?.value ?? []) {
       const action = {
         key: a,
-        source: this.name,
+        source: {
+          name: this.name,
+          id: this._id,
+        },
       };
       collection.set(a, action);
     }

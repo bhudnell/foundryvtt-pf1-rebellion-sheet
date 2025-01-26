@@ -1,14 +1,18 @@
 .app.sheet.rebellion.actor {
   .tab.actions {
-    .item-name {
-      cursor: pointer;
-      padding-right: 6px;
-      height: 24px;
+    .skill {
+      grid-template-columns: 1fr 16px 3em 50px;
+      gap: 8px;
+      padding-right: 3px;
+
+      &.disabled {
+        color: rgba(0, 0, 0, 0.4);
+      }
 
       .details {
         flex: 1;
         display: inline-flex;
-        gap: 6px;
+        gap: 8px;
         align-items: center;
 
         .safehouse-input {
@@ -16,18 +20,9 @@
           width: 40px;
         }
       }
-
-      .compendium-entry {
-        display: none;
-      }
-
-      &:hover {
-        .compendium-entry {
-          display: inline;
-        }
-      }
     }
   }
+
   .tab.events {
     .event-chance {
       flex: 0;
@@ -47,6 +42,7 @@
       }
     }
   }
+
   .fa-triangle-exclamation {
     color: var(--pf1-color-text-error);
     text-shadow: 0 0 3px var(--pf1-faint);

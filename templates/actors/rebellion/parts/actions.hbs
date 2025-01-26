@@ -13,55 +13,45 @@
   </div>
 </div>
 
-<ol class="item-groups-list">
-  <ol class="item-list">
-    <li class="item-list-header flexrow">
-      <div class="item-name">
-        <h3>{{localize "PF1RS.Action"}}</h3>
-      </div>
-      <div class="item-detail item-action-bonus">
-        <label>{{localize "PF1RS.Bonus"}}</label>
-      </div>
-      <div class="item-detail item-check">
-        <label>{{localize "PF1RS.OrgCheck"}}</label>
-      </div>
-    </li>
-    {{#each actions.available}}
-    <li class="flexrow item">
-      <div class="item-name" data-tooltip-extended="action.{{ id }}">
-        <div class="details">
-          {{#if available}}
-          <i class="far fa-square-check"></i>
-          {{else}}
-          <i class="far fa-square"></i>
-          {{/if}}
-          <span>{{ label }}</span>
-          {{#if showSafehouses}}
-          <div data-tooltip="PF1RS.SafehouseCount">
-            {{numberInput @root.system.safehouses class="safehouse-input" name="system.safehouses" step=1 min=0}}
-          </div>
-          {{/if}}
-          <div class="tag-list">
-            {{#each sources}}
-            <span class="tag">{{ this }}</span>
-            {{/each}}
-          </div>
+<ul class="skills-list">
+  {{#each actions.available}}
+  <li class="skill compendium{{#unless available}} disabled{{/unless}}" data-action-id="{{ id }}">
+    <div class="skill-name" data-tooltip-extended="action.{{ id }}">
+      <div class="details">
+        {{#if available}}
+        <i class="far fa-square-check"></i>
+        {{else}}
+        <i class="far fa-square"></i>
+        {{/if}}
+        <span>{{ label }}</span>
+        {{#if showSafehouses}}
+        <div data-tooltip="PF1RS.SafehouseCount">
+          {{numberInput @root.system.safehouses class="safehouse-input" name="system.safehouses" step=1 min=0}}
         </div>
-        <div class="controls">
-          {{#if compendiumEntry}}
-          <a class="compendium-entry" data-compendium-entry="{{ compendiumEntry }}" data-document-type="JournalEntry">
-            <i class="fas fa-book"></i>
-          </a>
-          {{/if}}
+        {{/if}}
+        <div class="tag-list">
+          {{#each sources}}
+          <span class="tag">{{ name }}</span>
+          {{/each}}
         </div>
       </div>
-      <div class="item-detail item-action-bonus">
-        <span>{{ bonus }}</span>
+      <div class="controls">
+        {{#if compendiumEntry}}
+        <a class="compendium-entry" data-compendium-entry="{{ compendiumEntry }}" data-document-type="JournalEntry">
+          <i class="fas fa-book compendium-icon"></i>
+        </a>
+        {{/if}}
       </div>
-      <div class="item-detail item-check">
-        <span>{{ check }}</span>
-      </div>
-    </li>
-    {{/each}}
-  </ol>
-</ol>
+    </div>
+    <div>
+      {{#if check}}
+      <a class="action roll{{#unless available}} disabled{{/unless}}" data-tooltip="PF1RS.RollAction">
+        <i class="fa-solid fa-dice-d20"></i>
+      </a>
+      {{/if}}
+    </div>
+    <span class="text-box skill-mod readonly" data-tooltip="PF1RS.Bonus">{{ numberFormat bonus sign=true }}</span>
+    <span data-tooltip="PF1RS.OrgCheck">{{ check }}</span>
+  </li>
+  {{/each}}
+</ul>

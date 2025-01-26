@@ -62,6 +62,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
       available: Object.entries(pf1rs.config.actions).map(([actionId, label]) => ({
         ...actorData.actions[actionId],
         id: actionId,
+        available: actorData.actions[actionId].alwaysAvailable || actor.rActions.has(actionId),
         label: game.i18n.localize(label),
         compendiumEntry: pf1rs.config.actionCompendiumEntries[actionId],
         check: game.i18n.localize(pf1rs.config.orgChecks[actorData.actions[actionId].check]),
@@ -199,6 +200,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
     html.find(".item-toggle-data").on("click", (e) => this._itemToggleData(e));
 
     html.find(".org-check .rollable").on("click", (e) => this._onRollOrgCheck(e));
+    html.find(".skill .action.roll:not(.disabled)").on("click", (e) => this._onRollAction(e));
     html.find(".event-chance .rollable").on("click", (e) => this._onRollEventChance(e));
   }
 
@@ -264,6 +266,12 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
     event.preventDefault();
     const orgCheck = event.currentTarget.closest(".org-check").dataset.orgCheck;
     this.actor.rollOrgCheck(orgCheck, { actor: this.actor, skipDialog: true });
+  }
+
+  async _onRollAction(event) {
+    event.preventDefault();
+    const actionId = event.currentTarget.closest(".skill").dataset.actionId;
+    this.actor.rollAction(actionId, { actor: this.actor, skipDialog: true });
   }
 
   async _onRollEventChance(event) {
