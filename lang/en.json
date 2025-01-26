@@ -6,6 +6,7 @@
     "Rank": "Rank",
     "MaxRank": "Max Rank",
     "Focus": "Focus",
+    "Citizenry": "Citizenry",
     "Membership": "Membership",
     "Supporters": "Supporters",
     "Population": "Population",
@@ -37,6 +38,7 @@
     "SelectTeam": "Select Team",
     "NoTeam": "No team",
     "Roll": "Roll",
+    "ActionSelector": "Action Selector",
     "Actions": {
       "Abm": "Activate Black Market",
       "Ash": "Activate Safe House",
@@ -156,6 +158,10 @@
     "DeleteItem": "Delete Item",
     "CreateItem": "Create Item",
     "NewItem": "New {type}",
+
+    "NoRebellionItemsOnActor": "This actor cannot have Rebellion items.",
+    "OnlyRebellionItemsOnActor": "Rebellion actors can only have Ally, Event, and Team items.",
+    "LibWrapperError": "The PF1 Rebellion Sheet module requires the 'libWrapper' module. Please install and activate it.",
 
     "Browse": {
       "Allies": "Browse Allies",

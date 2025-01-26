@@ -27,12 +27,12 @@ Hooks.on("preCreateItem", (item, data, context, user) => {
   }
 
   if (item.actor.type !== PF1RS.sheetId && [PF1RS.allyId, PF1RS.eventId, PF1RS.teamId].includes(item.type)) {
-    ui.notifications.error("PF1RS.NoRebellionItemsOnActor", { localize: true }); // todo localize
+    ui.notifications.error("PF1RS.NoRebellionItemsOnActor", { localize: true });
     return false;
   }
 
   if (item.actor.type === PF1RS.sheetId && ![PF1RS.allyId, PF1RS.eventId, PF1RS.teamId].includes(item.type)) {
-    ui.notifications.error("PF1RS.OnlyRebellionItemsOnActor", { localize: true }); // todo localize
+    ui.notifications.error("PF1RS.OnlyRebellionItemsOnActor", { localize: true });
     return false;
   }
 });
