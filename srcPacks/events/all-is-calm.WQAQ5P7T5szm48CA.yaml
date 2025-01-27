@@ -4,18 +4,25 @@ _id: WQAQ5P7T5szm48CA
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>No event occurs this week or next week; gain a +1 bonus on all Security
-    checks made during the next week. If you roll All Is Calm as a second event,
-    it does not cancel the effects of the first event but still prevents an
-    event from happening next week. An eventless week caused by this event does
-    not raise the chance of an event occurring in the week after.</p>
+  description:
+    value: >-
+      <p>No event occurs this week or next week; gain a +1 bonus on all Security
+      checks made during the next week. If you roll All Is Calm as a second
+      event, it does not cancel the effects of the first event but still
+      prevents an event from happening next week. An eventless week caused by
+      this event does not raise the chance of an event occurring in the week
+      after.</p>
   persistent: false
   mitigated: false
   changes:
-    - id: mGbXGgFnLz3uQAas
-      ability: security
-      bonus: 1
+    - _id: mGbXGgFnLz3uQAas
+      formula: '1'
+      target: pf1rs_security
+      type: untyped
+      operator: add
+      priority: 0
+  contextNotes: []
+  sources: []
 sort: 100000
 _key: '!items!WQAQ5P7T5szm48CA'
 

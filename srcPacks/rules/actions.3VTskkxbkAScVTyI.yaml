@@ -472,19 +472,33 @@ pages:
         requires purchasing the items in question (or simply providing the team
         with items already owned) and a successful Secrecy check to stash the
         items. Caches come in three categories—minor, intermediate, and major
-        (see the sidebar above). Sneaks can only secure minor caches, while
-        thieves can secure minor or intermediate caches, and both saboteurs and
-        spies can secure all three categories. You can have the team secure an
-        outdoor cache in any location in Kintargo (such caches are typically
-        hidden in alleys or parks or other relatively out-of-the-way areas) or
-        inside a specific structure. When placed in a specific structure, the
-        cache is typically hidden near the entrance, but additional locations
-        are available in certain buildings. (Your GM has this information as it
-        is needed.) Placing a cache inside of “enemy territory” (subject to the
-        GM) increases the DC by 5 to 10. Make sure to keep track of the
-        locations you’ve hidden caches and what kinds of caches they are! See
-        the sidebar above for DCs and additional details on the three
-        categories.</p>
+        (see below). Sneaks can only secure minor caches, while thieves can
+        secure minor or intermediate caches, and both saboteurs and spies can
+        secure all three categories. You can have the team secure an outdoor
+        cache in any location in Kintargo (such caches are typically hidden in
+        alleys or parks or other relatively out-of-the-way areas) or inside a
+        specific structure. When placed in a specific structure, the cache is
+        typically hidden near the entrance, but additional locations are
+        available in certain buildings. (Your GM has this information as it is
+        needed.) Placing a cache inside of “enemy territory” (subject to the GM)
+        increases the DC by 5 to 10. Make sure to keep track of the locations
+        you’ve hidden caches and what kinds of caches they are! See the sidebar
+        above for DCs and additional details on the three
+        categories.</p><h3>Caches</h3><p>A cache is a small, hidden stash of
+        supplies placed in a strategic location for later use. Most caches
+        consist of healing and other restorative magic, but any combination of
+        items fitting the overall restrictions can be
+        stashed.</p><p><strong>Minor Cache:</strong> A minor cache can weigh no
+        more than 5 pounds, and can be worth no more than 900 gp in all.
+        Securing a minor cache requires a DC 15 Secrecy
+        check.</p><p><strong>Intermediate Cache:</strong> An intermediate cache
+        can weigh no more than 10 pounds, and can be worth no more than 2,500 gp
+        in all. Securing an intermediate cache requires a DC 20 Secrecy
+        check.</p><p><strong>Major Cache:</strong> A major cache can weigh no
+        more than 20 pounds, but can be worth any amount. Using a bag of
+        holding, portable hole, or similar extradminsional storage item expands
+        the weight limit of major caches. Securing a major cache requires a DC
+        30 Secrecy check.</p>
     video:
       controls: true
       volume: 0.5

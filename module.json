@@ -12,23 +12,23 @@
   ],
 
   "esmodules": ["src/main.mjs"],
-  "styles": ["styles/common.css", "styles/item.css", "styles/rebellion.css"],
+  "styles": ["styles/common.css", "styles/actor.css", "styles/item.css"],
 
   "documentTypes": {
     "Actor": {
       "rebellion": {
-        "htmlFields": ["notes"]
+        "htmlFields": ["notes.value"]
       }
     },
     "Item": {
       "team": {
-        "htmlFields": ["description"]
+        "htmlFields": ["description.value"]
       },
       "event": {
-        "htmlFields": ["description"]
+        "htmlFields": ["description.value"]
       },
       "ally": {
-        "htmlFields": ["description"]
+        "htmlFields": ["description.value"]
       }
     }
   },
@@ -87,22 +87,29 @@
     }
   ],
 
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11.315",
+    "maximum": "11"
+  },
   "relationships": {
+    "requires": [
+      {
+        "id": "lib-wrapper",
+        "type": "module"
+      }
+    ],
     "systems": [
       {
         "id": "pf1",
         "type": "system",
         "compatibility": {
-          "minimum": "9",
-          "verified": "10.4"
+          "minimum": "10",
+          "verified": "10.8",
+          "maximum": "10.x"
         }
       }
     ]
-  },
-  "compatibility": {
-    "minimum": "11",
-    "verified": "11.315",
-    "maximum": "11"
   },
 
   "license": "LICENSE",

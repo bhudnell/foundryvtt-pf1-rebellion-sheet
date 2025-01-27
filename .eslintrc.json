@@ -20,7 +20,7 @@
     "no-duplicate-imports": "warn",
     "curly": "warn",
     "dot-notation": "warn",
-    "eqeqeq": "warn",
+    "eqeqeq": ["warn", "smart"],
     "no-else-return": "warn",
     "no-unused-vars": "off",
     "import/order": [
@@ -45,14 +45,15 @@
     "loadTemplates": "readonly",
     "Actors": "readonly",
     "Items": "readonly",
-    "ActorSheet": "readonly",
+    "Actor": "readonly",
     "Item": "readonly",
     "ItemSheet": "readonly",
     "TextEditor": "readonly",
+    "FormDataExtended": "readonly",
     "Dialog": "readonly",
     "ChatMessage": "readonly",
-    "JournalEntryPage": "readonly",
     "pf1": "readonly",
-    "$": "readonly"
+    "pf1rs": "readonly",
+    "libWrapper": "readonly"
   }
 }

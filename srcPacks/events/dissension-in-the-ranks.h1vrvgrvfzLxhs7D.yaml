@@ -4,19 +4,25 @@ _id: h1vrvgrvfzLxhs7D
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>Personality conflicts among the Silver Ravens have compromised
-    cooperation. For the next week (including the next week’s events, if any),
-    all Organization checks take a –4 penalty. If you roll Dissension in the
-    Ranks twice in one Event phase, it becomes persistent.</p><p>Mitigation: If
-    a Silver Ravens officer makes a successful DC 20 Diplomacy check to soothe
-    over the dissension, this penalty is reduced to –2.</p>
+  description:
+    value: >-
+      <p>Personality conflicts among the Silver Ravens have compromised
+      cooperation. For the next week (including the next week’s events, if any),
+      all Organization checks take a –4 penalty. If you roll Dissension in the
+      Ranks twice in one Event phase, it becomes persistent.</p><p>Mitigation:
+      If a Silver Ravens officer makes a successful DC 20 Diplomacy check to
+      soothe over the dissension, this penalty is reduced to –2.</p>
   persistent: false
   mitigated: false
   changes:
-    - id: u9YmQ6mYKozjuMhb
-      ability: allOrgChecks
-      bonus: -4
+    - _id: u9YmQ6mYKozjuMhb
+      formula: '-4'
+      target: pf1rs_allOrgChecks
+      type: untyped
+      operator: add
+      priority: 0
+  contextNotes: []
+  sources: []
 sort: 900000
 _key: '!items!h1vrvgrvfzLxhs7D'
 

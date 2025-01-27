@@ -8,23 +8,27 @@ system:
   cost: null
   recruitment:
     dc: null
-  actions:
-    value:
-      - gi
-      - sd
   size: 6
-  description: >-
-    <p><strong>Cost</strong> 50 gp</p><p><strong>Granted Actions</strong> Gather
-    Information and Spread Disinformation</p><p><strong>Size</strong> 6
-    people</p><p><strong>Upgrades From</strong> street
-    performers</p><p><strong>Upgrades To</strong> agitators or
-    cognoscenti</p><hr /><p>These specialized street performers cannot only
-    gather information, but can spread lies and confusing rumors to throw the
-    government off the Silver Ravens’ tracks.</p>
+  description:
+    value: >-
+      <p><strong>Cost</strong> 50 gp</p><p><strong>Granted Actions</strong>
+      Gather Information and Spread Disinformation</p><p><strong>Size</strong> 6
+      people</p><p><strong>Upgrades From</strong> street
+      performers</p><p><strong>Upgrades To</strong> agitators or
+      cognoscenti</p><hr /><p>These specialized street performers cannot only
+      gather information, but can spread lies and confusing rumors to throw the
+      government off the Silver Ravens’ tracks.</p>
   managerId: null
   disabled: false
   missing: false
   baseType: rum
+  rActions:
+    value:
+      - gi
+      - sd
+  changes: []
+  contextNotes: []
+  sources: []
 sort: 0
 _key: '!items!lcjctQGjBvOxqcaF'
 

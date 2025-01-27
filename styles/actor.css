@@ -1,0 +1,59 @@
+.app.sheet.rebellion.actor {
+  .tab.summary {
+    :is(.rank, .treasury) {
+      flex: 2;
+    }
+
+    :is(.attrs, .citizenry) {
+      flex: 3;
+    }
+  }
+  .tab.actions {
+    .skill {
+      grid-template-columns: 1fr 16px 3em 50px;
+      gap: 8px;
+      padding-right: 3px;
+
+      &.disabled {
+        color: rgba(0, 0, 0, 0.4);
+      }
+
+      .details {
+        flex: 1;
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+
+        .safehouse-input {
+          height: unset;
+          width: 40px;
+        }
+      }
+    }
+  }
+
+  .tab.events {
+    .event-chance {
+      flex: 0;
+
+      .rollable {
+        align-items: center;
+      }
+
+      .event-details {
+        flex: 1;
+        display: flex;
+        gap: 3px;
+
+        .sources {
+          flex: 3;
+        }
+      }
+    }
+  }
+
+  .fa-triangle-exclamation {
+    color: var(--pf1-color-text-error);
+    text-shadow: 0 0 3px var(--pf1-faint);
+  }
+}

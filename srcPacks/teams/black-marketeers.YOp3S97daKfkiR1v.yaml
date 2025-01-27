@@ -8,24 +8,28 @@ system:
   cost: null
   recruitment:
     dc: null
-  actions:
-    value:
-      - abm
-      - eg
-      - rm
   size: 6
-  description: >-
-    <p><strong>Cost</strong> 200 gp</p><p><strong>Granted Actions</strong>
-    Activate Black Market, Earn Gold, and Refresh
-    Marketplace</p><p><strong>Size</strong> 6 people</p><p><strong>Upgrades
-    From</strong> merchants</p><hr /><p>Black marketeers are similar to
-    merchants, save that they maintain contacts with illegal sources and operate
-    in the city’s shadows, allowing the PCs to sell items at a slightly higher
-    profit.</p>
+  description:
+    value: >-
+      <p><strong>Cost</strong> 200 gp</p><p><strong>Granted Actions</strong>
+      Activate Black Market, Earn Gold, and Refresh
+      Marketplace</p><p><strong>Size</strong> 6 people</p><p><strong>Upgrades
+      From</strong> merchants</p><hr /><p>Black marketeers are similar to
+      merchants, save that they maintain contacts with illegal sources and
+      operate in the city’s shadows, allowing the PCs to sell items at a
+      slightly higher profit.</p>
   managerId: null
   disabled: false
   missing: false
   baseType: blm
+  rActions:
+    value:
+      - abm
+      - eg
+      - rm
+  changes: []
+  contextNotes: []
+  sources: []
 sort: 0
 _key: '!items!YOp3S97daKfkiR1v'
 

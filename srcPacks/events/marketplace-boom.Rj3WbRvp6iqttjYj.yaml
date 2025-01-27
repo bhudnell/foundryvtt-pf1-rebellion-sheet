@@ -4,13 +4,16 @@ _id: Rj3WbRvp6iqttjYj
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>A new minor, new intermediate, and new major magic item become available
-    for sale in Kintargo’s markets. The GM randomly determines what items are
-    for sale and where they can be purchased.</p>
+  description:
+    value: >-
+      <p>A new minor, new intermediate, and new major magic item become
+      available for sale in Kintargo’s markets. The GM randomly determines what
+      items are for sale and where they can be purchased.</p>
   persistent: false
   mitigated: false
   changes: []
+  contextNotes: []
+  sources: []
 sort: 1700000
 _key: '!items!Rj3WbRvp6iqttjYj'
 

@@ -1,36 +1,18 @@
-<ol class="item-list">
-  <li class="flexrow item-list-header">
-    <span class="item-name item-formula">{{localize "PF1RS.Change"}}</span>
-    <span class="item-detail item-target">{{localize "PF1RS.Target"}}</span>
-    <div class="item-detail item-controls basic">
-      <a class="item-control add-change">
-        <i class="fa-solid fa-plus"></i>
-      </a>
-    </div>
-  </li>
-  {{#each changes as |change idx|}}
-  <li class="flexrow item" data-id="{{ id }}">
-    <div class="item-name item-formula">
-      <input type="number" value="{{ bonus }}" name="system.changes.{{ idx }}.bonus" step="1" placeholder="Formula" />
-    </div>
-    <div class="item-detail item-target">
-      <span class="target-change">{{ abilityLabel }}</span>
-    </div>
-    <div class="item-detail item-controls basic">
-      <a class="item-control delete-change">
-        <i class="fa-solid fa-trash"></i>
-      </a>
-    </div>
-    <input type="hidden" value="{{ id }}" name="system.changes.{{ idx }}.id" />
-    <input type="hidden" value="{{ ability }}" name="system.changes.{{ idx }}.ability" />
-  </li>
-  {{/each}}
-</ol>
-
-<h4 class="section-header">{{localize "PF1RS.GrantedActions"}}</h4>
 <div class="form-group">
-  <span>{{ actions }}</span>
-  <a class="flex0 edit-actions" data-tooltip="PF1RS.EditItem">
-    <i class="fa-solid fa-pen-to-square"></i>
-  </a>
+  <label>{{localize "PF1RS.GrantedActions"}}</label>
+  <div class="form-fields">
+    <ul class="traits-list tag-list">
+      {{#each actions}}
+      <li class="tag">{{ this }}</li>
+      {{/each}}
+    </ul>
+    <a
+      class="trait-selector"
+      data-title="PF1RS.ActionSelector"
+      data-options="rebellionActions"
+      data-for="system.rActions"
+    >
+      <i class="fas fa-pen-to-square"></i>
+    </a>
+  </div>
 </div>

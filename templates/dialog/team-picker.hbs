@@ -1,0 +1,16 @@
+<form>
+  <div class="flexrow radio">
+    {{#if defaultSource}}
+    <label>
+      <input type="radio" name="team" value="" checked />
+      {{localize "PF1RS.NoTeam"}}
+    </label>
+    {{/if}}
+    {{#each sources}}
+    <label>
+      <input type="radio" name="team" value="{{ id }}" />
+      {{ name }}
+    </label>
+    {{/each}}
+  </div>
+</form>

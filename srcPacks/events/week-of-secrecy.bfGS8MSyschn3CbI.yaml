@@ -4,17 +4,23 @@ _id: bfGS8MSyschn3CbI
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>The rebellion is poised to have an excellent week, due to internal
-    squabbling among Lord-Mayor Thrune’s minions and the church. All
-    Organization checks made for the next week gain a +6 bonus, and double the
-    amount of supporters gained.</p>
+  description:
+    value: >-
+      <p>The rebellion is poised to have an excellent week, due to internal
+      squabbling among Lord-Mayor Thrune’s minions and the church. All
+      Organization checks made for the next week gain a +6 bonus, and double the
+      amount of supporters gained.</p>
   persistent: false
   mitigated: false
   changes:
-    - id: ZwCUwcXhuTFQbCSm
-      ability: allOrgChecks
-      bonus: 6
+    - _id: ZwCUwcXhuTFQbCSm
+      formula: '6'
+      target: pf1rs_allOrgChecks
+      type: untyped
+      operator: add
+      priority: 0
+  contextNotes: []
+  sources: []
 sort: 2400000
 _key: '!items!bfGS8MSyschn3CbI'
 

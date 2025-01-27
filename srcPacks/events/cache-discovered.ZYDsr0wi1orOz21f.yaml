@@ -4,14 +4,18 @@ _id: ZYDsr0wi1orOz21f
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>Randomly determine one of your current caches hidden in Kintargo. That
-    cache has been discovered, and its contents are lost. If you have no caches
-    hidden at this time, Asmodean inquisitors instead capture some of your
-    supporters; reduce your supporters and Kintargo’s population by 1d6.</p>
+  description:
+    value: >-
+      <p>Randomly determine one of your current caches hidden in Kintargo. That
+      cache has been discovered, and its contents are lost. If you have no
+      caches hidden at this time, Asmodean inquisitors instead capture some of
+      your supporters; reduce your supporters and Kintargo’s population by
+      1d6.</p>
   persistent: false
   mitigated: false
   changes: []
+  contextNotes: []
+  sources: []
 sort: 300000
 _key: '!items!ZYDsr0wi1orOz21f'
 

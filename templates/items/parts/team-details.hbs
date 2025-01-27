@@ -1,25 +1,34 @@
 <div class="form-group">
+  <label>{{localize "PF1.Type"}}</label>
+  <div class="form-fields">
+    <select name="system.subType">
+      {{selectOptions subTypeOptions selected=system.subType}}
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
   <label>{{localize "PF1RS.Team"}}</label>
   <div class="form-fields">
     {{#if isUnique}}
     <span>{{localize "PF1RS.Teams.SubTypes.Unique"}}</span>
     {{else}}
     <select name="system.baseType">
-      {{selectOptions baseTypeChoices selected=system.baseType}}
+      {{selectOptions baseTypeOptions selected=system.baseType}}
     </select>
     {{/if}}
   </div>
 </div>
 
 <div class="form-group">
-  <label>{{localize "PF1RS.TeamTier"}}</label>
+  <label>{{localize "PF1.Tier"}}</label>
   <div class="form-fields">
     <input type="number" step="1" name="system.tier" value="{{ system.tier }}" />
   </div>
 </div>
 
 <div class="form-group">
-  <label>{{localize "PF1RS.TeamSize"}}</label>
+  <label>{{localize "PF1.Size"}}</label>
   <div class="form-fields">
     <input type="number" step="1" name="system.size" value="{{ system.size }}" />
   </div>
@@ -29,26 +38,27 @@
   <label>{{localize "PF1RS.Manager"}}</label>
   <div class="form-fields">
     <select name="system.managerId">
-      {{selectOptions validManagerChoices selected=system.managerId}}
+      {{selectOptions validManagerOptions selected=system.managerId}}
     </select>
-    <div class="flex0">
-      <span>{{localize "PF1RS.Bonus"}}</span>
-      <span>{{ system.bonus }}</span>
-    </div>
+    <span class="manager-bonus">{{localize "PF1.Bonus"}} {{ system.bonus }}</span>
   </div>
 </div>
 
-<h4 class="section-header">{{localize "PF1RS.GrantedActions"}}</h4>
 <div class="form-group">
-  <span>{{ actions }}</span>
-  <a class="flex0 edit-actions" data-tooltip="PF1RS.EditItem">
-    <i class="fa-solid fa-pen-to-square"></i>
-  </a>
-</div>
-
-<h4 class="section-header">{{localize "PF1RS.Type"}}</h4>
-<div class="flex0">
-  <select class="sub-type-selector" name="system.subType">
-    {{selectOptions subTypeChoices selected=system.subType}}
-  </select>
+  <label>{{localize "PF1RS.GrantedActions"}}</label>
+  <div class="form-fields">
+    <ul class="traits-list tag-list">
+      {{#each actions}}
+      <li class="tag">{{ this }}</li>
+      {{/each}}
+    </ul>
+    <a
+      class="trait-selector"
+      data-title="PF1RS.ActionSelector"
+      data-options="rebellionActions"
+      data-for="system.rActions"
+    >
+      <i class="fas fa-pen-to-square"></i>
+    </a>
+  </div>
 </div>

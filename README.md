@@ -43,5 +43,11 @@ The list of available actions and their rules are available in the provided comp
 
 # Attribution
 
-- Big thanks to the developers of the [Pf1e system](https://gitlab.com/foundryvtt_pathfinder1e/foundryvtt-pathfinder1) for the sheet styling I tried to match
-- Big thanks to [M.A.](https://gitlab.com/mkahvi) for answering many of my noobie questions as I got started and for the Companion Link and Item Hints modules, which I took inspiration from for various functionality
+- The following images are included in this project:
+    - [Uprising](https://game-icons.net/1x1/delapouite/uprising.html) by [Delapouite](https://delapouite.com/) under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+
+- Big thanks to [M.A.](https://gitlab.com/mkahvi) for answering many of my noobie questions as I got started and for the Companion Link module, which I took inspiration from for various functionality
+
+# Legal
+
+"This system uses trademarks and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or access this content. This [website, character sheet, or whatever it is] is not published, endorsed, or specifically approved by Paizo Inc. For more information about Paizo's Community Use Policy, please visit paizo.com/communityuse. For more information about Paizo Inc. and Paizo products, please visit paizo.com."

@@ -4,20 +4,23 @@ _id: Oz5bY8eIknuA6q4N
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>A dangerous creature has invaded! The GM rolls or selects a wandering
-    monster from the encounter tables available to her in the adventures, and
-    you must step in to fight this intruder. The location in which the invasion
-    occurs is selected by the GM. If you choose not to deal with the invader in
-    person, the Silver Ravens themselves handle the situation, but in doing so,
-    1d4 randomly determined teams are lost and 1d4 randomly determined teams are
-    disabled. In addition, the party’s failure to handle the invader causes the
-    rebellion to gain a persistent
-    @UUID[Compendium.pf1-rebellion-sheet.events.Item.Dwuum6chASrAjU0c]{Low
-    Morale} event.</p><p></p>
+  description:
+    value: >-
+      <p>A dangerous creature has invaded! The GM rolls or selects a wandering
+      monster from the encounter tables available to her in the adventures, and
+      you must step in to fight this intruder. The location in which the
+      invasion occurs is selected by the GM. If you choose not to deal with the
+      invader in person, the Silver Ravens themselves handle the situation, but
+      in doing so, 1d4 randomly determined teams are lost and 1d4 randomly
+      determined teams are disabled. In addition, the party’s failure to handle
+      the invader causes the rebellion to gain a persistent
+      @UUID[Compendium.pf1-rebellion-sheet.events.Item.Dwuum6chASrAjU0c]{Low
+      Morale} event.</p><p></p>
   persistent: false
   mitigated: false
   changes: []
+  contextNotes: []
+  sources: []
 sort: 1500000
 _key: '!items!Oz5bY8eIknuA6q4N'
 

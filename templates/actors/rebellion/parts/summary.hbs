@@ -1,0 +1,137 @@
+<div class="summary-header">
+  <img class="profile" src="{{ img }}" data-edit="img" />
+
+  <div class="flex-col basic-info">
+    <div class="flexrow name-xp">
+      <h1 class="char-name">
+        <input type="text" name="name" value="{{ name }}" />
+      </h1>
+      <div class="info-box">
+        <h5>{{localize "PF1RS.Week" }}</h5>
+        <span class="value text-box direct" name="system.week" data-dtype="Number">{{ system.week }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="attributes flexrow">
+  <div class="info-box-header rank">
+    <h3>
+      {{#if rankUpIndicator}}
+      <i class="fas fa-triangle-exclamation" data-tooltip="PF1RS.AvailableRankUp"></i>
+      {{/if}}
+      <span>{{localize "PF1.Rank"}}</span>
+    </h3>
+    <div class="info-box-joined">
+      <div class="info-box">
+        <h5>
+          <span>{{localize "PF1.Current" }}</span>
+        </h5>
+        <span
+          class="value text-box direct"
+          name="system.rank"
+          data-dtype="Number"
+          data-min="1"
+          data-max="{{ system.maxRank }}"
+          >{{ system.rank }}</span
+        >
+      </div>
+      <div class="info-box">
+        <h5>{{localize "PF1.Maximum" }}</h5>
+        {{#if isGM}}
+        <span class="value text-box direct" name="system.maxRank" data-dtype="Number">{{ system.maxRank }}</span>
+        {{else}}
+        <span class="value">{{ system.maxRank }}</span>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box-header attrs">
+    <h3>{{localize "PF1.Attributes"}}</h3>
+    <div class="info-box-joined">
+      <div class="info-box">
+        <h5>{{ localize "PF1RS.Focus" }}</h5>
+        <select name="system.focus">
+          {{selectOptions focusOptions selected=system.focus blank=""}}
+        </select>
+      </div>
+      <div class="info-box">
+        <h5>{{localize "PF1RS.Notoriety" }}</h5>
+        <span class="value text-box direct" name="system.notoriety" data-dtype="Number">{{ system.notoriety }}</span>
+      </div>
+      <div class="info-box" data-tooltip-extended="danger">
+        <h5>{{localize "PF1RS.Danger" }}</h5>
+        {{#if isGM}}
+        <span class="value text-box direct" name="system.danger.base" data-dtype="Number">{{
+          system.danger.total
+        }}</span>
+        {{else}}
+        <span class="value">{{ system.danger.total }}</span>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="attributes flexrow">
+  <div class="info-box-header treasury">
+    <h3>{{localize "PF1RS.Treasury"}}</h3>
+    <div class="info-box-joined">
+      <div class="info-box">
+        <h5>{{localize "PF1.Current" }}</h5>
+        <span class="value text-box direct" name="system.treasury" data-dtype="Number">{{ system.treasury }}</span>
+      </div>
+      <div class="info-box">
+        <h5>{{localize "PF1.Minimum" }}</h5>
+        <span class="value">{{ system.minTreasury }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box-header citizenry">
+    <h3>{{localize "PF1RS.Citizenry"}}</h3>
+    <div class="info-box-joined">
+      <div class="info-box">
+        <h5>{{localize "PF1RS.Membership" }}</h5>
+        <span class="value text-box direct" name="system.membership" data-dtype="Number">{{ system.membership }}</span>
+      </div>
+      <div class="info-box">
+        <h5>{{localize "PF1RS.Supporters" }}</h5>
+        <span
+          class="value text-box direct"
+          name="system.supporters"
+          data-dtype="Number"
+          data-min="0"
+          data-max="{{ system.population }}"
+          >{{ system.supporters }}</span
+        >
+      </div>
+      <div class="info-box">
+        <h5>{{localize "PF1RS.Population" }}</h5>
+        {{#if isGM}}
+        <span class="value text-box direct" name="system.population" data-dtype="Number">{{ system.population }}</span>
+        {{else}}
+        <span class="value">{{ system.population }}</span>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="attributes flexrow">
+  <div class="info-box-header">
+    <h3>{{localize "PF1RS.OrgChecks"}}</h3>
+    <div class="info-box-joined">
+      {{#each checks}}
+      <div class="info-box" data-tooltip-extended="{{ id }}">
+        <h5 class="org-check" data-org-check="{{ id }}">
+          <a class="rollable"><i class="fas fa-dice-d20"></i></a>
+          <span>{{ label }}</span>
+        </h5>
+        <span class="value">{{ numberFormat value.total sign=true }}</span>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

@@ -8,22 +8,27 @@ system:
   cost: null
   recruitment:
     dc: null
-  actions:
-    value:
-      - rd
-      - rcc
   size: 6
-  description: >-
-    <p><strong>Cost</strong> 250 gp</p><p><strong>Granted Actions</strong>
-    Reduce Danger and Rescue Character</p><p><strong>Size</strong> 6
-    people</p><p><strong>Upgrades From</strong> freedom
-    fighters</p><p><strong>Upgrades To</strong> cabalists or spellcasters</p><hr
-    /><p>A team of infiltrators is a highly trained group of freedom fighters
-    capable of attempting daring rescues of imprisoned characters.</p>
+  description:
+    value: >-
+      <p><strong>Cost</strong> 250 gp</p><p><strong>Granted Actions</strong>
+      Reduce Danger and Rescue Character</p><p><strong>Size</strong> 6
+      people</p><p><strong>Upgrades From</strong> freedom
+      fighters</p><p><strong>Upgrades To</strong> cabalists or
+      spellcasters</p><hr /><p>A team of infiltrators is a highly trained group
+      of freedom fighters capable of attempting daring rescues of imprisoned
+      characters.</p>
   managerId: null
   disabled: false
   missing: false
   baseType: inf
+  rActions:
+    value:
+      - rd
+      - rcc
+  changes: []
+  contextNotes: []
+  sources: []
 sort: 0
 _key: '!items!aifBlJjaeDsgC9c1'
 

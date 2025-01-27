@@ -1,15 +1,12 @@
 {
   "PF1RS": {
-    "Summary": "Summary",
     "AvailableRankUp": "Rank Up Available",
-    "Rank": "Rank",
-    "MaxRank": "Max Rank",
     "Focus": "Focus",
+    "Citizenry": "Citizenry",
     "Membership": "Membership",
     "Supporters": "Supporters",
     "Population": "Population",
     "Treasury": "Treasury",
-    "MinTreasury": "Min Treasury",
     "Notoriety": "Notoriety",
     "Week": "Week",
 
@@ -22,11 +19,16 @@
     "Security": "Security",
 
     "FromStrategist": "From Strategist",
-    "ActionsLabel": "Actions",
-    "Action": "Action",
+    "TotalActions": "Total Actions",
     "Persistent": "Persistent",
     "Mitigated": "Mitigated",
     "Safehouses": "Safehouses",
+    "SafehouseCount": "Safehouse Count",
+    "RollAction": "Roll Action",
+    "ActionRoll": "{action} Check",
+    "SelectTeam": "Select Team",
+    "NoTeam": "No team",
+    "ActionSelector": "Action Selector",
     "Actions": {
       "Abm": "Activate Black Market",
       "Ash": "Activate Safe House",
@@ -71,15 +73,12 @@
 
     "TeamsLabel": "Teams",
     "Team": "Team",
-    "TeamTier": "Tier",
-    "TeamSize": "Size",
     "Manager": "Manager",
-    "Condition": "Condition",
-    "Disabled": "Disabled",
-    "Missing": "Missing",
     "CurrTeams": "Current Teams",
     "MaxTeams": "Maximum Teams",
     "GrantedActions": "Granted Actions",
+    "Leadership": "Leadership",
+    "NaturalBornLeader": "Natural Born Leader",
     "Teams": {
       "StreetPerformers": "Street Performers",
       "Rumormongers": "Rumormongers",
@@ -96,53 +95,34 @@
       "Peddlers": "Peddlers",
       "Merchants": "Merchants",
       "BlackMarketers": "Black Marketers",
-      "MerchantLords": "Merchant Lords",
-
-      "SubTypes": {
-        "General": "General",
-        "Unique": "Unique"
-      }
+      "MerchantLords": "Merchant Lords"
     },
 
     "EventsLabel": "Events",
     "Event": "Event",
     "EventChance": "Event Chance",
+    "DoubleEventChance": "Double Event Chance",
     "EventChanceRoll": "Event Chance: {chance}%",
     "RollEvent": "Roll Event",
     "NoEvent": "No Event Occurred",
     "EventOccurred": "Event Occurred",
     "Danger": "Danger",
-    "Events": {
-      "SubTypes": {
-        "Active": "Active",
-        "Misc": "Miscellaneous"
-      }
-    },
 
     "Allies": "Allies",
     "Ally": "Ally",
 
-    "Notes": "Notes",
-
-    "Change": "Change",
-    "Misc": "Miscellaneous",
-    "Target": "Target",
-
     "FromRank": "From Rank",
     "FromBonus": "From Bonus",
-    "Total": "Total",
-    "Base": "Base",
-    "Other": "Other",
-    "Bonus": "Bonus",
-    "Name": "Name",
-    "Description": "Description",
-    "Details": "Details",
-    "Type": "Type",
 
-    "EditItem": "Edit Item",
-    "DeleteItem": "Delete Item",
-    "CreateItem": "Create Item",
-    "NewItem": "New {type}",
+    "NoRebellionItemsOnActor": "This actor cannot have Rebellion items.",
+    "OnlyRebellionItemsOnActor": "Rebellion actors can only have Ally, Event, and Team items.",
+    "LibWrapperError": "The PF1 Rebellion Sheet module requires the 'libWrapper' module. Please install and activate it.",
+
+    "Browse": {
+      "Allies": "Browse Allies",
+      "Events": "Browse Events",
+      "Teams": "Browse Teams"
+    },
 
     "Sheet": {
       "Rebellion": "Rebellion Sheet",
@@ -162,6 +142,38 @@
         "event": "Event",
         "team": "Team",
         "ally": "Ally"
+      }
+    }
+  },
+  "PF1": {
+    "Subtypes": {
+      "Item": {
+        "pf1-rebellion-sheet": {
+          "ally": {
+            "Single": "Ally",
+            "Plural": "Allies"
+          },
+          "event": {
+            "active": {
+              "Single": "Active Event",
+              "Plural": "Active"
+            },
+            "misc": {
+              "Single": "Miscellaneous Event",
+              "Plural": "Miscellaneous"
+            }
+          },
+          "team": {
+            "general": {
+              "Single": "General Team",
+              "Plural": "General"
+            },
+            "unique": {
+              "Single": "Unique Team",
+              "Plural": "Unique"
+            }
+          }
+        }
       }
     }
   }

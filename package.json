@@ -23,7 +23,7 @@
     "prettier": "^3.2.4"
   },
   "lint-staged": {
-    "*.{mjs,js,ts}": [
+    "*.{mjs,js}": [
       "eslint --fix --max-warnings=0",
       "prettier --write"
     ],

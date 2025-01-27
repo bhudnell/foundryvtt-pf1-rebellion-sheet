@@ -4,19 +4,25 @@ _id: XYaqJw9bEeKA2UzS
 img: icons/svg/item-bag.svg
 system:
   subType: active
-  description: >-
-    <p>The streets of Kintargo have grown particularly dangerous. For the
-    following week (including the next week’s events, if any), increase
-    Kintargo’s danger rating by 10. If you roll Dangerous Times twice in one
-    Event phase, it becomes persistent.</p><p>Mitigation: If a rebellion officer
-    succeeds at a DC 20 Intimidate check to spread word about the rebellion’s
-    strength, the danger rating increase is halved.</p>
+  description:
+    value: >-
+      <p>The streets of Kintargo have grown particularly dangerous. For the
+      following week (including the next week’s events, if any), increase
+      Kintargo’s danger rating by 10. If you roll Dangerous Times twice in one
+      Event phase, it becomes persistent.</p><p>Mitigation: If a rebellion
+      officer succeeds at a DC 20 Intimidate check to spread word about the
+      rebellion’s strength, the danger rating increase is halved.</p>
   persistent: false
   mitigated: false
   changes:
-    - id: RVrHBqjdCbHK60HB
-      ability: danger
-      bonus: 10
+    - _id: RVrHBqjdCbHK60HB
+      formula: '10'
+      target: pf1rs_danger
+      type: untyped
+      operator: add
+      priority: 0
+  contextNotes: []
+  sources: []
 sort: 800000
 _key: '!items!XYaqJw9bEeKA2UzS'
 
