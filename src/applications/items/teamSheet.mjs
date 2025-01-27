@@ -35,12 +35,12 @@ export class TeamSheet extends ItemBaseSheet {
       {
         field: "system.disabled",
         value: itemData.disabled,
-        label: game.i18n.localize("PF1RS.Disabled"),
+        label: game.i18n.localize("PF1.Disabled"),
       },
       {
         field: "system.missing",
         value: itemData.missing,
-        label: game.i18n.localize("PF1RS.Missing"),
+        label: game.i18n.localize("PF1.Missing"),
       },
     ];
 

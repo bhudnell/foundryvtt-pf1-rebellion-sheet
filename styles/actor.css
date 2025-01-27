@@ -1,4 +1,13 @@
 .app.sheet.rebellion.actor {
+  .tab.summary {
+    :is(.rank, .treasury) {
+      flex: 2;
+    }
+
+    :is(.attrs, .citizenry) {
+      flex: 3;
+    }
+  }
   .tab.actions {
     .skill {
       grid-template-columns: 1fr 16px 3em 50px;

@@ -98,7 +98,7 @@ export class RebellionActor extends BaseActor {
       const response = await Dialog.prompt({
         title: game.i18n.localize("PF1RS.SelectTeam"),
         content,
-        label: game.i18n.localize("PF1RS.Roll"),
+        label: game.i18n.localize("PF1.Roll"),
         callback: (html) => {
           const form = html[0].querySelector("form");
           const formData = foundry.utils.expandObject(new FormDataExtended(form).object);
@@ -121,7 +121,7 @@ export class RebellionActor extends BaseActor {
     }
 
     if (actionId === "gi" && tier) {
-      parts.push(`${tier * 2}[${source.name} (${game.i18n.localize("PF1RS.TeamTier")})]`);
+      parts.push(`${tier * 2}[${source.name} (${game.i18n.localize("PF1.Tier")})]`);
     }
 
     const label = pf1rs.config.actions[actionId];

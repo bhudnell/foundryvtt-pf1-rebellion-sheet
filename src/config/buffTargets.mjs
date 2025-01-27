@@ -25,7 +25,7 @@ export const buffTargetCategories = {
     filters: { item: { include: itemTypes } },
   },
   [`${changePrefix}_actions`]: {
-    label: "PF1RS.ActionsLabel",
+    label: "PF1.ActionPlural",
     filters: { item: { include: itemTypes } },
   },
   [`${changePrefix}_misc`]: {

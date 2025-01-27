@@ -1,19 +1,12 @@
 {
   "PF1RS": {
-    "Summary": "Summary",
-    "Attributes": "Attributes",
     "AvailableRankUp": "Rank Up Available",
-    "Rank": "Rank",
-    "MaxRank": "Max Rank",
     "Focus": "Focus",
     "Citizenry": "Citizenry",
     "Membership": "Membership",
     "Supporters": "Supporters",
     "Population": "Population",
     "Treasury": "Treasury",
-    "Current": "Current",
-    "Min": "Minimum",
-    "MinTreasury": "Min Treasury",
     "Notoriety": "Notoriety",
     "Week": "Week",
 
@@ -26,8 +19,6 @@
     "Security": "Security",
 
     "FromStrategist": "From Strategist",
-    "ActionsLabel": "Actions",
-    "Action": "Action",
     "TotalActions": "Total Actions",
     "Persistent": "Persistent",
     "Mitigated": "Mitigated",
@@ -37,7 +28,6 @@
     "ActionRoll": "{action} Check",
     "SelectTeam": "Select Team",
     "NoTeam": "No team",
-    "Roll": "Roll",
     "ActionSelector": "Action Selector",
     "Actions": {
       "Abm": "Activate Black Market",
@@ -83,12 +73,7 @@
 
     "TeamsLabel": "Teams",
     "Team": "Team",
-    "TeamTier": "Tier",
-    "TeamSize": "Size",
     "Manager": "Manager",
-    "Condition": "Condition",
-    "Disabled": "Disabled",
-    "Missing": "Missing",
     "CurrTeams": "Current Teams",
     "MaxTeams": "Maximum Teams",
     "GrantedActions": "Granted Actions",
@@ -110,12 +95,7 @@
       "Peddlers": "Peddlers",
       "Merchants": "Merchants",
       "BlackMarketers": "Black Marketers",
-      "MerchantLords": "Merchant Lords",
-
-      "SubTypes": {
-        "General": "General",
-        "Unique": "Unique"
-      }
+      "MerchantLords": "Merchant Lords"
     },
 
     "EventsLabel": "Events",
@@ -127,37 +107,12 @@
     "NoEvent": "No Event Occurred",
     "EventOccurred": "Event Occurred",
     "Danger": "Danger",
-    "Events": {
-      "SubTypes": {
-        "Active": "Active",
-        "Misc": "Miscellaneous"
-      }
-    },
 
     "Allies": "Allies",
     "Ally": "Ally",
 
-    "Notes": "Notes",
-
-    "Change": "Change",
-    "Misc": "Miscellaneous",
-    "Target": "Target",
-
     "FromRank": "From Rank",
     "FromBonus": "From Bonus",
-    "Total": "Total",
-    "Base": "Base",
-    "Other": "Other",
-    "Bonus": "Bonus",
-    "Name": "Name",
-    "Description": "Description",
-    "Details": "Details",
-    "Type": "Type",
-
-    "EditItem": "Edit Item",
-    "DeleteItem": "Delete Item",
-    "CreateItem": "Create Item",
-    "NewItem": "New {type}",
 
     "NoRebellionItemsOnActor": "This actor cannot have Rebellion items.",
     "OnlyRebellionItemsOnActor": "Rebellion actors can only have Ally, Event, and Team items.",

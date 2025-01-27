@@ -150,8 +150,8 @@ export const orgOfficers = {
 };
 
 export const eventSubTypes = {
-  active: "PF1RS.Events.SubTypes.Active",
-  misc: "PF1RS.Events.SubTypes.Misc",
+  active: "PF1.Subtypes.Item.pf1-rebellion-sheet.event.active.Plural",
+  misc: "PF1.Subtypes.Item.pf1-rebellion-sheet.event.misc.Plural",
 };
 
 export const teamBaseTypes = {
@@ -174,6 +174,6 @@ export const teamBaseTypes = {
 };
 
 export const teamSubTypes = {
-  general: "PF1RS.Teams.SubTypes.General",
-  unique: "PF1RS.Teams.SubTypes.Unique",
+  general: "PF1.Subtypes.Item.pf1-rebellion-sheet.team.general.Plural",
+  unique: "PF1.Subtypes.Item.pf1-rebellion-sheet.team.unique.Plural",
 };

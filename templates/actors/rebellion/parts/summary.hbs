@@ -15,15 +15,17 @@
 </div>
 
 <div class="attributes flexrow">
-  <div class="info-box-header">
-    <h3>{{localize "PF1RS.Attributes"}}</h3>
+  <div class="info-box-header rank">
+    <h3>
+      {{#if rankUpIndicator}}
+      <i class="fas fa-triangle-exclamation" data-tooltip="PF1RS.AvailableRankUp"></i>
+      {{/if}}
+      <span>{{localize "PF1.Rank"}}</span>
+    </h3>
     <div class="info-box-joined">
       <div class="info-box">
         <h5>
-          {{#if rankUpIndicator}}
-          <i class="fas fa-triangle-exclamation" data-tooltip="PF1RS.AvailableRankUp"></i>
-          {{/if}}
-          <span>{{localize "PF1RS.Rank" }}</span>
+          <span>{{localize "PF1.Current" }}</span>
         </h5>
         <span
           class="value text-box direct"
@@ -35,13 +37,19 @@
         >
       </div>
       <div class="info-box">
-        <h5>{{localize "PF1RS.MaxRank" }}</h5>
+        <h5>{{localize "PF1.Maximum" }}</h5>
         {{#if isGM}}
         <span class="value text-box direct" name="system.maxRank" data-dtype="Number">{{ system.maxRank }}</span>
         {{else}}
         <span class="value">{{ system.maxRank }}</span>
         {{/if}}
       </div>
+    </div>
+  </div>
+
+  <div class="info-box-header attrs">
+    <h3>{{localize "PF1.Attributes"}}</h3>
+    <div class="info-box-joined">
       <div class="info-box">
         <h5>{{ localize "PF1RS.Focus" }}</h5>
         <select name="system.focus">
@@ -67,21 +75,21 @@
 </div>
 
 <div class="attributes flexrow">
-  <div class="info-box-header">
+  <div class="info-box-header treasury">
     <h3>{{localize "PF1RS.Treasury"}}</h3>
     <div class="info-box-joined">
       <div class="info-box">
-        <h5>{{localize "PF1RS.Current" }}</h5>
+        <h5>{{localize "PF1.Current" }}</h5>
         <span class="value text-box direct" name="system.treasury" data-dtype="Number">{{ system.treasury }}</span>
       </div>
       <div class="info-box">
-        <h5>{{localize "PF1RS.Min" }}</h5>
+        <h5>{{localize "PF1.Minimum" }}</h5>
         <span class="value">{{ system.minTreasury }}</span>
       </div>
     </div>
   </div>
 
-  <div class="info-box-header">
+  <div class="info-box-header citizenry">
     <h3>{{localize "PF1RS.Citizenry"}}</h3>
     <div class="info-box-joined">
       <div class="info-box">

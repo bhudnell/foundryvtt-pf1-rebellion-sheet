@@ -1,5 +1,5 @@
 <div class="form-group">
-  <label>{{localize "PF1RS.Type"}}</label>
+  <label>{{localize "PF1.Type"}}</label>
   <div class="form-fields">
     <select name="system.subType">
       {{selectOptions subTypeOptions selected=system.subType}}
@@ -21,14 +21,14 @@
 </div>
 
 <div class="form-group">
-  <label>{{localize "PF1RS.TeamTier"}}</label>
+  <label>{{localize "PF1.Tier"}}</label>
   <div class="form-fields">
     <input type="number" step="1" name="system.tier" value="{{ system.tier }}" />
   </div>
 </div>
 
 <div class="form-group">
-  <label>{{localize "PF1RS.TeamSize"}}</label>
+  <label>{{localize "PF1.Size"}}</label>
   <div class="form-fields">
     <input type="number" step="1" name="system.size" value="{{ system.size }}" />
   </div>
@@ -40,7 +40,7 @@
     <select name="system.managerId">
       {{selectOptions validManagerOptions selected=system.managerId}}
     </select>
-    <span class="manager-bonus">{{localize "PF1RS.Bonus"}} {{ system.bonus }}</span>
+    <span class="manager-bonus">{{localize "PF1.Bonus"}} {{ system.bonus }}</span>
   </div>
 </div>
 
