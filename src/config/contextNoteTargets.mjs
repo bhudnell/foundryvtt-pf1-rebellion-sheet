@@ -9,11 +9,19 @@ export const contextNoteTargets = {
     category: `${changePrefix}_org_checks`,
     label: "PF1RS.AllOrgChecks",
   },
+  [`${changePrefix}_notoriety`]: {
+    category: `${changePrefix}_misc`,
+    label: "PF1RS.Notoriety",
+  },
 };
 
 export const contextNoteCategories = {
   [`${changePrefix}_org_checks`]: {
     label: "PF1RS.OrgCheck",
+    filters: { item: { include: itemTypes } },
+  },
+  [`${changePrefix}_misc`]: {
+    label: "PF1.Misc",
     filters: { item: { include: itemTypes } },
   },
 };
