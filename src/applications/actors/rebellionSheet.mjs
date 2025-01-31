@@ -363,6 +363,13 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
           untyped: true,
         });
         break;
+      case "notoriety":
+        paths.push({
+          path: "@notoriety",
+          value: actorData.notoriety,
+        });
+        notes = getNotes(`${pf1rs.config.changePrefix}_notoriety`);
+        break;
 
       default:
         throw new Error(`Invalid extended tooltip identifier "${fullId}"`);
