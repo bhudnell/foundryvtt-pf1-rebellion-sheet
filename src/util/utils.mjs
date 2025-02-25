@@ -66,7 +66,7 @@ export async function rollEventTable(event, message) {
 
   const danger = actor.system.danger.total;
   const table = await fromUuid(`Compendium.${pf1rs.config.moduleId}.roll-tables.RollTable.lwDFVwZyV70DxBOj`);
-  const roll = new pf1.dice.RollPF(`1d20 + ${danger}[${game.i18n.localize("PF1RS.Danger")}]`); // TODO make this looks like roll-ext.hbs from pf1 system
+  const roll = new pf1.dice.RollPF(`1d100 + ${danger}[${game.i18n.localize("PF1RS.Danger")}]`); // TODO make this looks like roll-ext.hbs from pf1 system
 
   return table.draw({ roll });
 }
