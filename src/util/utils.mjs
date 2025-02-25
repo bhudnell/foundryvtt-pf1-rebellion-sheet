@@ -66,7 +66,8 @@ export async function rollEventTable(event, message) {
 
   const danger = actor.system.danger.total;
   const table = await fromUuid(`Compendium.${pf1rs.config.moduleId}.roll-tables.RollTable.lwDFVwZyV70DxBOj`);
-  const roll = new pf1.dice.RollPF(`1d100 + ${danger}[${game.i18n.localize("PF1RS.Danger")}]`);
+  const roll = new pf1.dice.RollPF(`1d20 + ${danger}[${game.i18n.localize("PF1RS.Danger")}]`); // TODO make this looks like roll-ext.hbs from pf1 system
+
   return table.draw({ roll });
 }
 
@@ -149,13 +150,7 @@ export function applyChange(change, actor, targets = null, { applySourceInfo = t
 
     let value = 0;
     if (change.formula) {
-      if (operator === "function") {
-        foundry.utils.logCompatibilityWarning(
-          "ItemChange function operator is no longer supported with no replacement.",
-          { since: "PF1 v10", until: "PF1 v11" }
-        );
-        continue;
-      } else if (!isNaN(change.formula)) {
+      if (!isNaN(change.formula)) {
         value = parseFloat(change.formula);
       } else if (change.isDeferred && pf1.dice.RollPF.parse(change.formula).some((t) => !t.isDeterministic)) {
         value = pf1.dice.RollPF.replaceFormulaData(change.formula, rollData, { missing: 0 });
@@ -163,7 +158,7 @@ export function applyChange(change, actor, targets = null, { applySourceInfo = t
         value = pf1.dice.RollPF.safeRollSync(
           change.formula,
           rollData,
-          [t, change, rollData],
+          { formula: change.formula, target: t, change, rollData },
           { suppressError: change.parent && !change.parent.isOwner },
           { maximize: true }
         ).total;

@@ -5,9 +5,7 @@ export class AllyModel extends ItemBaseModel {
     const fields = foundry.data.fields;
 
     const schema = {
-      rActions: new fields.SchemaField({
-        value: new fields.ArrayField(new fields.StringField()),
-      }),
+      rActions: new fields.ArrayField(new fields.StringField()),
     };
     this.addDefaultSchemaFields(schema);
 
@@ -19,6 +17,10 @@ export class AllyModel extends ItemBaseModel {
 
     if (data.actions?.value.length) {
       data.rActions = { value: data.actions.value };
+    }
+
+    if (data.rActions?.value) {
+      data.rActions = data.rActions.value;
     }
   }
 

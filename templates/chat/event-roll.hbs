@@ -3,14 +3,16 @@
     {{ label }}
   </span>
 
-  {{#if formula}}
   <div class="dice-roll">
     <div class="dice-result">
-      <h4 data-natural="{{ natural }}" data-bonus="{{ bonus }}" class="dice-total">{{ total }}</h4>
-      {{{ tooltip }}}
+      <h3 class="roll-total dice-total{{#if hasDetails}} has-details{{/if}}" data-tooltip="{{formula}}">
+        <i class="fa-solid fa-dice-d20" inert></i>
+        {{total}}
+      </h3>
+
+      {{{details}}}
     </div>
   </div>
-  {{/if}}
 
   {{#if eventOccurred}}
   <span>{{localize "PF1RS.EventOccurred"}}</span>

@@ -6,7 +6,7 @@ export class AllySheet extends ItemBaseSheet {
     const context = await super.getData(options);
 
     // actions
-    context.actions = itemData.rActions.value.map((action) => pf1rs.config.actions[action]);
+    context.actions = itemData.rActions.map((action) => pf1rs.config.actions[action]);
 
     return context;
   }

@@ -301,24 +301,20 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
     }
   }
 
-  _getTooltipContext(fullId, context) {
+  async _getTooltipContext(fullId, context) {
     const actor = this.actor;
     const actorData = actor.system;
 
     // Lazy roll data
     const lazy = {
       get rollData() {
-        this._rollData ??= actor.getRollData();
-        return this._rollData;
+        this._cache ??= actor.getRollData();
+        return this._cache;
       },
     };
 
-    const getSource = (path) => this.actor.sourceDetails[path];
-
-    const getNotes = (context) => {
-      const noteObjs = actor.getContextNotes(context);
-      return actor.formatContextNotes(noteObjs, lazy.rollData, { roll: false });
-    };
+    const getNotes = async (context) =>
+      (await actor.getContextNotesParsed(context, { rollData: lazy.rollData, roll: false })).map((n) => n.text);
 
     let header, subHeader;
     const details = [];
@@ -338,10 +334,10 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
           value: actorData[id].total,
         });
         sources.push({
-          sources: getSource(`system.${id}.total`),
+          sources: actor.getSourceDetails(`system.${id}.total`),
           untyped: true,
         });
-        notes = getNotes(`${pf1rs.config.changePrefix}_${id}`);
+        notes = await getNotes(`${pf1rs.config.changePrefix}_${id}`);
         break;
       case "action":
         paths.push({
@@ -349,7 +345,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
           value: actorData.actions[detail].bonus,
         });
         sources.push({
-          sources: getSource(`system.actions.${detail}.bonus`),
+          sources: actor.getSourceDetails(`system.actions.${detail}.bonus`),
           untyped: true,
         });
         break;
@@ -359,7 +355,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
           value: actorData.danger.total,
         });
         sources.push({
-          sources: getSource(`system.danger.total`),
+          sources: actor.getSourceDetails(`system.danger.total`),
           untyped: true,
         });
         break;
@@ -368,7 +364,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
           path: "@notoriety",
           value: actorData.notoriety,
         });
-        notes = getNotes(`${pf1rs.config.changePrefix}_notoriety`);
+        notes = await getNotes(`${pf1rs.config.changePrefix}_notoriety`);
         break;
 
       default:

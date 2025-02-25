@@ -9,6 +9,7 @@ export class TeamSheet extends ItemBaseSheet {
     // sub-types
     context.subTypeOptions = pf1rs.config.teamSubTypes;
     context.isUnique = itemData.subType === "unique";
+    context.uniqueLabel = game.i18n.localize(`PF1.Subtypes.Item.${pf1rs.config.teamId}.unique.Plural`);
 
     // team types
     context.baseTypeOptions = { "": "", ...pf1rs.config.teamBaseTypes };
@@ -27,7 +28,7 @@ export class TeamSheet extends ItemBaseSheet {
     context.validManagerOptions = managerOptions;
 
     // actions
-    context.actions = itemData.rActions.value.map((action) => pf1rs.config.actions[action]);
+    context.actions = itemData.rActions.map((action) => pf1rs.config.actions[action]);
 
     // sidebar info
     context.subType = pf1rs.config.teamSubTypes[itemData.subType];

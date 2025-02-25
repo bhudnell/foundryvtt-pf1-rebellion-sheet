@@ -11,7 +11,7 @@
   <label>{{localize "PF1RS.Team"}}</label>
   <div class="form-fields">
     {{#if isUnique}}
-    <span>{{localize "PF1RS.Teams.SubTypes.Unique"}}</span>
+    <span>{{ uniqueLabel }}</span>
     {{else}}
     <select name="system.baseType">
       {{selectOptions baseTypeOptions selected=system.baseType}}
@@ -57,6 +57,7 @@
       data-title="PF1RS.ActionSelector"
       data-options="rebellionActions"
       data-for="system.rActions"
+      data-has-custom="false"
     >
       <i class="fas fa-pen-to-square"></i>
     </a>

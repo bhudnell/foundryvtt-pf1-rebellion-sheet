@@ -2,7 +2,6 @@
   <div class="info-box-header">
     <h3>
       <a class="rollable" data-tooltip="PF1RS.RollEvent">
-        <i class="fa-solid fa-dice"></i>
         <span>{{localize "PF1RS.Event"}}</span>
       </a>
     </h3>
@@ -42,7 +41,7 @@
 
   <ul class="filter-list flexrow" data-category="events">
     {{#each sections.events as |section sid|}}
-    <li class="filter-item" data-category="events" data-filter="{{ section.id }}">{{ section.label }}</li>
+    <li class="filter-rule" data-category="events" data-filter="{{ section.id }}">{{ section.label }}</li>
     {{/each}}
   </ul>
 </div>

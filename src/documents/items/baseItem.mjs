@@ -95,7 +95,7 @@ export class BaseItem extends pf1.documents.item.ItemPF {
     const prior = this.rActions;
     const collection = new Collection();
 
-    for (const a of this.system.rActions?.value ?? []) {
+    for (const a of this.system.rActions ?? []) {
       const action = {
         key: a,
         source: {

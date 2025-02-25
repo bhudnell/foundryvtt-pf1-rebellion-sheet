@@ -13,9 +13,7 @@ export class TeamModel extends ItemBaseModel {
         dc: new fields.NumberField(),
         ability: new fields.StringField(),
       }),
-      rActions: new fields.SchemaField({
-        value: new fields.ArrayField(new fields.StringField()),
-      }),
+      rActions: new fields.ArrayField(new fields.StringField()),
       size: new fields.NumberField({ integer: true }),
       managerId: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
       disabled: new fields.BooleanField({ initial: false }),
@@ -31,6 +29,10 @@ export class TeamModel extends ItemBaseModel {
 
     if (data.actions?.value.length) {
       data.rActions = { value: data.actions.value };
+    }
+
+    if (data.rActions?.value) {
+      data.rActions = data.rActions.value;
     }
   }
 

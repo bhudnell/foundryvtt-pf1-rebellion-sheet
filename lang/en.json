@@ -70,6 +70,7 @@
     "TeamsManaged": "Teams Managed",
     "AddRecruiter": "Add Recruiter",
     "RemoveRecruiter": "Remove Recruiter",
+    "RemoveRecruiterConfirmation": "Are you sure you want to remove this recruiter?",
 
     "TeamsLabel": "Teams",
     "Team": "Team",

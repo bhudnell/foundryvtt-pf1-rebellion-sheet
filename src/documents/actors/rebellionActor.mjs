@@ -14,7 +14,7 @@ export class RebellionActor extends BaseActor {
     }
 
     // event chance
-    this.system.eventChance = Math.clamped(
+    this.system.eventChance = Math.clamp(
       (this.system.notoriety + this.system.danger.total) * (this.system.doubleEventChance ? 2 : 1),
       10,
       95
@@ -24,6 +24,8 @@ export class RebellionActor extends BaseActor {
   async rollOrgCheck(orgCheckId, options = {}) {
     const parts = [];
     const props = [];
+
+    parts.push(`${this.system[orgCheckId].base}[${game.i18n.localize("PF1.Base")}]`);
 
     const changes = pf1.documents.actor.changes.getHighestChanges(
       this.changes.filter(
@@ -38,8 +40,7 @@ export class RebellionActor extends BaseActor {
 
     // Add context notes
     const rollData = options.rollData || this.getRollData();
-    const noteObjects = this.getContextNotes(`${pf1rs.config.changePrefix}_${orgCheckId}`);
-    const notes = this.formatContextNotes(noteObjects, rollData);
+    const notes = await this.getContextNotesParsed(`${pf1rs.config.changePrefix}_${orgCheckId}`, { rollData });
     if (notes.length > 0) {
       props.push({ header: game.i18n.localize("PF1.Notes"), value: notes });
     }
@@ -82,8 +83,7 @@ export class RebellionActor extends BaseActor {
 
     // Add context notes
     const rollData = options.rollData || this.getRollData();
-    const noteObjects = this.getContextNotes(`${pf1rs.config.changePrefix}_${actionId}`);
-    const notes = this.formatContextNotes(noteObjects, rollData);
+    const notes = await this.getContextNotesParsed(`${pf1rs.config.changePrefix}_${actionId}`, { rollData });
     if (notes.length > 0) {
       props.push({ header: game.i18n.localize("PF1.Notes"), value: notes });
     }
@@ -156,12 +156,14 @@ export class RebellionActor extends BaseActor {
       natural: roll.total,
       bonus: 0,
       total: roll.total,
-      tooltip: await roll.getTooltip(),
+      details: await roll.getTooltip(),
       eventOccurred,
     };
 
     const messageData = {
-      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+      type: "check",
+      style: CONST.CHAT_MESSAGE_STYLES.OTHER,
+      rolls: [roll],
       sound: options.noSound ? undefined : CONFIG.sounds.dice,
       content: await renderTemplate(`modules/${pf1rs.config.moduleId}/templates/chat/event-roll.hbs`, templateData),
       speaker: ChatMessage.getSpeaker({ actor, token, alias: token?.name }),
@@ -171,7 +173,7 @@ export class RebellionActor extends BaseActor {
     await ChatMessage.create(messageData);
   }
 
-  _addDefaultChanges(changes) {
+  _prepareTypeChanges(changes) {
     const system = this.system;
 
     // org checks
@@ -202,60 +204,39 @@ export class RebellionActor extends BaseActor {
     }
   }
 
-  _setSourceDetails() {
-    // Get empty source arrays
-    const sourceDetails = {};
-    for (const b of Object.keys(buffTargets)) {
-      const buffTargets = pf1.documents.actor.changes.getChangeFlat.call(this, b, null);
-      for (const bt of buffTargets) {
-        if (!sourceDetails[bt]) {
-          sourceDetails[bt] = [];
-        }
+  _prepareRActions() {
+    const actions = [];
+
+    for (const item of this.items) {
+      if (item.type.startsWith(`${pf1rs.config.moduleId}.`) && item.hasRActions && item.isActive) {
+        actions.push(...item.rActions);
       }
     }
 
-    for (const stat of [...Object.keys(pf1rs.config.orgChecks), "danger"]) {
-      sourceDetails[`system.${stat}.total`].push({
-        name: game.i18n.localize("PF1.Base"),
-        value: this.system[stat].base,
-      });
+    const a = new Collection();
+    for (const action of actions) {
+      const prior = a.get(action.key);
+      a.set(action.key, [...(prior ?? []), action.source]);
     }
 
-    // Add extra data
-    const rollData = this.getRollData();
-    for (const [path, changeGrp] of Object.entries(this.sourceInfo)) {
-      /** @type {Array<SourceInfo[]>} */
-      const sourceGroups = Object.values(changeGrp);
-      for (const grp of sourceGroups) {
-        sourceDetails[path] ||= [];
-        for (const src of grp) {
-          src.operator ||= "add";
-          const label = this.constructor._getSourceLabel(src);
-          let srcValue =
-            src.value ??
-            pf1.dice.RollPF.safeRollAsync(src.formula || "0", rollData, [path, src, this], {
-              suppressError: !this.isOwner,
-            }).total;
-          if (src.operator === "set") {
-            let displayValue = srcValue;
-            if (src.change?.isDistance) {
-              displayValue = pf1.utils.convertDistance(displayValue)[0];
-            }
-            srcValue = game.i18n.format("PF1.SetTo", { value: displayValue });
-          }
+    this.rActions = a;
+  }
 
-          // Add sources only if they actually add something else than zero
-          if (!(src.operator === "add" && srcValue === 0) || src.ignoreNull === false) {
-            sourceDetails[path].push({
-              name: label.replace(/[[\]]/g, ""),
-              modifier: src.modifier || "",
-              value: srcValue,
-            });
-          }
-        }
+  getSourceDetails(path) {
+    const sources = super.getSourceDetails(path);
+
+    const attrRE = /^system\.(?<attr>\w+)\.total$/.exec(path);
+    if (attrRE) {
+      const { attr } = attrRE.groups;
+
+      if ([...Object.keys(pf1rs.config.orgChecks), "danger"].includes(attr)) {
+        sources.push({
+          name: game.i18n.localize("PF1.Base"),
+          value: this.system[attr].base,
+        });
       }
     }
 
-    this.sourceDetails = sourceDetails;
+    return sources;
   }
 }
