@@ -8,8 +8,8 @@
     "esModuleInterop": true,
     "strict": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "baseUrl": "."
   },
   "include": ["**/*.mjs", "**/*.js", "**/*.d.ts"],
-  "exclude": ["node_modules", "dist", "foundry"],
+  "exclude": ["node_modules", "dist", "foundry"]
 }

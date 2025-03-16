@@ -44,7 +44,8 @@ The list of available actions and their rules are available in the provided comp
 # Attribution
 
 - The following images are included in this project:
-    - [Uprising](https://game-icons.net/1x1/delapouite/uprising.html) by [Delapouite](https://delapouite.com/) under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+
+  - [Uprising](https://game-icons.net/1x1/delapouite/uprising.html) by [Delapouite](https://delapouite.com/) under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
 
 - Big thanks to [M.A.](https://gitlab.com/mkahvi) for answering many of my noobie questions as I got started and for the Companion Link module, which I took inspiration from for various functionality
 

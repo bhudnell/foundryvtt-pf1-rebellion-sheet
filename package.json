@@ -6,21 +6,22 @@
   "license": "MIT",
   "main": "src/main.mjs",
   "scripts": {
-    "lint": "eslint --fix .",
+    "lint": "eslint --fix **/*.{mjs,js}",
     "prettier": "prettier --write .",
     "prepare": "husky",
     "unpack": "node ./tools/extractPacks.mjs",
     "pack": "node ./tools/compilePacks.mjs"
   },
   "devDependencies": {
-    "@foundryvtt/foundryvtt-cli": "^1.0.2",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-html": "^7.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "husky": "^9.0.10",
-    "lint-staged": "^15.2.1",
-    "prettier": "^3.2.4"
+    "@eslint/js": "^9.22.0",
+    "@foundryvtt/foundryvtt-cli": "^1.0.4",
+    "eslint": "^9.22.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-html": "^8.1.2",
+    "eslint-plugin-import": "^2.31.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "prettier": "^3.5.3"
   },
   "lint-staged": {
     "*.{mjs,js}": [
