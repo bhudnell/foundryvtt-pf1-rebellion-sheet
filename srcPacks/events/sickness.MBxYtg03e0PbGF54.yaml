@@ -3,6 +3,8 @@ type: pf1-rebellion-sheet.event
 _id: MBxYtg03e0PbGF54
 img: icons/svg/item-bag.svg
 system:
+  htmlFields:
+    - description.value
   subType: active
   description:
     value: >-

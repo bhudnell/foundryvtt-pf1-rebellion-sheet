@@ -2,7 +2,7 @@ name: Rebellion Events
 img: icons/svg/d20-grey.svg
 description: ''
 results:
-  - type: 2
+  - type: pack
     weight: 1
     range:
       - 1
@@ -15,7 +15,7 @@ results:
     img: icons/svg/item-bag.svg
     documentCollection: pf1-rebellion-sheet.events
     _key: '!tables.results!lwDFVwZyV70DxBOj.WbaEzCYnaqwCAoCm'
-  - type: 2
+  - type: pack
     weight: 1
     range:
       - 5
@@ -28,7 +28,7 @@ results:
     img: icons/svg/item-bag.svg
     documentCollection: pf1-rebellion-sheet.events
     _key: '!tables.results!lwDFVwZyV70DxBOj.hDbYpJlmXik3Kvfi'
-  - type: 2
+  - type: pack
     weight: 1
     range:
       - 9
@@ -41,7 +41,7 @@ results:
     img: icons/svg/item-bag.svg
     documentCollection: pf1-rebellion-sheet.events
     _key: '!tables.results!lwDFVwZyV70DxBOj.HJfRSF6pNimZ7OqS'
-  - type: 2
+  - type: pack
     weight: 1
     range:
       - 15
@@ -54,7 +54,7 @@ results:
     img: icons/svg/item-bag.svg
     documentCollection: pf1-rebellion-sheet.events
     _key: '!tables.results!lwDFVwZyV70DxBOj.VJBnX2weVlpva5Mk'
-  - type: 2
+  - type: pack
     weight: 1
     range:
       - 21
@@ -67,7 +67,7 @@ results:
     img: icons/svg/item-bag.svg
     documentCollection: pf1-rebellion-sheet.events
     _key: '!tables.results!lwDFVwZyV70DxBOj.eT60P2nvBR71RsBn'
-  - type: 2
+  - type: pack
     weight: 1
     range:
       - 29
@@ -80,7 +80,7 @@ results:
     img: icons/svg/item-bag.svg
     documentCollection: pf1-rebellion-sheet.events
     _key: '!tables.results!lwDFVwZyV70DxBOj.rNuLB1Ex9crg6zyL'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -93,7 +93,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.DZNsxO1H8gXbO8DP'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -106,7 +106,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.NKzCAbvssfMP3QGo'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -119,7 +119,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.tc2ZH2lpw31Q0FIO'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -132,7 +132,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.qPciI98KjMiCHVWf'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -145,7 +145,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.IwrFfEqrScxXSebH'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -158,7 +158,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.rPFsufotP7DcRXM9'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -171,7 +171,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.SoU8MBfxmtI7P946'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -184,7 +184,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.4WUiPn1H6juJA3f0'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -197,7 +197,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.d5EOtCuHBlopNFTH'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -210,7 +210,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.AcV6muKUEX0JmRcD'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -223,7 +223,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.B9u28FGDF8EVFtOL'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -236,7 +236,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.Nro8HUaDjxdy5QkY'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -249,7 +249,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.yAmXt72ojGGTErYe'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -262,7 +262,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.5JpQPUDAvtKUbqnP'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -275,7 +275,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.Gbp4eUqmtlxPb5TZ'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -288,7 +288,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.ltbxK6k5GdLHoWuz'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -301,7 +301,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.K3Wy2lipTzD5QOCd'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -314,7 +314,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.ow1f0upXaPSeDc6w'
-  - type: 2
+  - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:

@@ -3,6 +3,8 @@ type: pf1-rebellion-sheet.team
 _id: KKpB6QigWW6CkPyY
 img: icons/svg/item-bag.svg
 system:
+  htmlFields:
+    - description.value
   subType: general
   tier: 3
   cost: null
