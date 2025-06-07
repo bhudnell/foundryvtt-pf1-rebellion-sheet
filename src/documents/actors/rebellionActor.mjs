@@ -29,7 +29,7 @@ export class RebellionActor extends BaseActor {
 
     const changes = pf1.documents.actor.changes.getHighestChanges(
       this.changes.filter(
-        (c) => c.operator !== "set" && c.target === `${pf1rs.config.changePrefix}_${orgCheckId}` && c.value
+        (c) => c.operator !== "set" && c.getTargets(this).includes(`system.${orgCheckId}.total`) && c.value
       ),
       { ignoreTarget: true }
     );
