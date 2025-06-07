@@ -17,20 +17,20 @@ export class BaseActor extends pf1.documents.actor.ActorBasePF {
      * @type {object}
      */
     Object.defineProperties(this, {
-      // itemFlags: { // TODO needed?
-      //   value: { boolean: {}, dictionary: {} },
-      //   writable: false,
-      // },
+      itemFlags: {
+        value: { boolean: {}, dictionary: {} },
+        writable: false,
+      },
       _rollData: {
         value: null,
         enumerable: false,
         writable: true,
       },
-      // _visionSharingSheet: { // TODO needed?
-      //   value: null,
-      //   enumerable: false,
-      //   writable: true,
-      // },
+      _visionSharingSheet: {
+        value: null,
+        enumerable: false,
+        writable: true,
+      },
     });
   }
 
