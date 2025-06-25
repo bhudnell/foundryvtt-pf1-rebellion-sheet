@@ -89,7 +89,7 @@
 
   "compatibility": {
     "minimum": "12",
-    "verified": "12.343",
+    "verified": "12.343"
   },
   "relationships": {
     "requires": [
@@ -104,7 +104,7 @@
         "type": "system",
         "compatibility": {
           "minimum": "11",
-          "verified": "11.7",
+          "verified": "11.7"
         }
       }
     ]
