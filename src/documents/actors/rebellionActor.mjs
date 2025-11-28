@@ -95,21 +95,22 @@ export class RebellionActor extends BaseActor {
         defaultSource: action.alwaysAvailable,
         sources: action.sources,
       });
-      const response = await Dialog.prompt({
-        title: game.i18n.localize("PF1RS.SelectTeam"),
+
+      const response = await foundry.applications.api.DialogV2.prompt({
+        window: { title: game.i18n.localize("PF1RS.SelectTeam"), icon: "fa-solid fa-people-group" },
+        classes: ["pf1-v2", "pf1rs"],
         content,
-        label: game.i18n.localize("PF1.Roll"),
-        callback: (html) => {
-          const form = html[0].querySelector("form");
-          const formData = foundry.utils.expandObject(new FormDataExtended(form).object);
-          sourceId = formData.team;
+        ok: {
+          label: game.i18n.localize("PF1.Roll"),
+          callback: (event, button, dialog) => button.form.elements.team.value,
         },
-        options: { classes: ["dialog", "rebellion"] },
       });
 
-      if (!response) {
+      if (!action.alwaysAvailable && !response) {
+        ui.notifications.warn("PF1RS.NoTeamSelected", { localize: true });
         return;
       }
+      sourceId = response;
     }
 
     const source = this.getEmbeddedDocument("Item", sourceId);

@@ -32,7 +32,6 @@ export default [
         ItemSheet: "readonly",
         TextEditor: "readonly",
         FormDataExtended: "readonly",
-        Dialog: "readonly",
         ChatMessage: "readonly",
         pf1: "readonly",
         pf1rs: "readonly",

@@ -100,22 +100,3 @@
 .app.sheet.rebellion span.text-box {
   color: inherit;
 }
-
-.app.dialog.rebellion .radio {
-  gap: 0.5em;
-  display: flex;
-  flex-flow: row nowrap;
-  margin-bottom: 8px;
-
-  > label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0 0.3em;
-
-    > input {
-      height: 16px;
-      top: unset;
-      margin: unset;
-    }
-  }
-}

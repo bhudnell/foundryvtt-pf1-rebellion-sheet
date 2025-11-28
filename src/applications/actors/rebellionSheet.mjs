@@ -230,22 +230,21 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
     }
     button.disabled = true;
 
-    try {
-      await Dialog.confirm({
-        title: game.i18n.localize("PF1RS.RemoveRecruiter"),
-        content: `<p>${game.i18n.localize("PF1RS.RemoveRecruiterConfirmation")}</p>`,
-        yes: () => {
-          this._onSubmit(event, {
-            updateData: { "system.officers.recruiters": recruiters },
-          });
-          button.disabled = false;
-        },
-        no: () => (button.disabled = false),
-        rejectClose: true,
+    const confirm = await foundry.applications.api.DialogV2.confirm({
+      window: { title: game.i18n.localize("PF1RS.RemoveRecruiter"), icon: "fa-solid fa-trash" },
+      classes: ["pf1-v2", "delete-item", "pf1rs"],
+      content: `<p>${game.i18n.localize("PF1RS.RemoveRecruiterConfirmation")}</p>`,
+      rejectClose: false,
+      modal: true, // Require dialog to be resolved
+    });
+
+    if (confirm) {
+      this._onSubmit(event, {
+        updateData: { "system.officers.recruiters": recruiters },
       });
-    } catch (e) {
-      button.disabled = false;
     }
+
+    button.disabled = false;
   }
 
   async _itemToggleData(event) {
