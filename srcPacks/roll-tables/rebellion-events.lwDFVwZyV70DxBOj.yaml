@@ -2,358 +2,330 @@ name: Rebellion Events
 img: icons/svg/d20-grey.svg
 description: ''
 results:
-  - type: pack
+  - type: document
     weight: 1
     range:
       - 1
       - 4
     drawn: false
     _id: WbaEzCYnaqwCAoCm
-    text: Week of Secrecy
-    documentId: bfGS8MSyschn3CbI
-    flags: {}
     img: icons/svg/item-bag.svg
-    documentCollection: pf1-rebellion-sheet.events
+    name: Week of Secrecy
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.bfGS8MSyschn3CbI
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.WbaEzCYnaqwCAoCm'
-  - type: pack
+  - type: document
     weight: 1
     range:
       - 5
       - 8
     drawn: false
     _id: hDbYpJlmXik3Kvfi
-    text: Successful Protest
-    documentId: h4VNzwCFcu5KNadh
-    flags: {}
     img: icons/svg/item-bag.svg
-    documentCollection: pf1-rebellion-sheet.events
+    name: Successful Protest
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.h4VNzwCFcu5KNadh
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.hDbYpJlmXik3Kvfi'
-  - type: pack
+  - type: document
     weight: 1
     range:
       - 9
       - 14
     drawn: false
     _id: HJfRSF6pNimZ7OqS
-    text: Diminished Peril
-    documentId: 02OS1xJM1wX1zpxl
-    flags: {}
     img: icons/svg/item-bag.svg
-    documentCollection: pf1-rebellion-sheet.events
+    name: Diminished Peril
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.02OS1xJM1wX1zpxl
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.HJfRSF6pNimZ7OqS'
-  - type: pack
+  - type: document
     weight: 1
     range:
       - 15
       - 20
     drawn: false
     _id: VJBnX2weVlpva5Mk
-    text: Donation
-    documentId: lkYH031D7OdFTgp6
-    flags: {}
     img: icons/svg/item-bag.svg
-    documentCollection: pf1-rebellion-sheet.events
+    name: Donation
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.lkYH031D7OdFTgp6
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.VJBnX2weVlpva5Mk'
-  - type: pack
+  - type: document
     weight: 1
     range:
       - 21
       - 28
     drawn: false
     _id: eT60P2nvBR71RsBn
-    text: Increased Support
-    documentId: jXwzHOEt5ZjPgpD0
-    flags: {}
     img: icons/svg/item-bag.svg
-    documentCollection: pf1-rebellion-sheet.events
+    name: Increased Support
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.jXwzHOEt5ZjPgpD0
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.eT60P2nvBR71RsBn'
-  - type: pack
+  - type: document
     weight: 1
     range:
       - 29
       - 38
     drawn: false
     _id: rNuLB1Ex9crg6zyL
-    text: Marketplace Boom
-    documentId: Rj3WbRvp6iqttjYj
-    flags: {}
     img: icons/svg/item-bag.svg
-    documentCollection: pf1-rebellion-sheet.events
+    name: Marketplace Boom
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.Rj3WbRvp6iqttjYj
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.rNuLB1Ex9crg6zyL'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 39
       - 48
     drawn: false
     _id: DZNsxO1H8gXbO8DP
-    text: All Is Calm
-    documentId: WQAQ5P7T5szm48CA
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: All Is Calm
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.WQAQ5P7T5szm48CA
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.DZNsxO1H8gXbO8DP'
   - type: text
-    documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
       - 49
       - 51
     drawn: false
     _id: NKzCAbvssfMP3QGo
-    text: >-
+    img: icons/svg/item-bag.svg
+    description: >-
       Roll Twice: Roll two times. Both events occur this phase, in the order
       they are rolled. Multiple rolls of Roll Twice stack.
-    documentId: null
-    flags: {}
-    img: icons/svg/item-bag.svg
+    name: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.NKzCAbvssfMP3QGo'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.roll-tables
+  - type: document
     weight: 1
     range:
       - 49
       - 51
     drawn: false
     _id: ra6QxTPsfwq9Cix2
-    text: Rebellion Events
     img: icons/svg/d20-grey.svg
-    documentId: lwDFVwZyV70DxBOj
-    flags: {}
+    name: Rebellion Events
+    documentUuid: Compendium.pf1-rebellion-sheet.roll-tables.RollTable.lwDFVwZyV70DxBOj
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.ra6QxTPsfwq9Cix2'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.roll-tables
+  - type: document
     weight: 1
     range:
       - 49
       - 51
     drawn: false
     _id: fpdHs1F8einWs6iS
-    text: Rebellion Events
     img: icons/svg/d20-grey.svg
-    documentId: lwDFVwZyV70DxBOj
-    flags: {}
+    name: Rebellion Events
+    documentUuid: Compendium.pf1-rebellion-sheet.roll-tables.RollTable.lwDFVwZyV70DxBOj
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.fpdHs1F8einWs6iS'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 52
       - 59
     drawn: false
     _id: tc2ZH2lpw31Q0FIO
-    text: Snitch
-    documentId: 0K9GzKA1Xt7VfHwv
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Snitch
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.0K9GzKA1Xt7VfHwv
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.tc2ZH2lpw31Q0FIO'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 60
       - 63
     drawn: false
     _id: qPciI98KjMiCHVWf
-    text: Rivalry*
-    documentId: cRshqPd4ekGo2iaX
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Rivalry*
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.cRshqPd4ekGo2iaX
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.qPciI98KjMiCHVWf'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 64
       - 67
     drawn: false
     _id: IwrFfEqrScxXSebH
-    text: Dangerous Times*
-    documentId: XYaqJw9bEeKA2UzS
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Dangerous Times*
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.XYaqJw9bEeKA2UzS
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.IwrFfEqrScxXSebH'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 68
       - 71
     drawn: false
     _id: rPFsufotP7DcRXM9
-    text: Missing in Action
-    documentId: yfQ2MKk3HJLVXzek
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Missing in Action
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.yfQ2MKk3HJLVXzek
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.rPFsufotP7DcRXM9'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 72
       - 75
     drawn: false
     _id: SoU8MBfxmtI7P946
-    text: Cache Discovered
-    documentId: ZYDsr0wi1orOz21f
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Cache Discovered
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.ZYDsr0wi1orOz21f
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.SoU8MBfxmtI7P946'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 76
       - 79
     drawn: false
     _id: 4WUiPn1H6juJA3f0
-    text: Increased Patrols*
-    documentId: MWALLXlDMI0HlXYw
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Increased Patrols*
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.MWALLXlDMI0HlXYw
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.4WUiPn1H6juJA3f0'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 80
       - 83
     drawn: false
     _id: d5EOtCuHBlopNFTH
-    text: Low Morale*
-    documentId: Dwuum6chASrAjU0c
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Low Morale*
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.Dwuum6chASrAjU0c
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.d5EOtCuHBlopNFTH'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 84
       - 87
     drawn: false
     _id: AcV6muKUEX0JmRcD
-    text: Sickness*
-    documentId: MBxYtg03e0PbGF54
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Sickness*
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.MBxYtg03e0PbGF54
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.AcV6muKUEX0JmRcD'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 88
       - 91
     drawn: false
     _id: B9u28FGDF8EVFtOL
-    text: Disabled Team
-    documentId: 57Gca5ToAv7oSvwl
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Disabled Team
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.57Gca5ToAv7oSvwl
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.B9u28FGDF8EVFtOL'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 92
       - 95
     drawn: false
     _id: Nro8HUaDjxdy5QkY
-    text: Dissension in the Ranks*
-    documentId: h1vrvgrvfzLxhs7D
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Dissension in the Ranks*
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.h1vrvgrvfzLxhs7D
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.Nro8HUaDjxdy5QkY'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 96
       - 99
     drawn: false
     _id: yAmXt72ojGGTErYe
-    text: Invasion
-    documentId: Oz5bY8eIknuA6q4N
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Invasion
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.Oz5bY8eIknuA6q4N
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.yAmXt72ojGGTErYe'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 100
       - 103
     drawn: false
     _id: 5JpQPUDAvtKUbqnP
-    text: Failed Protest
-    documentId: hs1MANfE5FwB7NcV
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Failed Protest
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.hs1MANfE5FwB7NcV
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.5JpQPUDAvtKUbqnP'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 104
       - 107
     drawn: false
     _id: Gbp4eUqmtlxPb5TZ
-    text: Ally in Peril
-    documentId: tEQY5D2pdIdL2OcO
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Ally in Peril
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.tEQY5D2pdIdL2OcO
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.Gbp4eUqmtlxPb5TZ'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 108
       - 111
     drawn: false
     _id: ltbxK6k5GdLHoWuz
-    text: Disastrous Mission
-    documentId: ex6mYwTUGshmVF3i
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Disastrous Mission
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.ex6mYwTUGshmVF3i
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.ltbxK6k5GdLHoWuz'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 112
       - 115
     drawn: false
     _id: K3Wy2lipTzD5QOCd
-    text: Traitor
-    documentId: UJ24TyXWllMaQ36S
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Traitor
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.UJ24TyXWllMaQ36S
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.K3Wy2lipTzD5QOCd'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 116
       - 119
     drawn: false
     _id: ow1f0upXaPSeDc6w
-    text: Diabolic Infiltration
-    documentId: LqzaDrnko5Zb29zV
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Diabolic Infiltration
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.LqzaDrnko5Zb29zV
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.ow1f0upXaPSeDc6w'
-  - type: pack
-    documentCollection: pf1-rebellion-sheet.events
+  - type: document
     weight: 1
     range:
       - 120
       - 2000
     drawn: false
     _id: 4rfTdtoQbqNU9XYE
-    text: Inquisition*
-    documentId: XwQ0lsVCporBsPJC
-    flags: {}
     img: icons/svg/item-bag.svg
+    name: Inquisition*
+    documentUuid: Compendium.pf1-rebellion-sheet.events.Item.XwQ0lsVCporBsPJC
+    description: ''
     _key: '!tables.results!lwDFVwZyV70DxBOj.4rfTdtoQbqNU9XYE'
 replacement: true
 displayRoll: true

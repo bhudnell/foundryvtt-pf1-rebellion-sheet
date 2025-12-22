@@ -44,6 +44,10 @@ function sanitizePackEntry(entry, documentType = "") {
     entry.pages = entry.pages.map((page) => sanitizePackEntry(page));
   }
 
+  if (entry.results) {
+    entry.results = entry.results.map((result) => sanitizePackEntry(result));
+  }
+
   return entry;
 }
 
