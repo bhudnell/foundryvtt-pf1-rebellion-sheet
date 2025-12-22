@@ -93,7 +93,7 @@ results:
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.DZNsxO1H8gXbO8DP'
-  - type: pack
+  - type: text
     documentCollection: pf1-rebellion-sheet.events
     weight: 1
     range:
@@ -101,11 +101,39 @@ results:
       - 51
     drawn: false
     _id: NKzCAbvssfMP3QGo
-    text: Roll Twice
-    documentId: FH7m7HXeC5TLvxSp
+    text: >-
+      Roll Twice: Roll two times. Both events occur this phase, in the order
+      they are rolled. Multiple rolls of Roll Twice stack.
+    documentId: null
     flags: {}
     img: icons/svg/item-bag.svg
     _key: '!tables.results!lwDFVwZyV70DxBOj.NKzCAbvssfMP3QGo'
+  - type: pack
+    documentCollection: pf1-rebellion-sheet.roll-tables
+    weight: 1
+    range:
+      - 49
+      - 51
+    drawn: false
+    _id: ra6QxTPsfwq9Cix2
+    text: Rebellion Events
+    img: icons/svg/d20-grey.svg
+    documentId: lwDFVwZyV70DxBOj
+    flags: {}
+    _key: '!tables.results!lwDFVwZyV70DxBOj.ra6QxTPsfwq9Cix2'
+  - type: pack
+    documentCollection: pf1-rebellion-sheet.roll-tables
+    weight: 1
+    range:
+      - 49
+      - 51
+    drawn: false
+    _id: fpdHs1F8einWs6iS
+    text: Rebellion Events
+    img: icons/svg/d20-grey.svg
+    documentId: lwDFVwZyV70DxBOj
+    flags: {}
+    _key: '!tables.results!lwDFVwZyV70DxBOj.fpdHs1F8einWs6iS'
   - type: pack
     documentCollection: pf1-rebellion-sheet.events
     weight: 1

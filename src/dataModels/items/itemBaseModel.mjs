@@ -31,6 +31,12 @@ export class ItemBaseModel extends foundry.abstract.TypeDataModel {
           text: new fields.StringField({ initial: "" }),
         })
       ),
+      eventImmunities: new fields.ArrayField(
+        new fields.SchemaField({
+          target: new fields.StringField({ initial: "" }),
+          text: new fields.StringField({ initial: "" }),
+        })
+      ),
       sources: new fields.ArrayField(
         new fields.SchemaField({
           title: new fields.StringField({ initial: "" }),

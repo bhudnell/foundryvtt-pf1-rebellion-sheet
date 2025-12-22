@@ -72,7 +72,7 @@ export class BaseItem extends pf1.documents.item.ItemPF {
     const changed = foundry.utils.expandObject(data);
 
     if (changed.system) {
-      const keepPaths = ["system.contextNotes"];
+      const keepPaths = ["system.contextNotes", "system.eventImmunities"];
 
       const itemData = this.toObject();
       for (const path of keepPaths) {

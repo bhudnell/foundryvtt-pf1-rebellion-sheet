@@ -95,7 +95,7 @@ Hooks.once("libWrapper.Ready", () => {
 Hooks.on("pf1GetChangeFlat", getChangeFlat);
 
 Hooks.on("renderChatMessage", (message, html) => {
-  if (message.flags?.[PF1RS.moduleId]?.eventChanceCard) {
+  if (message.getFlag(PF1RS.moduleId, "eventChanceCard")) {
     html.find("button.roll-event").on("click", (e) => rollEventTable(e, message));
   }
 });
@@ -196,17 +196,6 @@ Hooks.once("ready", () => {
 });
 
 Hooks.once("i18nInit", () => {
-  const toLocalize = [
-    "actions",
-    "officerRoles",
-    "officerBonuses",
-    "orgChecks",
-    "orgOfficers",
-    "eventSubTypes",
-    "teamBaseTypes",
-    "teamSubTypes",
-  ];
-
   const doLocalize = (obj, cat) => {
     // Create tuples of (key, localized object/string)
     const localized = Object.entries(obj).reduce((arr, [key, value]) => {
@@ -225,10 +214,38 @@ Hooks.once("i18nInit", () => {
     }, {});
   };
 
+  const doLocalizeKeys = (obj, keys = []) => {
+    for (const path of Object.keys(foundry.utils.flattenObject(obj))) {
+      const key = path.split(".").at(-1);
+      if (keys.includes(key)) {
+        const value = foundry.utils.getProperty(obj, path);
+        if (value) {
+          foundry.utils.setProperty(obj, path, game.i18n.localize(value));
+        }
+      }
+    }
+  };
+
+  const toLocalize = [
+    "actions",
+    "officerRoles",
+    "officerBonuses",
+    "orgChecks",
+    "orgOfficers",
+    "eventSubTypes",
+    "teamBaseTypes",
+    "teamSubTypes",
+    "events",
+  ];
+
   for (let o of toLocalize) {
     pf1rs.config[o] = doLocalize(pf1rs.config[o], o);
   }
 
   // localize rebellionActions in pf1 config
   pf1.config.rebellionActions = doLocalize(pf1.config.rebellionActions, "rebellionActions");
+
+  // localize event immunity stuff in pf1 config
+  doLocalizeKeys(pf1.config.eventImmunityCategories, ["label"]);
+  doLocalizeKeys(pf1.config.eventImmunityTargets, ["label"]);
 });

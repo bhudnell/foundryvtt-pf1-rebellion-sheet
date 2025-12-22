@@ -133,60 +133,73 @@ export class BaseActor extends pf1.documents.actor.ActorBasePF {
     return sources;
   }
 
-  get allNotes() {
-    const allNotes = this.items
+  _getContextEntries(field) {
+    return this.items
       .filter(
-        (item) =>
-          item.type.startsWith(`${pf1rs.config.moduleId}.`) && item.isActive && item.system.contextNotes?.length > 0
+        (item) => item.type.startsWith(`${pf1rs.config.moduleId}.`) && item.isActive && item.system[field]?.length > 0
       )
-      .map((item) => ({ notes: item.system.contextNotes, item }));
-
-    return allNotes;
+      .map((item) => ({ entries: item.system[field], item }));
   }
 
-  getContextNotes(context, all = true) {
-    const result = this.allNotes;
+  _getEntriesForContext(field, context) {
+    const result = this._getContextEntries(field);
 
-    for (const note of result) {
-      note.notes = note.notes.filter((o) => o.target === context).map((o) => o.text);
+    for (const obj of result) {
+      obj.entries = obj.entries.filter((e) => e.target === context).map((e) => e.text);
     }
 
-    return result.filter((n) => n.notes.length);
+    return result.filter((o) => o.entries.length);
+  }
+
+  async _enrichEntries(objects, rollData, { roll = true } = {}) {
+    rollData ??= this.getRollData();
+
+    await Promise.all(
+      objects.map(async (obj) => {
+        let localRollData = rollData;
+
+        if (obj.item) {
+          localRollData = obj.item.getRollData();
+        }
+
+        const enriched = [];
+        for (const entry of obj.entries) {
+          enriched.push(
+            ...entry.split(/[\n\r]+/).map((sub) =>
+              pf1.utils.enrichHTMLUnrolled(sub, {
+                rollData: localRollData,
+                rolls: roll,
+                relativeTo: this,
+              })
+            )
+          );
+        }
+
+        obj.enriched = await Promise.all(enriched);
+      })
+    );
+  }
+
+  async _getEntriesParsed(field, context, { roll = true, rollData } = {}) {
+    rollData ??= this.getRollData();
+
+    const objects = this._getEntriesForContext(field, context);
+    await this._enrichEntries(objects, rollData, { roll });
+
+    return objects.flatMap((o) =>
+      o.enriched.map((text) => ({
+        text,
+        source: o.item?.name,
+      }))
+    );
   }
 
   async getContextNotesParsed(context, { all, roll = true, rollData } = {}) {
-    rollData ??= this.getRollData();
-
-    const noteObjects = this.getContextNotes(context, all);
-    await this.enrichContextNotes(noteObjects, rollData, { roll });
-
-    return noteObjects.reduce((all, o) => {
-      all.push(...o.enriched.map((text) => ({ text, source: o.item?.name })));
-      return all;
-    }, []);
+    return this._getEntriesParsed("contextNotes", context, { all, roll, rollData });
   }
 
-  async enrichContextNotes(notes, rollData, { roll = true } = {}) {
-    rollData ??= this.getRollData();
-    const notesPromises = notes.map(async (noteObj) => {
-      rollData.item = {};
-      if (noteObj.item) {
-        rollData = noteObj.item.getRollData();
-      }
-
-      const enriched = [];
-      for (const note of noteObj.notes) {
-        enriched.push(
-          ...note
-            .split(/[\n\r]+/)
-            .map((subnote) => pf1.utils.enrichHTMLUnrolled(subnote, { rollData, rolls: roll, relativeTo: this }))
-        );
-      }
-
-      noteObj.enriched = await Promise.all(enriched);
-    });
-
-    await Promise.all(notesPromises);
+  async getEventImmunitiesParsed(context, { all, roll = true, rollData } = {}) {
+    return this._getEntriesParsed("eventImmunities", context, { all, roll, rollData });
   }
 
   /**

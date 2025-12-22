@@ -175,8 +175,6 @@ export class RebellionActor extends BaseActor {
   }
 
   _prepareTypeChanges(changes) {
-    const system = this.system;
-
     // org checks
     for (const check of Object.keys(pf1rs.config.orgChecks)) {
       changes.push(

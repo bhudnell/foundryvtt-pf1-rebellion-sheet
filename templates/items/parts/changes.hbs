@@ -2,10 +2,9 @@
 <ol class="item-groups-list changes-list">
   <li class="item-list-header change-header flexrow">
     <h3>{{localize "PF1.Changes"}}</h3>
-    <div class="controls flexrow">
-      <a class="control change-control add-change" data-target="change" data-action="add">
+    <div class="controls">
+      <a class="control change-control add-change" data-target="change" data-action="add" data-tooltip="PF1.Add">
         <i class="fas fa-plus"></i>
-        {{localize "PF1.Add"}}
       </a>
     </div>
   </li>
@@ -90,10 +89,9 @@
       <h3>{{localize "PF1.Target"}}</h3>
     </div>
     {{#if @root.owner}}
-    <div class="item-controls basic flexrow">
-      <a class="context-note-control add-note">
+    <div class="item-controls basic">
+      <a class="context-note-control add-note" data-tooltip="PF1.Add">
         <i class="fas fa-plus"></i>
-        {{localize "PF1.Add"}}
       </a>
     </div>
     {{/if}}
@@ -110,9 +108,48 @@
         <span class="context-note-target{{#unless isValid}} invalid{{/unless}}">{{label}}</span>
       </div>
 
-      <div class="item-controls flexrow basic">
+      <div class="controls basic">
         {{#if @root.owner}}
         <a class="context-note-control delete-note"><i class="fas fa-trash"></i></a>
+        {{/if}}
+      </div>
+    </li>
+    {{/each}}
+  </ol>
+</ol>
+
+{{! Event Immunities }}
+<ol class="item-groups-list event-immunities-list">
+  <li class="item-list-header change-header flexrow">
+    <div class="item-name">
+      <h3>{{localize "PF1RS.EventImmunities"}}</h3>
+    </div>
+    <div class="item-target flexrow">
+      <h3>{{localize "PF1.Target"}}</h3>
+    </div>
+    {{#if @root.owner}}
+    <div class="item-controls basic">
+      <a class="event-immunity-control add-immunity" data-tooltip="PF1.Add">
+        <i class="fas fa-plus"></i>
+      </a>
+    </div>
+    {{/if}}
+  </li>
+
+  <ol class="item-list event-immunities">
+    {{#each eventImmunities as |immunity a|}}
+    <li class="item event-immunity flexrow" data-immunity="{{a}}">
+      <div class="item-name flexrow">
+        <textarea class="event-immunity-text" name="system.eventImmunities.{{a}}.text" placeholder="{{localize "PF1.Notes"}}">{{{text}}}</textarea>
+      </div>
+
+      <div class="item-target flexrow">
+        <span class="event-immunity-target{{#unless isValid}} invalid{{/unless}}">{{label}}</span>
+      </div>
+
+      <div class="controls basic">
+        {{#if @root.owner}}
+        <a class="event-immunity-control delete-immunity"><i class="fas fa-trash"></i></a>
         {{/if}}
       </div>
     </li>

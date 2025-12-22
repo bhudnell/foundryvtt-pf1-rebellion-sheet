@@ -4,4 +4,58 @@
     padding-right: 8px;
     text-align: right;
   }
+
+  .tab.changes {
+    .event-immunities-list {
+      .item-list-header {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 1em;
+
+        h3 {
+          border: unset;
+          flex: 1;
+        }
+
+        .controls {
+          flex: 0 1.5rem;
+        }
+      }
+    }
+
+    .event-immunities {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: block;
+
+      .event-immunity {
+        flex: 0 0 100%;
+        padding: 1px;
+
+        .event-immunity-target {
+          border: 1px solid var(--pf1-tan);
+          background: var(--pf1-bg-dark-0);
+          white-space: nowrap;
+          overflow: hidden;
+          height: 24px;
+          line-height: 24px;
+          border-radius: 4px;
+          text-align: center;
+          cursor: pointer;
+          font-size: var(--font-size-12);
+
+          &:hover {
+            box-shadow: 0 0 8px var(--pf1-red);
+          }
+
+          &.invalid {
+            border: var(--pf1-invalid-input-border);
+            background: url("../../../icons/svg/hazard.svg") no-repeat 95% 50% var(--pf1-bg-dark-0);
+            background-size: contain;
+          }
+        }
+      }
+    }
+  }
 }

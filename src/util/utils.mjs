@@ -68,7 +68,28 @@ export async function rollEventTable(event, message) {
   const table = await fromUuid(`Compendium.${pf1rs.config.moduleId}.roll-tables.RollTable.lwDFVwZyV70DxBOj`);
   const roll = new pf1.dice.RollPF(`1d100 + ${danger}[${game.i18n.localize("PF1RS.Danger")}]`); // TODO make this looks like roll-ext.hbs from pf1 system
 
-  return table.draw({ roll });
+  const { roll: rollReal, results } = await table.draw({ roll, displayChat: false });
+
+  const tempResults = results.map((r) => {
+    const data = foundry.utils.duplicate(r.toObject());
+    delete data._id;
+    return new foundry.documents.TableResult(data, { parent: r.parent });
+  });
+
+  for (const result of tempResults) {
+    const eventId = Object.entries(pf1rs.config.eventCompendiumEntries).find(
+      ([_, value]) => value === result.documentUuid
+    )?.[0];
+    // eslint-disable-next-line no-await-in-loop
+    const immunity = await actor.getEventImmunitiesParsed(`${pf1rs.config.changePrefix}_${eventId}`);
+
+    if (immunity.length) {
+      result.name += ` - ${game.i18n.localize("PF1RS.Immune")}`;
+      result.description = immunity.map((i) => i.text).join("<br>");
+    }
+  }
+
+  await table.toMessage(tempResults, { roll: rollReal });
 }
 
 /**

@@ -1,5 +1,0 @@
-- new change targets
-    - immune to certain events -> endabled flags like system change stuff
-- new context note targets
-    - immune to certain events (?? or as a change)
-    - specific action
