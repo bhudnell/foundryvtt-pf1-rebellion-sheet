@@ -57,6 +57,108 @@ export const maxTeams = {
   20: 8,
 };
 
+export const teamBaseTypes = {
+  stp: {
+    name: "PF1RS.Teams.StreetPerformers",
+    tier: 1,
+    size: 6,
+    grantedActions: ["gi"],
+  },
+  rum: {
+    name: "PF1RS.Teams.Rumormongers",
+    tier: 2,
+    size: 6,
+    grantedActions: ["gi", "sd"],
+  },
+  agi: {
+    name: "PF1RS.Teams.Agitators",
+    tier: 3,
+    size: 6,
+    grantedActions: ["gi", "sd", "ui"],
+  },
+  cog: {
+    name: "PF1RS.Teams.Cognoscenti",
+    tier: 3,
+    size: 6,
+    grantedActions: ["gi", "sd", "kc"],
+  },
+  sne: {
+    name: "PF1RS.Teams.Sneaks",
+    tier: 1,
+    size: 3,
+    grantedActions: ["sc"],
+  },
+  thi: {
+    name: "PF1RS.Teams.Thieves",
+    tier: 2,
+    size: 3,
+    grantedActions: ["sc", "ash"],
+  },
+  sab: {
+    name: "PF1RS.Teams.Saboteurs",
+    tier: 3,
+    size: 3,
+    grantedActions: ["sc", "ash", "sab"],
+  },
+  spi: {
+    name: "PF1RS.Teams.Spies",
+    tier: 3,
+    size: 3,
+    grantedActions: ["sc", "ash", "ca"],
+  },
+  ffi: {
+    name: "PF1RS.Teams.FreedomFighters",
+    tier: 1,
+    size: 6,
+    grantedActions: ["rd"],
+  },
+  inf: {
+    name: "PF1RS.Teams.Infiltrators",
+    tier: 2,
+    size: 6,
+    grantedActions: ["rd", "rcc"],
+  },
+  cab: {
+    name: "PF1RS.Teams.Cabalists",
+    tier: 3,
+    size: 6,
+    grantedActions: ["rd", "rcc", "me"],
+  },
+  spe: {
+    name: "PF1RS.Teams.Spellcasters",
+    tier: 3,
+    size: 6,
+    grantedActions: ["rd", "rcc", "rtc"],
+  },
+  ped: {
+    name: "PF1RS.Teams.Peddlers",
+    tier: 1,
+    size: 6,
+    grantedActions: ["eg"],
+  },
+  mer: {
+    name: "PF1RS.Teams.Merchants",
+    tier: 2,
+    size: 6,
+    grantedActions: ["eg", "rm"],
+  },
+  blm: {
+    name: "PF1RS.Teams.BlackMarketers",
+    tier: 3,
+    size: 6,
+    grantedActions: ["eg", "rm", "abm"],
+  },
+  mel: {
+    name: "PF1RS.Teams.MerchantLords",
+    tier: 3,
+    size: 6,
+    grantedActions: ["eg", "rm", "so"],
+  },
+  custom: {
+    name: "PF1RS.Teams.Custom",
+  },
+};
+
 export const actions = {
   abm: "PF1RS.Actions.Abm",
   ash: "PF1RS.Actions.Ash",
@@ -206,25 +308,6 @@ export const orgOfficers = {
 export const eventSubTypes = {
   active: "PF1.Subtypes.Item.pf1-rebellion-sheet.event.active.Plural",
   misc: "PF1.Subtypes.Item.pf1-rebellion-sheet.event.misc.Plural",
-};
-
-export const teamBaseTypes = {
-  stp: "PF1RS.Teams.StreetPerformers",
-  rum: "PF1RS.Teams.Rumormongers",
-  agi: "PF1RS.Teams.Agitators",
-  cog: "PF1RS.Teams.Cognoscenti",
-  sne: "PF1RS.Teams.Sneaks",
-  thi: "PF1RS.Teams.Thieves",
-  sab: "PF1RS.Teams.Saboteurs",
-  spi: "PF1RS.Teams.Spies",
-  ffi: "PF1RS.Teams.FreedomFighters",
-  inf: "PF1RS.Teams.Infiltrators",
-  cab: "PF1RS.Teams.Cabalists",
-  spe: "PF1RS.Teams.Spellcasters",
-  ped: "PF1RS.Teams.Peddlers",
-  mer: "PF1RS.Teams.Merchants",
-  blm: "PF1RS.Teams.BlackMarketers",
-  mel: "PF1RS.Teams.MerchantLords",
 };
 
 export const teamSubTypes = {

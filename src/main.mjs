@@ -233,7 +233,6 @@ Hooks.once("i18nInit", () => {
     "orgChecks",
     "orgOfficers",
     "eventSubTypes",
-    "teamBaseTypes",
     "teamSubTypes",
     "events",
   ];
@@ -241,6 +240,8 @@ Hooks.once("i18nInit", () => {
   for (let o of toLocalize) {
     pf1rs.config[o] = doLocalize(pf1rs.config[o], o);
   }
+
+  doLocalizeKeys(pf1rs.config.teamBaseTypes, ["name"]);
 
   // localize rebellionActions in pf1 config
   pf1.config.rebellionActions = doLocalize(pf1.config.rebellionActions, "rebellionActions");

@@ -5,6 +5,10 @@
     text-align: right;
   }
 
+  .action-selector.disabled {
+    pointer-events: none;
+  }
+
   .tab.changes {
     .event-immunities-list {
       .item-list-header {

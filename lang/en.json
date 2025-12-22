@@ -97,7 +97,8 @@
       "Peddlers": "Peddlers",
       "Merchants": "Merchants",
       "BlackMarketers": "Black Marketers",
-      "MerchantLords": "Merchant Lords"
+      "MerchantLords": "Merchant Lords",
+      "Custom": "Custom"
     },
 
     "EventsLabel": "Events",

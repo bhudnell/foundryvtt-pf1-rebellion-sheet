@@ -6,15 +6,10 @@ export class TeamModel extends ItemBaseModel {
 
     const schema = {
       subType: new fields.StringField({ initial: "general", choices: Object.keys(pf1rs.config.teamSubTypes) }),
-      baseType: new fields.StringField(), // type of team from teamBaseType definition
-      tier: new fields.NumberField(),
-      cost: new fields.NumberField(),
-      recruitment: new fields.SchemaField({
-        dc: new fields.NumberField(),
-        ability: new fields.StringField(),
-      }),
-      rActions: new fields.ArrayField(new fields.StringField()),
-      size: new fields.NumberField({ integer: true }),
+      baseType: new fields.StringField({ blank: true, choices: Object.keys(pf1rs.config.teamBaseTypes) }),
+      customTier: new fields.NumberField({ integer: true }),
+      customActions: new fields.ArrayField(new fields.StringField()),
+      customSize: new fields.NumberField({ integer: true }),
       managerId: new fields.ForeignDocumentField(pf1.documents.actor.ActorPF, { idOnly: true }),
       disabled: new fields.BooleanField({ initial: false }),
       missing: new fields.BooleanField({ initial: false }),
@@ -28,15 +23,36 @@ export class TeamModel extends ItemBaseModel {
     super.migrateData(data);
 
     if (data.actions?.value.length) {
-      data.rActions = { value: data.actions.value };
+      data.customActions = { value: data.actions.value };
     }
 
-    if (data.rActions?.value) {
-      data.rActions = data.rActions.value;
+    if (data.customActions?.value) {
+      data.customActions = data.customActions.value;
     }
   }
 
   prepareDerivedData() {}
+
+  get rActions() {
+    if (this.subType === "unique" || this.baseType === "custom") {
+      return this.customActions;
+    }
+    return pf1rs.config.teamBaseTypes[this.baseType]?.grantedActions ?? [];
+  }
+
+  get tier() {
+    if (this.subType === "unique" || this.baseType === "custom") {
+      return this.customTier;
+    }
+    return pf1rs.config.teamBaseTypes[this.baseType]?.tier ?? 0;
+  }
+
+  get size() {
+    if (this.subType === "unique" || this.baseType === "custom") {
+      return this.customSize;
+    }
+    return pf1rs.config.teamBaseTypes[this.baseType]?.size ?? 0;
+  }
 
   get managerName() {
     const managerActor = game.actors.get(this.managerId);

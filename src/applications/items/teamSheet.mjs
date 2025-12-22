@@ -12,7 +12,11 @@ export class TeamSheet extends ItemBaseSheet {
     context.uniqueLabel = game.i18n.localize(`PF1.Subtypes.Item.${pf1rs.config.teamId}.unique.Plural`);
 
     // team types
-    context.baseTypeOptions = { "": "", ...pf1rs.config.teamBaseTypes };
+    context.baseTypeOptions = {
+      "": "",
+      ...Object.fromEntries(Object.entries(pf1rs.config.teamBaseTypes).map(([key, value]) => [key, value.name])),
+    };
+    context.isCustom = itemData.baseType === "custom";
 
     // manager choices, only officers from parent sheet can be managers
     const managerOptions = { "": "" };
