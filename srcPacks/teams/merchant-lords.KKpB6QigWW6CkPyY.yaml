@@ -6,11 +6,6 @@ system:
   htmlFields:
     - description.value
   subType: general
-  tier: 3
-  cost: null
-  recruitment:
-    dc: null
-  size: 6
   description:
     value: >-
       <p><strong>Cost</strong> 200 gp</p><p><strong>Granted Actions</strong>
@@ -24,11 +19,6 @@ system:
   disabled: false
   missing: false
   baseType: mel
-  rActions:
-    value:
-      - eg
-      - rm
-      - so
   changes: []
   contextNotes: []
   sources: []

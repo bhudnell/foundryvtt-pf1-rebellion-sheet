@@ -6,11 +6,6 @@ system:
   htmlFields:
     - description.value
   subType: general
-  tier: 1
-  cost: null
-  recruitment:
-    dc: null
-  size: 6
   description:
     value: >-
       <p><strong>Recruitment</strong> Security DC 10</p><p><strong>Granted
@@ -23,9 +18,6 @@ system:
   disabled: false
   missing: false
   baseType: ped
-  rActions:
-    value:
-      - eg
   changes: []
   contextNotes: []
   sources: []
