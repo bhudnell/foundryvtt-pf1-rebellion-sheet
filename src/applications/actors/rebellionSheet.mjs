@@ -150,7 +150,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
       const section = teamsSections.find((section) => this._applySectionFilter(i, section));
       if (section) {
         section.items ??= [];
-        section.items.push({ ...i, id: i.id, teamType: pf1rs.config.teamBaseTypes[i.system.baseType].name });
+        section.items.push({ ...i, id: i.id, teamType: pf1rs.config.teamBaseTypes[i.system.baseType]?.name });
       }
     }
 
