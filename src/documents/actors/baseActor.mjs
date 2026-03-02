@@ -180,10 +180,14 @@ export class BaseActor extends pf1.documents.actor.ActorBasePF {
     );
   }
 
-  async _getEntriesParsed(field, context, { roll = true, rollData } = {}) {
+  async _getEntriesParsed(field, context, { roll = true, rollData, team } = {}) {
     rollData ??= this.getRollData();
 
-    const objects = this._getEntriesForContext(field, context);
+    let objects = this._getEntriesForContext(field, context);
+    if (team) {
+      objects = objects.filter((o) => o.item.type !== pf1rs.config.teamId || o.item.id === team.id);
+    }
+
     await this._enrichEntries(objects, rollData, { roll });
 
     return objects.flatMap((o) =>
@@ -194,12 +198,12 @@ export class BaseActor extends pf1.documents.actor.ActorBasePF {
     );
   }
 
-  async getContextNotesParsed(context, { all, roll = true, rollData } = {}) {
-    return this._getEntriesParsed("contextNotes", context, { all, roll, rollData });
+  async getContextNotesParsed(context, { roll = true, rollData, team } = {}) {
+    return this._getEntriesParsed("contextNotes", context, { roll, rollData, team });
   }
 
-  async getEventImmunitiesParsed(context, { all, roll = true, rollData } = {}) {
-    return this._getEntriesParsed("eventImmunities", context, { all, roll, rollData });
+  async getEventImmunitiesParsed(context, { roll = true, rollData, team } = {}) {
+    return this._getEntriesParsed("eventImmunities", context, { roll, rollData, team });
   }
 
   /**

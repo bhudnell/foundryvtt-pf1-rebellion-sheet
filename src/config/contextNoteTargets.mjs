@@ -1,4 +1,4 @@
-import { changePrefix, itemTypes, orgChecks } from "./config.mjs";
+import { actions, changePrefix, itemTypes, orgChecks } from "./config.mjs";
 
 export const contextNoteTargets = {
   ...Object.entries(orgChecks).reduce((acc, [key, label]) => {
@@ -9,6 +9,10 @@ export const contextNoteTargets = {
     category: `${changePrefix}_org_checks`,
     label: "PF1RS.AllOrgChecks",
   },
+  ...Object.entries(actions).reduce((acc, [key, label]) => {
+    acc[`${changePrefix}_${key}`] = { category: `${changePrefix}_actions`, label };
+    return acc;
+  }, {}),
   [`${changePrefix}_notoriety`]: {
     category: `${changePrefix}_misc`,
     label: "PF1RS.Notoriety",
@@ -18,6 +22,10 @@ export const contextNoteTargets = {
 export const contextNoteCategories = {
   [`${changePrefix}_org_checks`]: {
     label: "PF1RS.OrgCheck",
+    filters: { item: { include: itemTypes } },
+  },
+  [`${changePrefix}_actions`]: {
+    label: "PF1.ActionPlural",
     filters: { item: { include: itemTypes } },
   },
   [`${changePrefix}_misc`]: {

@@ -81,13 +81,6 @@ export class RebellionActor extends BaseActor {
       parts.push(`${c.value}[${c.flavor}]`);
     }
 
-    // Add context notes
-    const rollData = options.rollData || this.getRollData();
-    const notes = await this.getContextNotesParsed(`${pf1rs.config.changePrefix}_${actionId}`, { rollData });
-    if (notes.length > 0) {
-      props.push({ header: game.i18n.localize("PF1.Notes"), value: notes });
-    }
-
     let sourceId = action.sources?.[0].id;
     // if more than 1 source (action.sources + in always available actions) open dialog to choose
     if (action.sources?.length > (action.alwaysAvailable ? 0 : 1)) {
@@ -123,6 +116,16 @@ export class RebellionActor extends BaseActor {
 
     if (actionId === "gi" && tier) {
       parts.push(`${tier * 2}[${source.name} (${game.i18n.localize("PF1.Tier")})]`);
+    }
+
+    // Add context notes
+    const rollData = options.rollData || this.getRollData();
+    const notes = await this.getContextNotesParsed(`${pf1rs.config.changePrefix}_${actionId}`, {
+      rollData,
+      team: { id: sourceId },
+    });
+    if (notes.length > 0) {
+      props.push({ header: game.i18n.localize("PF1.Notes"), value: notes });
     }
 
     const label = pf1rs.config.actions[actionId];

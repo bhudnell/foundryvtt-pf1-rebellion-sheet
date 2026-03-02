@@ -347,6 +347,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
           sources: actor.getSourceDetails(`system.actions.${detail}.bonus`),
           untyped: true,
         });
+        notes = await getNotes(`${pf1rs.config.changePrefix}_${detail}`);
         break;
       case "danger":
         paths.push({
