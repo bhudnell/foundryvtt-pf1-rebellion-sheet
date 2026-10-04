@@ -20,6 +20,7 @@
 
     "FromStrategist": "From Strategist",
     "TotalActions": "Total Actions",
+    "BonusAction": "Bonus Action",
     "Persistent": "Persistent",
     "Mitigated": "Mitigated",
     "Safehouses": "Safehouses",
@@ -78,6 +79,7 @@
     "Manager": "Manager",
     "CurrTeams": "Current Teams",
     "MaxTeams": "Maximum Teams",
+    "BonusTeam": "Bonus Team",
     "GrantedActions": "Granted Actions",
     "Leadership": "Leadership",
     "NaturalBornLeader": "Natural Born Leader",

@@ -1,15 +1,19 @@
-<div class="info-box-joined flex0">
+<div class="info-box-joined" data-tooltip-extended="actionCount">
   <div class="info-box">
     <h5>{{localize "PF1RS.TotalActions"}}</h5>
-    <span class="value">{{ system.maxActions }}</span>
+    <span class="value">{{ actionCount.total }}</span>
   </div>
   <div class="info-box">
     <h5>{{localize "PF1RS.FromRank"}}</h5>
-    <span class="value">{{ actions.rank }}</span>
+    <span class="value">{{ actionCount.rank }}</span>
   </div>
   <div class="info-box">
     <h5>{{localize "PF1RS.FromStrategist"}}</h5>
-    <span class="value">{{ actions.strategist }}</span>
+    <span class="value">{{ actionCount.strategist }}</span>
+  </div>
+  <div class="info-box">
+    <h5>{{localize "PF1RS.FromBonus"}}</h5>
+    <span class="value">{{ actionCount.bonus }}</span>
   </div>
 </div>
 

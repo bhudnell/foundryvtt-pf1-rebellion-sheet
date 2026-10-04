@@ -110,14 +110,14 @@
 <hr />
 
 <footer>
-  <div class="info-box-joined">
+  <div class="info-box-joined" data-tooltip-extended="teamCount">
     <div class="info-box">
       <h5>{{localize "PF1RS.CurrTeams"}}</h5>
-      <span class="value">{{ teamCount.active }}</span>
+      <span class="value">{{ teamCount.current }}</span>
     </div>
     <div class="info-box">
       <h5>{{localize "PF1RS.FromRank"}}</h5>
-      <span class="value">{{ teamCount.levels }}</span>
+      <span class="value">{{ teamCount.rank }}</span>
     </div>
     <div class="info-box">
       <h5>{{localize "PF1RS.FromBonus"}}</h5>

@@ -41,10 +41,12 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
         initial: 11900,
         nullable: false,
       }),
-      treasury: new fields.NumberField({
-        integer: true,
-        initial: 10,
-        nullable: false,
+      treasury: new fields.SchemaField({
+        value: new fields.NumberField({
+          integer: true,
+          initial: 10,
+          nullable: false,
+        }),
       }),
       notoriety: new fields.NumberField({
         integer: true,
@@ -119,6 +121,10 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
     if (typeof data.notes === "string") {
       data.notes = { value: data.notes };
     }
+
+    if (typeof data.treasury === "number") {
+      data.treasury = { value: data.treasury };
+    }
   }
 
   prepareBaseData() {
@@ -131,6 +137,11 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
     for (const action of Object.keys(pf1rs.config.actions)) {
       this.actions[action].bonus = 0;
     }
+
+    this.bonus = {
+      actions: 0,
+      teams: 0,
+    };
   }
 
   prepareDerivedData() {
@@ -143,10 +154,8 @@ export class RebellionModel extends foundry.abstract.TypeDataModel {
       this[check].total = this[check].base;
     }
 
-    // other details
-    this.minTreasury = this.rank * 10;
-    this.maxActions = pf1rs.config.maxActions[this.rank] + (this.officers.strategist.actorId ? 1 : 0);
-    this.maxTeams = pf1rs.config.maxTeams[this.rank];
+    // min treasury
+    this.treasury.min = this.rank * 10;
 
     // danger
     this.danger.total = this.danger.base;

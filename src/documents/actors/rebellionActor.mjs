@@ -177,6 +177,32 @@ export class RebellionActor extends BaseActor {
     await ChatMessage.create(messageData);
   }
 
+  getActionCount() {
+    const count = {
+      rank: pf1rs.config.maxActions[this.system.rank],
+      strategist: this.system.officers.strategist.actorId ? 1 : 0,
+      bonus: this.system.bonus.actions,
+      total: 0,
+    };
+
+    count.total = count.rank + count.strategist + count.bonus;
+
+    return count;
+  }
+
+  getTeamCount() {
+    const count = {
+      current: this.itemTypes[pf1rs.config.teamId].filter((t) => t.system.subType === "general").length,
+      rank: pf1rs.config.maxTeams[this.system.rank],
+      bonus: this.system.bonus.teams,
+      max: 0,
+    };
+
+    count.max = count.rank + count.bonus;
+
+    return count;
+  }
+
   _prepareTypeChanges(changes) {
     // org checks
     for (const check of Object.keys(pf1rs.config.orgChecks)) {

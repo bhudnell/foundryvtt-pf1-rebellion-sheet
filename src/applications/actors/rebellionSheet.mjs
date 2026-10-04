@@ -68,9 +68,8 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
         check: game.i18n.localize(pf1rs.config.orgChecks[actorData.actions[actionId].check]),
         showSafehouses: actionId === "ash",
       })),
-      rank: pf1rs.config.maxActions[actorData.rank],
-      strategist: actorData.officers.strategist.actorId ? 1 : 0,
     };
+    data.actionCount = actor.getActionCount();
 
     // non-recruiter officers
     data.officers = Object.entries(actorData.officers).reduce((acc, [id, officer]) => {
@@ -119,12 +118,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
     data.validOfficerOptions = officerOptions;
 
     // teams
-    data.teamCount = {
-      active: data.sections.teams[0].items?.length ?? 0,
-      levels: pf1rs.config.maxTeams[actorData.rank],
-      bonus: 0,
-      max: pf1rs.config.maxTeams[actorData.rank],
-    };
+    data.teamCount = actor.getTeamCount();
 
     return data;
   }
@@ -365,6 +359,44 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
           value: actorData.notoriety,
         });
         notes = await getNotes(`${pf1rs.config.changePrefix}_notoriety`);
+        break;
+      case "treasury":
+        paths.push(
+          { path: "@treasury.value", value: actorData.treasury.value },
+          { path: "@treasury.min", value: actorData.treasury.min }
+        );
+        notes = await getNotes(`${pf1rs.config.changePrefix}_treasury`);
+        break;
+      case "actionCount": {
+        const actions = actor.getActionCount();
+
+        sources.push({
+          sources: [{ name: game.i18n.localize("PF1RS.FromRank"), value: actions.rank }],
+          untyped: true,
+        });
+
+        if (actions.strategist) {
+          sources.push({
+            sources: [{ name: game.i18n.localize("PF1RS.FromStrategist"), value: actions.strategist }],
+            untyped: true,
+          });
+        }
+
+        sources.push({
+          sources: actor.getSourceDetails(`system.bonus.actions`),
+          untyped: true,
+        });
+        notes = await getNotes(`${pf1rs.config.changePrefix}_bonusAction`);
+        break;
+      }
+      case "teamCount":
+        sources.push({
+          sources: [
+            { name: game.i18n.localize("PF1RS.FromRank"), value: pf1rs.config.maxTeams[actorData.rank] },
+            ...actor.getSourceDetails(`system.bonus.teams`),
+          ],
+          untyped: true,
+        });
         break;
 
       default:

@@ -75,16 +75,18 @@
 </div>
 
 <div class="attributes flexrow">
-  <div class="info-box-header treasury">
+  <div class="info-box-header treasury" data-tooltip-extended="treasury">
     <h3>{{localize "PF1RS.Treasury"}}</h3>
     <div class="info-box-joined">
       <div class="info-box">
         <h5>{{localize "PF1.Current" }}</h5>
-        <span class="value text-box direct" name="system.treasury" data-dtype="Number">{{ system.treasury }}</span>
+        <span class="value text-box direct" name="system.treasury.value" data-dtype="Number">{{
+          system.treasury.value
+        }}</span>
       </div>
       <div class="info-box">
         <h5>{{localize "PF1.Minimum" }}</h5>
-        <span class="value">{{ system.minTreasury }}</span>
+        <span class="value">{{ system.treasury.min }}</span>
       </div>
     </div>
   </div>

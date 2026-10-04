@@ -17,6 +17,14 @@ export const buffTargets = {
     category: `${changePrefix}_misc`,
     label: "PF1RS.Danger",
   },
+  [`${changePrefix}_bonusAction`]: {
+    category: `${changePrefix}_misc`,
+    label: "PF1RS.BonusAction",
+  },
+  [`${changePrefix}_bonusTeam`]: {
+    category: `${changePrefix}_misc`,
+    label: "PF1RS.BonusTeam",
+  },
 };
 
 export const buffTargetCategories = {

@@ -17,6 +17,14 @@ export const contextNoteTargets = {
     category: `${changePrefix}_misc`,
     label: "PF1RS.Notoriety",
   },
+  [`${changePrefix}_treasury`]: {
+    category: `${changePrefix}_misc`,
+    label: "PF1RS.Treasury",
+  },
+  [`${changePrefix}_bonusAction`]: {
+    category: `${changePrefix}_misc`,
+    label: "PF1RS.BonusAction",
+  },
 };
 
 export const contextNoteCategories = {

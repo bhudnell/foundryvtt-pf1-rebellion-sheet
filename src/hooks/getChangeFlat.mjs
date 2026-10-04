@@ -14,6 +14,13 @@ export function getChangeFlat(result, target, modifierType, value, actor) {
   // actions
   else if (realTarget in pf1rs.config.actions) {
     result.push(`system.actions.${realTarget}.bonus`);
+  } else if (realTarget === "bonusAction") {
+    result.push("system.bonus.actions");
+  }
+
+  // teams
+  else if (realTarget === "bonusTeam") {
+    result.push("system.bonus.teams");
   }
 
   // danger
