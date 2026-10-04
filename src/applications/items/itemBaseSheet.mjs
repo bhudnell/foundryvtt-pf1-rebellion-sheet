@@ -33,7 +33,7 @@ export class ItemBaseSheet extends pf1.applications.item.ItemSheetPF {
   }
 
   async _updateObject(event, formData) {
-    return ItemSheet.prototype._updateObject.call(this, event, formData);
+    return foundry.appv1.sheets.ItemSheet.prototype._updateObject.call(this, event, formData);
   }
 
   activateListeners(jq) {

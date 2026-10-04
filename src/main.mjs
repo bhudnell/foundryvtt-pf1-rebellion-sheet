@@ -94,9 +94,11 @@ Hooks.once("libWrapper.Ready", () => {
 
 Hooks.on("pf1GetChangeFlat", getChangeFlat);
 
-Hooks.on("renderChatMessage", (message, html) => {
+Hooks.on("renderChatMessageHTML", (message, html) => {
   if (message.getFlag(PF1RS.moduleId, "eventChanceCard")) {
-    html.find("button.roll-event").on("click", (e) => rollEventTable(e, message));
+    html.querySelectorAll("button.roll-event").forEach((button) => {
+      button.addEventListener("click", (e) => rollEventTable(e, message));
+    });
   }
 });
 
@@ -121,22 +123,22 @@ Hooks.once("init", () => {
   pf1.applications.item.EventSheet = EventSheet;
   pf1.applications.item.TeamSheet = TeamSheet;
 
-  Actors.registerSheet(PF1RS.moduleId, RebellionSheet, {
+  foundry.documents.collections.Actors.registerSheet(PF1RS.moduleId, RebellionSheet, {
     label: game.i18n.localize("PF1RS.Sheet.Rebellion"),
     types: [PF1RS.sheetId],
     makeDefault: true,
   });
-  Items.registerSheet(PF1RS.moduleId, AllySheet, {
+  foundry.documents.collections.Items.registerSheet(PF1RS.moduleId, AllySheet, {
     label: game.i18n.localize("PF1RS.Sheet.Ally"),
     types: [PF1RS.allyId],
     makeDefault: true,
   });
-  Items.registerSheet(PF1RS.moduleId, EventSheet, {
+  foundry.documents.collections.Items.registerSheet(PF1RS.moduleId, EventSheet, {
     label: game.i18n.localize("PF1RS.Sheet.Event"),
     types: [PF1RS.eventId],
     makeDefault: true,
   });
-  Items.registerSheet(PF1RS.moduleId, TeamSheet, {
+  foundry.documents.collections.Items.registerSheet(PF1RS.moduleId, TeamSheet, {
     label: game.i18n.localize("PF1RS.Sheet.Team"),
     types: [PF1RS.teamId],
     makeDefault: true,
@@ -167,7 +169,7 @@ Hooks.once("ready", () => {
     ui.notifications.error("PF1RS.LibWrapperError");
   }
 
-  loadTemplates({
+  foundry.applications.handlebars.loadTemplates({
     "rebellion-sheet-actions": `modules/${PF1RS.moduleId}/templates/actors/rebellion/parts/actions.hbs`,
     "rebellion-sheet-allies": `modules/${PF1RS.moduleId}/templates/actors/rebellion/parts/allies.hbs`,
     "rebellion-sheet-events": `modules/${PF1RS.moduleId}/templates/actors/rebellion/parts/events.hbs`,

@@ -30,7 +30,7 @@ export class RebellionSheet extends pf1.applications.actor.ActorSheetPF {
       ...this.actor,
       isGM: game.user.isGM,
       owner: isOwner,
-      enrichedNotes: await TextEditor.enrichHTML(actorData.notes.value ?? "", {
+      enrichedNotes: await foundry.applications.ux.TextEditor.implementation.enrichHTML(actorData.notes.value ?? "", {
         rolldata: actor.getRollData(),
         async: true,
         secrets: this.object.isOwner,
